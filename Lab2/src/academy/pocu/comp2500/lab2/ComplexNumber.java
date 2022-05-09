@@ -2,8 +2,8 @@ package academy.pocu.comp2500.lab2;
 
 public class ComplexNumber {
 
-    private double real;
-    private double imaginary;
+    public double real;
+    public double imaginary;
 
     public ComplexNumber() {
         real = 0.0;
