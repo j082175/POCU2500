@@ -17,7 +17,7 @@ public class ComplexNumber {
 
     public ComplexNumber(double real, double imaginary) {
         this.real = real;
-        this.imaginary = -imaginary;
+        this.imaginary = imaginary;
     }
 
     public boolean isReal() {
@@ -37,7 +37,7 @@ public class ComplexNumber {
     }
 
     public ComplexNumber getConjugate() {
-        return new ComplexNumber(this.real,this.imaginary);
+        return new ComplexNumber(this.real, this.imaginary);
     }
 
     public ComplexNumber add(ComplexNumber num) {
@@ -52,14 +52,14 @@ public class ComplexNumber {
         double realMul = (this.real * num.real) + (this.imaginary * num.imaginary * -1);
         double imaginaryMul = (this.real * num.imaginary) + (this.imaginary * num.real);
 
-        return new ComplexNumber(realMul,imaginaryMul);
+        return new ComplexNumber(realMul, imaginaryMul);
     }
 
     public ComplexNumber divide(ComplexNumber num) {
         double realDiv = ((this.real * num.real) + (this.imaginary * num.imaginary * 1)) / ((num.real * num.real) + (num.imaginary * num.imaginary));
         double imaginaryDiv = ((this.imaginary * num.real) - (this.real * num.imaginary)) / ((num.real * num.real) + (num.imaginary * num.imaginary));
-        
-        return new ComplexNumber(realDiv,imaginaryDiv);
+
+        return new ComplexNumber(realDiv, imaginaryDiv);
     }
 
 
