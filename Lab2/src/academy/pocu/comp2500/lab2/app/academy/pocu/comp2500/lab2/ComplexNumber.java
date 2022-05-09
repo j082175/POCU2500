@@ -1,4 +1,4 @@
-package academy.pocu.comp2500.lab2.app;
+package academy.pocu.comp2500.lab2;
 
 public class ComplexNumber {
 

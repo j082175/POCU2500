@@ -1,4 +1,4 @@
-package academy.pocu.comp2500.lab2.app;
+package academy.pocu.comp2500.lab2;
 
 public class Program {
     private static final double DOUBLE_EPSILON = 0.00001;

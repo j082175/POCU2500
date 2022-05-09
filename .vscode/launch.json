@@ -1,0 +1,26 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Launch Program",
+      "request": "launch",
+      "mainClass": "academy.pocu.comp2500.lab2.Program",
+      "projectName": "POCU2500_f55f3a6b"
+    },
+    {
+      "type": "java",
+      "name": "Launch Program",
+      "request": "launch",
+      "mainClass": "academy.pocu.comp2500.lab2.app.Program",
+      "projectName": "POCU2500_f55f3a6b"
+    },
+    {
+      "type": "java",
+      "name": "My App",
+      "request": "launch",
+      "mainClass": "App",
+      "projectName": "my-app",
+      "vmArgs": "-enableassertions"
+    }
+  ]
+}
