@@ -1,0 +1,7 @@
+{
+  "java.project.sourcePaths": [
+    "Lab1/src/academy/pocu/comp2500/lab1",
+    "Assignment1/src",
+    "Lab2/src/academy/pocu/comp2500/lab2/app"
+  ]
+}
