@@ -37,7 +37,7 @@ public class ComplexNumber {
     }
 
     public ComplexNumber getConjugate() {
-        return new ComplexNumber(this.real, this.imaginary);
+        return new ComplexNumber(this.real, -this.imaginary);
     }
 
     public ComplexNumber add(ComplexNumber num) {
