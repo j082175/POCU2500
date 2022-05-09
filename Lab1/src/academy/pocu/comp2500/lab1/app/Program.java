@@ -1,4 +1,4 @@
-package academy.pocu.comp2500.lab1;
+package app;
 
 public class Program {
 

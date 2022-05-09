@@ -4,6 +4,20 @@
       "type": "java",
       "name": "Launch Program",
       "request": "launch",
+      "mainClass": "Program",
+      "projectName": "POCU2500_1414f147"
+    },
+    {
+      "type": "java",
+      "name": "Launch Program",
+      "request": "launch",
+      "mainClass": "app.Program",
+      "projectName": "POCU2500_1414f147"
+    },
+    {
+      "type": "java",
+      "name": "Launch Program",
+      "request": "launch",
       "mainClass": "academy.pocu.comp2500.lab2.Program",
       "projectName": "POCU2500_f55f3a6b"
     },
