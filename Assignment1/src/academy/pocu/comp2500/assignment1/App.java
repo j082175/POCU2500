@@ -6,5 +6,6 @@ public class App {
     public App(Registry registry) {
         // Register like this
         // registry.registerPostAdder("Foo", "bar");
+        
     }
 }
