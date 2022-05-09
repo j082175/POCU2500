@@ -3,9 +3,12 @@ package academy.pocu.comp2500.lab2.app;
 import academy.pocu.comp2500.lab2.ComplexNumber;
 
 public class Program {
+
     private static final double DOUBLE_EPSILON = 0.00001;
+
     public static void main(String[] args) {
         System.out.println("Hello World!");
+
         ComplexNumber num1 = new ComplexNumber();
         ComplexNumber num2 = new ComplexNumber(10.0);
         ComplexNumber num3 = new ComplexNumber(2.5, -5.1);
@@ -29,7 +32,7 @@ public class Program {
         ComplexNumber num3Conjugate = num3.getConjugate();
 
         assert num3Conjugate.real == 2.5;
-        assert num3Conjugate.imaginary == 5.1;
+        assert num3Conjugate.imaginary == -5.1;
 
         ComplexNumber sum = num2.add(num3);
 

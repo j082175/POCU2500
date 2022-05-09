@@ -49,11 +49,15 @@ public class ComplexNumber {
     }
 
     public ComplexNumber multiply(ComplexNumber num){
-        return new ComplexNumber(this.real * num.real, this.imaginary * num.imaginary);
+        double realMul = (this.real * num.real) + (this.imaginary * num.imaginary * -1);
+        double imaginaryMul = (this.real * num.imaginary) + (this.imaginary * num.real);
+        return new ComplexNumber(realMul,imaginaryMul);
     }
 
     public ComplexNumber divide(ComplexNumber num){
-        return new ComplexNumber(this.real / num.real, this.imaginary / num.imaginary);
+        double realDiv = ((this.real * num.real) + (this.imaginary * num.imaginary * 1)) / ((num.real * num.real) + (num.imaginary * num.imaginary));
+        double imaginaryDiv = ((this.imaginary * num.real) - (this.real * num.imaginary)) / ((num.real * num.real) + (num.imaginary * num.imaginary));
+        return new ComplexNumber(realDiv,imaginaryDiv);
     }
 
 
