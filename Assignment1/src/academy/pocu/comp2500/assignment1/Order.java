@@ -1,0 +1,9 @@
+package academy.pocu.comp2500.assignment1;
+
+public enum Order {
+    DESCENDING_BY_WRITE_TIME,
+    ASCENDING_BY_WRITE_TIME,
+    DESCENDING_BY_REVISE_TIME,
+    ASCENDING_BY_REVISE_TIME,
+    ASCENDING_BY_ARTICLE
+}
