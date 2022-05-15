@@ -2,10 +2,12 @@ package academy.pocu.comp2500.assignment1.app;
 
 import java.util.ArrayList;
 
+import academy.pocu.comp2500.assignment1.App;
 import academy.pocu.comp2500.assignment1.Article;
 import academy.pocu.comp2500.assignment1.Blog;
 import academy.pocu.comp2500.assignment1.Order;
 import academy.pocu.comp2500.assignment1.Writer;
+import academy.pocu.comp2500.assignment1.registry.Registry;
 import academy.pocu.comp2500.assignment1.Reader;
 
 public class Program {
@@ -13,13 +15,18 @@ public class Program {
     public static void timeTanos() {
         int sum = 0;
         for (int i = 0; i < 9999; i++) {
-            for (int j = 0; j < 9999; j++ ) {
+            for (int j = 0; j < 9999; j++) {
                 sum += 1;
             }
         }
     }
 
     public static void main(String[] args) {
+        Registry registry = new Registry();
+        App app = new App(registry);
+        registry.validate();
+        assert 1 > 2;
+
         // 1.
 
         Blog blog1 = new Blog("first blog");
@@ -62,9 +69,6 @@ public class Program {
         }
 
         System.out.println("---------------------------------------");
-        
 
-
-        
     }
 }

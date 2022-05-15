@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Article {
     private static int createTotalCount;
     private ArrayList<Comment> comments;
-    private Reaction reactionCount[];
+    private int reactionCount[];
     private String content;
     private String tag;
     private String articleName;
@@ -19,12 +19,21 @@ public class Article {
         this.articleName = title;
         this.content = content;
         comments = new ArrayList<>(100);
-        reactionCount = new Reaction[5];
+        reactionCount = new int[5];
         Article.createTotalCount++;
         this.writerName = writerName;
 
         this.orderNumber = writeTime;
         this.reviseTime = reviseTime;
+    }
+
+    public Article(String name, String content, String tag) {
+        this.articleName = name;
+        this.content = content;
+        this.tag = tag;
+        comments = new ArrayList<>(100);
+        reactionCount = new int[5];
+        Article.createTotalCount++;
     }
 
     public int getOrderNumber() {
@@ -39,14 +48,6 @@ public class Article {
         return Article.createTotalCount;
     }
 
-    public Article(String name, String content, String tag) {
-        this.articleName = name;
-        this.content = content;
-        this.tag = tag;
-        comments = new ArrayList<>(100);
-        reactionCount = new Reaction[5];
-        Article.createTotalCount++;
-    }
 
     public String getContent() {
         return this.content;
@@ -60,7 +61,7 @@ public class Article {
         return this.articleName;
     }
 
-    public Reaction[] getReactionCount() {
+    public int[] getReactionCount() {
         return this.reactionCount;
     }
 
@@ -71,5 +72,25 @@ public class Article {
 
     public String getWriterName() {
         return this.writerName;
+    }
+
+    public void setReactionCount(Reaction reactionType) {
+        switch (reactionType) {
+            case GREAT : 
+                this.reactionCount[0]++;
+            break;
+            case SAD : 
+                this.reactionCount[1]++;
+            break;
+            case ANGRY : 
+                this.reactionCount[2]++;
+            break;
+            case FUN : 
+                this.reactionCount[3]++;
+            break;
+            case LOVE :
+                this.reactionCount[4]++;
+            break;
+        }
     }
 }

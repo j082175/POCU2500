@@ -5,6 +5,7 @@ import academy.pocu.comp2500.assignment1.registry.Registry;
 public class App {
     public App(Registry registry) {
         // Register like this
+
         registry.registerBlogCreator("Blog"); //: 블로그를 생성하는 생성자를 등록한다.
         registry.registerTagFilterSetter("Blog", "setTagFilter"); //: 태그 필터를 설정하는 메서드를 등록한다.
         registry.registerAuthorFilterSetter("Blog", "setWriterFilter"); //: 작성자 필터를 설정하는 메서드를 등록한다.
@@ -27,6 +28,5 @@ public class App {
         registry.registerSubcommentUpvoter("Reader", "recommendTheSubComment"); //: 하위 댓글을 추천하는 메서드를 등록한다.
         registry.registerSubcommentDownvoter("Reader", "notRecommendTheSubComment"); //: 하위 댓글을 비추천하는 메서드를 등록한다.
 
-        registry.validate();
     }
 }

@@ -37,7 +37,11 @@ public class Reader {
     }
 
     public void addReaction(Blog blog, Article article, Reaction reactionType) {
-
+        for (int i = 0; i < blog.getArticles().size(); i++) {
+            if (blog.getArticles().get(i).getName().equals(article.getName())) {
+                
+            }
+        }
     }
 
     public void removeReaction(Blog blog, Article article) {
