@@ -27,7 +27,7 @@ public class Reader {
 
     }
 
-    public void changecomment(Blog blog, Article article, Comment comment, String text) {
+    public void changeComment(Blog blog, Article article, Comment comment, String text) {
 
     }
 
