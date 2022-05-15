@@ -9,7 +9,7 @@ public class App {
         registry.registerTagFilterSetter("Blog", "setTagFilter"); //: 태그 필터를 설정하는 메서드를 등록한다.
         registry.registerAuthorFilterSetter("Blog", "setWriterFilter"); //: 작성자 필터를 설정하는 메서드를 등록한다.
         registry.registerPostOrderSetter("Blog", "setSortingType"); //: 블로그 글의 정렬 방법을 설정하는 메서드를 등록한다.
-        registry.registerPostListGetter("Reader", "getArticle"); //: 블로그 글 목록을 가져오는 메서드를 등록한다.
+        registry.registerPostListGetter("Reader", "getArticles"); //: 블로그 글 목록을 가져오는 메서드를 등록한다.
         registry.registerPostAdder("Writer", "addArticle"); //: 블로그에 글을 추가하는 메서드를 등록한다.
         registry.registerPostTitleUpdater("Writer", "changeArticleTitle"); //: 발행된 블로그 글의 제목을 바꾸는 메서드를 등록한다.
         registry.registerPostBodyUpdater("Writer", "changeArticleContent"); //: 발행된 블로그 글의 본문을 바꾸는 메서드를 등록한다.

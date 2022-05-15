@@ -1,5 +1,7 @@
 package academy.pocu.comp2500.assignment1;
 
+import java.util.ArrayList;
+
 public class Reader {
     private String readerName;
 
@@ -7,9 +9,8 @@ public class Reader {
         this.readerName = name;
     }
 
-    public Article getArticle(Blog blog) {
-
-        return null;
+    public ArrayList<Article> getArticles(Blog blog) {
+        return blog.getArticles();
     }
 
     public void addComment(Blog blog, Article article, Comment comment) {
