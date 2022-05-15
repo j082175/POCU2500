@@ -15,7 +15,7 @@ public class Article {
     private long reviseTime;
     //private OffsetDateTime
 
-    public Article(String title, String content, String name, int createdAt, long createdDateTime) {
+    public Article(String title, String content, String name, int count, long createdDateTime) {
         this.articleName = title;
         this.content = content;
         comments = new ArrayList<>(100);
@@ -23,7 +23,7 @@ public class Article {
         Article.createTotalCount++;
         this.writerName = name;
 
-        this.orderNumber = createdAt;
+        this.orderNumber = count;
         this.reviseTime = createdDateTime;
     }
 
