@@ -10,6 +10,15 @@ import academy.pocu.comp2500.assignment1.Reader;
 
 public class Program {
 
+    public static void timeTanos() {
+        int sum = 0;
+        for (int i = 0; i < 9999; i++) {
+            for (int j = 0; j < 9999; j++ ) {
+                sum += 1;
+            }
+        }
+    }
+
     public static void main(String[] args) {
         // 1.
 
@@ -35,17 +44,27 @@ public class Program {
         Blog blog3 = new Blog("third blog");
         Writer writer2 = new Writer("second writer");
         writer2.addArticle(blog3, "one", "fwefwefwewf");
+        timeTanos();
         writer2.addArticle(blog3, "two", "eeeeeeeeeerere");
+        timeTanos();
         writer2.addArticle(blog3, "three", "reeeeeeee");
+        timeTanos();
         Reader reader2 = new Reader("second reader");
 
         articles = reader2.getArticles(blog3);
+        blog3.setSortingType(Order.ASCENDING_BY_REVISE_TIME);
+        for (int i = 0; i < articles.size(); i++) {
+            System.out.println(articles.get(i).getOrderNumber());
+        }
 
-        System.out.println(articles.get(1).getOrderNumber());
+        for (int i = 0; i < articles.size(); i++) {
+            System.out.println(articles.get(i).getReviseTime());
+        }
 
-        // for(int i = 0; i < articles.size();i++) {
-        // System.out.println(articles.get(i).getOrderNumber());
-        // }
+        System.out.println("---------------------------------------");
+        
 
+
+        
     }
 }

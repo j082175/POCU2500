@@ -37,14 +37,83 @@ public class Blog {
 
     public void setTagFilter(String tag) {
         this.tagFilter = tag;
+
+        ArrayList<Article> newArticles = new ArrayList<>(100);
+        for (int i = 0; i < articles.size(); i++) {
+            if (articles.get(i).getTag().equals(tag)) {
+                newArticles.add(articles.get(i));
+            }
+        }
+
+        articles = newArticles;
     }
 
     public void setWriterFilter(Writer user) {
         this.writerFilter = user.getName();
+
+        ArrayList<Article> newArticles = new ArrayList<>(100);
+        for (int i = 0; i < articles.size(); i++) {
+            if (writerFilter.equals(user.getName())) {
+                newArticles.add(articles.get(i));
+            }
+        }
+
+        articles = newArticles;
     }
 
     public void setSortingType(Order sortingType) {
         this.sortingType = sortingType;
+
+        switch (this.sortingType) {
+            case DESCENDING_BY_WRITE_TIME :
+                for (int i = 0; i < getArticles().size(); i++) {
+                    for (int j = 0; j < getArticles().size() - 1 - i; j++) {
+                        if (getArticles().get(j).getOrderNumber() < getArticles().get(j + 1).getOrderNumber()) {
+                            Article backup = getArticles().get(j);
+                            getArticles().set(j, getArticles().get(j + 1));
+                            getArticles().set(j + 1, backup);
+                        }
+                    }
+                }
+            break;
+            case ASCENDING_BY_WRITE_TIME :
+                for (int i = 0; i < getArticles().size(); i++) {
+                    for (int j = 0; j < getArticles().size() - 1 - i; j++) {
+                        if (getArticles().get(j).getOrderNumber() > getArticles().get(j + 1).getOrderNumber()) {
+                            Article backup = getArticles().get(j);
+                            getArticles().set(j, getArticles().get(j + 1));
+                            getArticles().set(j + 1, backup);
+                        }
+                    }
+                }
+
+            break;
+            case DESCENDING_BY_REVISE_TIME :
+            for (int i = 0; i < getArticles().size(); i++) {
+                for (int j = 0; j < getArticles().size() - 1 - i; j++) {
+                    if (getArticles().get(j).getReviseTime() < getArticles().get(j + 1).getReviseTime()) {
+                        Article backup = getArticles().get(j);
+                        getArticles().set(j, getArticles().get(j + 1));
+                        getArticles().set(j + 1, backup);
+                    }
+                }
+            }
+            break;
+            case ASCENDING_BY_REVISE_TIME :
+                for (int i = 0; i < getArticles().size(); i++) {
+                    for (int j = 0; j < getArticles().size() - 1 - i; j++) {
+                        if (getArticles().get(j).getReviseTime() > getArticles().get(j + 1).getReviseTime()) {
+                            Article backup = getArticles().get(j);
+                            getArticles().set(j, getArticles().get(j + 1));
+                            getArticles().set(j + 1, backup);
+                        }
+                    }
+                }
+            break;
+            case ASCENDING_BY_ARTICLE :
+
+            break;
+        }
     }
 
     public String getBlogName() {

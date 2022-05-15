@@ -14,30 +14,7 @@ public class Reader {
     }
 
     public ArrayList<Article> getArticles(Blog blog) {
-        switch (blog.getSortingType()) {
-            case DESCENDING_BY_WRITE_TIME :
-                for (int i = 0; i < blog.getArticles().size() - 1; i++) {
-                    for (int j = i; j < blog.getArticles().size() - 1; j++)
-                    if (blog.getArticles().get(j).getOrderNumber() < blog.getArticles().get(j + 1).getOrderNumber()) {
-                        Article backup = blog.getArticles().get(j);
-                        blog.getArticles().set(j, blog.getArticles().get(j + 1));
-                        blog.getArticles().set(j + 1, backup);
-                    }
-                }
-            break;
-            case ASCENDING_BY_WRITE_TIME :
 
-            break;
-            case DESCENDING_BY_REVISE_TIME :
-            
-            break;
-            case ASCENDING_BY_REVISE_TIME :
-
-            break;
-            case ASCENDING_BY_ARTICLE :
-
-            break;
-        }
         return blog.getArticles();
     }
 
@@ -45,8 +22,8 @@ public class Reader {
 
     }
 
-    public void addSubcomment(Blog blog, Article article,
-Comment comment, SubComment subcomment) {
+    public void addSubComment(Blog blog, Article article, 
+    Comment comment, SubComment subcomment) {
 
     }
 
@@ -54,8 +31,8 @@ Comment comment, SubComment subcomment) {
 
     }
 
-    public void changeSubcomment(Blog blog, Article article,
-Comment comment, SubComment subcomment, String text) {
+    public void changeSubComment(Blog blog, Article article, 
+    Comment comment, SubComment subcomment, String text) {
 
     }
 
@@ -79,17 +56,17 @@ Comment comment, SubComment subcomment, String text) {
 
     }
 
-    public void getSubcomments(Blog blog, Article article, Comment comment) {
+    public void getSubComments(Blog blog, Article article, Comment comment) {
 
     }
 
-    public void recommendTheSubcomment(Blog blog, Article article,
-Comment comment, SubComment subcomment) {
+    public void recommendTheSubComment(Blog blog, Article article, 
+    Comment comment, SubComment subcomment) {
 
     }
 
-    public void notRecommendTheSubcomment(Blog blog, Article article,
-Comment comment, SubComment subcomment) {
+    public void notRecommendTheSubComment(Blog blog, Article article, 
+    Comment comment, SubComment subcomment) {
 
     }
 }

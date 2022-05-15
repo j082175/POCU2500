@@ -9,26 +9,29 @@ public class Article {
     private String content;
     private String tag;
     private String articleName;
+    private String writerName;
+
     private int orderNumber;
-    private int reviseTime;
+    private long reviseTime;
     //private OffsetDateTime
 
-    public Article(String name, String content, int writeTime, int reviseTime) {
-        this.articleName = name;
+    public Article(String title, String content, String writerName, int writeTime, long reviseTime) {
+        this.articleName = title;
         this.content = content;
         comments = new ArrayList<>(100);
         reactionCount = new Reaction[5];
         Article.createTotalCount++;
+        this.writerName = writerName;
 
         this.orderNumber = writeTime;
-        this.orderNumber = reviseTime;
+        this.reviseTime = reviseTime;
     }
 
     public int getOrderNumber() {
         return this.orderNumber;
     }
 
-    public int getReviseTime() {
+    public long getReviseTime() {
         return this.reviseTime;
     }
 
@@ -64,5 +67,9 @@ public class Article {
     //dangerous code
     public ArrayList<Comment> getComments() {
         return this.comments;
+    }
+
+    public String getWriterName() {
+        return this.writerName;
     }
 }

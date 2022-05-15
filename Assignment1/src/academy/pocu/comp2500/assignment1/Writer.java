@@ -8,12 +8,12 @@ public class Writer {
     }
 
     // dangerous
-    public void addArticle(Blog blog, String name, String content) {
-        blog.setArticles().add(new Article(name, content, blog.setArticles().size(),0));
+    public void addArticle(Blog blog, String title, String content) {
+        blog.setArticles().add(new Article(title, content, writerName, blog.setArticles().size(), System.currentTimeMillis()));
     }
 
     public void changeArticleTitle(Blog blog, Article article, String title) {
-
+        
     }
 
     public void changeArticleContent(Blog blog, Article article, String content) {
@@ -27,4 +27,6 @@ public class Writer {
     public String getName() {
         return this.writerName;
     }
+
+    
 }
