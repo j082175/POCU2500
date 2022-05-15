@@ -13,12 +13,14 @@ public class Article {
     public Article(String name, String content) {
         this.articleName = name;
         this.content = content;
+        comments = new ArrayList<>(100);
     }
 
     public Article(String name, String content, String tag) {
         this.articleName = name;
         this.content = content;
         this.tag = tag;
+        comments = new ArrayList<>(100);
     }
     
 }

@@ -14,6 +14,12 @@ public class Blog {
         this.tagFilter = null;
         this.writerFilter = null;
         this.sortingType = Order.DESCENDING_BY_WRITE_TIME;
+        articles = new ArrayList<>(100);
+    }
+
+    // dangerous code
+    public ArrayList<Article> getArticles() {
+        return this.articles;
     }
 
     public void setTagFilter(String tag) {

@@ -10,6 +10,7 @@ public class Comment {
     public Comment(String content) {
         recommendCount = new Recommend[2];
         this.content = content;
+        subComments = new ArrayList<>(100);
     }
 
 }

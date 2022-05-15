@@ -7,8 +7,9 @@ public class Writer {
         this.writerName = name;
     }
 
-    public void addArticle(Blog blog) {
-
+    // dangerous
+    public void addArticle(Blog blog, String name, String content) {
+        blog.getArticles().add(new Article(name, content));
     }
 
     public void changeArticleTitle(Blog blog, Article article, String title) {
