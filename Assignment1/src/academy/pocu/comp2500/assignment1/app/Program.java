@@ -20,6 +20,7 @@ public class Program {
         System.out.println("Hello");
         // 1.
 
+
         Blog blog1 = new Blog("First Blog");
         User userWriter1 = new User(10);
         User userWriter2 = new User(20);
