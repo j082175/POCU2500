@@ -16,17 +16,17 @@ public class Reader {
 
     }
 
-    public void addSubComment(Blog blog, Article article,
-Comment comment, SubComment subComment) {
+    public void addSubcomment(Blog blog, Article article,
+Comment comment, Subcomment subcomment) {
 
     }
 
-    public void changeComment(Blog blog, Article article, Comment comment, String text) {
+    public void changecomment(Blog blog, Article article, Comment comment, String text) {
 
     }
 
-    public void changeSubComment(Blog blog, Article article,
-Comment comment, SubComment subComment, String text) {
+    public void changeSubcomment(Blog blog, Article article,
+Comment comment, Subcomment subcomment, String text) {
 
     }
 
@@ -50,17 +50,17 @@ Comment comment, SubComment subComment, String text) {
 
     }
 
-    public void getSubComments(Blog blog, Article article, Comment comment) {
+    public void getSubcomments(Blog blog, Article article, Comment comment) {
 
     }
 
-    public void recommendTheSubComment(Blog blog, Article article,
-Comment comment, SubComment subComment) {
+    public void recommendTheSubcomment(Blog blog, Article article,
+Comment comment, Subcomment subcomment) {
 
     }
 
-    public void notRecommendTheSubComment(Blog blog, Article article,
-Comment comment, SubComment subComment) {
+    public void notRecommendTheSubcomment(Blog blog, Article article,
+Comment comment, Subcomment subcomment) {
 
     }
 }

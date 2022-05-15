@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Blog {
     private ArrayList<Article> articles;
     private String tagFilter;
-    private Writer writerFilter;
+    private String writerFilter;
     private Order sortingType;
     private String blogName;
 
@@ -17,14 +17,30 @@ public class Blog {
     }
 
     public void setTagFilter(String tag) {
-
+        this.tagFilter = tag;
     }
 
-    public void setWriterFilter(Writer writer) {
-
+    public void setWriterFilter(Writer user) {
+        this.writerFilter = user.getName();
     }
 
     public void setSortingType(Order sortingType) {
-        
+        this.sortingType = sortingType;
+    }
+
+    public String getBlogName() {
+        return this.blogName;
+    }
+
+    public Order getSortingType() {
+        return this.sortingType;
+    }
+
+    public String getWriterFilter() {
+        return this.writerFilter;
+    }
+
+    public String getTagFilter() {
+        return this.tagFilter;
     }
 }

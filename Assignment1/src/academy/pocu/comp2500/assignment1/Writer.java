@@ -23,5 +23,7 @@ public class Writer {
 
     }
 
-    
+    public String getName() {
+        return this.writerName;
+    }
 }

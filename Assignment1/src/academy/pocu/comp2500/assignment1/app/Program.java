@@ -12,6 +12,6 @@ public class Program {
         //1. 
 
         Blog blog1 = new Blog("first blog");
-        
+
     }
 }
