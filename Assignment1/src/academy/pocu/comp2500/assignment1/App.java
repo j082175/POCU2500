@@ -16,7 +16,7 @@ public class App {
         registry.registerPostBodyUpdater("Writer", "changeArticleContent"); //: 발행된 블로그 글의 본문을 바꾸는 메서드를 등록한다.
         registry.registerPostTagAdder("Writer", "addArticleTag"); //: 블로그 글에 태그를 추가하는 메서드를 등록한다.
         registry.registerCommentAdder("Reader", "addComment"); //: 블로그 글에 댓글을 추가하는 메서드를 등록한다.
-        registry.registerSubcommentAdder("Reader", "addSubComment") ; //: 댓글에 하위 댓글을 추가하는 메서드를 등록한다.
+        registry.registerSubcommentAdder("Reader", "addSubComment"); //: 댓글에 하위 댓글을 추가하는 메서드를 등록한다.
         registry.registerCommentUpdater("Reader", "changeComment"); //: 댓글의 내용을 바꾸는 메서드를 등록한다.
         registry.registerSubcommentUpdater("Reader", "changeSubComment"); //: 하위 댓글의 내용을 바꾸는 메서드를 등록한다.
         registry.registerReactionAdder("Reader", "addReaction"); //: 블로그 글에 리액션을 추가하는 메서드를 등록한다.

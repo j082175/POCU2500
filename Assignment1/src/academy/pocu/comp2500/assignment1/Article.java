@@ -15,16 +15,16 @@ public class Article {
     private long reviseTime;
     //private OffsetDateTime
 
-    public Article(String title, String content, String writerName, int writeTime, long reviseTime) {
+    public Article(String title, String content, String name, int createdAt, long createdDateTime) {
         this.articleName = title;
         this.content = content;
         comments = new ArrayList<>(100);
         reactionCount = new int[5];
         Article.createTotalCount++;
-        this.writerName = writerName;
+        this.writerName = name;
 
-        this.orderNumber = writeTime;
-        this.reviseTime = reviseTime;
+        this.orderNumber = createdAt;
+        this.reviseTime = createdDateTime;
     }
 
     public Article(String name, String content, String tag) {
@@ -76,21 +76,23 @@ public class Article {
 
     public void setReactionCount(Reaction reactionType) {
         switch (reactionType) {
-            case GREAT : 
+            case GREAT: 
                 this.reactionCount[0]++;
-            break;
-            case SAD : 
+                break;
+            case SAD: 
                 this.reactionCount[1]++;
-            break;
-            case ANGRY : 
+                break;
+            case ANGRY: 
                 this.reactionCount[2]++;
-            break;
-            case FUN : 
+                break;
+            case FUN: 
                 this.reactionCount[3]++;
-            break;
-            case LOVE :
+                break;
+            case LOVE:
                 this.reactionCount[4]++;
-            break;
+                break;
+            default: 
+                break;
         }
     }
 }

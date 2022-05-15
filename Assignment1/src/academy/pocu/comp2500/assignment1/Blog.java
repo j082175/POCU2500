@@ -65,54 +65,59 @@ public class Blog {
         this.sortingType = sortingType;
 
         switch (this.sortingType) {
-            case DESCENDING_BY_WRITE_TIME :
+            case DESCENDING_BY_WRITE_TIME:
                 for (int i = 0; i < getArticles().size(); i++) {
                     for (int j = 0; j < getArticles().size() - 1 - i; j++) {
                         if (getArticles().get(j).getOrderNumber() < getArticles().get(j + 1).getOrderNumber()) {
                             Article backup = getArticles().get(j);
                             getArticles().set(j, getArticles().get(j + 1));
                             getArticles().set(j + 1, backup);
+                            }
                         }
                     }
-                }
-            break;
-            case ASCENDING_BY_WRITE_TIME :
+                break;
+
+            case ASCENDING_BY_WRITE_TIME:
                 for (int i = 0; i < getArticles().size(); i++) {
                     for (int j = 0; j < getArticles().size() - 1 - i; j++) {
                         if (getArticles().get(j).getOrderNumber() > getArticles().get(j + 1).getOrderNumber()) {
                             Article backup = getArticles().get(j);
                             getArticles().set(j, getArticles().get(j + 1));
                             getArticles().set(j + 1, backup);
+                            }
                         }
                     }
-                }
+                break;
 
-            break;
-            case DESCENDING_BY_REVISE_TIME :
+            case DESCENDING_BY_REVISE_TIME:
             for (int i = 0; i < getArticles().size(); i++) {
                 for (int j = 0; j < getArticles().size() - 1 - i; j++) {
                     if (getArticles().get(j).getReviseTime() < getArticles().get(j + 1).getReviseTime()) {
                         Article backup = getArticles().get(j);
                         getArticles().set(j, getArticles().get(j + 1));
                         getArticles().set(j + 1, backup);
+                        }
                     }
                 }
-            }
-            break;
-            case ASCENDING_BY_REVISE_TIME :
+                break;
+
+            case ASCENDING_BY_REVISE_TIME:
                 for (int i = 0; i < getArticles().size(); i++) {
                     for (int j = 0; j < getArticles().size() - 1 - i; j++) {
                         if (getArticles().get(j).getReviseTime() > getArticles().get(j + 1).getReviseTime()) {
                             Article backup = getArticles().get(j);
                             getArticles().set(j, getArticles().get(j + 1));
                             getArticles().set(j + 1, backup);
+                            }
                         }
                     }
-                }
-            break;
-            case ASCENDING_BY_ARTICLE :
+                break;
+            case ASCENDING_BY_ARTICLE:
 
-            break;
+                break;
+                
+            default:
+                break;
         }
     }
 

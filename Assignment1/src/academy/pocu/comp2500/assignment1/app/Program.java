@@ -25,7 +25,6 @@ public class Program {
         Registry registry = new Registry();
         App app = new App(registry);
         registry.validate();
-        assert 1 > 2;
 
         // 1.
 
