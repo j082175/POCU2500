@@ -24,7 +24,7 @@ public class Blog {
 
     }
 
-    public void setSortingType(Order order) {
+    public void setSortingType(Order sortingType) {
         
     }
 }
