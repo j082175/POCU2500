@@ -13,4 +13,15 @@ public class Comment {
         subComments = new ArrayList<>(100);
     }
 
+    public String getContent() {
+        return this.content;
+    }
+
+    public ArrayList<Subcomment> getSubcomment() {
+        return this.subComments;
+    }
+
+    public Recommend[] getRecommentCount() {
+        return this.recommendCount;
+    }
 }

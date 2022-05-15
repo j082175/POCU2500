@@ -8,4 +8,12 @@ public class Subcomment {
         recommendCount = new Recommend[2];
         this.content = content;
     }
+
+    public String getContent() {
+        return this.content;
+    }
+
+    public Recommend[] getRecommentCount() {
+        return this.recommendCount;
+    }
 }

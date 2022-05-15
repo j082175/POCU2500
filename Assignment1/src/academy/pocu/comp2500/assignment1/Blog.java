@@ -18,7 +18,7 @@ public class Blog {
     }
 
     // dangerous code
-    public ArrayList<Article> getArticles() {
+    public final ArrayList<Article> getArticles() {
         return this.articles;
     }
 

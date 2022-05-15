@@ -9,6 +9,10 @@ public class Reader {
         this.readerName = name;
     }
 
+    public String getName() {
+        return this.readerName;
+    }
+
     public ArrayList<Article> getArticles(Blog blog) {
         return blog.getArticles();
     }

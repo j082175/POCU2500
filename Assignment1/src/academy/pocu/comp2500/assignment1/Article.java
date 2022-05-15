@@ -3,8 +3,9 @@ package academy.pocu.comp2500.assignment1;
 import java.util.ArrayList;
 
 public class Article {
+    private static int createTotalCount;
     private ArrayList<Comment> comments;
-    private Reaction reactionCount;
+    private Reaction reactionCount[];
     private String content;
     private String tag;
     private String articleName;
@@ -14,6 +15,12 @@ public class Article {
         this.articleName = name;
         this.content = content;
         comments = new ArrayList<>(100);
+        reactionCount = new Reaction[5];
+        Article.createTotalCount++;
+    }
+
+    public int getTotalCount() {
+        return Article.createTotalCount;
     }
 
     public Article(String name, String content, String tag) {
@@ -21,6 +28,28 @@ public class Article {
         this.content = content;
         this.tag = tag;
         comments = new ArrayList<>(100);
+        reactionCount = new Reaction[5];
+        Article.createTotalCount++;
     }
-    
+
+    public String getContent() {
+        return this.content;
+    }
+
+    public String getTag() {
+        return this.tag;
+    }
+
+    public String getName() {
+        return this.articleName;
+    }
+
+    public Reaction[] getReactionCount() {
+        return this.reactionCount;
+    }
+
+    //dangerous code
+    public ArrayList<Comment> getComments() {
+        return this.comments;
+    }
 }
