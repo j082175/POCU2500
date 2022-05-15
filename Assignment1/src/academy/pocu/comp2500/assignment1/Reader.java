@@ -16,7 +16,14 @@ public class Reader {
     public ArrayList<Article> getArticles(Blog blog) {
         switch (blog.getSortingType()) {
             case DESCENDING_BY_WRITE_TIME :
-                
+                for (int i = 0; i < blog.getArticles().size() - 1; i++) {
+                    for (int j = i; j < blog.getArticles().size() - 1; j++)
+                    if (blog.getArticles().get(j).getOrderNumber() < blog.getArticles().get(j + 1).getOrderNumber()) {
+                        Article backup = blog.getArticles().get(j);
+                        blog.getArticles().set(j, blog.getArticles().get(j + 1));
+                        blog.getArticles().set(j + 1, backup);
+                    }
+                }
             break;
             case ASCENDING_BY_WRITE_TIME :
 
@@ -39,7 +46,7 @@ public class Reader {
     }
 
     public void addSubcomment(Blog blog, Article article,
-Comment comment, Subcomment subcomment) {
+Comment comment, SubComment subcomment) {
 
     }
 
@@ -48,7 +55,7 @@ Comment comment, Subcomment subcomment) {
     }
 
     public void changeSubcomment(Blog blog, Article article,
-Comment comment, Subcomment subcomment, String text) {
+Comment comment, SubComment subcomment, String text) {
 
     }
 
@@ -77,12 +84,12 @@ Comment comment, Subcomment subcomment, String text) {
     }
 
     public void recommendTheSubcomment(Blog blog, Article article,
-Comment comment, Subcomment subcomment) {
+Comment comment, SubComment subcomment) {
 
     }
 
     public void notRecommendTheSubcomment(Blog blog, Article article,
-Comment comment, Subcomment subcomment) {
+Comment comment, SubComment subcomment) {
 
     }
 }

@@ -3,7 +3,7 @@ package academy.pocu.comp2500.assignment1;
 import java.util.ArrayList;
 
 public class Comment {
-    private ArrayList<Subcomment> subComments;
+    private ArrayList<SubComment> subComments;
     private Recommend recommendCount[];
     private String content;
 
@@ -17,7 +17,7 @@ public class Comment {
         return this.content;
     }
 
-    public ArrayList<Subcomment> getSubcomment() {
+    public ArrayList<SubComment> getSubcomment() {
         return this.subComments;
     }
 

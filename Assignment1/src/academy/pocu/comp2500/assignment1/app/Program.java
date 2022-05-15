@@ -41,8 +41,11 @@ public class Program {
 
         articles = reader2.getArticles(blog3);
 
-        int a = blog3.getArticles().get(2).orderNumber;
-        System.out.println(a);
+        System.out.println(articles.get(1).getOrderNumber());
+
+        // for(int i = 0; i < articles.size();i++) {
+        // System.out.println(articles.get(i).getOrderNumber());
+        // }
 
     }
 }

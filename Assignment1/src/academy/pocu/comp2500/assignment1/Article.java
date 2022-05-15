@@ -9,8 +9,8 @@ public class Article {
     private String content;
     private String tag;
     private String articleName;
-    public int orderNumber;
-    public int reviseTime;
+    private int orderNumber;
+    private int reviseTime;
     //private OffsetDateTime
 
     public Article(String name, String content, int writeTime, int reviseTime) {
@@ -22,6 +22,14 @@ public class Article {
 
         this.orderNumber = writeTime;
         this.orderNumber = reviseTime;
+    }
+
+    public int getOrderNumber() {
+        return this.orderNumber;
+    }
+
+    public int getReviseTime() {
+        return this.reviseTime;
     }
 
     public int getTotalCount() {
