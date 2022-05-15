@@ -14,6 +14,23 @@ public class Reader {
     }
 
     public ArrayList<Article> getArticles(Blog blog) {
+        switch (blog.getSortingType()) {
+            case DESCENDING_BY_WRITE_TIME :
+                
+            break;
+            case ASCENDING_BY_WRITE_TIME :
+
+            break;
+            case DESCENDING_BY_REVISE_TIME :
+            
+            break;
+            case ASCENDING_BY_REVISE_TIME :
+
+            break;
+            case ASCENDING_BY_ARTICLE :
+
+            break;
+        }
         return blog.getArticles();
     }
 

@@ -41,10 +41,8 @@ public class Program {
 
         articles = reader2.getArticles(blog3);
 
-        
-        int a =blog2.getArticles().get(0).getTotalCount();
+        int a = blog3.getArticles().get(2).orderNumber;
         System.out.println(a);
 
-        
     }
 }
