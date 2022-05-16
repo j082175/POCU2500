@@ -8,19 +8,19 @@ public class Article {
     private String content;
     private String tag;
     private String articleName;
-    private String name;
+    private String user;
 
     private int orderNumber;
     private long reviseTime;
     //private OffsetDateTime
 
-    public Article(String title, String content, String name, int count, long id) {
+    public Article(String title, String content, String user, int count, long id) {
         this.articleName = title;
         this.content = content;
         comments = new ArrayList<>(100);
         reactionCount = new int[5];
 
-        this.name = name;
+        this.user = user;
 
         this.orderNumber = count;
         this.reviseTime = id;
@@ -65,7 +65,7 @@ public class Article {
     }
 
     public String getUserName() {
-        return this.name;
+        return this.user;
     }
 
     public void increaseReactionCount(Reaction reactionType) {
