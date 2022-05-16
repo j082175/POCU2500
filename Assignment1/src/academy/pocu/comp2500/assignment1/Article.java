@@ -3,7 +3,6 @@ package academy.pocu.comp2500.assignment1;
 import java.util.ArrayList;
 
 public class Article {
-    private static int createTotalCount;
     private ArrayList<Comment> comments;
     private int reactionCount[];
     private String content;
@@ -20,7 +19,7 @@ public class Article {
         this.content = content;
         comments = new ArrayList<>(100);
         reactionCount = new int[5];
-        Article.createTotalCount++;
+
         this.writerName = name;
 
         this.orderNumber = count;
@@ -33,7 +32,7 @@ public class Article {
         this.tag = tag;
         comments = new ArrayList<>(100);
         reactionCount = new int[5];
-        Article.createTotalCount++;
+
     }
 
     public int getOrderNumber() {
@@ -43,11 +42,6 @@ public class Article {
     public long getReviseTime() {
         return this.reviseTime;
     }
-
-    public int getTotalCount() {
-        return Article.createTotalCount;
-    }
-
 
     public String getContent() {
         return this.content;

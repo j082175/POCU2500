@@ -75,5 +75,9 @@ public class Program {
         System.out.println(arr[0]);
         reader2.removeReaction(blog3, blog3.getArticles().get(0), Reaction.GREAT);
         System.out.println(arr[0]);
+
+        reader2.addComment(blog3, articles.get(0), "first comment");
+        var zeroComments = reader2.getComments(blog3, articles.get(0));
+        System.out.println(zeroComments.get(0).getContent());
     }
 }

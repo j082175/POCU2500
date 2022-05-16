@@ -30,4 +30,12 @@ public class Comment {
     public int getId() {
         return this.commentId;
     }
+
+    public ArrayList<SubComment> getSubComments() {
+        return this.subComments;
+    }
+
+    public ArrayList<SubComment> setSubComments() {
+        return this.subComments;
+    }
 }

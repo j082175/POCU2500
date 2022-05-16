@@ -21,7 +21,7 @@ public class Reader {
     public void addComment(Blog blog, Article article, String content) {
         for (int i = 0; i < blog.getArticles().size(); i++) {
             if (blog.getArticles().get(i).getName().equals(article.getName())) {
-                blog.getArticles().get(i).getComments().add(new Comment(content,article.getComments().size()));
+                blog.getArticles().get(i).getComments().add(new Comment(content, article.getComments().size()));
             }
         }
     }
@@ -29,7 +29,9 @@ public class Reader {
     public void addSubComment(Blog blog, Article article, Comment comment, SubComment subcomment) {
         for (int i = 0; i < blog.getArticles().size(); i++) {
             if (blog.getArticles().get(i).getName().equals(article.getName())) {
-                //if (blog.getArticles().get(i).getComments().get(i).getn
+                if (blog.getArticles().get(i).getComments().get(i).getId() == comment.getId()) {
+                    
+                }
             }
         }
     }
@@ -66,8 +68,14 @@ public class Reader {
 
     }
 
-    public void getComments(Blog blog, Article article) {
+    public ArrayList<Comment> getComments(Blog blog, Article article) {
+        for (int i = 0; i < blog.getArticles().size(); i++) {
+            if (blog.getArticles().get(i).getName().equals(article.getName())) {
+                return blog.getArticles().get(i).getComments();
+            }
+        }
 
+        return null;
     }
 
     public void getSubComments(Blog blog, Article article, Comment comment) {
