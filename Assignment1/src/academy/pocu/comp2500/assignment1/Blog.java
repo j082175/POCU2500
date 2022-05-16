@@ -24,7 +24,7 @@ public class Blog {
     // dangerous code
     public final ArrayList<Article> getArticles() {
         if (articles == null) {
-            
+
         }
         return this.articles;
     }
@@ -130,13 +130,5 @@ public class Blog {
 
     public Order getSortingType() {
         return this.sortingType;
-    }
-
-    public String getWriterFilter() {
-        return this.writerFilter;
-    }
-
-    public String getTagFilter() {
-        return this.tagFilter;
     }
 }
