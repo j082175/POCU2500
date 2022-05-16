@@ -6,11 +6,13 @@ public class Comment {
     private ArrayList<SubComment> subComments;
     private Recommend recommendCount[];
     private String content;
+    private int commentId;
 
-    public Comment(String content) {
+    public Comment(String content, int count) {
         recommendCount = new Recommend[2];
         this.content = content;
         subComments = new ArrayList<>(100);
+        this.commentId = count;
     }
 
     public String getContent() {
@@ -23,5 +25,9 @@ public class Comment {
 
     public Recommend[] getRecommentCount() {
         return this.recommendCount;
+    }
+
+    public int getId() {
+        return this.commentId;
     }
 }
