@@ -6,6 +6,7 @@ import academy.pocu.comp2500.assignment1.App;
 import academy.pocu.comp2500.assignment1.Article;
 import academy.pocu.comp2500.assignment1.Blog;
 import academy.pocu.comp2500.assignment1.Order;
+import academy.pocu.comp2500.assignment1.Reaction;
 import academy.pocu.comp2500.assignment1.Writer;
 import academy.pocu.comp2500.assignment1.registry.Registry;
 import academy.pocu.comp2500.assignment1.Reader;
@@ -50,11 +51,11 @@ public class Program {
         Blog blog3 = new Blog("third blog");
         Writer writer2 = new Writer("second writer");
         writer2.addArticle(blog3, "one", "fwefwefwewf");
-        timeTanos();
+        // timeTanos();
         writer2.addArticle(blog3, "two", "eeeeeeeeeerere");
-        timeTanos();
+        // timeTanos();
         writer2.addArticle(blog3, "three", "reeeeeeee");
-        timeTanos();
+        // timeTanos();
         Reader reader2 = new Reader("second reader");
 
         articles = reader2.getArticles(blog3);
@@ -69,5 +70,10 @@ public class Program {
 
         System.out.println("---------------------------------------");
 
+        reader2.addReaction(blog3, blog3.getArticles().get(0), Reaction.GREAT);
+        int arr[] = articles.get(0).getReactionCount();
+        System.out.println(arr[0]);
+        reader2.removeReaction(blog3, blog3.getArticles().get(0), Reaction.GREAT);
+        System.out.println(arr[0]);
     }
 }

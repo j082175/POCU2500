@@ -37,13 +37,17 @@ public class Reader {
     public void addReaction(Blog blog, Article article, Reaction reactionType) {
         for (int i = 0; i < blog.getArticles().size(); i++) {
             if (blog.getArticles().get(i).getName().equals(article.getName())) {
-                
+                blog.getArticles().get(i).increaseReactionCount(reactionType);
             }
         }
     }
 
-    public void removeReaction(Blog blog, Article article) {
-
+    public void removeReaction(Blog blog, Article article, Reaction reactionType) {
+        for (int i = 0; i < blog.getArticles().size(); i++) {
+            if (blog.getArticles().get(i).getName().equals(article.getName())) {
+                blog.getArticles().get(i).decreaseReactionCount(reactionType);
+            }
+        }
     }
 
     public void recommendTheComment(Blog blog, Article article, Comment comment) {

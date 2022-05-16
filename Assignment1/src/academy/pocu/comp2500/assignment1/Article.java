@@ -74,7 +74,7 @@ public class Article {
         return this.writerName;
     }
 
-    public void setReactionCount(Reaction reactionType) {
+    public void increaseReactionCount(Reaction reactionType) {
         switch (reactionType) {
             case GREAT: 
                 this.reactionCount[0]++;
@@ -90,6 +90,28 @@ public class Article {
                 break;
             case LOVE:
                 this.reactionCount[4]++;
+                break;
+            default: 
+                break;
+        }
+    }
+
+    public void decreaseReactionCount(Reaction reactionType) {
+        switch (reactionType) {
+            case GREAT: 
+                this.reactionCount[0]--;
+                break;
+            case SAD: 
+                this.reactionCount[1]--;
+                break;
+            case ANGRY: 
+                this.reactionCount[2]--;
+                break;
+            case FUN: 
+                this.reactionCount[3]--;
+                break;
+            case LOVE:
+                this.reactionCount[4]--;
                 break;
             default: 
                 break;
