@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Blog {
     private ArrayList<Article> articles;
     private String tagFilter;
-    private String writerFilter;
+    private String userFilter;
     private Order sortingType;
     private String blogName;
 
@@ -15,7 +15,7 @@ public class Blog {
     public Blog(String name) {
         this.blogName = name;
         this.tagFilter = null;
-        this.writerFilter = null;
+        this.userFilter = null;
         this.sortingType = Order.DESCENDING_BY_WRITE_TIME;
         articles = new ArrayList<>(100);
         articleCounts = 0;
@@ -51,12 +51,12 @@ public class Blog {
         articles = newArticles;
     }
 
-    public void setWriterFilter(Writer user) {
-        this.writerFilter = user.getName();
+    public void setUserFilter(User user) {
+        this.userFilter = user.getName();
 
         ArrayList<Article> newArticles = new ArrayList<>(100);
         for (int i = 0; i < articles.size(); i++) {
-            if (writerFilter.equals(user.getName())) {
+            if (userFilter.equals(user.getName())) {
                 newArticles.add(articles.get(i));
             }
         }
