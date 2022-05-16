@@ -8,7 +8,7 @@ public class Article {
     private String content;
     private String tag;
     private String articleName;
-    private String writerName;
+    private String name;
 
     private int orderNumber;
     private long reviseTime;
@@ -20,7 +20,7 @@ public class Article {
         comments = new ArrayList<>(100);
         reactionCount = new int[5];
 
-        this.writerName = name;
+        this.name = name;
 
         this.orderNumber = count;
         this.reviseTime = id;
@@ -64,8 +64,8 @@ public class Article {
         return this.comments;
     }
 
-    public String getWriterName() {
-        return this.writerName;
+    public String getUserName() {
+        return this.name;
     }
 
     public void increaseReactionCount(Reaction reactionType) {

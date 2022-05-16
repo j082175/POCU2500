@@ -131,4 +131,10 @@ public class Blog {
     public Order getSortingType() {
         return this.sortingType;
     }
+
+
+
+    //User defined methods
+
+    
 }

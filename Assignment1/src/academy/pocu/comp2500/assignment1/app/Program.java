@@ -29,56 +29,56 @@ public class Program {
 
         // 1.
 
-        Blog blog1 = new Blog("first blog");
+        // Blog blog1 = new Blog("first blog");
 
-        System.out.println("---------------------------------------");
+        // System.out.println("---------------------------------------");
 
-        // 2.
+        // // 2.
 
-        Blog blog2 = new Blog("second blog");
-        Writer writer1 = new Writer("JunSooCho");
-        writer1.addArticle(blog2, "first article", "abc");
-        Reader reader1 = new Reader("JohnWick");
+        // Blog blog2 = new Blog("second blog");
+        // Writer writer1 = new Writer("JunSooCho");
+        // writer1.addArticle(blog2, "first article", "abc");
+        // Reader reader1 = new Reader("JohnWick");
 
-        var articles = reader1.getArticles(blog2);
+        // var articles = reader1.getArticles(blog2);
 
-        System.out.println("1.name : " + articles.get(0).getName() + " 2.content : " + articles.get(0).getContent());
+        // System.out.println("1.name : " + articles.get(0).getName() + " 2.content : " + articles.get(0).getContent());
 
-        System.out.println("---------------------------------------");
+        // System.out.println("---------------------------------------");
 
-        // 3.
+        // // 3.
 
-        Blog blog3 = new Blog("third blog");
-        Writer writer2 = new Writer("second writer");
-        writer2.addArticle(blog3, "one", "fwefwefwewf");
-        // timeTanos();
-        writer2.addArticle(blog3, "two", "eeeeeeeeeerere");
-        // timeTanos();
-        writer2.addArticle(blog3, "three", "reeeeeeee");
-        // timeTanos();
-        Reader reader2 = new Reader("second reader");
+        // Blog blog3 = new Blog("third blog");
+        // Writer writer2 = new Writer("second writer");
+        // writer2.addArticle(blog3, "one", "fwefwefwewf");
+        // // timeTanos();
+        // writer2.addArticle(blog3, "two", "eeeeeeeeeerere");
+        // // timeTanos();
+        // writer2.addArticle(blog3, "three", "reeeeeeee");
+        // // timeTanos();
+        // Reader reader2 = new Reader("second reader");
 
-        articles = reader2.getArticles(blog3);
-        blog3.setSortingType(Order.ASCENDING_BY_REVISE_TIME);
-        for (int i = 0; i < articles.size(); i++) {
-            System.out.println(articles.get(i).getOrderNumber());
-        }
+        // articles = reader2.getArticles(blog3);
+        // blog3.setSortingType(Order.ASCENDING_BY_REVISE_TIME);
+        // for (int i = 0; i < articles.size(); i++) {
+        //     System.out.println(articles.get(i).getOrderNumber());
+        // }
 
-        for (int i = 0; i < articles.size(); i++) {
-            System.out.println(articles.get(i).getReviseTime());
-        }
+        // for (int i = 0; i < articles.size(); i++) {
+        //     System.out.println(articles.get(i).getReviseTime());
+        // }
 
-        System.out.println("---------------------------------------");
+        // System.out.println("---------------------------------------");
 
-        reader2.addReaction(blog3, articles.get(0), Reaction.GREAT);
-        int arr[] = articles.get(0).getReactionCount();
-        System.out.println(arr[0]);
-        reader2.removeReaction(blog3, articles.get(0), Reaction.GREAT);
-        System.out.println(arr[0]);
+        // reader2.addReaction(blog3, articles.get(0), Reaction.GREAT);
+        // int arr[] = articles.get(0).getReactionCount();
+        // System.out.println(arr[0]);
+        // reader2.removeReaction(blog3, articles.get(0), Reaction.GREAT);
+        // System.out.println(arr[0]);
 
-        reader2.addComment(blog3, articles.get(0), "first comment");
-        var zeroComments = reader2.getComments(blog3, articles.get(0));
-        System.out.println(zeroComments.get(0).getContent());
+        // reader2.addComment(blog3, articles.get(0), "first comment");
+        // var zeroComments = reader2.getComments(blog3, articles.get(0));
+        // System.out.println(zeroComments.get(0).getContent());
 
         
     }
