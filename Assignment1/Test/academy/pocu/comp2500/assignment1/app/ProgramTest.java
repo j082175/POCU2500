@@ -17,6 +17,6 @@ class ProgramTest {
         Registry registry = new Registry();
         App app = new App(registry);
         registry.validate();
-        assert 1 < 2;
+        //assert 1 > 2;
     }
 }
