@@ -22,14 +22,14 @@ public class Blog {
     }
 
     // dangerous code
-    public final ArrayList<Article> getArticles() {
+    protected ArrayList<Article> getArticles() {
         if (articles == null) {
 
         }
         return this.articles;
     }
 
-    public void setArticles(String title, String content, String name) {
+    protected void setArticles(String title, String content, String name) {
         this.articleCounts++;
         this.articles.add(new Article(title, content, name, this.articles.size(), System.currentTimeMillis()));
     }
