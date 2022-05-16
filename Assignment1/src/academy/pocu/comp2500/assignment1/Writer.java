@@ -9,7 +9,7 @@ public class Writer {
 
     // dangerous
     public void addArticle(Blog blog, String title, String content) {
-        blog.setArticles().add(new Article(title, content, writerName, blog.setArticles().size(), System.currentTimeMillis()));
+        blog.setArticles(title, content, this.writerName);
     }
 
     public void changeArticleTitle(Blog blog, Article article, String title) {

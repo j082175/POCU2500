@@ -29,9 +29,9 @@ public class Blog {
         return this.articles;
     }
 
-    public ArrayList<Article> setArticles() {
+    public void setArticles(String title, String content, String name) {
         this.articleCounts++;
-        return this.articles;
+        this.articles.add(new Article(title, content, name, this.articles.size(), System.currentTimeMillis()));
     }
 
     public int getArticlesCount() {
