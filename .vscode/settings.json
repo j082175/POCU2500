@@ -1,3 +1,8 @@
 {
-  "java.project.sourcePaths": ["Lab3/src", "Lab2/src", "Assignment1/src"]
+  "java.project.sourcePaths": [
+    "Lab3/src",
+    "Lab2/src",
+    "Assignment1/src",
+    "Lab4/src"
+  ]
 }

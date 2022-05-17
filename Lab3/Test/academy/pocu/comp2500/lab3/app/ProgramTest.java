@@ -13,30 +13,19 @@ class ProgramTest {
 
     @Test
     void main() {
-        ListItem item = new ListItem("This is item");
 
-        item.addSublistItem(new ListItem("This is sublist item1"));
-        item.addSublistItem(new ListItem("This is sublist item2"));
+    ListItemTest test = new ListItemTest();
 
-        String s = item.toString();
-        /*
-         * This is item
-         * This is sublist item1
-         * This is sublist item2
-         */
-        System.out.println(s);
-        item.removeSublistItem(0);
-
-        s = item.toString();
-        /*
-         * This is item
-         * This is sublist item2
-         */
-        System.out.println(s);
-        assertEquals(
-                "* This is item\r\n" +
-                        "    * This is sublist item2\r\n", s);
-
+    test.testListItemString();
+    test.testListItemStringChar();
+    test.testAddSublistItem();
+    test.testGetSublistItem();
+    test.testRemoveSublistItem();
+    test.testGetText();
+    test.testSetText();
+    test.testGetBulletStyle();
+    test.testSetBulletStyle();
+    test.testToString();
 
 
 
