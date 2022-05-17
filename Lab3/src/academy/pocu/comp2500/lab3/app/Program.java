@@ -27,7 +27,7 @@ public class Program {
         ListItem sublistItem3 = new ListItem("This is sublist item3", '>');
         ListItem subSublistItem1 = new ListItem("This is sub-sublist item1", '-');
 
-        sublistItem3.addSublistItem(subSublistItem1);
+        sublistItem3.addSublistItem(subSublistItem1); // 0 , 4
         listItem3.addSublistItem(sublistItem3);
 
         list.add(listItem1);

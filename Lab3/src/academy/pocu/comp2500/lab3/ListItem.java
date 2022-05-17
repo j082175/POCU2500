@@ -7,22 +7,26 @@ public class ListItem {
     private char bulletStyle;
     private final ArrayList<ListItem> sublistItem;
 
-    private StringBuilder sb;
+    private String newString;
+
+    private int addCount = 0;
+
+    private int deadline = 0;
 
     public ListItem(String text) {
         this.text = text;
         this.bulletStyle = '*';
         sublistItem = new ArrayList<>();
-        sb = new StringBuilder();
         stringSetter();
+
     }
 
     public ListItem(String text, char bulletStyle) {
         this.text = text;
         this.bulletStyle = bulletStyle;
         sublistItem = new ArrayList<>();
-        sb = new StringBuilder();
         stringSetter();
+
     }
 
     public String getText() {
@@ -42,8 +46,37 @@ public class ListItem {
     }
 
     public void addSublistItem(ListItem listItem) {
-        this.sublistItem.add(listItem);
-        sb.append(listItem.toString());
+        if (deadline != 1) {
+            deadline++;
+            // 먼저 기존 listitem 띄어쓰기 검사
+            for (int i = 0; i < newString.length(); i++) {
+                if (this.newString.charAt(i) == ' ') {
+                    addCount++;
+                }
+            }
+        }
+
+            if (listItem == null) {
+                return;
+            }
+    
+            StringBuilder sb = new StringBuilder();
+    
+            if ((addCount % 4 == 0) && (this.bulletStyle == listItem.bulletStyle)) {
+                
+            }
+            
+            
+            for (int i = 0; i < addCount; i++) {
+                sb.append(" ");
+            }
+    
+            sb.append(listItem.toString());
+            listItem.newString = sb.toString();
+    
+            this.sublistItem.add(listItem);
+        
+
     }
 
     public ListItem getSublistItem(int index) {
@@ -51,29 +84,28 @@ public class ListItem {
     }
 
     public String toString() {
+        StringBuilder s = new StringBuilder();
+        s.append(newString);
 
-        return sb.toString();
+        for (int i = 0; i < sublistItem.size(); i++) {
+            s.append(sublistItem.get(i).toString());
+        }
+
+        return s.toString();
     }
 
     public void removeSublistItem(int index) {
         // 색인 값은 언제나 유효하다고 가정한다.
+
         this.sublistItem.remove(index);
     }
 
     private void stringSetter() {
-        switch (bulletStyle) {
-            case '*':
-                break;
-            case '>':
-                sb.append("    ");
-                break;
-            case '-':
-                sb.append("        ");
-                break;
-            default:
-                break;
-        }
-        
-        sb.append(String.format("%c %s%s", this.bulletStyle,this.text,System.lineSeparator()));
+        StringBuilder sb = new StringBuilder();
+
+
+        sb.append(String.format("%c %s%s", this.bulletStyle, this.text, System.lineSeparator()));
+
+        this.newString = sb.toString();
     }
 }
