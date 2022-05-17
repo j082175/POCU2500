@@ -51,20 +51,22 @@ public class ListItem {
         if (listItem == null) {
             return;
         }
-        // listItem.addCount += 4;
 
-        if (listItem.sublistItem != null) {
-            for (int i = 0; i < listItem.sublistItem.size(); i++) {
-                ListItem list;
-                list = listItem.getSublistItem(i);
-                // System.out.println(list);
+        listItem.addCount += this.addCount + 4;
+        // StringBuilder sb = new StringBuilder();
 
-                String a = list.toString();
-                String b = "    ";
-                String result = b + a;
-                listItem.getSublistItem(i).newString = result;
-            }
-        }
+        // if (listItem.sublistItem != null) {
+        // for (int i = 0; i < listItem.sublistItem.size(); i++) {
+        // ListItem list;
+        // list = listItem.getSublistItem(i);
+        // // System.out.println(list);
+
+        // String a = list.toString();
+        // String b = " ";
+        // String result = b + a;
+        // listItem.getSublistItem(i).newString = result;
+        // }
+        // }
 
         // if (listItem.sublistItem != null) {
         // for (int i = 0; i < subindex; i++) {
@@ -77,40 +79,33 @@ public class ListItem {
         // }
         // }
 
-        StringBuilder sb = new StringBuilder();
-
         // if (deadline != 1) {
         // deadline++;
         // // 먼저 기존 listitem 띄어쓰기 검사
-        // for (int i = 0; i < newString.length(); i++) {
-        // if (this.newString.charAt(i) == '*' || this.newString.charAt(i) == '-'
-        // || this.newString.charAt(i) == '>') {
-        // break;
-        // }
+        for (int i = 0; i < newString.length(); i++) {
+            if (this.newString.charAt(i) == '*' || this.newString.charAt(i) == '-'
+                    || this.newString.charAt(i) == '>') {
+                break;
+            }
 
-        // if (this.newString.charAt(i) == ' ') {
-        // listItem.addCount++;
-        // }
-        // }
-        // }
+            if (this.newString.charAt(i) == ' ') {
+                this.addCount++;
+            }
+        }
 
-        // for (int i = 0; i < 4; i++) {
-        // sb.append(" ");
-        // }
+        for (int i = 0; i < listItem.newString.length(); i++) {
+            if (listItem.newString.charAt(i) == '*' || listItem.newString.charAt(i) == '-'
+                    || listItem.newString.charAt(i) == '>') {
+                break;
+            }
 
-        // // why?
-        // for (int i = 0; i < listItem.addCount; i++) {
-        // sb.append(" ");
-        // }
-
-        // for (int i = 0; i < listItem.addCount; i++) {
-        // sb.append(" ");
-        // }
-        // sb.append(listItem.toString());
-        // listItem.newString = sb.toString();
+            if (listItem.newString.charAt(i) == ' ') {
+                listItem.addCount++;
+            }
+        }
 
         this.sublistItem.add(listItem);
-        // this.sublistItem[subindex] = listItem;
+
         subindex++;
     }
 
@@ -119,22 +114,39 @@ public class ListItem {
         // return sublistItem[index];
     }
 
+    ////////////////////////////
     public String toString() {
         StringBuilder s = new StringBuilder();
 
-        s.append(newString);
+        s.append(this.newString);
 
         for (int i = 0; i < sublistItem.size(); i++) {
             s.append("    ");
+
+            // for (int j = 0; j < newString.length(); j++) {
+            // if (this.newString.charAt(j) == '*' || this.newString.charAt(j) == '-'
+            // || this.newString.charAt(j) == '>') {
+            // break;
+            // }
+
+            // if (this.newString.charAt(j) == ' ') {
+            // getSublistItem(i).addCount++;
+            // }
+            // }
+            for (int j = 0; j < addCount / 2; j++) {
+                s.append(" ");
+                for (int k = 0; k < getSublistItem(i).addCount / 2 - 1; k++) {
+                    s.append(" ");
+                }
+
+            }
+
             s.append(sublistItem.get(i).toString());
         }
 
-        // for (int i = 0; i < subindex + 1; i++) {
-        // s.append(sublistItem[i].toString());
-        // }
-
         return s.toString();
     }
+    ///////////////////////////////
 
     public void removeSublistItem(int index) {
         // 색인 값은 언제나 유효하다고 가정한다.
