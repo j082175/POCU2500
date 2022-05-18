@@ -67,17 +67,24 @@ public class Program {
 
         ListItem item1 = new ListItem("This is item1");
         ListItem sublistItem1 = new ListItem("This is sublist item1");
-        ListItem subSublistItem1 = new ListItem("This is sub-sublist item1");
-        ListItem subSublistItem2 = new ListItem("This is sub-sublist item2");
-        ListItem subSubSublistItem1 = new ListItem("fuckyou!!!!!!!!");
+        ListItem sublistItem2 = new ListItem("This is sublist item2");
         
-        sublistItem1.addSublistItem(subSublistItem1); //0, 4
-        sublistItem1.addSublistItem(subSublistItem2); //0, 4
-        subSublistItem1.addSublistItem(subSubSublistItem1); //0, 4
+        ListItem subsublistItem1 = new ListItem("This is sun-sublist item1");
+        ListItem subsublistItem2 = new ListItem("This is sub-sublist item2");
+
         item1.addSublistItem(sublistItem1);
+        item1.addSublistItem(sublistItem2);
+        sublistItem1.addSublistItem(subsublistItem1);
+        sublistItem1.addSublistItem(subsublistItem2);
 
-        String s = item1.toString();
+        System.out.println(item1.toString());
 
-        System.out.println(s);
+        sublistItem1.removeSublistItem(0);
+
+        System.out.println(item1.toString());
+
+        item1.removeSublistItem(0);
+
+        System.out.println(item1.toString());
     }
 }

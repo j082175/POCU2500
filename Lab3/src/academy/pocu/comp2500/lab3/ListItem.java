@@ -13,7 +13,6 @@ public class ListItem {
 
     private int deadline = 0;
 
-
     public ListItem(String text) {
         this.text = text;
         this.bulletStyle = '*';
@@ -47,11 +46,11 @@ public class ListItem {
     }
 
     public void addSublistItem(ListItem listItem) {
-        if (listItem == null) {
-            return;
-        }
+        // if (listItem == null) {
+        //     return;
+        // }
 
-        //listItem.addCount += this.addCount + 4;
+        // listItem.addCount += this.addCount + 4;
         // StringBuilder sb = new StringBuilder();
 
         // if (listItem.sublistItem != null) {
@@ -82,29 +81,29 @@ public class ListItem {
         // deadline++;
         // // 먼저 기존 listitem 띄어쓰기 검사
         // for (int i = 0; i < newString.length(); i++) {
-        //     if (this.newString.charAt(i) == '*' || this.newString.charAt(i) == '-'
-        //             || this.newString.charAt(i) == '>') {
-        //         break;
-        //     }
+        // if (this.newString.charAt(i) == '*' || this.newString.charAt(i) == '-'
+        // || this.newString.charAt(i) == '>') {
+        // break;
+        // }
 
-        //     if (this.newString.charAt(i) == ' ') {
-        //         this.addCount++;
-        //     }
+        // if (this.newString.charAt(i) == ' ') {
+        // this.addCount++;
+        // }
         // }
 
         // for (int i = 0; i < listItem.newString.length(); i++) {
-        //     if (listItem.newString.charAt(i) == '*' || listItem.newString.charAt(i) == '-'
-        //             || listItem.newString.charAt(i) == '>') {
-        //         break;
-        //     }
+        // if (listItem.newString.charAt(i) == '*' || listItem.newString.charAt(i) ==
+        // '-'
+        // || listItem.newString.charAt(i) == '>') {
+        // break;
+        // }
 
-        //     if (listItem.newString.charAt(i) == ' ') {
-        //         listItem.addCount++;
-        //     }
+        // if (listItem.newString.charAt(i) == ' ') {
+        // listItem.addCount++;
+        // }
         // }
 
         this.sublistItem.add(listItem);
-
 
     }
 
@@ -124,19 +123,18 @@ public class ListItem {
         s.append(this.newString);
 
         if (this.sublistItem != null) {
-            
+
             for (int i = 0; i < sublistItem.size(); i++) {
                 this.sublistItem.get(i).addCount += addCount + 4;
-                
+
                 // for (int j = 0; j < getSublistItem(i).addCount; j++) {
-                //     s.append(" ");
+                // s.append(" ");
                 // }
-    
-    
+
                 s.append(sublistItem.get(i).toString());
             }
         }
-
+        addCount = 0;
 
         return s.toString();
     }
@@ -144,8 +142,10 @@ public class ListItem {
 
     public void removeSublistItem(int index) {
         // 색인 값은 언제나 유효하다고 가정한다.
+        if (this.sublistItem != null) {
+            this.sublistItem.remove(index);
 
-        this.sublistItem.remove(index);
+        }
 
     }
 
