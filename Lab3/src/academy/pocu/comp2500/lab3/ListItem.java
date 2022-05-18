@@ -13,7 +13,6 @@ public class ListItem {
 
     private int deadline = 0;
 
-    private int subindex = 0;
 
     public ListItem(String text) {
         this.text = text;
@@ -52,7 +51,7 @@ public class ListItem {
             return;
         }
 
-        listItem.addCount += this.addCount + 4;
+        //listItem.addCount += this.addCount + 4;
         // StringBuilder sb = new StringBuilder();
 
         // if (listItem.sublistItem != null) {
@@ -82,31 +81,31 @@ public class ListItem {
         // if (deadline != 1) {
         // deadline++;
         // // 먼저 기존 listitem 띄어쓰기 검사
-        for (int i = 0; i < newString.length(); i++) {
-            if (this.newString.charAt(i) == '*' || this.newString.charAt(i) == '-'
-                    || this.newString.charAt(i) == '>') {
-                break;
-            }
+        // for (int i = 0; i < newString.length(); i++) {
+        //     if (this.newString.charAt(i) == '*' || this.newString.charAt(i) == '-'
+        //             || this.newString.charAt(i) == '>') {
+        //         break;
+        //     }
 
-            if (this.newString.charAt(i) == ' ') {
-                this.addCount++;
-            }
-        }
+        //     if (this.newString.charAt(i) == ' ') {
+        //         this.addCount++;
+        //     }
+        // }
 
-        for (int i = 0; i < listItem.newString.length(); i++) {
-            if (listItem.newString.charAt(i) == '*' || listItem.newString.charAt(i) == '-'
-                    || listItem.newString.charAt(i) == '>') {
-                break;
-            }
+        // for (int i = 0; i < listItem.newString.length(); i++) {
+        //     if (listItem.newString.charAt(i) == '*' || listItem.newString.charAt(i) == '-'
+        //             || listItem.newString.charAt(i) == '>') {
+        //         break;
+        //     }
 
-            if (listItem.newString.charAt(i) == ' ') {
-                listItem.addCount++;
-            }
-        }
+        //     if (listItem.newString.charAt(i) == ' ') {
+        //         listItem.addCount++;
+        //     }
+        // }
 
         this.sublistItem.add(listItem);
 
-        subindex++;
+
     }
 
     public ListItem getSublistItem(int index) {
@@ -118,31 +117,26 @@ public class ListItem {
     public String toString() {
         StringBuilder s = new StringBuilder();
 
+        for (int i = 0; i < this.addCount; i++) {
+            s.append(" ");
+        }
+
         s.append(this.newString);
 
-        for (int i = 0; i < sublistItem.size(); i++) {
-            s.append("    ");
-
-            // for (int j = 0; j < newString.length(); j++) {
-            // if (this.newString.charAt(j) == '*' || this.newString.charAt(j) == '-'
-            // || this.newString.charAt(j) == '>') {
-            // break;
-            // }
-
-            // if (this.newString.charAt(j) == ' ') {
-            // getSublistItem(i).addCount++;
-            // }
-            // }
-            for (int j = 0; j < addCount / 2; j++) {
-                s.append(" ");
-                for (int k = 0; k < getSublistItem(i).addCount / 2 - 1; k++) {
-                    s.append(" ");
-                }
-
+        if (this.sublistItem != null) {
+            
+            for (int i = 0; i < sublistItem.size(); i++) {
+                this.sublistItem.get(i).addCount += addCount + 4;
+                
+                // for (int j = 0; j < getSublistItem(i).addCount; j++) {
+                //     s.append(" ");
+                // }
+    
+    
+                s.append(sublistItem.get(i).toString());
             }
-
-            s.append(sublistItem.get(i).toString());
         }
+
 
         return s.toString();
     }
