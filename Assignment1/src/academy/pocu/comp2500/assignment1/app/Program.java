@@ -30,7 +30,7 @@ public class Program {
         // 1.
 
         Blog blog1 = new Blog("blog1Owner");
-        blog1.addArticle("article1", "fuckyou");
+        blog1.addArticle("writer1");
 
         System.out.println("---------------------------------------");
 
