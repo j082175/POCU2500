@@ -10,11 +10,11 @@ public class Article {
     private String articleName;
     private String user;
 
-    private int orderNumber;
-    private long reviseTime;
+    //private int orderNumber;
+    //private long reviseTime;
     //private OffsetDateTime
 
-    public Article(String title, String content, String user, int count, long id) {
+    public Article(String title, String content, String user) { //파라미터 5개
         this.articleName = title;
         this.content = content;
         comments = new ArrayList<>(100);
@@ -22,27 +22,17 @@ public class Article {
 
         this.user = user;
 
-        this.orderNumber = count;
-        this.reviseTime = id;
+
+
     }
 
-    // public Article(String name, String content, String user) {
-    //     this.articleName = name;
-    //     this.content = content;
-    //     this.user = user;
-    //     comments = new ArrayList<>(100);
-    //     reactionCount = new int[5];
-
+    // public int getOrderNumber() {
+    //     return this.orderNumber;
     // }
 
-
-    public int getOrderNumber() {
-        return this.orderNumber;
-    }
-
-    public long getReviseTime() {
-        return this.reviseTime;
-    }
+    // public long getReviseTime() {
+    //     return this.reviseTime;
+    // }
 
     public String getContent() {
         return this.content;

@@ -35,7 +35,7 @@ public class Blog {
 
     protected void setArticles(String title, String content, String name) {
         this.articleCounts++;
-        this.articles.add(new Article(title, content, name, this.articles.size(), System.currentTimeMillis()));
+        this.articles.add(new Article(title, content, name));
     }
 
     public int getArticlesCount() {
@@ -75,11 +75,11 @@ public class Blog {
             case DESCENDING_BY_WRITE_TIME:
                 for (int i = 0; i < getArticles().size(); i++) {
                     for (int j = 0; j < getArticles().size() - 1 - i; j++) {
-                        if (getArticles().get(j).getOrderNumber() < getArticles().get(j + 1).getOrderNumber()) {
-                            Article backup = getArticles().get(j);
-                            getArticles().set(j, getArticles().get(j + 1));
-                            getArticles().set(j + 1, backup);
-                        }
+                        // if (getArticles().get(j).getOrderNumber() < getArticles().get(j + 1).getOrderNumber()) {
+                        //     Article backup = getArticles().get(j);
+                        //     getArticles().set(j, getArticles().get(j + 1));
+                        //     getArticles().set(j + 1, backup);
+                        // }
                     }
                 }
                 break;
@@ -87,11 +87,11 @@ public class Blog {
             case ASCENDING_BY_WRITE_TIME:
                 for (int i = 0; i < getArticles().size(); i++) {
                     for (int j = 0; j < getArticles().size() - 1 - i; j++) {
-                        if (getArticles().get(j).getOrderNumber() > getArticles().get(j + 1).getOrderNumber()) {
-                            Article backup = getArticles().get(j);
-                            getArticles().set(j, getArticles().get(j + 1));
-                            getArticles().set(j + 1, backup);
-                        }
+                        // if (getArticles().get(j).getOrderNumber() > getArticles().get(j + 1).getOrderNumber()) {
+                        //     Article backup = getArticles().get(j);
+                        //     getArticles().set(j, getArticles().get(j + 1));
+                        //     getArticles().set(j + 1, backup);
+                        // }
                     }
                 }
                 break;
@@ -99,11 +99,11 @@ public class Blog {
             case DESCENDING_BY_REVISE_TIME:
                 for (int i = 0; i < getArticles().size(); i++) {
                     for (int j = 0; j < getArticles().size() - 1 - i; j++) {
-                        if (getArticles().get(j).getReviseTime() < getArticles().get(j + 1).getReviseTime()) {
-                            Article backup = getArticles().get(j);
-                            getArticles().set(j, getArticles().get(j + 1));
-                            getArticles().set(j + 1, backup);
-                        }
+                        // if (getArticles().get(j).getReviseTime() < getArticles().get(j + 1).getReviseTime()) {
+                        //     Article backup = getArticles().get(j);
+                        //     getArticles().set(j, getArticles().get(j + 1));
+                        //     getArticles().set(j + 1, backup);
+                        // }
                     }
                 }
                 break;
@@ -111,11 +111,11 @@ public class Blog {
             case ASCENDING_BY_REVISE_TIME:
                 for (int i = 0; i < getArticles().size(); i++) {
                     for (int j = 0; j < getArticles().size() - 1 - i; j++) {
-                        if (getArticles().get(j).getReviseTime() > getArticles().get(j + 1).getReviseTime()) {
-                            Article backup = getArticles().get(j);
-                            getArticles().set(j, getArticles().get(j + 1));
-                            getArticles().set(j + 1, backup);
-                        }
+                        // if (getArticles().get(j).getReviseTime() > getArticles().get(j + 1).getReviseTime()) {
+                        //     Article backup = getArticles().get(j);
+                        //     getArticles().set(j, getArticles().get(j + 1));
+                        //     getArticles().set(j + 1, backup);
+                        // }
                     }
                 }
                 break;
