@@ -52,12 +52,12 @@ public class Blog {
         articles = newArticles;
     }
 
-    public void setUserFilter(User user) {
-        this.userFilter = user.getName();
+    public void setUserFilter(String user) {
+        this.userFilter = user;
 
         ArrayList<Article> newArticles = new ArrayList<>(100);
         for (int i = 0; i < articles.size(); i++) {
-            if (userFilter.equals(user.getName())) {
+            if (userFilter.equals(user)) {
                 newArticles.add(articles.get(i));
             }
         }

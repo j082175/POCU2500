@@ -7,9 +7,9 @@ import academy.pocu.comp2500.assignment1.Article;
 import academy.pocu.comp2500.assignment1.Blog;
 import academy.pocu.comp2500.assignment1.Order;
 import academy.pocu.comp2500.assignment1.Reaction;
-import academy.pocu.comp2500.assignment1.Writer;
+
 import academy.pocu.comp2500.assignment1.registry.Registry;
-import academy.pocu.comp2500.assignment1.Reader;
+
 
 public class Program {
 
