@@ -26,10 +26,8 @@ public class Blog {
     }
 
     // dangerous code
-    protected ArrayList<Article> getArticles() {
-        if (articles == null) {
-
-        }
+    public ArrayList<Article> getArticles(String user) {
+        this.userName = user;
         return this.articles;
     }
 
@@ -73,48 +71,48 @@ public class Blog {
 
         switch (this.sortingType) {
             case DESCENDING_BY_WRITE_TIME:
-                for (int i = 0; i < getArticles().size(); i++) {
-                    for (int j = 0; j < getArticles().size() - 1 - i; j++) {
-                        // if (getArticles().get(j).getOrderNumber() < getArticles().get(j + 1).getOrderNumber()) {
-                        //     Article backup = getArticles().get(j);
-                        //     getArticles().set(j, getArticles().get(j + 1));
-                        //     getArticles().set(j + 1, backup);
+                for (int i = 0; i < articles.size(); i++) {
+                    for (int j = 0; j < articles.size() - 1 - i; j++) {
+                        // if (articles.get(j).getOrderNumber() < articles.get(j + 1).getOrderNumber()) {
+                        //     Article backup = articles.get(j);
+                        //     articles.set(j, articles.get(j + 1));
+                        //     articles.set(j + 1, backup);
                         // }
                     }
                 }
                 break;
 
             case ASCENDING_BY_WRITE_TIME:
-                for (int i = 0; i < getArticles().size(); i++) {
-                    for (int j = 0; j < getArticles().size() - 1 - i; j++) {
-                        // if (getArticles().get(j).getOrderNumber() > getArticles().get(j + 1).getOrderNumber()) {
-                        //     Article backup = getArticles().get(j);
-                        //     getArticles().set(j, getArticles().get(j + 1));
-                        //     getArticles().set(j + 1, backup);
+                for (int i = 0; i < articles.size(); i++) {
+                    for (int j = 0; j < articles.size() - 1 - i; j++) {
+                        // if (articles.get(j).getOrderNumber() > articles.get(j + 1).getOrderNumber()) {
+                        //     Article backup = articles.get(j);
+                        //     articles.set(j, articles.get(j + 1));
+                        //     articles.set(j + 1, backup);
                         // }
                     }
                 }
                 break;
 
             case DESCENDING_BY_REVISE_TIME:
-                for (int i = 0; i < getArticles().size(); i++) {
-                    for (int j = 0; j < getArticles().size() - 1 - i; j++) {
-                        // if (getArticles().get(j).getReviseTime() < getArticles().get(j + 1).getReviseTime()) {
-                        //     Article backup = getArticles().get(j);
-                        //     getArticles().set(j, getArticles().get(j + 1));
-                        //     getArticles().set(j + 1, backup);
+                for (int i = 0; i < articles.size(); i++) {
+                    for (int j = 0; j < articles.size() - 1 - i; j++) {
+                        // if (articles.get(j).getReviseTime() < articles.get(j + 1).getReviseTime()) {
+                        //     Article backup = articles.get(j);
+                        //     articles.set(j, articles.get(j + 1));
+                        //     articles.set(j + 1, backup);
                         // }
                     }
                 }
                 break;
 
             case ASCENDING_BY_REVISE_TIME:
-                for (int i = 0; i < getArticles().size(); i++) {
-                    for (int j = 0; j < getArticles().size() - 1 - i; j++) {
-                        // if (getArticles().get(j).getReviseTime() > getArticles().get(j + 1).getReviseTime()) {
-                        //     Article backup = getArticles().get(j);
-                        //     getArticles().set(j, getArticles().get(j + 1));
-                        //     getArticles().set(j + 1, backup);
+                for (int i = 0; i < articles.size(); i++) {
+                    for (int j = 0; j < articles.size() - 1 - i; j++) {
+                        // if (articles.get(j).getReviseTime() > articles.get(j + 1).getReviseTime()) {
+                        //     Article backup = articles.get(j);
+                        //     articles.set(j, articles.get(j + 1));
+                        //     articles.set(j + 1, backup);
                         // }
                     }
                 }
@@ -153,17 +151,17 @@ public class Blog {
     }
 
     public void addComment(Article article, String content) {
-        for (int i = 0; i < getArticles().size(); i++) {
-            if (getArticles().get(i).getName().equals(article.getName())) {
-                getArticles().get(i).getComments().add(new Comment(content, article.getComments().size()));
+        for (int i = 0; i < articles.size(); i++) {
+            if (articles.get(i).getName().equals(article.getName())) {
+                articles.get(i).getComments().add(new Comment(content, article.getComments().size()));
             }
         }
     }
 
     public void addSubComment(Article article, Comment comment, SubComment subcomment) {
-        for (int i = 0; i < getArticles().size(); i++) {
-            if (getArticles().get(i).getName().equals(article.getName())) {
-                if (getArticles().get(i).getComments().get(i).getId() == comment.getId()) {
+        for (int i = 0; i < articles.size(); i++) {
+            if (articles.get(i).getName().equals(article.getName())) {
+                if (articles.get(i).getComments().get(i).getId() == comment.getId()) {
                     
                 }
             }
@@ -179,17 +177,17 @@ public class Blog {
     }
 
     public void addReaction(Article article, Reaction reactionType) {
-        for (int i = 0; i < getArticles().size(); i++) {
-            if (getArticles().get(i).getName().equals(article.getName())) {
-                getArticles().get(i).increaseReactionCount(reactionType);
+        for (int i = 0; i < articles.size(); i++) {
+            if (articles.get(i).getName().equals(article.getName())) {
+                articles.get(i).increaseReactionCount(reactionType);
             }
         }
     }
 
     public void removeReaction(Article article, Reaction reactionType) {
-        for (int i = 0; i < getArticles().size(); i++) {
-            if (getArticles().get(i).getName().equals(article.getName())) {
-                getArticles().get(i).decreaseReactionCount(reactionType);
+        for (int i = 0; i < articles.size(); i++) {
+            if (articles.get(i).getName().equals(article.getName())) {
+                articles.get(i).decreaseReactionCount(reactionType);
             }
         }
     }
@@ -204,9 +202,9 @@ public class Blog {
 
     public ArrayList<Comment> getComments(Article article) {
         ArrayList<Comment> a = new ArrayList<>();
-        for (int i = 0; i < getArticles().size(); i++) {
-            if (getArticles().get(i).getName().equals(article.getName())) {
-                a = getArticles().get(i).getComments();
+        for (int i = 0; i < articles.size(); i++) {
+            if (articles.get(i).getName().equals(article.getName())) {
+                a = articles.get(i).getComments();
                 break;
             }
         }

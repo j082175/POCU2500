@@ -32,6 +32,8 @@ public class Program {
         Blog blog1 = new Blog("blog1Owner");
         Article article1 = new Article("title1", "fefe", "writer1");
         blog1.addArticle(article1);
+        var articles1 = blog1.getArticles("reader1");
+        articles1.get(0).getComments();
 
         System.out.println("---------------------------------------");
 
