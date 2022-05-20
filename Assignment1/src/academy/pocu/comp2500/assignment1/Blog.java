@@ -136,8 +136,8 @@ public class Blog {
 
     //User defined methods
 
-    public void addArticle() {
-        //articles.add(new Article(user));
+    public void addArticle(Article article) {
+        articles.add(article);
     }
 
     public void changeArticleTitle(Blog blog, Article article, String title) {
