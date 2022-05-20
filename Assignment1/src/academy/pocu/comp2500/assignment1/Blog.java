@@ -7,15 +7,15 @@ public class Blog {
     private String tagFilter;
     private String userFilter;
     private Order sortingType;
-    private String blogName;
+
     
     private String userName;
     private String owner;
     //sibal
     private int articleCounts;
 
-    public Blog(String name, String user) {
-        this.blogName = name;
+    public Blog(String user) {
+
         this.tagFilter = null;
         this.userFilter = null;
         this.sortingType = Order.DESCENDING_BY_WRITE_TIME;
@@ -128,10 +128,6 @@ public class Blog {
         }
     }
 
-    public String getBlogName() {
-        return this.blogName;
-    }
-
     public Order getSortingType() {
         return this.sortingType;
     }
@@ -154,10 +150,6 @@ public class Blog {
 
     public void addArticleTag(Blog blog, Article article, String tag) {
 
-    }
-
-    public String getName() {
-        return this.blogName;
     }
 
     public ArrayList<Article> getArticles(Blog blog) {
