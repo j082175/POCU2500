@@ -35,13 +35,6 @@ public class Article {
 
     }
 
-    public Article(String user) {
-        this.user = user;
-        comments = new ArrayList<>(100);
-        reactionCount = new int[5];
-    }
-
-
 
     public int getOrderNumber() {
         return this.orderNumber;
