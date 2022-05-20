@@ -10,16 +10,19 @@ public class Blog {
     private String blogName;
     
     private String userName;
+    private String owner;
     //sibal
     private int articleCounts;
 
-    public Blog(String name) {
+    public Blog(String name, String user) {
         this.blogName = name;
         this.tagFilter = null;
         this.userFilter = null;
         this.sortingType = Order.DESCENDING_BY_WRITE_TIME;
         articles = new ArrayList<>(100);
         articleCounts = 0;
+
+        this.owner = user;
     }
 
     // dangerous code
@@ -137,8 +140,8 @@ public class Blog {
 
     //User defined methods
 
-    public void addArticle(String title, String content, String name) {
-        articles.add(new Article(title, content, name));
+    public void addArticle(String title, String content) {
+        articles.add(new Article(title, content, this.owner));
     }
 
     public void changeArticleTitle(Blog blog, Article article, String title) {

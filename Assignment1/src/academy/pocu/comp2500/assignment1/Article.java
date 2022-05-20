@@ -26,14 +26,16 @@ public class Article {
         this.reviseTime = id;
     }
 
-    public Article(String name, String content, String tag) {
+    public Article(String name, String content, String user) {
         this.articleName = name;
         this.content = content;
-        this.tag = tag;
+        this.user = user;
         comments = new ArrayList<>(100);
         reactionCount = new int[5];
 
     }
+
+
 
     public int getOrderNumber() {
         return this.orderNumber;

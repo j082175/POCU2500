@@ -29,18 +29,17 @@ public class Program {
 
         // 1.
 
-        // Blog blog1 = new Blog("first blog");
+        Blog blog1 = new Blog("first blog","blog1Owner");
+        blog1.addArticle("article1", "fuckyou");
 
-        // System.out.println("---------------------------------------");
+        System.out.println("---------------------------------------");
 
-        // // 2.
+        // 2.
 
-        // Blog blog2 = new Blog("second blog");
-        // Writer writer1 = new Writer("JunSooCho");
-        // writer1.addArticle(blog2, "first article", "abc");
-        // Reader reader1 = new Reader("JohnWick");
+        // Blog blog2 = new Blog("second blog","blog2Owner");
 
-        // var articles = reader1.getArticles(blog2);
+
+        // var articles = blog2.addArticle(title, content, name);
 
         // System.out.println("1.name : " + articles.get(0).getName() + " 2.content : " + articles.get(0).getContent());
 
