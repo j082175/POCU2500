@@ -136,8 +136,8 @@ public class Blog {
 
     //User defined methods
 
-    public void addArticle(String user) {
-        articles.add(new Article(user));
+    public void addArticle() {
+        //articles.add(new Article(user));
     }
 
     public void changeArticleTitle(Blog blog, Article article, String title) {
@@ -208,13 +208,15 @@ public class Blog {
     }
 
     public ArrayList<Comment> getComments(Blog blog, Article article) {
+        ArrayList<Comment> a = new ArrayList<>();
         for (int i = 0; i < blog.getArticles().size(); i++) {
             if (blog.getArticles().get(i).getName().equals(article.getName())) {
-                return blog.getArticles().get(i).getComments();
+                a = blog.getArticles().get(i).getComments();
+                break;
             }
         }
 
-        return null;
+        return a;
     }
 
     public void getSubComments(Blog blog, Article article, Comment comment) {
