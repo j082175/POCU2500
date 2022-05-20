@@ -1,5 +1,6 @@
 package academy.pocu.comp2500.assignment1;
 
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 
 public class Article {
@@ -11,28 +12,28 @@ public class Article {
     private String user;
 
     //private int orderNumber;
-    //private long reviseTime;
-    //private OffsetDateTime
+    private long reviseTime;
+    private OffsetDataTime time;
 
     public Article(String title, String content, String user) { //파라미터 5개
         this.articleName = title;
         this.content = content;
-        comments = new ArrayList<>(100);
-        reactionCount = new int[5];
-
         this.user = user;
 
+        time = new OffsetDataTime(System.currentTimeMillis());
+        reviseTime = 0;
 
-
+        comments = new ArrayList<>();
+        reactionCount = new int[5];
     }
 
-    // public int getOrderNumber() {
-    //     return this.orderNumber;
-    // }
+    public OffsetDataTime getTime() {
+        return time;
+    }
 
-    // public long getReviseTime() {
-    //     return this.reviseTime;
-    // }
+    public long getReviseTime() {
+        return reviseTime;
+    }
 
     public String getContent() {
         return this.content;

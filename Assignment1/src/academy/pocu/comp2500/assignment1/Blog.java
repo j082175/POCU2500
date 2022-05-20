@@ -33,10 +33,10 @@ public class Blog {
         return this.articles;
     }
 
-    protected void setArticles(String title, String content, String name) {
-        this.articleCounts++;
-        this.articles.add(new Article(title, content, name));
-    }
+    // protected void setArticles(String title, String content, String name) {
+    //     this.articleCounts++;
+    //     this.articles.add(new Article(title, content, name));
+    // }
 
     public int getArticlesCount() {
         return this.articleCounts;
@@ -140,78 +140,73 @@ public class Blog {
         articles.add(article);
     }
 
-    public void changeArticleTitle(Blog blog, Article article, String title) {
+    public void changeArticleTitle(Article article, String title) {
         
     }
 
-    public void changeArticleContent(Blog blog, Article article, String content) {
+    public void changeArticleContent(Article article, String content) {
 
     }
 
-    public void addArticleTag(Blog blog, Article article, String tag) {
+    public void addArticleTag(Article article, String tag) {
 
     }
 
-    public ArrayList<Article> getArticles(Blog blog) {
-
-        return blog.getArticles();
-    }
-
-    public void addComment(Blog blog, Article article, String content) {
-        for (int i = 0; i < blog.getArticles().size(); i++) {
-            if (blog.getArticles().get(i).getName().equals(article.getName())) {
-                blog.getArticles().get(i).getComments().add(new Comment(content, article.getComments().size()));
+    public void addComment(Article article, String content) {
+        for (int i = 0; i < getArticles().size(); i++) {
+            if (getArticles().get(i).getName().equals(article.getName())) {
+                getArticles().get(i).getComments().add(new Comment(content, article.getComments().size()));
             }
         }
     }
 
-    public void addSubComment(Blog blog, Article article, Comment comment, SubComment subcomment) {
-        for (int i = 0; i < blog.getArticles().size(); i++) {
-            if (blog.getArticles().get(i).getName().equals(article.getName())) {
-                if (blog.getArticles().get(i).getComments().get(i).getId() == comment.getId()) {
+    public void addSubComment(Article article, Comment comment, SubComment subcomment) {
+        for (int i = 0; i < getArticles().size(); i++) {
+            if (getArticles().get(i).getName().equals(article.getName())) {
+                if (getArticles().get(i).getComments().get(i).getId() == comment.getId()) {
                     
                 }
             }
         }
     }
 
-    public void changeComment(Blog blog, Article article, Comment comment, String text) {
+    public void changeComment(Article article, Comment comment, String text) {
 
     }
 
-    public void changeSubComment(Blog blog, Article article, Comment comment, SubComment subcomment, String text) {
+    public void changeSubComment(Article article, Comment comment, SubComment subcomment, String text) {
 
     }
 
-    public void addReaction(Blog blog, Article article, Reaction reactionType) {
-        for (int i = 0; i < blog.getArticles().size(); i++) {
-            if (blog.getArticles().get(i).getName().equals(article.getName())) {
-                blog.getArticles().get(i).increaseReactionCount(reactionType);
+    public void addReaction(Article article, Reaction reactionType) {
+        for (int i = 0; i < getArticles().size(); i++) {
+            if (getArticles().get(i).getName().equals(article.getName())) {
+                getArticles().get(i).increaseReactionCount(reactionType);
             }
         }
     }
 
-    public void removeReaction(Blog blog, Article article, Reaction reactionType) {
-        for (int i = 0; i < blog.getArticles().size(); i++) {
-            if (blog.getArticles().get(i).getName().equals(article.getName())) {
-                blog.getArticles().get(i).decreaseReactionCount(reactionType);
+    public void removeReaction(Article article, Reaction reactionType) {
+        for (int i = 0; i < getArticles().size(); i++) {
+            if (getArticles().get(i).getName().equals(article.getName())) {
+                getArticles().get(i).decreaseReactionCount(reactionType);
             }
         }
     }
 
-    public void recommendTheComment(Blog blog, Article article, Comment comment) {
+    public void recommendTheComment(Article article, Comment comment) {
 
     }
 
-    public void notRecommendTheComment(Blog blog, Article article, Comment comment) {
+    public void notRecommendTheComment(Article article, Comment comment) {
 
     }
 
-    public ArrayList<Comment> getComments(Blog blog, Article article) {
+    public ArrayList<Comment> getComments(Article article) {
         ArrayList<Comment> a = new ArrayList<>();
-        for (int i = 0; i < blog.getArticles().size(); i++) {
-            if (blog.getArticles().get(i).getName().equals(article.getName())) {
-                a = blog.getArticles().get(i).getComments();
+        for (int i = 0; i < getArticles().size(); i++) {
+            if (getArticles().get(i).getName().equals(article.getName())) {
+                a = getArticles().get(i).getComments();
                 break;
             }
         }
@@ -219,15 +214,15 @@ public class Blog {
         return a;
     }
 
-    public void getSubComments(Blog blog, Article article, Comment comment) {
+    public void getSubComments(Article article, Comment comment) {
 
     }
 
-    public void recommendTheSubComment(Blog blog, Article article, Comment comment, SubComment subcomment) {
+    public void recommendTheSubComment(Article article, Comment comment, SubComment subcomment) {
 
     }
 
-    public void notRecommendTheSubComment(Blog blog, Article article, Comment comment, SubComment subcomment) {
+    public void notRecommendTheSubComment(Article article, Comment comment, SubComment subcomment) {
 
     }
 }
