@@ -19,7 +19,7 @@ public class Article {
         this.articleName = title;
         this.content = content;
         this.user = user;
-
+        this.tag = "";
         time = new OffsetDataTime(System.currentTimeMillis());
         reviseTime = 0;
 
@@ -60,47 +60,47 @@ public class Article {
         return this.user;
     }
 
-    // public void increaseReactionCount(Reaction reactionType) {
-    //     switch (reactionType) {
-    //         case GREAT: 
-    //             this.reactionCount[0]++;
-    //             break;
-    //         case SAD: 
-    //             this.reactionCount[1]++;
-    //             break;
-    //         case ANGRY: 
-    //             this.reactionCount[2]++;
-    //             break;
-    //         case FUN: 
-    //             this.reactionCount[3]++;
-    //             break;
-    //         case LOVE:
-    //             this.reactionCount[4]++;
-    //             break;
-    //         default: 
-    //             break;
-    //     }
-    // }
+    public void increaseReactionCount(Reaction reactionType) {
+        switch (reactionType) {
+            case GREAT: 
+                this.reactionCount[0]++;
+                break;
+            case SAD: 
+                this.reactionCount[1]++;
+                break;
+            case ANGRY: 
+                this.reactionCount[2]++;
+                break;
+            case FUN: 
+                this.reactionCount[3]++;
+                break;
+            case LOVE:
+                this.reactionCount[4]++;
+                break;
+            default: 
+                break;
+        }
+    }
 
-    // public void decreaseReactionCount(Reaction reactionType) {
-    //     switch (reactionType) {
-    //         case GREAT: 
-    //             this.reactionCount[0]--;
-    //             break;
-    //         case SAD: 
-    //             this.reactionCount[1]--;
-    //             break;
-    //         case ANGRY: 
-    //             this.reactionCount[2]--;
-    //             break;
-    //         case FUN: 
-    //             this.reactionCount[3]--;
-    //             break;
-    //         case LOVE:
-    //             this.reactionCount[4]--;
-    //             break;
-    //         default: 
-    //             break;
-    //     }
-    // }
+    public void decreaseReactionCount(Reaction reactionType) {
+        switch (reactionType) {
+            case GREAT: 
+                this.reactionCount[0]--;
+                break;
+            case SAD: 
+                this.reactionCount[1]--;
+                break;
+            case ANGRY: 
+                this.reactionCount[2]--;
+                break;
+            case FUN: 
+                this.reactionCount[3]--;
+                break;
+            case LOVE:
+                this.reactionCount[4]--;
+                break;
+            default: 
+                break;
+        }
+    }
 }

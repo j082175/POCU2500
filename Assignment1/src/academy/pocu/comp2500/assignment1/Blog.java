@@ -179,7 +179,7 @@ public class Blog {
     public void addReaction(Article article, Reaction reactionType) {
         for (int i = 0; i < articles.size(); i++) {
             if (articles.get(i).getName().equals(article.getName())) {
-                //articles.get(i).increaseReactionCount(reactionType);
+                articles.get(i).increaseReactionCount(reactionType);
             }
         }
     }
@@ -187,7 +187,7 @@ public class Blog {
     public void removeReaction(Article article, Reaction reactionType) {
         for (int i = 0; i < articles.size(); i++) {
             if (articles.get(i).getName().equals(article.getName())) {
-                //articles.get(i).decreaseReactionCount(reactionType);
+                articles.get(i).decreaseReactionCount(reactionType);
             }
         }
     }
