@@ -25,7 +25,7 @@ public class Comment {
         this.content = content;
     }
 
-    public ArrayList<Comment> getSubComment() {
+    public ArrayList<Comment> getSubComments() {
         return this.subComments;
     }
 
