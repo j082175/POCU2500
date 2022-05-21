@@ -134,7 +134,7 @@ public class Blog {
 
     //User defined methods
 
-    public void addArticle(Article article) {
+    public void addArticle(Article article, Comment comment) {
         articles.add(article);
     }
 
