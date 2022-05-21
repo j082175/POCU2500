@@ -147,7 +147,15 @@ public class Blog {
                 }
                 break;
             case ASCENDING_BY_ARTICLE:
-
+                // for (int i = 0; i < articles.size(); i++) {
+                //     for (int j = 0; j < articles.size() - 1 - i; j++) {
+                //         if (articles.get(j).getReviseTimeNano() > articles.get(j + 1).getReviseTimeNano()) {
+                //             Article backup = articles.get(j);
+                //             articles.set(j, articles.get(j + 1));
+                //             articles.set(j + 1, backup);
+                //         }
+                //     }
+                // }
                 break;
 
             default:

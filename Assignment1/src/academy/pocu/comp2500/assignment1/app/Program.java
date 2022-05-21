@@ -170,7 +170,7 @@ public class Program {
             var comments = article1.getComments();
             var subcomments = comment1.getSubComments();
 
-            subcomment1.changeSubComment(user, content);
+            comment1.changeComment("one", "changed");
 
             for (var a : comments) {
                 System.out.println(a.getContent());
