@@ -1,7 +1,7 @@
 package academy.pocu.comp2500.assignment1;
 
 import java.time.LocalDateTime;
-
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 
 public class Article {
@@ -13,31 +13,31 @@ public class Article {
     private String user;
 
     //private int orderNumber;
-    private OffsetDataTime createdTime;
-    private OffsetDataTime revisedTime;
+    private OffsetDateTime createdTime;
+    private OffsetDateTime revisedTime;
 
     public Article(String title, String content, String user) { //파라미터 5개
         this.title = title;
         this.content = content;
         this.user = user;
         this.tag = "";
-        createdTime = new OffsetDataTime(LocalDateTime.now());
-        revisedTime = new OffsetDataTime(LocalDateTime.now());
+        createdTime = OffsetDateTime.now();
+        revisedTime = OffsetDateTime.now();
 
         comments = new ArrayList<>();
         reactionCount = new int[5];
     }
 
-    public LocalDateTime getTime() {
+    public OffsetDateTime getTime() {
         // String formatedNow = createdTime.getData().format(DateTimeFormatter.ofPattern("yyyy년 MM월 dd일 HH시 mm분 ss초"));
         // return formatedNow;
-        return this.createdTime.getData();
+        return this.createdTime;
     }
 
-    public LocalDateTime getReviseTime() {
+    public OffsetDateTime getReviseTime() {
         // String formatedNow = reviseTime.getData().format(DateTimeFormatter.ofPattern("yyyy년 MM월 dd일 HH시 mm분 ss초"));
         // return formatedNow;
-        return this.revisedTime.getData();
+        return this.revisedTime;
     }
 
     public String getContent() {

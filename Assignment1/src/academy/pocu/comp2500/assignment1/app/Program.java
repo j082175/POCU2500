@@ -11,7 +11,6 @@ import academy.pocu.comp2500.assignment1.Reaction;
 
 import academy.pocu.comp2500.assignment1.registry.Registry;
 
-
 public class Program {
 
     public static void timeTanos() {
@@ -36,9 +35,11 @@ public class Program {
         Comment subComment1 = new Comment("sub_comment", 1);
         blog1.addArticle(article1);
         var articles1 = blog1.getArticles();
-        
-        System.out.println(article1.getReviseTime()); 
+        blog1.setTagFilter("tag1");
+        blog1.addReaction(article1, Reaction.SAD);
+        int arr[] = article1.getReactionCount();
 
+        // System.out.println(article1.getReviseTime());
 
         System.out.println("---------------------------------------");
 
@@ -46,10 +47,10 @@ public class Program {
 
         // Blog blog2 = new Blog("second blog","blog2Owner");
 
-
         // var articles = blog2.addArticle(title, content, name);
 
-        // System.out.println("1.name : " + articles.get(0).getName() + " 2.content : " + articles.get(0).getContent());
+        // System.out.println("1.name : " + articles.get(0).getName() + " 2.content : "
+        // + articles.get(0).getContent());
 
         // System.out.println("---------------------------------------");
 
@@ -68,11 +69,11 @@ public class Program {
         // articles = reader2.getArticles(blog3);
         // blog3.setSortingType(Order.ASCENDING_BY_REVISE_TIME);
         // for (int i = 0; i < articles.size(); i++) {
-        //     System.out.println(articles.get(i).getOrderNumber());
+        // System.out.println(articles.get(i).getOrderNumber());
         // }
 
         // for (int i = 0; i < articles.size(); i++) {
-        //     System.out.println(articles.get(i).getReviseTime());
+        // System.out.println(articles.get(i).getReviseTime());
         // }
 
         // System.out.println("---------------------------------------");
@@ -87,8 +88,5 @@ public class Program {
         // var zeroComments = reader2.getComments(blog3, articles.get(0));
         // System.out.println(zeroComments.get(0).getContent());
 
-        
-
-        
     }
 }
