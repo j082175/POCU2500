@@ -6,6 +6,7 @@ import academy.pocu.comp2500.assignment1.App;
 import academy.pocu.comp2500.assignment1.Article;
 import academy.pocu.comp2500.assignment1.Blog;
 import academy.pocu.comp2500.assignment1.Order;
+import academy.pocu.comp2500.assignment1.Reaction;
 import academy.pocu.comp2500.assignment1.registry.Registry;
 
 public class Program {
@@ -52,8 +53,8 @@ public class Program {
             blog1.addArticle(article2);
             blog1.addArticle(article3);
 
-            article3.addArticleTag("TAG1");
-            article3.addArticleTag("TAG2");
+            article3.addArticleTag("TAG1", "a");
+            article3.addArticleTag("TAG2", "b");
 
             ArrayList<Article> articles = blog1.getArticles(); // 여기서 태그 달린것들만 가져와야함.
 
@@ -141,11 +142,11 @@ public class Program {
             blog1.setSortingType(Order.DESCENDING_BY_WRITE_TIME);
 
             Article article1 = new Article("Article1", "first_post", "a");
-            Thread.sleep(1000);
+            Thread.sleep(100);
             Article article2 = new Article("Article2", "secone_post", "b");
-            Thread.sleep(1000);
+            Thread.sleep(100);
             Article article3 = new Article("Article3", "third_post", "c");
-            Thread.sleep(1000);
+            Thread.sleep(100);
 
             blog1.addArticle(article1);
             blog1.addArticle(article2);
@@ -153,11 +154,13 @@ public class Program {
 
             ArrayList<Article> articles = blog1.getArticles(); // 여기서 태그 달린것들만 가져와야함.
 
-            articles.get(0).changeArticleContent("getdodize");
+            articles.get(0).changeArticleContent("getdodize", "hoho");
 
-            // for (int i = 0; i < 3; i++) {
-            //     System.out.println(articles.get(i).getContent());
-            // }
+            articles.get(0).addReaction(Reaction.SAD);
+
+            for (int i = 0; i < 3; i++) {
+                System.out.println(articles.get(i).getTimeNano());
+            }
         }
 
         // 8. 

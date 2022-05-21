@@ -1,27 +1,38 @@
 package academy.pocu.comp2500.assignment1;
 
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.OffsetDateTime;
+import java.time.ZoneId;
+import java.time.ZoneOffset;
+import java.time.ZonedDateTime;
+import java.time.zone.ZoneOffsetTransitionRule;
 import java.util.ArrayList;
 
 public class Article {
-    private ArrayList<Comment> comments;
-    private int reactionCount[];
+    private final ArrayList<Comment> comments;
+    private final int reactionCount[];
+    private final ArrayList<String> tag;
+
     private String content;
-    private ArrayList<String> tag;
     private String title;
     private String user;
 
     private OffsetDateTime createdTime;
     private OffsetDateTime revisedTime;
 
-    public Article(String title, String content, String user) { //파라미터 5개
+    public Article(String title, String content, String user) { // 파라미터 5개
         this.title = title;
         this.content = content;
         this.user = user;
 
-        createdTime = OffsetDateTime.now();
-        revisedTime = OffsetDateTime.MIN;
+        LocalDateTime l = LocalDateTime.now();
         
+        createdTime = l.atOffset(ZoneOffset.UTC);
+        revisedTime = l.atOffset(ZoneOffset.UTC);
+
         this.tag = new ArrayList<>();
         comments = new ArrayList<>();
 
@@ -49,7 +60,7 @@ public class Article {
     }
 
     // public void setContent(String content) {
-    //     this.content = content;
+    // this.content = content;
     // }
 
     public ArrayList<String> getTag() {
@@ -57,7 +68,7 @@ public class Article {
     }
 
     // public String setTag(String tag) {
-    //     return this.tag = tag;
+    // return this.tag = tag;
     // }
 
     public String getTitle() {
@@ -65,14 +76,14 @@ public class Article {
     }
 
     // public void setTitle(String title) {
-    //     this.title = title;
+    // this.title = title;
     // }
 
     public int[] getReactionCount() {
         return this.reactionCount;
     }
 
-    //dangerous code
+    // dangerous code
     public ArrayList<Comment> getComments() {
         return this.comments;
     }
@@ -82,51 +93,48 @@ public class Article {
     }
 
     // public void increaseReactionCount(Reaction reactionType) {
-    //     switch (reactionType) {
-    //         case GREAT: 
-    //             this.reactionCount[0]++;
-    //             break;
-    //         case SAD: 
-    //             this.reactionCount[1]++;
-    //             break;
-    //         case ANGRY: 
-    //             this.reactionCount[2]++;
-    //             break;
-    //         case FUN: 
-    //             this.reactionCount[3]++;
-    //             break;
-    //         case LOVE:
-    //             this.reactionCount[4]++;
-    //             break;
-    //         default: 
-    //             break;
-    //     }
+    // switch (reactionType) {
+    // case GREAT:
+    // this.reactionCount[0]++;
+    // break;
+    // case SAD:
+    // this.reactionCount[1]++;
+    // break;
+    // case ANGRY:
+    // this.reactionCount[2]++;
+    // break;
+    // case FUN:
+    // this.reactionCount[3]++;
+    // break;
+    // case LOVE:
+    // this.reactionCount[4]++;
+    // break;
+    // default:
+    // break;
+    // }
     // }
 
     // public void decreaseReactionCount(Reaction reactionType) {
-    //     switch (reactionType) {
-    //         case GREAT: 
-    //             this.reactionCount[0]--;
-    //             break;
-    //         case SAD: 
-    //             this.reactionCount[1]--;
-    //             break;
-    //         case ANGRY: 
-    //             this.reactionCount[2]--;
-    //             break;
-    //         case FUN: 
-    //             this.reactionCount[3]--;
-    //             break;
-    //         case LOVE:
-    //             this.reactionCount[4]--;
-    //             break;
-    //         default: 
-    //             break;
-    //     }
+    // switch (reactionType) {
+    // case GREAT:
+    // this.reactionCount[0]--;
+    // break;
+    // case SAD:
+    // this.reactionCount[1]--;
+    // break;
+    // case ANGRY:
+    // this.reactionCount[2]--;
+    // break;
+    // case FUN:
+    // this.reactionCount[3]--;
+    // break;
+    // case LOVE:
+    // this.reactionCount[4]--;
+    // break;
+    // default:
+    // break;
     // }
-
-
-
+    // }
 
     // 구동부
 
@@ -136,58 +144,59 @@ public class Article {
     }
 
     // public void addSubComment(Comment subcomment, String user) {
-    //     this.user = user;
-    //     this.comments.add(subcomment);
+    // this.user = user;
+    // this.comments.add(subcomment);
     // }
 
     // public void changeComment(Article article, Comment comment, String text) {
 
     // }
 
-    // public void changeSubComment(Article article, Comment comment, Comment subcomment, String text) {
+    // public void changeSubComment(Article article, Comment comment, Comment
+    // subcomment, String text) {
 
     // }
 
     public void addReaction(Reaction reactionType) {
         switch (reactionType) {
-            case GREAT: 
+            case GREAT:
                 this.reactionCount[0]++;
                 break;
-            case SAD: 
+            case SAD:
                 this.reactionCount[1]++;
                 break;
-            case ANGRY: 
+            case ANGRY:
                 this.reactionCount[2]++;
                 break;
-            case FUN: 
+            case FUN:
                 this.reactionCount[3]++;
                 break;
             case LOVE:
                 this.reactionCount[4]++;
                 break;
-            default: 
+            default:
                 break;
         }
     }
 
     public void removeReaction(Reaction reactionType) {
         switch (reactionType) {
-            case GREAT: 
+            case GREAT:
                 this.reactionCount[0]--;
                 break;
-            case SAD: 
+            case SAD:
                 this.reactionCount[1]--;
                 break;
-            case ANGRY: 
+            case ANGRY:
                 this.reactionCount[2]--;
                 break;
-            case FUN: 
+            case FUN:
                 this.reactionCount[3]--;
                 break;
             case LOVE:
                 this.reactionCount[4]--;
                 break;
-            default: 
+            default:
                 break;
         }
     }
@@ -200,16 +209,17 @@ public class Article {
 
     // }
 
-
     // public void getSubComments(Article article, Comment comment) {
 
     // }
 
-    // public void recommendTheSubComment(Article article, Comment comment, Comment subcomment) {
+    // public void recommendTheSubComment(Article article, Comment comment, Comment
+    // subcomment) {
 
     // }
 
-    // public void notRecommendTheSubComment(Article article, Comment comment, Comment subcomment) {
+    // public void notRecommendTheSubComment(Article article, Comment comment,
+    // Comment subcomment) {
 
     // }
 
@@ -231,6 +241,4 @@ public class Article {
         }
     }
 
-
-    
 }
