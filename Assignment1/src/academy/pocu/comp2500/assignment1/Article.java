@@ -18,11 +18,13 @@ public class Article {
         this.title = title;
         this.content = content;
         this.user = user;
-        this.tag = new ArrayList<>();
-        createdTime = OffsetDateTime.now();
-        revisedTime = OffsetDateTime.now();
 
+        createdTime = OffsetDateTime.now();
+        revisedTime = OffsetDateTime.MIN;
+        
+        this.tag = new ArrayList<>();
         comments = new ArrayList<>();
+
         reactionCount = new int[5];
     }
 
@@ -211,16 +213,22 @@ public class Article {
 
     // }
 
-    public void changeArticleTitle(String title) {
-        this.title = title;
+    public void changeArticleTitle(String title, String user) {
+        if (user.equals(this.user)) {
+            this.title = title;
+        }
     }
 
-    public void changeArticleContent(String content) {
-        this.content = content;
+    public void changeArticleContent(String content, String user) {
+        if (user.equals(this.user)) {
+            this.content = content;
+        }
     }
 
-    public void addArticleTag(String tag) {
-        this.tag.add(tag);
+    public void addArticleTag(String tag, String user) {
+        if (user.equals(this.user)) {
+            this.tag.add(tag);
+        }
     }
 
 
