@@ -9,9 +9,12 @@ public class Comment {
 
     private String user;
 
+    private int rCount;
+
     public Comment(String content, String user) {
         this.content = content;
         this.user = user;
+        this.rCount = 0;
 
         recommendCount = new int[2];
         subComments = new ArrayList<>();
@@ -19,6 +22,10 @@ public class Comment {
 
     public String getContent() {
         return this.content;
+    }
+
+    public int getRCount() {
+        return this.rCount;
     }
 
     public void setContent(String content) {
@@ -55,10 +62,12 @@ public class Comment {
 
     public void recommendTheComment() {
         this.recommendCount[0]++;
+        this.rCount++;
     }
 
     public void notRecommendTheComment() {
         this.recommendCount[1]++;
+        this.rCount--;
     }
 
     public void recommendTheSubComment(String user) {
