@@ -24,15 +24,24 @@ public class Blog {
     // dangerous code
     public ArrayList<Article> getArticles() {
 
-        ArrayList<Article> newArticles = new ArrayList<>(100);
-        for (int i = 0; i < articles.size(); i++) {
-            for (int j = 0; j < this.articles.get(i).getTag().size(); j++) {
-                if (this.articles.get(j).getTag().get(j).equals(tagFilter)) {
+        ArrayList<Article> newArticles = new ArrayList<>();
+        if (tagFilter != null) {
+            for (int i = 0; i < articles.size(); i++) {
+                for (int j = 0; j < this.articles.get(i).getTag().size(); j++) {
+                    if (this.articles.get(i).getTag().get(j).equals(tagFilter)) {
+                        newArticles.add(this.articles.get(i));
+                        break;
+                    }
+                }
+            }
+        } else if (userFilter != null) {
+            for (int i = 0; i < articles.size(); i++) {
+                if (this.articles.get(i).getUserName().equals(userFilter)) {
                     newArticles.add(this.articles.get(i));
-                    break;
                 }
             }
         }
+
 
         articles = newArticles;
         return this.articles;
@@ -71,14 +80,14 @@ public class Blog {
     public void setUserFilter(String user) {
         this.userFilter = user;
 
-        ArrayList<Article> newArticles = new ArrayList<>(100);
-        for (int i = 0; i < articles.size(); i++) {
-            if (userFilter.equals(user)) {
-                newArticles.add(articles.get(i));
-            }
-        }
+        // ArrayList<Article> newArticles = new ArrayList<>(100);
+        // for (int i = 0; i < articles.size(); i++) {
+        //     if (userFilter.equals(user)) {
+        //         newArticles.add(articles.get(i));
+        //     }
+        // }
 
-        articles = newArticles;
+        // articles = newArticles;
     }
 
     public void setSortingType(Order sortingType) {

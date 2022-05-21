@@ -58,13 +58,40 @@ public class Program {
             blog1.addArticle(article3);
 
             article3.addArticleTag("TAG1");
+            article3.addArticleTag("TAG2");
 
             ArrayList<Article> articles = blog1.getArticles(); // 여기서 태그 달린것들만 가져와야함.
 
-            for (var a : articles) {
-                System.out.println(a.getTitle());
-            }
+            // for (var a : articles) {
+            // System.out.println(a.getTitle());
+            // }
         }
+
+        // 4. 작성자 필터
+        {
+            Blog blog1 = new Blog("BlogOwner1");
+            blog1.setTagFilter("TAG1");
+            //blog1.setUserFilter("a");
+
+            Article article1 = new Article("Article1", "first_post", "a");
+            Article article2 = new Article("Article2", "secone_post", "b");
+            Article article3 = new Article("Article3", "third_post", "c");
+
+            blog1.addArticle(article1);
+            blog1.addArticle(article2);
+            blog1.addArticle(article3);
+
+            //article3.addArticleTag("TAG1");
+            //article3.addArticleTag("TAG2");
+
+            ArrayList<Article> articles = blog1.getArticles(); // 여기서 태그 달린것들만 가져와야함.
+
+            // for (var a : articles) {
+            //     System.out.println(a.getTitle());
+            // }
+        }
+
+        
 
     }
 }

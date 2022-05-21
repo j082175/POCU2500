@@ -1,75 +1,18 @@
 {
+  "version": "0.2.0",
   "configurations": [
     {
       "type": "java",
       "name": "Launch Program",
       "request": "launch",
-      "mainClass": "academy.pocu.comp2500.lab3.app.Program",
-      "projectName": "POCU2500_f55f3a6b"
-    },
-    {
-      "type": "java",
-      "name": "Launch Program",
-      "request": "launch",
-      "mainClass": "academy.pocu.comp2500.lab3.app.Program",
+      "mainClass": "academy.pocu.comp2500.assignment1.app.Program",
       "projectName": "POCU2500_1414f147"
     },
     {
       "type": "java",
-      "name": "Launch Java Program",
+      "name": "Java 런치",
       "request": "launch",
       "mainClass": ""
-    },
-    {
-      "type": "java",
-      "name": "Launch Program",
-      "request": "launch",
-      "mainClass": "academy.pocu.comp2500.assignment1.app.Program",
-      "projectName": "POCU2500_1414f147"
-    },
-    {
-      "type": "java",
-      "name": "Launch Program",
-      "request": "launch",
-      "mainClass": "academy.pocu.comp2500.assignment1.app.Program",
-      "projectName": "POCU2500_1414f147",
-      "vmArgs": "-enableassertions"
-    },
-    {
-      "type": "java",
-      "name": "Launch Program",
-      "request": "launch",
-      "mainClass": "Program",
-      "projectName": "POCU2500_1414f147"
-    },
-    {
-      "type": "java",
-      "name": "Launch Program",
-      "request": "launch",
-      "mainClass": "app.Program",
-      "projectName": "POCU2500_1414f147"
-    },
-    {
-      "type": "java",
-      "name": "Launch Program",
-      "request": "launch",
-      "mainClass": "academy.pocu.comp2500.lab2.Program",
-      "projectName": "POCU2500_f55f3a6b"
-    },
-    {
-      "type": "java",
-      "name": "Launch Program",
-      "request": "launch",
-      "mainClass": "academy.pocu.comp2500.lab2.app.Program",
-      "projectName": "POCU2500_f55f3a6b"
-    },
-    {
-      "type": "java",
-      "name": "My App",
-      "request": "launch",
-      "mainClass": "App",
-      "projectName": "my-app",
-      "vmArgs": "-enableassertions"
     }
   ]
 }
