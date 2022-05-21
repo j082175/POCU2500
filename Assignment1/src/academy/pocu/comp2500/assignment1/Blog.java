@@ -8,50 +8,64 @@ public class Blog {
     private String userFilter;
     private Order sortingType;
 
-    
-    private String userName;
     private String owner;
-    //sibal
-
+    // sibal
 
     public Blog(String user) {
 
-        // this.tagFilter = null;
-        // this.userFilter = null;
-        // this.sortingType = Order.DESCENDING_BY_WRITE_TIME;
+        this.tagFilter = null;
+        this.userFilter = null;
+        this.sortingType = Order.DESCENDING_BY_WRITE_TIME;
         articles = new ArrayList<>(100);
-
 
         this.owner = user;
     }
 
     // dangerous code
     public ArrayList<Article> getArticles() {
-        return this.articles;
-    }
-
-    public  String getUser() {
-        return this.userName;
-    }
-
-    // protected void setArticles(String title, String content, String name) {
-    //     this.articleCounts++;
-    //     this.articles.add(new Article(title, content, name));
-    // }
-
-
-
-    public void setTagFilter(String tag) {
-        this.tagFilter = tag;
 
         ArrayList<Article> newArticles = new ArrayList<>(100);
         for (int i = 0; i < articles.size(); i++) {
-            if (articles.get(i).getTag().equals(tag)) {
-                newArticles.add(articles.get(i));
+            for (int j = 0; j < this.articles.get(i).getTag().size(); j++) {
+                if (this.articles.get(j).getTag().get(j).equals(tagFilter)) {
+                    newArticles.add(this.articles.get(i));
+                    break;
+                }
             }
         }
 
         articles = newArticles;
+        return this.articles;
+    }
+
+    public String getUser() {
+        return this.owner;
+    }
+
+    // protected void setArticles(String title, String content, String name) {
+    // this.articleCounts++;
+    // this.articles.add(new Article(title, content, name));
+    // }
+
+    public String getTagFilter() {
+        if (tagFilter == null) {
+            return "";
+        } else {
+            return this.tagFilter;
+        }
+    }
+
+    public String getUserFilter() {
+        if (userFilter == null) {
+            return "";
+        } else {
+            return this.tagFilter;
+        }
+    }
+
+    public void setTagFilter(String tag) {
+        this.tagFilter = tag;
+
     }
 
     public void setUserFilter(String user) {
@@ -74,10 +88,11 @@ public class Blog {
             case DESCENDING_BY_WRITE_TIME:
                 for (int i = 0; i < articles.size(); i++) {
                     for (int j = 0; j < articles.size() - 1 - i; j++) {
-                        // if (articles.get(j).getOrderNumber() < articles.get(j + 1).getOrderNumber()) {
-                        //     Article backup = articles.get(j);
-                        //     articles.set(j, articles.get(j + 1));
-                        //     articles.set(j + 1, backup);
+                        // if (articles.get(j).getOrderNumber() < articles.get(j + 1).getOrderNumber())
+                        // {
+                        // Article backup = articles.get(j);
+                        // articles.set(j, articles.get(j + 1));
+                        // articles.set(j + 1, backup);
                         // }
                     }
                 }
@@ -86,10 +101,11 @@ public class Blog {
             case ASCENDING_BY_WRITE_TIME:
                 for (int i = 0; i < articles.size(); i++) {
                     for (int j = 0; j < articles.size() - 1 - i; j++) {
-                        // if (articles.get(j).getOrderNumber() > articles.get(j + 1).getOrderNumber()) {
-                        //     Article backup = articles.get(j);
-                        //     articles.set(j, articles.get(j + 1));
-                        //     articles.set(j + 1, backup);
+                        // if (articles.get(j).getOrderNumber() > articles.get(j + 1).getOrderNumber())
+                        // {
+                        // Article backup = articles.get(j);
+                        // articles.set(j, articles.get(j + 1));
+                        // articles.set(j + 1, backup);
                         // }
                     }
                 }
@@ -99,9 +115,9 @@ public class Blog {
                 for (int i = 0; i < articles.size(); i++) {
                     for (int j = 0; j < articles.size() - 1 - i; j++) {
                         // if (articles.get(j).getReviseTime() < articles.get(j + 1).getReviseTime()) {
-                        //     Article backup = articles.get(j);
-                        //     articles.set(j, articles.get(j + 1));
-                        //     articles.set(j + 1, backup);
+                        // Article backup = articles.get(j);
+                        // articles.set(j, articles.get(j + 1));
+                        // articles.set(j + 1, backup);
                         // }
                     }
                 }
@@ -111,9 +127,9 @@ public class Blog {
                 for (int i = 0; i < articles.size(); i++) {
                     for (int j = 0; j < articles.size() - 1 - i; j++) {
                         // if (articles.get(j).getReviseTime() > articles.get(j + 1).getReviseTime()) {
-                        //     Article backup = articles.get(j);
-                        //     articles.set(j, articles.get(j + 1));
-                        //     articles.set(j + 1, backup);
+                        // Article backup = articles.get(j);
+                        // articles.set(j, articles.get(j + 1));
+                        // articles.set(j + 1, backup);
                         // }
                     }
                 }
@@ -121,7 +137,7 @@ public class Blog {
             case ASCENDING_BY_ARTICLE:
 
                 break;
-                
+
             default:
                 break;
         }
@@ -131,78 +147,79 @@ public class Blog {
         return this.sortingType;
     }
 
-
-
-    //User defined methods
+    // User defined methods
 
     public void addArticle(Article article) {
         articles.add(article);
     }
 
     // public void changeArticleTitle(Article article, String title) {
-    //     for (int i = 0; i < this.articles.size(); i++) {
-    //         if (this.articles.get(i).getTitle().equals(title)) {
-    //             this.articles.get(i).setTitle(title);
-    //         }
-    //     }
+    // for (int i = 0; i < this.articles.size(); i++) {
+    // if (this.articles.get(i).getTitle().equals(title)) {
+    // this.articles.get(i).setTitle(title);
+    // }
+    // }
     // }
 
     // public void changeArticleContent(Article article, String content) {
-    //     for (int i = 0; i < this.articles.size(); i++) {
-    //         if (this.articles.get(i).getContent().equals(content)) {
-    //             this.articles.get(i).setTitle(content);
-    //         }
-    //     }
+    // for (int i = 0; i < this.articles.size(); i++) {
+    // if (this.articles.get(i).getContent().equals(content)) {
+    // this.articles.get(i).setTitle(content);
+    // }
+    // }
     // }
 
     // public void addArticleTag(Article article, String tag) {
-    //     for (int i = 0; i < this.articles.size(); i++) {
-    //         if (this.articles.get(i).getTag().equals(tag)) {
-    //             this.articles.get(i).setTag(tag);
-    //         }
-    //     }
+    // for (int i = 0; i < this.articles.size(); i++) {
+    // if (this.articles.get(i).getTag().equals(tag)) {
+    // this.articles.get(i).setTag(tag);
+    // }
+    // }
     // }
 
     // public void addComment(Article article, String content) {
-    //     for (int i = 0; i < articles.size(); i++) {
-    //         if (articles.get(i).getTitle().equals(article.getTitle())) {
-    //             articles.get(i).getComments().add(new Comment(content, article.getComments().size()));
-    //         }
-    //     }
+    // for (int i = 0; i < articles.size(); i++) {
+    // if (articles.get(i).getTitle().equals(article.getTitle())) {
+    // articles.get(i).getComments().add(new Comment(content,
+    // article.getComments().size()));
+    // }
+    // }
     // }
 
-    // public void addSubComment(Article article, Comment comment, Comment subcomment) {
-    //     for (int i = 0; i < articles.size(); i++) {
-    //         if (articles.get(i).getTitle().equals(article.getTitle())) {
-    //             if (articles.get(i).getComments().get(i).getId() == comment.getId()) {
-                    
-    //             }
-    //         }
-    //     }
+    // public void addSubComment(Article article, Comment comment, Comment
+    // subcomment) {
+    // for (int i = 0; i < articles.size(); i++) {
+    // if (articles.get(i).getTitle().equals(article.getTitle())) {
+    // if (articles.get(i).getComments().get(i).getId() == comment.getId()) {
+
+    // }
+    // }
+    // }
     // }
 
     // public void changeComment(Article article, Comment comment, String text) {
 
     // }
 
-    // public void changeSubComment(Article article, Comment comment, Comment subcomment, String text) {
+    // public void changeSubComment(Article article, Comment comment, Comment
+    // subcomment, String text) {
 
     // }
 
     // public void addReaction(Article article, Reaction reactionType) {
-    //     for (int i = 0; i < articles.size(); i++) {
-    //         if (articles.get(i).getTitle().equals(article.getTitle())) {
-    //             articles.get(i).increaseReactionCount(reactionType);
-    //         }
-    //     }
+    // for (int i = 0; i < articles.size(); i++) {
+    // if (articles.get(i).getTitle().equals(article.getTitle())) {
+    // articles.get(i).increaseReactionCount(reactionType);
+    // }
+    // }
     // }
 
     // public void removeReaction(Article article, Reaction reactionType) {
-    //     for (int i = 0; i < articles.size(); i++) {
-    //         if (articles.get(i).getTitle().equals(article.getTitle())) {
-    //             articles.get(i).decreaseReactionCount(reactionType);
-    //         }
-    //     }
+    // for (int i = 0; i < articles.size(); i++) {
+    // if (articles.get(i).getTitle().equals(article.getTitle())) {
+    // articles.get(i).decreaseReactionCount(reactionType);
+    // }
+    // }
     // }
 
     // public void recommendTheComment(Article article, Comment comment) {
@@ -214,26 +231,28 @@ public class Blog {
     // }
 
     // public ArrayList<Comment> getComments(Article article) {
-    //     ArrayList<Comment> a = new ArrayList<>();
-    //     for (int i = 0; i < articles.size(); i++) {
-    //         if (articles.get(i).getTitle().equals(article.getTitle())) {
-    //             a = articles.get(i).getComments();
-    //             break;
-    //         }
-    //     }
+    // ArrayList<Comment> a = new ArrayList<>();
+    // for (int i = 0; i < articles.size(); i++) {
+    // if (articles.get(i).getTitle().equals(article.getTitle())) {
+    // a = articles.get(i).getComments();
+    // break;
+    // }
+    // }
 
-    //     return a;
+    // return a;
     // }
 
     // public void getSubComments(Article article, Comment comment) {
 
     // }
 
-    // public void recommendTheSubComment(Article article, Comment comment, Comment subcomment) {
+    // public void recommendTheSubComment(Article article, Comment comment, Comment
+    // subcomment) {
 
     // }
 
-    // public void notRecommendTheSubComment(Article article, Comment comment, Comment subcomment) {
+    // public void notRecommendTheSubComment(Article article, Comment comment,
+    // Comment subcomment) {
 
     // }
 }

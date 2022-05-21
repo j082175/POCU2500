@@ -15,15 +15,6 @@ import academy.pocu.comp2500.assignment1.registry.Registry;
 
 public class Program {
 
-    public static void timeTanos() {
-        int sum = 0;
-        for (int i = 0; i < 9999; i++) {
-            for (int j = 0; j < 9999; j++) {
-                sum += 1;
-            }
-        }
-    }
-
     public static void main(String[] args) throws InterruptedException {
         Registry registry = new Registry();
         App app = new App(registry);
@@ -53,10 +44,10 @@ public class Program {
             // }
         }
 
-        // 3.
+        // 3. 태그 필터를 사용하여 지정된 태그 있는것만 가져옴.
         {
             Blog blog1 = new Blog("BlogOwner1");
-            
+            blog1.setTagFilter("TAG1");
 
             Article article1 = new Article("Article1", "first_post", "a");
             Article article2 = new Article("Article2", "secone_post", "b");
@@ -66,8 +57,9 @@ public class Program {
             blog1.addArticle(article2);
             blog1.addArticle(article3);
 
-            ArrayList<Article> articles = blog1.getArticles();
-            articles.get(0).addArticleTag("TAG1");
+            article3.addArticleTag("TAG1");
+
+            ArrayList<Article> articles = blog1.getArticles(); // 여기서 태그 달린것들만 가져와야함.
 
             for (var a : articles) {
                 System.out.println(a.getTitle());
