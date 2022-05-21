@@ -14,7 +14,7 @@ public class Article {
 
     //private int orderNumber;
     private OffsetDataTime createdTime;
-    private OffsetDataTime reviseTime;
+    private OffsetDataTime revisedTime;
 
     public Article(String title, String content, String user) { //파라미터 5개
         this.title = title;
@@ -22,22 +22,22 @@ public class Article {
         this.user = user;
         this.tag = "";
         createdTime = new OffsetDataTime(LocalDateTime.now());
-        reviseTime = new OffsetDataTime(LocalDateTime.now());
+        revisedTime = new OffsetDataTime(LocalDateTime.now());
 
         comments = new ArrayList<>();
         reactionCount = new int[5];
     }
 
-    public OffsetDataTime getTime() {
+    public LocalDateTime getTime() {
         // String formatedNow = createdTime.getData().format(DateTimeFormatter.ofPattern("yyyy년 MM월 dd일 HH시 mm분 ss초"));
         // return formatedNow;
-        return this.createdTime;
+        return this.createdTime.getData();
     }
 
-    public OffsetDataTime getReviseTime() {
+    public LocalDateTime getReviseTime() {
         // String formatedNow = reviseTime.getData().format(DateTimeFormatter.ofPattern("yyyy년 MM월 dd일 HH시 mm분 ss초"));
         // return formatedNow;
-        return this.reviseTime;
+        return this.revisedTime.getData();
     }
 
     public String getContent() {

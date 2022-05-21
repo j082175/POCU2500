@@ -37,7 +37,7 @@ public class Program {
         blog1.addArticle(article1);
         var articles1 = blog1.getArticles("reader1");
         
-        blog1.getArticles(user)
+        System.out.println(article1.getReviseTime()); 
 
 
         System.out.println("---------------------------------------");
