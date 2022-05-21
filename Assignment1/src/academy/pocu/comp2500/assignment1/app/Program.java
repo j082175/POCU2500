@@ -161,12 +161,19 @@ public class Program {
 
             Comment comment1 = new Comment("one", "content1");
             Comment comment2 = new Comment("two", "content2");
+            Comment comment3 = new Comment("three", "content3");
+            Comment comment4 = new Comment("four", "content4");
+            Comment comment5 = new Comment("five", "content5");
+
 
             Comment subcomment1 = new Comment("one", "subcomment1");
             Comment subcomment2 = new Comment("two", "subcomment2");
 
             article1.addComment(comment1);
             article1.addComment(comment2);
+            article1.addComment(comment3);
+            article1.addComment(comment4);
+            article1.addComment(comment5);
 
             comment1.addSubComment(subcomment1);
             comment1.addSubComment(subcomment2);
@@ -181,6 +188,31 @@ public class Program {
             }
 
             for (var a : subcomments) {
+                System.out.println(a.getContent());
+            }
+
+            comment1.recommendTheComment();
+            comment1.recommendTheComment();
+            comment1.recommendTheComment();  //3
+
+            comment2.notRecommendTheComment();
+            comment2.notRecommendTheComment(); //-2
+
+            comment1.recommendTheComment();  
+            comment1.recommendTheComment();  
+            comment1.recommendTheComment();  
+            comment1.recommendTheComment();  //4
+
+            comment1.notRecommendTheComment();  
+            comment1.notRecommendTheComment();  
+            comment1.notRecommendTheComment();  //-3
+
+            comment1.recommendTheComment();  
+            comment1.notRecommendTheComment();  //0
+
+
+            var result = article1.getComments();
+            for (var a : result) {
                 System.out.println(a.getContent());
             }
 
