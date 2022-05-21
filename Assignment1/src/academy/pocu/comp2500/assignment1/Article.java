@@ -1,7 +1,7 @@
 package academy.pocu.comp2500.assignment1;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+
 import java.util.ArrayList;
 
 public class Article {
@@ -9,7 +9,7 @@ public class Article {
     private int reactionCount[];
     private String content;
     private String tag;
-    private String articleName;
+    private String title;
     private String user;
 
     //private int orderNumber;
@@ -17,7 +17,7 @@ public class Article {
     private OffsetDataTime reviseTime;
 
     public Article(String title, String content, String user) { //파라미터 5개
-        this.articleName = title;
+        this.title = title;
         this.content = content;
         this.user = user;
         this.tag = "";
@@ -44,12 +44,24 @@ public class Article {
         return this.content;
     }
 
+    public void setContent(String content) {
+        this.content = content;
+    }
+
     public String getTag() {
         return this.tag;
     }
 
-    public String getName() {
-        return this.articleName;
+    public String setTag(String tag) {
+        return this.tag = tag;
+    }
+
+    public String getTitle() {
+        return this.title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public int[] getReactionCount() {

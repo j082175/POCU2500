@@ -8,9 +8,9 @@ public class Comment {
     private String content;
     private int commentId;
 
-    public Comment(String content, int count) {
+    public Comment(String content, int commentId) {
         this.content = content;
-        this.commentId = count;
+        this.commentId = commentId;
 
         recommendCount = new Recommend[2];
         subComments = new ArrayList<>();

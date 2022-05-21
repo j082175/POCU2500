@@ -12,7 +12,7 @@ public class Blog {
     private String userName;
     private String owner;
     //sibal
-    private int articleCounts;
+
 
     public Blog(String user) {
 
@@ -20,7 +20,7 @@ public class Blog {
         this.userFilter = null;
         this.sortingType = Order.DESCENDING_BY_WRITE_TIME;
         articles = new ArrayList<>(100);
-        articleCounts = 0;
+
 
         this.owner = user;
     }
@@ -36,9 +36,7 @@ public class Blog {
     //     this.articles.add(new Article(title, content, name));
     // }
 
-    public int getArticlesCount() {
-        return this.articleCounts;
-    }
+
 
     public void setTagFilter(String tag) {
         this.tagFilter = tag;
@@ -139,20 +137,32 @@ public class Blog {
     }
 
     public void changeArticleTitle(Article article, String title) {
-        
+        for (int i = 0; i < this.articles.size(); i++) {
+            if (this.articles.get(i).getTitle().equals(title)) {
+                this.articles.get(i).setTitle(title);
+            }
+        }
     }
 
     public void changeArticleContent(Article article, String content) {
-
+        for (int i = 0; i < this.articles.size(); i++) {
+            if (this.articles.get(i).getContent().equals(content)) {
+                this.articles.get(i).setTitle(content);
+            }
+        }
     }
 
     public void addArticleTag(Article article, String tag) {
-
+        for (int i = 0; i < this.articles.size(); i++) {
+            if (this.articles.get(i).getTag().equals(tag)) {
+                this.articles.get(i).setTag(tag);
+            }
+        }
     }
 
     public void addComment(Article article, String content) {
         for (int i = 0; i < articles.size(); i++) {
-            if (articles.get(i).getName().equals(article.getName())) {
+            if (articles.get(i).getTitle().equals(article.getTitle())) {
                 articles.get(i).getComments().add(new Comment(content, article.getComments().size()));
             }
         }
@@ -160,7 +170,7 @@ public class Blog {
 
     public void addSubComment(Article article, Comment comment, Comment subcomment) {
         for (int i = 0; i < articles.size(); i++) {
-            if (articles.get(i).getName().equals(article.getName())) {
+            if (articles.get(i).getTitle().equals(article.getTitle())) {
                 if (articles.get(i).getComments().get(i).getId() == comment.getId()) {
                     
                 }
@@ -178,7 +188,7 @@ public class Blog {
 
     public void addReaction(Article article, Reaction reactionType) {
         for (int i = 0; i < articles.size(); i++) {
-            if (articles.get(i).getName().equals(article.getName())) {
+            if (articles.get(i).getTitle().equals(article.getTitle())) {
                 articles.get(i).increaseReactionCount(reactionType);
             }
         }
@@ -186,7 +196,7 @@ public class Blog {
 
     public void removeReaction(Article article, Reaction reactionType) {
         for (int i = 0; i < articles.size(); i++) {
-            if (articles.get(i).getName().equals(article.getName())) {
+            if (articles.get(i).getTitle().equals(article.getTitle())) {
                 articles.get(i).decreaseReactionCount(reactionType);
             }
         }
@@ -203,7 +213,7 @@ public class Blog {
     public ArrayList<Comment> getComments(Article article) {
         ArrayList<Comment> a = new ArrayList<>();
         for (int i = 0; i < articles.size(); i++) {
-            if (articles.get(i).getName().equals(article.getName())) {
+            if (articles.get(i).getTitle().equals(article.getTitle())) {
                 a = articles.get(i).getComments();
                 break;
             }
