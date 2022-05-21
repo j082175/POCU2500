@@ -21,6 +21,10 @@ public class Comment {
         return this.content;
     }
 
+    public void setContent(String content) {
+        this.content = content;
+    }
+
     public ArrayList<Comment> getSubComment() {
         return this.subComments;
     }
@@ -41,10 +45,10 @@ public class Comment {
         this.subComments.add(subcomment);
     }
 
-    public void changeSubComment(Comment user, String text) {
+    public void changeSubComment(String user, String content) {
         for (int i = 0; i < this.subComments.size(); i++) {
-            if (user.equals(this.subComments.get(i).getUser())) {
-                
+            if (this.user.equals(subComments.get(i).getUser())) {
+                this.subComments.get(i).setContent(content);
             }
         }
     }
@@ -57,16 +61,20 @@ public class Comment {
         this.recommendCount[1]++;
     }
 
-    public void getSubComments(Comment comment) {
-
+    public void recommendTheSubComment(String user) {
+        for (int i = 0; i < this.subComments.size(); i++) {
+            if (this.user.equals(subComments.get(i).getUser())) {
+                this.subComments.get(i).recommendTheComment();
+            }
+        }
     }
 
-    public void recommendTheSubComment(Comment comment, Comment subcomment) {
-
-    }
-
-    public void notRecommendTheSubComment(Comment comment, Comment subcomment) {
-
+    public void notRecommendTheSubComment(String user) {
+        for (int i = 0; i < this.subComments.size(); i++) {
+            if (this.user.equals(subComments.get(i).getUser())) {
+                this.subComments.get(i).notRecommendTheComment();
+            }
+        }
     }
 
     public void changeComment(String content, String user) {
