@@ -1,13 +1,15 @@
 package academy.pocu.comp2500.assignment1;
 
-public class OffsetDataTime {
-    private long data;
+import java.time.LocalDateTime;
 
-    public OffsetDataTime(long data) {
+public class OffsetDataTime {
+    private LocalDateTime data;
+
+    public OffsetDataTime(LocalDateTime data) {
         this.data = data;
     }
 
-    public long getData() {
+    public LocalDateTime getData() {
         return this.data;
     }
 }

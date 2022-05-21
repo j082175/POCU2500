@@ -33,7 +33,10 @@ public class Program {
         Article article1 = new Article("title1", "fefe", "writer1");
         blog1.addArticle(article1);
         var articles1 = blog1.getArticles("reader1");
-        articles1.get(0).getComments();
+        
+        System.out.println(articles1.get(0).getTime());
+        System.out.println(articles1.get(0).getReviseTime()); 
+
 
         System.out.println("---------------------------------------");
 
