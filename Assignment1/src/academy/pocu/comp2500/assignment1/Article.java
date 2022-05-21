@@ -148,8 +148,7 @@ public class Article {
 
     // 구동부
 
-    public void addComment(Comment comment, String user) {
-        this.user = user;
+    public void addComment(Comment comment) {
         this.comments.add(comment);
     }
 

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import academy.pocu.comp2500.assignment1.App;
 import academy.pocu.comp2500.assignment1.Article;
 import academy.pocu.comp2500.assignment1.Blog;
+import academy.pocu.comp2500.assignment1.Comment;
 import academy.pocu.comp2500.assignment1.Order;
 import academy.pocu.comp2500.assignment1.Reaction;
 import academy.pocu.comp2500.assignment1.registry.Registry;
@@ -93,11 +94,11 @@ public class Program {
             blog1.setSortingType(Order.DESCENDING_BY_WRITE_TIME);
 
             Article article1 = new Article("Article1", "first_post", "a");
-            //Thread.sleep(1000);
+            // Thread.sleep(1000);
             Article article2 = new Article("Article2", "secone_post", "b");
-            //Thread.sleep(1000);
+            // Thread.sleep(1000);
             Article article3 = new Article("Article3", "third_post", "c");
-            //Thread.sleep(1000);
+            // Thread.sleep(1000);
 
             blog1.addArticle(article1);
             blog1.addArticle(article2);
@@ -116,11 +117,11 @@ public class Program {
             blog1.setSortingType(Order.DESCENDING_BY_WRITE_TIME);
 
             Article article1 = new Article("Article1", "first_post", "a");
-            //Thread.sleep(1000);
+            // Thread.sleep(1000);
             Article article2 = new Article("Article2", "secone_post", "b");
-            //Thread.sleep(1000);
+            // Thread.sleep(1000);
             Article article3 = new Article("Article3", "third_post", "c");
-            //Thread.sleep(1000);
+            // Thread.sleep(1000);
 
             blog1.addArticle(article1);
             blog1.addArticle(article2);
@@ -128,7 +129,7 @@ public class Program {
 
             ArrayList<Article> articles = blog1.getArticles(); // 여기서 태그 달린것들만 가져와야함.
 
-            articles.get(0).changeArticleTitle("title1","a");
+            articles.get(0).changeArticleTitle("title1", "a");
 
             // for (int i = 0; i < 3; i++) {
             // System.out.println(articles.get(i).getTitle());
@@ -154,22 +155,26 @@ public class Program {
 
             ArrayList<Article> articles = blog1.getArticles(); // 여기서 태그 달린것들만 가져와야함.
 
-            for (int i = 0; i < 3; i++) {
-                System.out.println(articles.get(i).getReviseTime() + articles.get(i).getTitle());
-                System.out.println(articles.get(i).getTime());
-            }
+            Comment comment1 = new Comment("content1", "one");
+            Comment comment2 = new Comment("content2", "two");
 
-            article1.changeArticleTitle("revised_article1", "a");
+            Comment subcomment1 = new Comment("subcomment1", "one");
+            Comment subcomment2 = new Comment("subcomment2", "two");
 
-            articles.get(0).addReaction(Reaction.SAD);
+            article1.addComment(comment1);
+            article1.addComment(comment2);
 
-            for (int i = 0; i < 3; i++) {
-                System.out.println(articles.get(i).getReviseTime() + articles.get(i).getTitle());
-                System.out.println(articles.get(i).getTime());
+            comment1.addSubComment(subcomment1);
+            comment1.addSubComment(subcomment2);
+
+            // article1.getComments();
+
+            for (int i = 0; i < article1.getComments().size(); i++) {
+                System.out.println(article1.getComments().get(i).getContent());
             }
         }
 
-        // 8. 
+        // 8.
 
     }
 }
