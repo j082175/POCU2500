@@ -13,8 +13,8 @@ public class Article {
     private String user;
 
     //private int orderNumber;
-    private OffsetDataTime reviseTime;
     private OffsetDataTime createdTime;
+    private OffsetDataTime reviseTime;
 
     public Article(String title, String content, String user) { //파라미터 5개
         this.articleName = title;
@@ -28,14 +28,16 @@ public class Article {
         reactionCount = new int[5];
     }
 
-    public String getTime() {
-        String formatedNow = createdTime.getData().format(DateTimeFormatter.ofPattern("yyyy년 MM월 dd일 HH시 mm분 ss초"));
-        return formatedNow;
+    public OffsetDataTime getTime() {
+        // String formatedNow = createdTime.getData().format(DateTimeFormatter.ofPattern("yyyy년 MM월 dd일 HH시 mm분 ss초"));
+        // return formatedNow;
+        return this.createdTime;
     }
 
-    public String getReviseTime() {
-        String formatedNow = reviseTime.getData().format(DateTimeFormatter.ofPattern("yyyy년 MM월 dd일 HH시 mm분 ss초"));
-        return formatedNow;
+    public OffsetDataTime getReviseTime() {
+        // String formatedNow = reviseTime.getData().format(DateTimeFormatter.ofPattern("yyyy년 MM월 dd일 HH시 mm분 ss초"));
+        // return formatedNow;
+        return this.reviseTime;
     }
 
     public String getContent() {
