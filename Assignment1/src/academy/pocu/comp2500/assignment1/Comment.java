@@ -29,6 +29,17 @@ public class Comment {
     }
 
     public ArrayList<Comment> getSubComments() {
+        for (int i = 0; i < subComments.size(); i++) {
+            for (int j = 0; j < subComments.size() - 1 - i; j++) {
+                if (subComments.get(j).getRCount() < subComments.get(j + 1).getRCount()) {
+                    Comment backup = subComments.get(j);
+
+                    subComments.set(j, subComments.get(j + 1));
+                    subComments.set(j + 1, backup);
+                }
+            }
+        }
+
         return this.subComments;
     }
 
