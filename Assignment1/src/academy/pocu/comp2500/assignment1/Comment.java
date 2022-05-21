@@ -9,12 +9,12 @@ public class Comment {
     private String content;
     private String user;
 
-    private int rCount;
+    //private int rCount;
 
     public Comment(String user, String content) {
         this.content = content;
         this.user = user;
-        this.rCount = 0;
+        //this.rCount = 0;
 
         recommendCount = new int[2];
         subComments = new ArrayList<>();
@@ -24,21 +24,21 @@ public class Comment {
         return this.content;
     }
 
-    public int getRCount() {
-        return this.rCount;
-    }
+    // public int getRCount() {
+    //     return this.rCount;
+    // }
 
     public ArrayList<Comment> getSubComments() {
-        for (int i = 0; i < subComments.size(); i++) {
-            for (int j = 0; j < subComments.size() - 1 - i; j++) {
-                if (subComments.get(j).getRCount() < subComments.get(j + 1).getRCount()) {
-                    Comment backup = subComments.get(j);
+        // for (int i = 0; i < subComments.size(); i++) {
+        //     for (int j = 0; j < subComments.size() - 1 - i; j++) {
+        //         if (subComments.get(j).getRCount() < subComments.get(j + 1).getRCount()) {
+        //             Comment backup = subComments.get(j);
 
-                    subComments.set(j, subComments.get(j + 1));
-                    subComments.set(j + 1, backup);
-                }
-            }
-        }
+        //             subComments.set(j, subComments.get(j + 1));
+        //             subComments.set(j + 1, backup);
+        //         }
+        //     }
+        // }
 
         return this.subComments;
     }
@@ -72,12 +72,12 @@ public class Comment {
 
     public void recommendTheComment() {
         this.recommendCount[0]++;
-        this.rCount++;
+        //this.rCount++;
     }
 
     public void notRecommendTheComment() {
         this.recommendCount[1]++;
-        this.rCount--;
+        //this.rCount--;
     }
 
     public void recommendTheSubComment(String user) {

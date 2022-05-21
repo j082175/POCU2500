@@ -140,7 +140,7 @@ public class Program {
 
         {
             Blog blog1 = new Blog("BlogOwner1");
-            //blog1.setSortingType(Order.ASCENDING_BY_ARTICLE);
+            // blog1.setSortingType(Order.ASCENDING_BY_ARTICLE);
 
             Article article1 = new Article("a", "Crticle1", "first_post");
             Thread.sleep(100);
@@ -171,7 +171,6 @@ public class Program {
             Comment subcomment4 = new Comment("four", "subcomment4");
             Comment subcomment5 = new Comment("five", "subcomment5");
 
-
             article1.addComment(comment1);
             article1.addComment(comment2);
             article1.addComment(comment3);
@@ -184,7 +183,7 @@ public class Program {
             comment1.addSubComment(subcomment4);
             comment1.addSubComment(subcomment5);
 
-            //subcomment1.changeComment("one", "changed");
+            // subcomment1.changeComment("one", "changed");
 
             var comments = article1.getComments();
             var subcomments = comment1.getSubComments();
@@ -221,50 +220,49 @@ public class Program {
                 System.out.println(a.getContent() + " " + a.getRCount());
             }
 
-            subcomment1.recommendTheComment();
-            subcomment1.recommendTheComment();
-            subcomment1.recommendTheComment(); // 3
+            // subcomment1.recommendTheComment();
+            // subcomment1.recommendTheComment();
+            // subcomment1.recommendTheComment(); // 3
 
-            subcomment2.notRecommendTheComment();
-            subcomment2.notRecommendTheComment(); // -2
+            // subcomment2.notRecommendTheComment();
+            // subcomment2.notRecommendTheComment(); // -2
 
-            subcomment3.recommendTheComment();
-            subcomment3.recommendTheComment();
-            subcomment3.recommendTheComment();
-            subcomment3.recommendTheComment(); // 4
+            // subcomment3.recommendTheComment();
+            // subcomment3.recommendTheComment();
+            // subcomment3.recommendTheComment();
+            // subcomment3.recommendTheComment(); // 4
 
-            subcomment4.notRecommendTheComment();
-            subcomment4.notRecommendTheComment();
-            subcomment4.notRecommendTheComment(); // -3
+            // subcomment4.notRecommendTheComment();
+            // subcomment4.notRecommendTheComment();
+            // subcomment4.notRecommendTheComment(); // -3
 
-            subcomment5.recommendTheComment();
-            subcomment5.notRecommendTheComment(); // 0
+            // subcomment5.recommendTheComment();
+            // subcomment5.notRecommendTheComment(); // 0
 
-            // comment1.recommendTheSubComment("one");
-            // comment1.recommendTheSubComment("one");
-            // comment1.recommendTheSubComment("one"); // 3
+            comment1.recommendTheSubComment("one");
+            comment1.recommendTheSubComment("one");
+            comment1.recommendTheSubComment("one"); // 3
 
-            // comment1.notRecommendTheSubComment("two");
-            // comment1.notRecommendTheSubComment("two"); // -2
+            comment1.notRecommendTheSubComment("two");
+            comment1.notRecommendTheSubComment("two"); // -2
 
-            // comment1.recommendTheSubComment("three");
-            // comment1.recommendTheSubComment("three");
-            // comment1.recommendTheSubComment("three");
-            // comment1.recommendTheSubComment("three"); // 4
+            comment1.recommendTheSubComment("three");
+            comment1.recommendTheSubComment("three");
+            comment1.recommendTheSubComment("three");
+            comment1.recommendTheSubComment("three"); // 4
 
-            // comment1.notRecommendTheSubComment("four");
-            // comment1.notRecommendTheSubComment("four");
-            // comment1.notRecommendTheSubComment("four"); // -3
+            comment1.notRecommendTheSubComment("four");
+            comment1.notRecommendTheSubComment("four");
+            comment1.notRecommendTheSubComment("four"); // -3
 
-            // comment1.recommendTheSubComment("five");
-            // comment1.notRecommendTheSubComment("five"); // 0
-
-            System.out.println(comment1.getSubComments().get(0).getRCount());
+            comment1.recommendTheSubComment("five");
+            comment1.notRecommendTheSubComment("five"); // 0
 
             var resultsub = comment1.getSubComments();
-            // for (var a : resultsub) {
-            //     System.out.println(a.getContent() + " " + a.getRCount());
-            // }
+
+            for (var a : resultsub) {
+                System.out.println(a.getContent() + " " + a.getRCount());
+            }
         }
 
         // 8.

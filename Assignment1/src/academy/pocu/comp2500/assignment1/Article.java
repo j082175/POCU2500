@@ -81,12 +81,12 @@ public class Article {
 
         for (int i = 0; i < comments.size(); i++) {
             for (int j = 0; j < comments.size() - 1 - i; j++) {
-                if (comments.get(j).getRCount() < comments.get(j + 1).getRCount()) {
-                    Comment backup = comments.get(j);
+                // if (comments.get(j).getRCount() < comments.get(j + 1).getRCount()) {
+                //     Comment backup = comments.get(j);
 
-                    comments.set(j, comments.get(j + 1));
-                    comments.set(j + 1, backup);
-                }
+                //     comments.set(j, comments.get(j + 1));
+                //     comments.set(j + 1, backup);
+                // }
             }
         }
 
