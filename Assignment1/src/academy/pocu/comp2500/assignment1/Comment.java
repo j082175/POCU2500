@@ -42,7 +42,11 @@ public class Comment {
     }
 
     public void changeSubComment(Comment user, String text) {
-        
+        for (int i = 0; i < this.subComments.size(); i++) {
+            if (user.equals(this.subComments.get(i).getUser())) {
+                
+            }
+        }
     }
 
     public void recommendTheComment() {

@@ -1,14 +1,7 @@
 package academy.pocu.comp2500.assignment1;
 
-import java.time.Instant;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.time.OffsetDateTime;
-import java.time.ZoneId;
-import java.time.ZoneOffset;
-import java.time.ZonedDateTime;
-import java.time.zone.ZoneOffsetTransitionRule;
+
 import java.util.ArrayList;
 
 public class Article {
@@ -28,10 +21,10 @@ public class Article {
         this.content = content;
         this.user = user;
 
-        LocalDateTime l = LocalDateTime.now();
+
         
-        createdTime = l.atOffset(ZoneOffset.UTC);
-        revisedTime = l.atOffset(ZoneOffset.UTC);
+        createdTime = OffsetDateTime.now();
+        revisedTime = createdTime;
 
         this.tag = new ArrayList<>();
         comments = new ArrayList<>();
@@ -224,20 +217,23 @@ public class Article {
     // }
 
     public void changeArticleTitle(String title, String user) {
-        if (user.equals(this.user)) {
+        if (this.user.equals(user)) {
             this.title = title;
+            revisedTime = OffsetDateTime.now();
         }
     }
 
     public void changeArticleContent(String content, String user) {
         if (user.equals(this.user)) {
             this.content = content;
+            revisedTime = OffsetDateTime.now();
         }
     }
 
     public void addArticleTag(String tag, String user) {
         if (user.equals(this.user)) {
             this.tag.add(tag);
+            revisedTime = OffsetDateTime.now();
         }
     }
 

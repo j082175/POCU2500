@@ -93,11 +93,11 @@ public class Program {
             blog1.setSortingType(Order.DESCENDING_BY_WRITE_TIME);
 
             Article article1 = new Article("Article1", "first_post", "a");
-            Thread.sleep(1000);
+            //Thread.sleep(1000);
             Article article2 = new Article("Article2", "secone_post", "b");
-            Thread.sleep(1000);
+            //Thread.sleep(1000);
             Article article3 = new Article("Article3", "third_post", "c");
-            Thread.sleep(1000);
+            //Thread.sleep(1000);
 
             blog1.addArticle(article1);
             blog1.addArticle(article2);
@@ -116,11 +116,11 @@ public class Program {
             blog1.setSortingType(Order.DESCENDING_BY_WRITE_TIME);
 
             Article article1 = new Article("Article1", "first_post", "a");
-            Thread.sleep(1000);
+            //Thread.sleep(1000);
             Article article2 = new Article("Article2", "secone_post", "b");
-            Thread.sleep(1000);
+            //Thread.sleep(1000);
             Article article3 = new Article("Article3", "third_post", "c");
-            Thread.sleep(1000);
+            //Thread.sleep(1000);
 
             blog1.addArticle(article1);
             blog1.addArticle(article2);
@@ -154,12 +154,18 @@ public class Program {
 
             ArrayList<Article> articles = blog1.getArticles(); // 여기서 태그 달린것들만 가져와야함.
 
-            articles.get(0).changeArticleContent("getdodize", "hoho");
+            for (int i = 0; i < 3; i++) {
+                System.out.println(articles.get(i).getReviseTime() + articles.get(i).getTitle());
+                System.out.println(articles.get(i).getTime());
+            }
+
+            article1.changeArticleTitle("revised_article1", "a");
 
             articles.get(0).addReaction(Reaction.SAD);
 
             for (int i = 0; i < 3; i++) {
-                System.out.println(articles.get(i).getTimeNano());
+                System.out.println(articles.get(i).getReviseTime() + articles.get(i).getTitle());
+                System.out.println(articles.get(i).getTime());
             }
         }
 
