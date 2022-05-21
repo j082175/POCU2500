@@ -134,7 +134,7 @@ public class Blog {
 
     //User defined methods
 
-    public void addArticle(Article article, Comment comment) {
+    public void addArticle(Article article) {
         articles.add(article);
     }
 
@@ -158,7 +158,7 @@ public class Blog {
         }
     }
 
-    public void addSubComment(Article article, Comment comment, SubComment subcomment) {
+    public void addSubComment(Article article, Comment comment, Comment subcomment) {
         for (int i = 0; i < articles.size(); i++) {
             if (articles.get(i).getName().equals(article.getName())) {
                 if (articles.get(i).getComments().get(i).getId() == comment.getId()) {
@@ -172,7 +172,7 @@ public class Blog {
 
     }
 
-    public void changeSubComment(Article article, Comment comment, SubComment subcomment, String text) {
+    public void changeSubComment(Article article, Comment comment, Comment subcomment, String text) {
 
     }
 
@@ -216,11 +216,11 @@ public class Blog {
 
     }
 
-    public void recommendTheSubComment(Article article, Comment comment, SubComment subcomment) {
+    public void recommendTheSubComment(Article article, Comment comment, Comment subcomment) {
 
     }
 
-    public void notRecommendTheSubComment(Article article, Comment comment, SubComment subcomment) {
+    public void notRecommendTheSubComment(Article article, Comment comment, Comment subcomment) {
 
     }
 }

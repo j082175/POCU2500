@@ -8,7 +8,7 @@ import academy.pocu.comp2500.assignment1.Blog;
 import academy.pocu.comp2500.assignment1.Comment;
 import academy.pocu.comp2500.assignment1.Order;
 import academy.pocu.comp2500.assignment1.Reaction;
-import academy.pocu.comp2500.assignment1.SubComment;
+
 import academy.pocu.comp2500.assignment1.registry.Registry;
 
 
@@ -34,7 +34,7 @@ public class Program {
         Article article1 = new Article("title1", "fefe", "writer1");
         Comment comment1 = new Comment("comment1", 1);
         Comment subComment1 = new Comment("sub_comment", 1);
-        blog1.addArticle(article1, comment1);
+        blog1.addArticle(article1);
         var articles1 = blog1.getArticles("reader1");
         
         System.out.println(articles1.get(0).getTime());
