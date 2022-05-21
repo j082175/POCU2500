@@ -16,9 +16,9 @@ public class Blog {
 
     public Blog(String user) {
 
-        this.tagFilter = null;
-        this.userFilter = null;
-        this.sortingType = Order.DESCENDING_BY_WRITE_TIME;
+        // this.tagFilter = null;
+        // this.userFilter = null;
+        // this.sortingType = Order.DESCENDING_BY_WRITE_TIME;
         articles = new ArrayList<>(100);
 
 
@@ -28,6 +28,10 @@ public class Blog {
     // dangerous code
     public ArrayList<Article> getArticles() {
         return this.articles;
+    }
+
+    public  String getUser() {
+        return this.userName;
     }
 
     // protected void setArticles(String title, String content, String name) {

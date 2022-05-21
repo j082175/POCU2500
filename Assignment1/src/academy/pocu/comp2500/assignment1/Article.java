@@ -179,4 +179,7 @@ public class Article {
     public void addArticleTag(String tag) {
         this.tag = tag;
     }
+
+
+    
 }

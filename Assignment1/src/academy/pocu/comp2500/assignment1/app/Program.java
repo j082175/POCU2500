@@ -1,6 +1,8 @@
 package academy.pocu.comp2500.assignment1.app;
 
 import java.util.ArrayList;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 import academy.pocu.comp2500.assignment1.App;
 import academy.pocu.comp2500.assignment1.Article;
@@ -22,86 +24,55 @@ public class Program {
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         Registry registry = new Registry();
         App app = new App(registry);
         registry.validate();
 
         // 1.
-
-        Blog blog1 = new Blog("blog1Owner");
-        Article article1 = new Article("title1", "fefe", "writer1");
-        Comment comment1 = new Comment("comment1", "abcde");
-        Comment subComment1 = new Comment("sub_comment", "fffffffffffff");
-        blog1.addArticle(article1);
-        var articles1 = blog1.getArticles();
-        articles1.get(0).addComment(comment1,"JUNSOOCHO");
-        blog1.setTagFilter("tag1");
-
-        // 서브댓글추가하기
         {
-            var comments1 = articles1.get(0).getComments();
-            comments1.get(0).addSubComment(subComment1);
+            Blog blog1 = new Blog("BlogOwner1");
+            Article article1 = new Article("Article1", "first_post", "BlogOwner1");
+            blog1.addArticle(article1);
         }
-
-        // 서브댓글가져오기
-        {
-            var comments1 = articles1.get(0).getComments();
-            var subcomments1 = comments1.get(0).getSubComment();
-            subcomments1.get(0).getContent();
-            System.out.println(subcomments1.get(0).getContent());
-        }
-
-
-
-        // System.out.println(article1.getReviseTime());
-
-        System.out.println("---------------------------------------");
 
         // 2.
+        {
+            Blog blog1 = new Blog("BlogOwner1");
+            Article article1 = new Article("Article1", "first_post", "a");
+            Article article2 = new Article("Article2", "secone_post", "b");
+            Article article3 = new Article("Article3", "third_post", "c");
 
-        // Blog blog2 = new Blog("second blog","blog2Owner");
+            blog1.addArticle(article1);
+            blog1.addArticle(article2);
+            blog1.addArticle(article3);
 
-        // var articles = blog2.addArticle(title, content, name);
+            ArrayList<Article> articles = blog1.getArticles();
+            // for (var a : articles) {
+            // System.out.println(a.getTitle() + a.getContent() + a.getUserName());
+            // }
+        }
 
-        // System.out.println("1.name : " + articles.get(0).getName() + " 2.content : "
-        // + articles.get(0).getContent());
+        // 3.
+        {
+            Blog blog1 = new Blog("BlogOwner1");
+            
 
-        // System.out.println("---------------------------------------");
+            Article article1 = new Article("Article1", "first_post", "a");
+            Article article2 = new Article("Article2", "secone_post", "b");
+            Article article3 = new Article("Article3", "third_post", "c");
 
-        // // 3.
+            blog1.addArticle(article1);
+            blog1.addArticle(article2);
+            blog1.addArticle(article3);
 
-        // Blog blog3 = new Blog("third blog");
-        // Writer writer2 = new Writer("second writer");
-        // writer2.addArticle(blog3, "one", "fwefwefwewf");
-        // // timeTanos();
-        // writer2.addArticle(blog3, "two", "eeeeeeeeeerere");
-        // // timeTanos();
-        // writer2.addArticle(blog3, "three", "reeeeeeee");
-        // // timeTanos();
-        // Reader reader2 = new Reader("second reader");
+            ArrayList<Article> articles = blog1.getArticles();
+            articles.get(0).addArticleTag("TAG1");
 
-        // articles = reader2.getArticles(blog3);
-        // blog3.setSortingType(Order.ASCENDING_BY_REVISE_TIME);
-        // for (int i = 0; i < articles.size(); i++) {
-        // System.out.println(articles.get(i).getOrderNumber());
-        // }
-
-        // for (int i = 0; i < articles.size(); i++) {
-        // System.out.println(articles.get(i).getReviseTime());
-        // }
-
-        // System.out.println("---------------------------------------");
-
-        // reader2.addReaction(blog3, articles.get(0), Reaction.GREAT);
-        // int arr[] = articles.get(0).getReactionCount();
-        // System.out.println(arr[0]);
-        // reader2.removeReaction(blog3, articles.get(0), Reaction.GREAT);
-        // System.out.println(arr[0]);
-
-        // reader2.addComment(blog3, articles.get(0), "first comment");
-        // var zeroComments = reader2.getComments(blog3, articles.get(0));
-        // System.out.println(zeroComments.get(0).getContent());
+            for (var a : articles) {
+                System.out.println(a.getTitle());
+            }
+        }
 
     }
 }
