@@ -140,13 +140,13 @@ public class Program {
 
         {
             Blog blog1 = new Blog("BlogOwner1");
-            blog1.setSortingType(Order.DESCENDING_BY_WRITE_TIME);
+            blog1.setSortingType(Order.ASCENDING_BY_ARTICLE);
 
-            Article article1 = new Article("Article1", "first_post", "a");
+            Article article1 = new Article("a", "Crticle1", "first_post");
             Thread.sleep(100);
-            Article article2 = new Article("Article2", "secone_post", "b");
+            Article article2 = new Article("b", "Brticle2", "secone_post");
             Thread.sleep(100);
-            Article article3 = new Article("Article3", "third_post", "c");
+            Article article3 = new Article("c", "Article3", "third_post");
             Thread.sleep(100);
 
             blog1.addArticle(article1);
@@ -155,11 +155,15 @@ public class Program {
 
             ArrayList<Article> articles = blog1.getArticles(); // 여기서 태그 달린것들만 가져와야함.
 
-            Comment comment1 = new Comment("content1", "one");
-            Comment comment2 = new Comment("content2", "two");
+            for (var a : articles) {
+                System.out.println(a.getTitle());
+            }
 
-            Comment subcomment1 = new Comment("subcomment1", "one");
-            Comment subcomment2 = new Comment("subcomment2", "two");
+            Comment comment1 = new Comment("one", "content1");
+            Comment comment2 = new Comment("two", "content2");
+
+            Comment subcomment1 = new Comment("one", "subcomment1");
+            Comment subcomment2 = new Comment("two", "subcomment2");
 
             article1.addComment(comment1);
             article1.addComment(comment2);
@@ -167,9 +171,8 @@ public class Program {
             comment1.addSubComment(subcomment1);
             comment1.addSubComment(subcomment2);
 
-            
-            subcomment1.changeComment("changed", "one");
-            
+            subcomment1.changeComment("one", "changed");
+
             var comments = article1.getComments();
             var subcomments = comment1.getSubComments();
 
@@ -181,7 +184,6 @@ public class Program {
                 System.out.println(a.getContent());
             }
 
-            
         }
 
         // 8.

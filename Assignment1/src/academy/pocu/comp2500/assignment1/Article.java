@@ -16,10 +16,10 @@ public class Article {
     private OffsetDateTime createdTime;
     private OffsetDateTime revisedTime;
 
-    public Article(String title, String content, String user) { // 파라미터 5개
+    public Article(String user, String title, String content) { // 파라미터 5개
+        this.user = user;
         this.title = title;
         this.content = content;
-        this.user = user;
 
 
         
@@ -227,21 +227,21 @@ public class Article {
 
     // }
 
-    public void changeArticleTitle(String title, String user) {
+    public void changeArticleTitle(String user, String title) {
         if (this.user.equals(user)) {
             this.title = title;
             revisedTime = OffsetDateTime.now();
         }
     }
 
-    public void changeArticleContent(String content, String user) {
+    public void changeArticleContent(String user, String content) {
         if (user.equals(this.user)) {
             this.content = content;
             revisedTime = OffsetDateTime.now();
         }
     }
 
-    public void addArticleTag(String tag, String user) {
+    public void addArticleTag(String user, String tag) {
         if (user.equals(this.user)) {
             this.tag.add(tag);
             revisedTime = OffsetDateTime.now();

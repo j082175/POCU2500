@@ -11,7 +11,7 @@ public class Comment {
 
     private int rCount;
 
-    public Comment(String content, String user) {
+    public Comment(String user, String content) {
         this.content = content;
         this.user = user;
         this.rCount = 0;
@@ -22,10 +22,6 @@ public class Comment {
 
     public String getContent() {
         return this.content;
-    }
-    
-    public void setContent(String content) {
-        this.content = content;
     }
 
     public int getRCount() {
@@ -56,7 +52,7 @@ public class Comment {
         if (this.subComments != null) {
             for (int i = 0; i < this.subComments.size(); i++) {
                 if (this.user.equals(subComments.get(i).getUser())) {
-                    this.subComments.get(i).setContent(content);
+                    this.subComments.get(i).changeComment(content, user);
                 }
             }
         }
@@ -93,7 +89,7 @@ public class Comment {
         }
     }
 
-    public void changeComment(String content, String user) {
+    public void changeComment(String user, String content) {
         if (this.user.equals(user)) {
             this.content = content;
         }
