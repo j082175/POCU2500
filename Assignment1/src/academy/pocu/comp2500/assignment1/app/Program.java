@@ -167,11 +167,20 @@ public class Program {
             comment1.addSubComment(subcomment1);
             comment1.addSubComment(subcomment2);
 
-            // article1.getComments();
+            var comments = article1.getComments();
+            var subcomments = comment1.getSubComments();
 
-            for (int i = 0; i < article1.getComments().size(); i++) {
-                System.out.println(article1.getComments().get(i).getContent());
+            subcomment1.changeSubComment(user, content);
+
+            for (var a : comments) {
+                System.out.println(a.getContent());
             }
+
+            for (var a : subcomments) {
+                System.out.println(a.getContent());
+            }
+
+            
         }
 
         // 8.

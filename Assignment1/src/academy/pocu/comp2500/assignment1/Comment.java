@@ -5,8 +5,8 @@ import java.util.ArrayList;
 public class Comment {
     private ArrayList<Comment> subComments;
     private int recommendCount[];
+    
     private String content;
-
     private String user;
 
     private int rCount;
@@ -23,13 +23,13 @@ public class Comment {
     public String getContent() {
         return this.content;
     }
+    
+    public void setContent(String content) {
+        this.content = content;
+    }
 
     public int getRCount() {
         return this.rCount;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
     }
 
     public ArrayList<Comment> getSubComments() {
@@ -53,11 +53,14 @@ public class Comment {
     }
 
     public void changeSubComment(String user, String content) {
-        for (int i = 0; i < this.subComments.size(); i++) {
-            if (this.user.equals(subComments.get(i).getUser())) {
-                this.subComments.get(i).setContent(content);
+        if (this.subComments != null) {
+            for (int i = 0; i < this.subComments.size(); i++) {
+                if (this.user.equals(subComments.get(i).getUser())) {
+                    this.subComments.get(i).setContent(content);
+                }
             }
         }
+
     }
 
     public void recommendTheComment() {
@@ -71,23 +74,27 @@ public class Comment {
     }
 
     public void recommendTheSubComment(String user) {
-        for (int i = 0; i < this.subComments.size(); i++) {
-            if (this.user.equals(subComments.get(i).getUser())) {
-                this.subComments.get(i).recommendTheComment();
+        if (this.subComments != null) {
+            for (int i = 0; i < this.subComments.size(); i++) {
+                if (this.user.equals(subComments.get(i).getUser())) {
+                    this.subComments.get(i).recommendTheComment();
+                }
             }
         }
     }
 
     public void notRecommendTheSubComment(String user) {
-        for (int i = 0; i < this.subComments.size(); i++) {
-            if (this.user.equals(subComments.get(i).getUser())) {
-                this.subComments.get(i).notRecommendTheComment();
+        if (this.subComments != null) {
+            for (int i = 0; i < this.subComments.size(); i++) {
+                if (this.user.equals(subComments.get(i).getUser())) {
+                    this.subComments.get(i).notRecommendTheComment();
+                }
             }
         }
     }
 
     public void changeComment(String content, String user) {
-        if (user.equals(this.user)) {
+        if (this.user.equals(user)) {
             this.content = content;
         }
     }
