@@ -41,7 +41,7 @@ public class Program {
         // 서브댓글추가하기
         {
             var comments1 = articles1.get(0).getComments();
-            comments1.get(0).addSubComment(new Comment("my name is :"), "jiho");
+            comments1.get(0).addSubComment(subComment1);
         }
 
         // 서브댓글가져오기
@@ -49,6 +49,7 @@ public class Program {
             var comments1 = articles1.get(0).getComments();
             var subcomments1 = comments1.get(0).getSubComment();
             subcomments1.get(0).getContent();
+            System.out.println(subcomments1.get(0).getContent());
         }
 
 

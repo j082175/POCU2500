@@ -17,13 +17,6 @@ public class Comment {
         subComments = new ArrayList<>();
     }
 
-    public Comment(String content) {
-        this.content = content;
-
-        recommendCount = new Recommend[2];
-        subComments = new ArrayList<>();
-    }
-
     public String getContent() {
         return this.content;
     }
@@ -44,8 +37,7 @@ public class Comment {
 
     //구동부
 
-    public void addSubComment(Comment subcomment, String user) {
-        this.user = user;
+    public void addSubComment(Comment subcomment) {
         this.subComments.add(subcomment);
     }
 
