@@ -6,11 +6,19 @@ public class Comment {
     private ArrayList<Comment> subComments;
     private Recommend recommendCount[];
     private String content;
-    private int commentId;
 
-    public Comment(String content, int commentId) {
+    private String user;
+
+    public Comment(String content, String user) {
         this.content = content;
-        this.commentId = commentId;
+        this.user = user;
+
+        recommendCount = new Recommend[2];
+        subComments = new ArrayList<>();
+    }
+
+    public Comment(String content) {
+        this.content = content;
 
         recommendCount = new Recommend[2];
         subComments = new ArrayList<>();
@@ -28,7 +36,44 @@ public class Comment {
         return this.recommendCount;
     }
 
-    public int getId() {
-        return this.commentId;
+    public String getUser() {
+        return this.user;
+    }
+
+
+
+    //구동부
+
+    public void addSubComment(Comment subcomment, String user) {
+        this.user = user;
+        this.subComments.add(subcomment);
+    }
+
+    public void changeSubComment(Comment subcomment, String text) {
+        
+    }
+
+    public void recommendTheComment(Comment comment) {
+
+    }
+
+    public void notRecommendTheComment(Comment comment) {
+
+    }
+
+    public void getSubComments(Comment comment) {
+
+    }
+
+    public void recommendTheSubComment(Comment comment, Comment subcomment) {
+
+    }
+
+    public void notRecommendTheSubComment(Comment comment, Comment subcomment) {
+
+    }
+
+    public void changeComment(Comment comment, String text) {
+
     }
 }

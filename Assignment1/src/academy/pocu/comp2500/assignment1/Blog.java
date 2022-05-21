@@ -135,101 +135,101 @@ public class Blog {
         articles.add(article);
     }
 
-    public void changeArticleTitle(Article article, String title) {
-        for (int i = 0; i < this.articles.size(); i++) {
-            if (this.articles.get(i).getTitle().equals(title)) {
-                this.articles.get(i).setTitle(title);
-            }
-        }
-    }
+    // public void changeArticleTitle(Article article, String title) {
+    //     for (int i = 0; i < this.articles.size(); i++) {
+    //         if (this.articles.get(i).getTitle().equals(title)) {
+    //             this.articles.get(i).setTitle(title);
+    //         }
+    //     }
+    // }
 
-    public void changeArticleContent(Article article, String content) {
-        for (int i = 0; i < this.articles.size(); i++) {
-            if (this.articles.get(i).getContent().equals(content)) {
-                this.articles.get(i).setTitle(content);
-            }
-        }
-    }
+    // public void changeArticleContent(Article article, String content) {
+    //     for (int i = 0; i < this.articles.size(); i++) {
+    //         if (this.articles.get(i).getContent().equals(content)) {
+    //             this.articles.get(i).setTitle(content);
+    //         }
+    //     }
+    // }
 
-    public void addArticleTag(Article article, String tag) {
-        for (int i = 0; i < this.articles.size(); i++) {
-            if (this.articles.get(i).getTag().equals(tag)) {
-                this.articles.get(i).setTag(tag);
-            }
-        }
-    }
+    // public void addArticleTag(Article article, String tag) {
+    //     for (int i = 0; i < this.articles.size(); i++) {
+    //         if (this.articles.get(i).getTag().equals(tag)) {
+    //             this.articles.get(i).setTag(tag);
+    //         }
+    //     }
+    // }
 
-    public void addComment(Article article, String content) {
-        for (int i = 0; i < articles.size(); i++) {
-            if (articles.get(i).getTitle().equals(article.getTitle())) {
-                articles.get(i).getComments().add(new Comment(content, article.getComments().size()));
-            }
-        }
-    }
+    // public void addComment(Article article, String content) {
+    //     for (int i = 0; i < articles.size(); i++) {
+    //         if (articles.get(i).getTitle().equals(article.getTitle())) {
+    //             articles.get(i).getComments().add(new Comment(content, article.getComments().size()));
+    //         }
+    //     }
+    // }
 
-    public void addSubComment(Article article, Comment comment, Comment subcomment) {
-        for (int i = 0; i < articles.size(); i++) {
-            if (articles.get(i).getTitle().equals(article.getTitle())) {
-                if (articles.get(i).getComments().get(i).getId() == comment.getId()) {
+    // public void addSubComment(Article article, Comment comment, Comment subcomment) {
+    //     for (int i = 0; i < articles.size(); i++) {
+    //         if (articles.get(i).getTitle().equals(article.getTitle())) {
+    //             if (articles.get(i).getComments().get(i).getId() == comment.getId()) {
                     
-                }
-            }
-        }
-    }
+    //             }
+    //         }
+    //     }
+    // }
 
-    public void changeComment(Article article, Comment comment, String text) {
+    // public void changeComment(Article article, Comment comment, String text) {
 
-    }
+    // }
 
-    public void changeSubComment(Article article, Comment comment, Comment subcomment, String text) {
+    // public void changeSubComment(Article article, Comment comment, Comment subcomment, String text) {
 
-    }
+    // }
 
-    public void addReaction(Article article, Reaction reactionType) {
-        for (int i = 0; i < articles.size(); i++) {
-            if (articles.get(i).getTitle().equals(article.getTitle())) {
-                articles.get(i).increaseReactionCount(reactionType);
-            }
-        }
-    }
+    // public void addReaction(Article article, Reaction reactionType) {
+    //     for (int i = 0; i < articles.size(); i++) {
+    //         if (articles.get(i).getTitle().equals(article.getTitle())) {
+    //             articles.get(i).increaseReactionCount(reactionType);
+    //         }
+    //     }
+    // }
 
-    public void removeReaction(Article article, Reaction reactionType) {
-        for (int i = 0; i < articles.size(); i++) {
-            if (articles.get(i).getTitle().equals(article.getTitle())) {
-                articles.get(i).decreaseReactionCount(reactionType);
-            }
-        }
-    }
+    // public void removeReaction(Article article, Reaction reactionType) {
+    //     for (int i = 0; i < articles.size(); i++) {
+    //         if (articles.get(i).getTitle().equals(article.getTitle())) {
+    //             articles.get(i).decreaseReactionCount(reactionType);
+    //         }
+    //     }
+    // }
 
-    public void recommendTheComment(Article article, Comment comment) {
+    // public void recommendTheComment(Article article, Comment comment) {
 
-    }
+    // }
 
-    public void notRecommendTheComment(Article article, Comment comment) {
+    // public void notRecommendTheComment(Article article, Comment comment) {
 
-    }
+    // }
 
-    public ArrayList<Comment> getComments(Article article) {
-        ArrayList<Comment> a = new ArrayList<>();
-        for (int i = 0; i < articles.size(); i++) {
-            if (articles.get(i).getTitle().equals(article.getTitle())) {
-                a = articles.get(i).getComments();
-                break;
-            }
-        }
+    // public ArrayList<Comment> getComments(Article article) {
+    //     ArrayList<Comment> a = new ArrayList<>();
+    //     for (int i = 0; i < articles.size(); i++) {
+    //         if (articles.get(i).getTitle().equals(article.getTitle())) {
+    //             a = articles.get(i).getComments();
+    //             break;
+    //         }
+    //     }
 
-        return a;
-    }
+    //     return a;
+    // }
 
-    public void getSubComments(Article article, Comment comment) {
+    // public void getSubComments(Article article, Comment comment) {
 
-    }
+    // }
 
-    public void recommendTheSubComment(Article article, Comment comment, Comment subcomment) {
+    // public void recommendTheSubComment(Article article, Comment comment, Comment subcomment) {
 
-    }
+    // }
 
-    public void notRecommendTheSubComment(Article article, Comment comment, Comment subcomment) {
+    // public void notRecommendTheSubComment(Article article, Comment comment, Comment subcomment) {
 
-    }
+    // }
 }

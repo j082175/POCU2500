@@ -31,13 +31,27 @@ public class Program {
 
         Blog blog1 = new Blog("blog1Owner");
         Article article1 = new Article("title1", "fefe", "writer1");
-        Comment comment1 = new Comment("comment1", 1);
-        Comment subComment1 = new Comment("sub_comment", 1);
+        Comment comment1 = new Comment("comment1", "abcde");
+        Comment subComment1 = new Comment("sub_comment", "fffffffffffff");
         blog1.addArticle(article1);
         var articles1 = blog1.getArticles();
+        articles1.get(0).addComment(comment1,"JUNSOOCHO");
         blog1.setTagFilter("tag1");
-        blog1.addReaction(article1, Reaction.SAD);
-        int arr[] = article1.getReactionCount();
+
+        // 서브댓글추가하기
+        {
+            var comments1 = articles1.get(0).getComments();
+            comments1.get(0).addSubComment(new Comment("my name is :"), "jiho");
+        }
+
+        // 서브댓글가져오기
+        {
+            var comments1 = articles1.get(0).getComments();
+            var subcomments1 = comments1.get(0).getSubComment();
+            subcomments1.get(0).getContent();
+        }
+
+
 
         // System.out.println(article1.getReviseTime());
 

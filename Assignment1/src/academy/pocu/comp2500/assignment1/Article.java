@@ -1,6 +1,5 @@
 package academy.pocu.comp2500.assignment1;
 
-import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 
@@ -25,18 +24,14 @@ public class Article {
         revisedTime = OffsetDateTime.now();
 
         comments = new ArrayList<>();
-        reactionCount = new int[5];
+        reactionCount = new int[] {0, 0, 0, 0, 0};
     }
 
     public OffsetDateTime getTime() {
-        // String formatedNow = createdTime.getData().format(DateTimeFormatter.ofPattern("yyyy년 MM월 dd일 HH시 mm분 ss초"));
-        // return formatedNow;
         return this.createdTime;
     }
 
     public OffsetDateTime getReviseTime() {
-        // String formatedNow = reviseTime.getData().format(DateTimeFormatter.ofPattern("yyyy년 MM월 dd일 HH시 mm분 ss초"));
-        // return formatedNow;
         return this.revisedTime;
     }
 
@@ -119,5 +114,69 @@ public class Article {
             default: 
                 break;
         }
+    }
+
+
+
+
+    // 구동부
+
+    public void addComment(Comment comment, String user) {
+        this.user = user;
+        this.comments.add(comment);
+    }
+
+    // public void addSubComment(Comment subcomment, String user) {
+    //     this.user = user;
+    //     this.comments.add(subcomment);
+    // }
+
+    // public void changeComment(Article article, Comment comment, String text) {
+
+    // }
+
+    // public void changeSubComment(Article article, Comment comment, Comment subcomment, String text) {
+
+    // }
+
+    public void addReaction(Reaction reactionType) {
+
+    }
+
+    public void removeReaction(Reaction reactionType) {
+
+    }
+
+    // public void recommendTheComment(Article article, Comment comment) {
+
+    // }
+
+    // public void notRecommendTheComment(Article article, Comment comment) {
+
+    // }
+
+
+    // public void getSubComments(Article article, Comment comment) {
+
+    // }
+
+    // public void recommendTheSubComment(Article article, Comment comment, Comment subcomment) {
+
+    // }
+
+    // public void notRecommendTheSubComment(Article article, Comment comment, Comment subcomment) {
+
+    // }
+
+    public void changeArticleTitle(String title) {
+        this.title = title;
+    }
+
+    public void changeArticleContent(String content) {
+        this.content = content;
+    }
+
+    public void addArticleTag(String tag) {
+        this.tag = tag;
     }
 }
