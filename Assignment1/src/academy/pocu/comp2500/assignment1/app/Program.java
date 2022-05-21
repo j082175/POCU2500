@@ -1,16 +1,11 @@
 package academy.pocu.comp2500.assignment1.app;
 
 import java.util.ArrayList;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
 
 import academy.pocu.comp2500.assignment1.App;
 import academy.pocu.comp2500.assignment1.Article;
 import academy.pocu.comp2500.assignment1.Blog;
-import academy.pocu.comp2500.assignment1.Comment;
 import academy.pocu.comp2500.assignment1.Order;
-import academy.pocu.comp2500.assignment1.Reaction;
-
 import academy.pocu.comp2500.assignment1.registry.Registry;
 
 public class Program {
@@ -71,7 +66,7 @@ public class Program {
         {
             Blog blog1 = new Blog("BlogOwner1");
             blog1.setTagFilter("TAG1");
-            //blog1.setUserFilter("a");
+            // blog1.setUserFilter("a");
 
             Article article1 = new Article("Article1", "first_post", "a");
             Article article2 = new Article("Article2", "secone_post", "b");
@@ -81,17 +76,42 @@ public class Program {
             blog1.addArticle(article2);
             blog1.addArticle(article3);
 
-            //article3.addArticleTag("TAG1");
-            //article3.addArticleTag("TAG2");
+            // article3.addArticleTag("TAG1");
+            // article3.addArticleTag("TAG2");
 
             ArrayList<Article> articles = blog1.getArticles(); // 여기서 태그 달린것들만 가져와야함.
 
             // for (var a : articles) {
-            //     System.out.println(a.getTitle());
+            // System.out.println(a.getTitle());
             // }
         }
 
-        
+        // 5. 작성 일시 기준
+        {
+            Blog blog1 = new Blog("BlogOwner1");
+            blog1.setSortingType(Order.DESCENDING_BY_WRITE_TIME);
+
+            Article article1 = new Article("Article1", "first_post", "a");
+            Thread.sleep(1000);
+            Article article2 = new Article("Article2", "secone_post", "b");
+            Thread.sleep(1000);
+            Article article3 = new Article("Article3", "third_post", "c");
+            Thread.sleep(1000);
+
+            blog1.addArticle(article1);
+            blog1.addArticle(article2);
+            blog1.addArticle(article3);
+
+            ArrayList<Article> articles = blog1.getArticles(); // 여기서 태그 달린것들만 가져와야함.
+
+            for (int i = 0; i < 3; i++) {
+            System.out.println(articles.get(i).getTitle());
+            }
+        }
+
+        {
+
+        }
 
     }
 }

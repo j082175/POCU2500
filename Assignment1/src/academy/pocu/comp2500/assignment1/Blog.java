@@ -24,6 +24,8 @@ public class Blog {
     // dangerous code
     public ArrayList<Article> getArticles() {
 
+        setSortingType(this.sortingType);
+
         ArrayList<Article> newArticles = new ArrayList<>();
         if (tagFilter != null) {
             for (int i = 0; i < articles.size(); i++) {
@@ -40,6 +42,8 @@ public class Blog {
                     newArticles.add(this.articles.get(i));
                 }
             }
+        } else {
+            return this.articles;
         }
 
 
@@ -97,12 +101,13 @@ public class Blog {
             case DESCENDING_BY_WRITE_TIME:
                 for (int i = 0; i < articles.size(); i++) {
                     for (int j = 0; j < articles.size() - 1 - i; j++) {
-                        // if (articles.get(j).getOrderNumber() < articles.get(j + 1).getOrderNumber())
-                        // {
-                        // Article backup = articles.get(j);
-                        // articles.set(j, articles.get(j + 1));
-                        // articles.set(j + 1, backup);
-                        // }
+                        if (articles.get(j).getTimeNano() < articles.get(j + 1).getTimeNano())
+                        {
+                        Article backup = articles.get(j);
+
+                        articles.set(j, articles.get(j + 1));
+                        articles.set(j + 1, backup);
+                        }
                     }
                 }
                 break;
@@ -110,12 +115,12 @@ public class Blog {
             case ASCENDING_BY_WRITE_TIME:
                 for (int i = 0; i < articles.size(); i++) {
                     for (int j = 0; j < articles.size() - 1 - i; j++) {
-                        // if (articles.get(j).getOrderNumber() > articles.get(j + 1).getOrderNumber())
-                        // {
-                        // Article backup = articles.get(j);
-                        // articles.set(j, articles.get(j + 1));
-                        // articles.set(j + 1, backup);
-                        // }
+                        if (articles.get(j).getTimeNano() > articles.get(j + 1).getTimeNano())
+                        {
+                        Article backup = articles.get(j);
+                        articles.set(j, articles.get(j + 1));
+                        articles.set(j + 1, backup);
+                        }
                     }
                 }
                 break;
@@ -123,11 +128,11 @@ public class Blog {
             case DESCENDING_BY_REVISE_TIME:
                 for (int i = 0; i < articles.size(); i++) {
                     for (int j = 0; j < articles.size() - 1 - i; j++) {
-                        // if (articles.get(j).getReviseTime() < articles.get(j + 1).getReviseTime()) {
-                        // Article backup = articles.get(j);
-                        // articles.set(j, articles.get(j + 1));
-                        // articles.set(j + 1, backup);
-                        // }
+                        if (articles.get(j).getReviseTimeNano() < articles.get(j + 1).getReviseTimeNano()) {
+                        Article backup = articles.get(j);
+                        articles.set(j, articles.get(j + 1));
+                        articles.set(j + 1, backup);
+                        }
                     }
                 }
                 break;
@@ -135,11 +140,11 @@ public class Blog {
             case ASCENDING_BY_REVISE_TIME:
                 for (int i = 0; i < articles.size(); i++) {
                     for (int j = 0; j < articles.size() - 1 - i; j++) {
-                        // if (articles.get(j).getReviseTime() > articles.get(j + 1).getReviseTime()) {
-                        // Article backup = articles.get(j);
-                        // articles.set(j, articles.get(j + 1));
-                        // articles.set(j + 1, backup);
-                        // }
+                        if (articles.get(j).getReviseTimeNano() > articles.get(j + 1).getReviseTimeNano()) {
+                        Article backup = articles.get(j);
+                        articles.set(j, articles.get(j + 1));
+                        articles.set(j + 1, backup);
+                        }
                     }
                 }
                 break;

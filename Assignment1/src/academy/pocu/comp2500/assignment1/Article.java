@@ -11,7 +11,6 @@ public class Article {
     private String title;
     private String user;
 
-    //private int orderNumber;
     private OffsetDateTime createdTime;
     private OffsetDateTime revisedTime;
 
@@ -24,7 +23,7 @@ public class Article {
         revisedTime = OffsetDateTime.now();
 
         comments = new ArrayList<>();
-        reactionCount = new int[]{0, 0, 0, 0, 0};
+        reactionCount = new int[5];
     }
 
     public OffsetDateTime getTime() {
@@ -33,6 +32,14 @@ public class Article {
 
     public OffsetDateTime getReviseTime() {
         return this.revisedTime;
+    }
+
+    public int getTimeNano() {
+        return this.createdTime.getNano();
+    }
+
+    public int getReviseTimeNano() {
+        return this.revisedTime.getNano();
     }
 
     public String getContent() {
