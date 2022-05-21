@@ -35,7 +35,7 @@ public class Program {
         Comment comment1 = new Comment("comment1", 1);
         Comment subComment1 = new Comment("sub_comment", 1);
         blog1.addArticle(article1);
-        var articles1 = blog1.getArticles("reader1");
+        var articles1 = blog1.getArticles();
         
         System.out.println(article1.getReviseTime()); 
 

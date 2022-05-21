@@ -26,8 +26,7 @@ public class Blog {
     }
 
     // dangerous code
-    public ArrayList<Article> getArticles(String user) {
-        this.userName = user;
+    public ArrayList<Article> getArticles() {
         return this.articles;
     }
 
