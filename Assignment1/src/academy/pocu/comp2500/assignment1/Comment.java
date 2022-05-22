@@ -2,6 +2,8 @@ package academy.pocu.comp2500.assignment1;
 
 import java.util.ArrayList;
 
+import javax.naming.spi.DirStateFactory.Result;
+
 public class Comment {
     private ArrayList<Comment> subComments;
     //private int recommendCount[];
@@ -65,16 +67,34 @@ public class Comment {
         this.subComments.add(comment);
     }
 
-    public void changeSubComment(String user, String content) {
+    public void changeComment(String user, String content) {
+        if (this.user.equals(user)) {
+            this.content = content;
+        }
+    }
+
+    // public void changeSubComment(String user, String content) {
+    //     if (this.subComments != null) {
+    //         for (int i = 0; i < this.subComments.size(); i++) {
+    //             if (subComments.get(i).getUser().equals(user)) {
+                    
+    //                 this.subComments.get(i).changeComment(user, content);
+    //             }
+    //         }
+    //     }
+    // }
+
+    public Comment changeSubComment(String user) {
+        Comment result = null;
         if (this.subComments != null) {
             for (int i = 0; i < this.subComments.size(); i++) {
                 if (subComments.get(i).getUser().equals(user)) {
-                    
-                    this.subComments.get(i).changeComment(user, content);
+                    result = subComments.get(i);
                 }
             }
         }
 
+        return result;
     }
 
     public void recommendTheComment() {
@@ -123,9 +143,5 @@ public class Comment {
         // }
     }
 
-    public void changeComment(String user, String content) {
-        if (this.user.equals(user)) {
-            this.content = content;
-        }
-    }
+
 }
