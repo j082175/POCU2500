@@ -28,7 +28,7 @@ public class Blog {
 
         ArrayList<Article> newArticles = new ArrayList<>();
         if (tagFilter != null) {
-            for (int i = 0; i < articles.size(); i++) {
+            for (int i = 0; i < this.articles.size(); i++) {
                 for (int j = 0; j < this.articles.get(i).getTag().size(); j++) {
                     if (this.articles.get(i).getTag().get(j).equals(tagFilter)) {
                         newArticles.add(this.articles.get(i));
@@ -36,6 +36,7 @@ public class Blog {
                     }
                 }
             }
+
             this.articles = newArticles;
 
         }

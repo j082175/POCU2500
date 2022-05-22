@@ -116,24 +116,24 @@ public class Program {
             Blog blog1 = new Blog("BlogOwner1");
             blog1.setSortingType(Order.DESCENDING_BY_WRITE_TIME);
             blog1.setTagFilter("tag1");
+            blog1.setUserFilter("a");
 
-            Article article1 = new Article("Article1", "first_post", "a");
+            Article article1 = new Article("a", "article1", "first_post");
             // Thread.sleep(1000);
-            Article article2 = new Article("Article2", "secone_post", "b");
+            Article article2 = new Article("b", "article2", "secone_post");
             // Thread.sleep(1000);
-            Article article3 = new Article("Article3", "third_post", "c");
+            Article article3 = new Article("c", "article3", "third_post");
             // Thread.sleep(1000);
 
             blog1.addArticle(article1);
             blog1.addArticle(article2);
             blog1.addArticle(article3);
-
+            article1.addArticleTag("a", "tag1");
+            article3.addArticleTag("c", "tag1");
             ArrayList<Article> articles = blog1.getArticles(); // 여기서 태그 달린것들만 가져와야함.
 
-            articles.get(0).changeArticleTitle("a", "title1");
-            article1.addArticleTag("a", "tag1");
-            for (int i = 0; i < 3; i++) {
-                System.out.println(articles.get(i).getTitle());
+            for (var a : articles) {
+                System.out.println(a.getTitle());
             }
         }
 
