@@ -55,8 +55,8 @@ public class Comment {
 
     //구동부
 
-    public void addSubComment(Comment subcomment) {
-        this.subComments.add(subcomment);
+    public void addSubComment(String user, String content) {
+        this.subComments.add(new Comment(user, content));
     }
 
     public void changeSubComment(String user, String content) {
@@ -80,24 +80,38 @@ public class Comment {
         this.rCount--;
     }
 
-    public void recommendTheSubComment(String user) {
+    public void recommendTheSubComment(int commentId) {
+
         if (this.subComments != null) {
-            for (int i = 0; i < this.subComments.size(); i++) {
-                if (this.user.equals(subComments.get(i).getUser())) {
-                    this.subComments.get(i).recommendTheComment();
-                }
-            }
+            this.subComments.get(commentId).recommendTheComment();
         }
+
+        // if (this.subComments != null) {
+        //     for (int i = 0; i < this.subComments.size(); i++) {
+        //         if (this.user.equals(subComments.get(i).getUser())) {
+        //             this.subComments.get(i).recommendCount[1]++;
+        //             this.subComments.get(i).rCount++;
+        //             //this.subComments.get(i).recommendTheComment();
+        //         }
+        //     }
+        // }
     }
 
-    public void notRecommendTheSubComment(String user) {
+    public void notRecommendTheSubComment(int commentId) {
+
         if (this.subComments != null) {
-            for (int i = 0; i < this.subComments.size(); i++) {
-                if (this.user.equals(subComments.get(i).getUser())) {
-                    this.subComments.get(i).notRecommendTheComment();
-                }
-            }
+            this.subComments.get(commentId).notRecommendTheComment();
         }
+
+        // if (this.subComments != null) {
+        //     for (int i = 0; i < this.subComments.size(); i++) {
+        //         if (this.user.equals(subComments.get(i).getUser())) {
+        //             this.subComments.get(i).recommendCount[1]++;
+        //             this.subComments.get(i).rCount++;
+        //             //this.subComments.get(i).notRecommendTheComment();
+        //         }
+        //     }
+        // }
     }
 
     public void changeComment(String user, String content) {
