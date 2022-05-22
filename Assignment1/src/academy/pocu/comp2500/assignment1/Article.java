@@ -40,7 +40,7 @@ public class Article {
 
 
     //////////////////////
-    public int getReactionsCount(Reaction reactionType) {
+    public int getReactions(Reaction reactionType) {
         int count = 0;
         for (int i = 0; i < this.reactions.size(); i++) {
             if (this.reactions.get(i) == reactionType) {

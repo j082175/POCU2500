@@ -119,7 +119,7 @@ public class Blog {
         }
     }
 
-    public void setTagFilter(String tag) {
+    public void setTags(String tag) {
         if (tag.equals("")) {
             this.tagFilter.clear();
         }
@@ -135,7 +135,7 @@ public class Blog {
         }
     }
 
-    public void setUserFilter(String user) {
+    public void setUser(String user) {
         if (user.equals("")) {
             this.userFilter = null;
         }

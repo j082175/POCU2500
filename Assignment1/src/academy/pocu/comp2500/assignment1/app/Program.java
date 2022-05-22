@@ -28,7 +28,7 @@ public class Program {
         article3.addArticleTag("a2", "t1");
         article3.addArticleTag("a2", "t2");
 
-        blog1.setTagFilter("t1");
+        blog1.setTags("t1");
 
         var articles = blog1.getArticles();
         for (var a : articles) {
@@ -37,9 +37,9 @@ public class Program {
         System.out.println("------------------");
 
         //blog1.resetTagFilter();
-        blog1.setTagFilter("");
+        blog1.setTags("");
 
-        blog1.setTagFilter("t2");
+        blog1.setTags("t2");
 
         var articles1 = blog1.getArticles();
         for (var a : articles1) {
@@ -48,13 +48,13 @@ public class Program {
         System.out.println("------------------");
 
         //blog1.resetTagFilter();
-        blog1.setTagFilter("");
+        blog1.setTags("");
 
-        blog1.setTagFilter("t1");
-        blog1.setTagFilter("t2");
-        blog1.setTagFilter("t1");
-        blog1.setTagFilter("t1");
-        blog1.setTagFilter("t1");
+        blog1.setTags("t1");
+        blog1.setTags("t2");
+        blog1.setTags("t1");
+        blog1.setTags("t1");
+        blog1.setTags("t1");
 
         var articles2 = blog1.getArticles();
         for (var a : articles2) {
@@ -62,9 +62,10 @@ public class Program {
         }
         System.out.println("------------------");
 
-        article1.addReaction("a1", Reaction.GREAT);
         article1.addReaction("a1", Reaction.ANGRY);
-        int reactions = article1.getReactionsCount(Reaction.ANGRY);
+        article1.addReaction("a1", Reaction.ANGRY);
+        article1.removeReaction("a1", Reaction.ANGRY);
+        int reactions = article1.getReactions(Reaction.ANGRY);
         System.out.println(reactions);
     }
 
@@ -86,7 +87,7 @@ public class Program {
         article3.addArticleTag("a2", "t1");
         article4.addArticleTag("a2", "t2");
 
-        blog1.setTagFilter("t1");
+        blog1.setTags("t1");
 
         var articles = blog1.getArticles();
 
@@ -96,9 +97,9 @@ public class Program {
         System.out.println("----------------------------");
 
         //blog1.resetTagFilter();
-        blog1.setTagFilter("");
+        blog1.setTags("");
 
-        blog1.setUserFilter("a1");
+        blog1.setUser("a1");
 
         var articles2 = blog1.getArticles();
 
@@ -108,11 +109,11 @@ public class Program {
         System.out.println("----------------------------");
 
         //blog1.resetUserFilter();
-        blog1.setUserFilter("");
+        blog1.setUser("");
 
-        blog1.setTagFilter("t1");
+        blog1.setTags("t1");
 
-        blog1.setUserFilter("a2");
+        blog1.setUser("a2");
 
         var articles3 = blog1.getArticles();
         for (var a : articles3) {
@@ -122,14 +123,14 @@ public class Program {
         System.out.println("----------------------------");
 
         //blog1.resetTagFilter();
-        blog1.setTagFilter("");
+        blog1.setTags("");
         //blog1.resetUserFilter();
-        blog1.setUserFilter("");
+        blog1.setUser("");
 
 
 
-        blog1.setTagFilter("t2");
-        blog1.setUserFilter("a1");
+        blog1.setTags("t2");
+        blog1.setUser("a1");
         var articles4 = blog1.getArticles();
         for (var a : articles4) {
             System.out.println(a.getTitle());
@@ -169,7 +170,7 @@ public class Program {
         // 3. 태그 필터를 사용하여 지정된 태그 있는것만 가져옴.
         {
             Blog blog1 = new Blog("BlogOwner1");
-            blog1.setTagFilter("TAG1");
+            blog1.setTags("TAG1");
 
             Article article1 = new Article("Article1", "first_post", "a");
             Article article2 = new Article("Article2", "secone_post", "b");
@@ -192,7 +193,7 @@ public class Program {
         // 4. 작성자 필터
         {
             Blog blog1 = new Blog("BlogOwner1");
-            blog1.setTagFilter("TAG1");
+            blog1.setTags("TAG1");
             // blog1.setUserFilter("a");
 
             Article article1 = new Article("Article1", "first_post", "a");
@@ -240,10 +241,10 @@ public class Program {
         {
             Blog blog1 = new Blog("BlogOwner1");
             blog1.setSortingType(Order.DESCENDING_BY_WRITE_TIME);
-            blog1.setTagFilter("tag1");
-            blog1.setTagFilter("tag1");
-            blog1.setTagFilter("tag1");
-            blog1.setUserFilter("b");
+            blog1.setTags("tag1");
+            blog1.setTags("tag1");
+            blog1.setTags("tag1");
+            blog1.setUser("b");
 
             Article article1 = new Article("a", "article1", "first_post");
             // Thread.sleep(1000);
