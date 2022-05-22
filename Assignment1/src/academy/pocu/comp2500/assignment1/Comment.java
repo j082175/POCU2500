@@ -73,29 +73,19 @@ public class Comment {
         }
     }
 
-    // public void changeSubComment(String user, String content) {
-    //     if (this.subComments != null) {
-    //         for (int i = 0; i < this.subComments.size(); i++) {
-    //             if (subComments.get(i).getUser().equals(user)) {
+    public void changeSubComment(String user, String content) {
+        changeComment(user, content);
+        // if (this.subComments != null) {
+        //     for (int i = 0; i < this.subComments.size(); i++) {
+        //         if (subComments.get(i).getUser().equals(user)) {
                     
-    //                 this.subComments.get(i).changeComment(user, content);
-    //             }
-    //         }
-    //     }
-    // }
-
-    public Comment changeSubComment(String user) {
-        Comment result = null;
-        if (this.subComments != null) {
-            for (int i = 0; i < this.subComments.size(); i++) {
-                if (subComments.get(i).getUser().equals(user)) {
-                    result = subComments.get(i);
-                }
-            }
-        }
-
-        return result;
+        //             this.subComments.get(i).changeComment(user, content);
+        //         }
+        //     }
+        // }
     }
+
+
 
     public void recommendTheComment() {
         //this.recommendCount[0]++;
