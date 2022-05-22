@@ -92,11 +92,13 @@ public class Comment {
     }
 
     public void recommendTheSubComment() {
-        recommendTheComment();
+        this.upVoteCount++;
+        this.rCount++;
     }
 
     public void notRecommendTheSubComment() {
-        notRecommendTheComment();
+        this.downVoteCount++;
+        this.rCount--;
     }
 
 
