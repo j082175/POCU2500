@@ -90,14 +90,22 @@ public class Comment {
         this.rCount--;
     }
 
-    public void recommendTheSubComment() {
-        this.upVoteCount++;
-        this.rCount++;
+    // public void recommendTheSubComment() {
+    //     this.upVoteCount++;
+    //     this.rCount++;
+    // }
+
+    public void recommendTheSubComment(int count) {
+        this.subComments.get(count).recommendTheComment();
     }
 
-    public void notRecommendTheSubComment() {
-        this.downVoteCount++;
-        this.rCount--;
+    // public void notRecommendTheSubComment() {
+    //     this.downVoteCount++;
+    //     this.rCount--;
+    // }
+
+    public void notRecommendTheSubComment(int count) {
+        this.subComments.get(count).notRecommendTheComment();
     }
 
 
