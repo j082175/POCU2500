@@ -469,7 +469,8 @@ public class Program {
             article1.addComment(comment3);
             article1.addComment(comment4);
 
-            
+            multiTagFilterTestCase();
+            tagUserComplexFilterTestCase();
         }
     }
 }

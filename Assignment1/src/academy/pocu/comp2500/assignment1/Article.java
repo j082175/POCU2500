@@ -5,7 +5,7 @@ import java.time.OffsetDateTime;
 import java.util.ArrayList;
 
 public class Article {
-    //private final int reactionCount[];
+
     private ArrayList<Reaction> reactions;
 
     private String reactionUser;
@@ -36,11 +36,6 @@ public class Article {
 
         reactionUser = null;
     }
-    ///////////reactions
-    // public int[] getReactionCount() {
-    //     return this.reactionCount;
-    // }
-
 
     //////////////////////
     public int getReactions(Reaction reactionType) {
@@ -74,27 +69,13 @@ public class Article {
         return this.content;
     }
 
-    // public void setContent(String content) {
-    // this.content = content;
-    // }
-
     public ArrayList<String> getTag() {
         return this.tag;
     }
 
-    // public String setTag(String tag) {
-    // return this.tag = tag;
-    // }
-
     public String getTitle() {
         return this.title;
     }
-
-    // public void setTitle(String title) {
-    // this.title = title;
-    // }
-
-
 
     // dangerous code
     public ArrayList<Comment> getComments() {
@@ -117,73 +98,15 @@ public class Article {
         return this.user;
     }
 
-    // public void increaseReactionCount(Reaction reactionType) {
-    // switch (reactionType) {
-    // case GREAT:
-    // this.reactionCount[0]++;
-    // break;
-    // case SAD:
-    // this.reactionCount[1]++;
-    // break;
-    // case ANGRY:
-    // this.reactionCount[2]++;
-    // break;
-    // case FUN:
-    // this.reactionCount[3]++;
-    // break;
-    // case LOVE:
-    // this.reactionCount[4]++;
-    // break;
-    // default:
-    // break;
-    // }
-    // }
-
-    // public void decreaseReactionCount(Reaction reactionType) {
-    // switch (reactionType) {
-    // case GREAT:
-    // this.reactionCount[0]--;
-    // break;
-    // case SAD:
-    // this.reactionCount[1]--;
-    // break;
-    // case ANGRY:
-    // this.reactionCount[2]--;
-    // break;
-    // case FUN:
-    // this.reactionCount[3]--;
-    // break;
-    // case LOVE:
-    // this.reactionCount[4]--;
-    // break;
-    // default:
-    // break;
-    // }
-    // }
-
     // 구동부
 
     public void addComment(Comment comment) {
         this.comments.add(comment);
     }
 
-    // public void addSubComment(Comment subcomment, String user) {
-    // this.user = user;
-    // this.comments.add(subcomment);
-    // }
-
-    // public void changeComment(Article article, Comment comment, String text) {
-
-    // }
-
-    // public void changeSubComment(Article article, Comment comment, Comment
-    // subcomment, String text) {
-
-    // }
-
     public void addReaction(String user, Reaction reactionType) {
         this.reactionUser = user;
-        
+
         switch (reactionType) {
             case GREAT:
                 this.reactions.add(reactionType);
@@ -243,19 +166,7 @@ public class Article {
         }
     }
 
-    // public void addArticleTag(String title, String tag) {
-    //     if (this.title.equals(title)) {
-    //         this.tag.add(tag);
-    //         revisedTime = OffsetDateTime.now();
-    //     }
-    // }
-
     public void addArticleTag(String user, String tag) {
-        // if (this.user.equals(user)) {
-        //     this.tag.add(tag);
-        //     revisedTime = OffsetDateTime.now();
-        // }
-
         for (int i = 0; i < this.tag.size(); i++) {
             if (!this.tag.get(i).equals(tag)) {
                 this.tag.add(tag);

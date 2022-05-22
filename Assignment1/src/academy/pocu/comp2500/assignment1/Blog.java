@@ -24,31 +24,9 @@ public class Blog {
     // dangerous code
     public ArrayList<Article> getArticles() {
         boolean isChecked = false;
-        int checkCount = 0;
+
         setSortingType(this.sortingType);
 
-        // ArrayList<Article> newArticles = new ArrayList<>();
-        // if (tagFilter != null) {
-        // for (int i = 0; i < this.articles.size(); i++) {
-        // for (int j = 0; j < this.tagFilter.size(); j++) {
-        // for (int k = 0; k < this.articles.get(i).getTag().size(); k++) {
-        // if (this.articles.get(i).getTag().get(k).equals(tagFilter.get(j))) {
-        // checkCount++;
-        // break;
-        // // newArticles.add(this.articles.get(i));
-        // }
-        // }
-        // // if (check = false) {
-        // // break;
-        // // }
-        // }
-        // if (checkCount == this.tagFilter.size()) {
-        // newArticles.add(this.articles.get(i));
-        // }
-        // checkCount = 0;
-        // }
-        // //this.articles = newArticles;
-        // }
         ArrayList<Article> result = new ArrayList<>();
         result = this.articles;
         ArrayList<Article> newArticles = new ArrayList<>();
@@ -70,8 +48,6 @@ public class Blog {
                         break;
                     }
                 }
-
-                checkCount = 0;
             }
             result = newArticles;
         }
@@ -97,11 +73,6 @@ public class Blog {
     public String getUser() {
         return this.owner;
     }
-
-    // protected void setArticles(String title, String content, String name) {
-    // this.articleCounts++;
-    // this.articles.add(new Article(title, content, name));
-    // }
 
     public ArrayList<String> getTagFilter() {
         return this.tagFilter;
@@ -130,7 +101,6 @@ public class Blog {
             if (this.tagFilter.size() == 0) {
                 this.tagFilter.add(tagOrNull);
             }
-
         }
     }
 
@@ -219,107 +189,4 @@ public class Blog {
     public void addArticle(Article article) {
         articles.add(article);
     }
-
-    // public void changeArticleTitle(Article article, String title) {
-    // for (int i = 0; i < this.articles.size(); i++) {
-    // if (this.articles.get(i).getTitle().equals(title)) {
-    // this.articles.get(i).setTitle(title);
-    // }
-    // }
-    // }
-
-    // public void changeArticleContent(Article article, String content) {
-    // for (int i = 0; i < this.articles.size(); i++) {
-    // if (this.articles.get(i).getContent().equals(content)) {
-    // this.articles.get(i).setTitle(content);
-    // }
-    // }
-    // }
-
-    // public void addArticleTag(Article article, String tag) {
-    // for (int i = 0; i < this.articles.size(); i++) {
-    // if (this.articles.get(i).getTag().equals(tag)) {
-    // this.articles.get(i).setTag(tag);
-    // }
-    // }
-    // }
-
-    // public void addComment(Article article, String content) {
-    // for (int i = 0; i < articles.size(); i++) {
-    // if (articles.get(i).getTitle().equals(article.getTitle())) {
-    // articles.get(i).getComments().add(new Comment(content,
-    // article.getComments().size()));
-    // }
-    // }
-    // }
-
-    // public void addSubComment(Article article, Comment comment, Comment
-    // subcomment) {
-    // for (int i = 0; i < articles.size(); i++) {
-    // if (articles.get(i).getTitle().equals(article.getTitle())) {
-    // if (articles.get(i).getComments().get(i).getId() == comment.getId()) {
-
-    // }
-    // }
-    // }
-    // }
-
-    // public void changeComment(Article article, Comment comment, String text) {
-
-    // }
-
-    // public void changeSubComment(Article article, Comment comment, Comment
-    // subcomment, String text) {
-
-    // }
-
-    // public void addReaction(Article article, Reaction reactionType) {
-    // for (int i = 0; i < articles.size(); i++) {
-    // if (articles.get(i).getTitle().equals(article.getTitle())) {
-    // articles.get(i).increaseReactionCount(reactionType);
-    // }
-    // }
-    // }
-
-    // public void removeReaction(Article article, Reaction reactionType) {
-    // for (int i = 0; i < articles.size(); i++) {
-    // if (articles.get(i).getTitle().equals(article.getTitle())) {
-    // articles.get(i).decreaseReactionCount(reactionType);
-    // }
-    // }
-    // }
-
-    // public void recommendTheComment(Article article, Comment comment) {
-
-    // }
-
-    // public void notRecommendTheComment(Article article, Comment comment) {
-
-    // }
-
-    // public ArrayList<Comment> getComments(Article article) {
-    // ArrayList<Comment> a = new ArrayList<>();
-    // for (int i = 0; i < articles.size(); i++) {
-    // if (articles.get(i).getTitle().equals(article.getTitle())) {
-    // a = articles.get(i).getComments();
-    // break;
-    // }
-    // }
-
-    // return a;
-    // }
-
-    // public void getSubComments(Article article, Comment comment) {
-
-    // }
-
-    // public void recommendTheSubComment(Article article, Comment comment, Comment
-    // subcomment) {
-
-    // }
-
-    // public void notRecommendTheSubComment(Article article, Comment comment,
-    // Comment subcomment) {
-
-    // }
 }

@@ -20,7 +20,6 @@ public class Comment {
         this.user = user;
         this.rCount = 0;
 
-        //recommendCount = new int[2];
         upVoteCount = 0;
         downVoteCount = 0;
 
@@ -76,10 +75,6 @@ public class Comment {
         }
     }
 
-    // public void changeSubComment(String user, String content) {
-    //     changeComment(user, content);
-    // }
-
     public void recommendTheComment() {
         this.upVoteCount++;
         this.rCount++;
@@ -89,24 +84,4 @@ public class Comment {
         this.downVoteCount++;
         this.rCount--;
     }
-
-    // public void recommendTheSubComment() {
-    //     //this.upVoteCount++;
-    //     this.rCount++;
-    // }
-
-    // public void recommendTheSubComment(int count) {
-    //     this.subComments.get(count).recommendTheComment();
-    // }
-
-    // public void notRecommendTheSubComment() {
-    //     //this.downVoteCount++;
-    //     this.rCount--;
-    // }
-
-    // public void notRecommendTheSubComment(int count) {
-    //     this.subComments.get(count).notRecommendTheComment();
-    // }
-
-
 }
