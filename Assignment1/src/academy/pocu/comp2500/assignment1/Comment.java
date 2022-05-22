@@ -7,8 +7,8 @@ public class Comment {
     private ArrayList<Comment> subComments;
     //private int recommendCount[];
 
-    // private int upVoteCount;
-    // private int downVoteCount;
+    private int upVoteCount;
+    private int downVoteCount;
     
     private String content;
     private String user;
@@ -21,19 +21,19 @@ public class Comment {
         this.rCount = 0;
 
         //recommendCount = new int[2];
-        // upVoteCount = 0;
-        // downVoteCount = 0;
+        upVoteCount = 0;
+        downVoteCount = 0;
 
         subComments = new ArrayList<>();
     }
 
-    // public int getUpVoteCount() {
-    //     return this.upVoteCount;
-    // }
+    public int getUpVoteCount() {
+        return this.upVoteCount;
+    }
 
-    // public int getDownVoteCount() {
-    //     return this.downVoteCount;
-    // }
+    public int getDownVoteCount() {
+        return this.downVoteCount;
+    }
 
     public String getContent() {
         return this.content;
@@ -76,33 +76,33 @@ public class Comment {
         }
     }
 
-    public void changeSubComment(String user, String content) {
-        changeComment(user, content);
-    }
+    // public void changeSubComment(String user, String content) {
+    //     changeComment(user, content);
+    // }
 
     public void recommendTheComment() {
-        //this.upVoteCount++;
+        this.upVoteCount++;
         this.rCount++;
     }
 
     public void notRecommendTheComment() {
-        //this.downVoteCount++;
+        this.downVoteCount++;
         this.rCount--;
     }
 
-    public void recommendTheSubComment() {
-        //this.upVoteCount++;
-        this.rCount++;
-    }
+    // public void recommendTheSubComment() {
+    //     //this.upVoteCount++;
+    //     this.rCount++;
+    // }
 
     // public void recommendTheSubComment(int count) {
     //     this.subComments.get(count).recommendTheComment();
     // }
 
-    public void notRecommendTheSubComment() {
-        //this.downVoteCount++;
-        this.rCount--;
-    }
+    // public void notRecommendTheSubComment() {
+    //     //this.downVoteCount++;
+    //     this.rCount--;
+    // }
 
     // public void notRecommendTheSubComment(int count) {
     //     this.subComments.get(count).notRecommendTheComment();

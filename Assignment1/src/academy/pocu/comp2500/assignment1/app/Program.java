@@ -455,8 +455,21 @@ public class Program {
         // 8.
 
         {
-            multiTagFilterTestCase();
-            tagUserComplexFilterTestCase();
+            Blog blog1 = new Blog("1");
+            Article article1 = new Article("a", "t1", "fewfwe");
+            blog1.addArticle(article1);
+
+            Comment comment1 = new Comment("one", "fe");
+            Comment comment2 = new Comment("two", "fe2");
+            Comment comment3 = new Comment("three", "fe3");
+            Comment comment4 = new Comment("four", "fe4");
+
+            article1.addComment(comment1);
+            article1.addComment(comment2);
+            article1.addComment(comment3);
+            article1.addComment(comment4);
+
+            
         }
     }
 }
