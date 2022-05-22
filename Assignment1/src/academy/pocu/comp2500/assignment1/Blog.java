@@ -23,9 +23,32 @@ public class Blog {
 
     // dangerous code
     public ArrayList<Article> getArticles() {
-
+        boolean isChecked = false;
         int checkCount = 0;
         setSortingType(this.sortingType);
+
+        // ArrayList<Article> newArticles = new ArrayList<>();
+        // if (tagFilter != null) {
+        //     for (int i = 0; i < this.articles.size(); i++) {
+        //         for (int j = 0; j < this.tagFilter.size(); j++) {
+        //             for (int k = 0; k < this.articles.get(i).getTag().size(); k++) {
+        //                 if (this.articles.get(i).getTag().get(k).equals(tagFilter.get(j))) {
+        //                     checkCount++;
+        //                     break;
+        //                     // newArticles.add(this.articles.get(i));
+        //                 } 
+        //             }
+        //             // if (check = false) {
+        //             //     break;
+        //             // }
+        //         }
+        //         if (checkCount == this.tagFilter.size()) {
+        //             newArticles.add(this.articles.get(i));
+        //         } 
+        //         checkCount = 0;
+        //     }
+        //     //this.articles = newArticles;
+        // }
 
         ArrayList<Article> newArticles = new ArrayList<>();
         if (tagFilter != null) {
@@ -33,40 +56,45 @@ public class Blog {
                 for (int j = 0; j < this.tagFilter.size(); j++) {
                     for (int k = 0; k < this.articles.get(i).getTag().size(); k++) {
                         if (this.articles.get(i).getTag().get(k).equals(tagFilter.get(j))) {
-                            checkCount++;
+                            newArticles.add(this.articles.get(i));
+                            isChecked = true;
                             break;
                             // newArticles.add(this.articles.get(i));
-                        } 
+                        } else {
+                            isChecked = false;
+                        }
+                        
                     }
-                    // if (check = false) {
-                    //     break;
-                    // }
+                    if (isChecked == true) {
+                        break;
+                    }
                 }
-                if (checkCount == this.tagFilter.size()) {
-                    newArticles.add(this.articles.get(i));
-                } 
+                    
+                
                 checkCount = 0;
             }
-
-            this.articles = newArticles;
-
+            //this.articles = newArticles;
         }
+
+
+
+
         ArrayList<Article> newArticles2 = new ArrayList<>();
 
         if (userFilter != null) {
-            for (int i = 0; i < articles.size(); i++) {
-                if (this.articles.get(i).getUserName().equals(userFilter)) {
-                    newArticles2.add(this.articles.get(i));
+            for (int i = 0; i < newArticles.size(); i++) {
+                if (newArticles.get(i).getUserName().equals(userFilter)) {
+                    newArticles2.add(newArticles.get(i));
                 }
             }
-            articles = newArticles2;
+            return newArticles2;
 
         }
 
         if (this.articles == null) {
 
         }
-        return this.articles;
+        return newArticles;
     }
 
     public String getUser() {
@@ -92,6 +120,10 @@ public class Blog {
 
     public void setTagFilter(String tag) {
         this.tagFilter.add(tag);
+    }
+
+    public void resetTagFilter() {
+        this.tagFilter.clear();
     }
 
     public void setUserFilter(String user) {

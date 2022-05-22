@@ -12,6 +12,64 @@ import academy.pocu.comp2500.assignment1.registry.Registry;
 
 public class Program {
 
+    public static void multiTagFilterTestCase() {
+        Blog blog1 = new Blog("BlogOwner1");
+
+        Article article1 = new Article("a1", "p1", "body");
+        Article article2 = new Article("a1", "p2", "body");
+        Article article3 = new Article("a2", "p3", "body");
+
+        blog1.addArticle(article1);
+        blog1.addArticle(article2);
+        blog1.addArticle(article3);
+
+        article1.addArticleTag("a1", "t1");
+        article2.addArticleTag("a1", "t2");
+        article3.addArticleTag("a2", "t1");
+        article3.addArticleTag("a2", "t2");
+
+        blog1.setTagFilter("t1");
+
+        var articles = blog1.getArticles();
+        for (var a : articles) {
+            System.out.println(a.getTitle());
+        }
+        System.out.println("------------------");
+        blog1.resetTagFilter();
+
+        blog1.setTagFilter("t2");
+
+        var articles1 = blog1.getArticles();
+        for (var a : articles1) {
+            System.out.println(a.getTitle());
+        }
+        System.out.println("------------------");
+
+
+        blog1.resetTagFilter();
+
+        blog1.setTagFilter("t1");
+        blog1.setTagFilter("t2");
+
+        var articles2 = blog1.getArticles();
+        for (var a : articles2) {
+            System.out.println(a.getTitle());
+        }
+        System.out.println("------------------");
+
+
+
+    }
+
+    public static void tagUserComplexFilterTestCase() {
+        Blog blog1 = new Blog("BlogOwner1");
+
+        Article article1 = new Article("a1", "p1", "body");
+        Article article1 = new Article("a1", "p1", "body");
+        Article article1 = new Article("a1", "p1", "body");
+
+    }
+
     public static void main(String[] args) throws InterruptedException {
         Registry registry = new Registry();
         App app = new App(registry);
@@ -119,7 +177,6 @@ public class Program {
             blog1.setTagFilter("tag1");
             blog1.setTagFilter("tag1");
             blog1.setUserFilter("b");
-            
 
             Article article1 = new Article("a", "article1", "first_post");
             // Thread.sleep(1000);
@@ -143,8 +200,6 @@ public class Program {
             article3.addArticleTag("c", "tag1");
             article3.addArticleTag("c", "tag2");
             article3.addArticleTag("c", "tag3");
-
-            
 
             ArrayList<Article> articles = blog1.getArticles(); // 여기서 태그 달린것들만 가져와야함.
 
@@ -312,7 +367,7 @@ public class Program {
         // 8.
 
         {
-
+            multiTagFilterTestCase();
         }
     }
 }

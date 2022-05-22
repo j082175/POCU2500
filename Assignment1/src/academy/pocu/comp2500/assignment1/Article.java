@@ -262,8 +262,15 @@ public class Article {
         }
     }
 
+    // public void addArticleTag(String title, String tag) {
+    //     if (this.title.equals(title)) {
+    //         this.tag.add(tag);
+    //         revisedTime = OffsetDateTime.now();
+    //     }
+    // }
+
     public void addArticleTag(String user, String tag) {
-        if (user.equals(this.user)) {
+        if (this.user.equals(user)) {
             this.tag.add(tag);
             revisedTime = OffsetDateTime.now();
         }
