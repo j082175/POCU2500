@@ -113,179 +113,180 @@ public class Program {
 
         // 6. 작성했던 블로그 글의 제목 수정
         {
-            // Blog blog1 = new Blog("BlogOwner1");
-            // blog1.setSortingType(Order.DESCENDING_BY_WRITE_TIME);
+            Blog blog1 = new Blog("BlogOwner1");
+            blog1.setSortingType(Order.DESCENDING_BY_WRITE_TIME);
+            blog1.setTagFilter("tag1");
             // blog1.setTagFilter("tag1");
             // blog1.setUserFilter("a");
 
-            // Article article1 = new Article("a", "article1", "first_post");
-            // // Thread.sleep(1000);
-            // Article article2 = new Article("a", "article2", "secone_post");
-            // // Thread.sleep(1000);
-            // Article article3 = new Article("a", "article3", "third_post");
-            // // Thread.sleep(1000);
-
-            // blog1.addArticle(article1);
-            // blog1.addArticle(article2);
-            // blog1.addArticle(article3);
-            // article1.addArticleTag("a", "1");
-            // article3.addArticleTag("a", "2");
-            // ArrayList<Article> articles = blog1.getArticles(); // 여기서 태그 달린것들만 가져와야함.
-
-            // for (var a : articles) {
-            // System.out.println(a.getTitle());
-            // }
-        }
-
-        // 7. 블로그글 본문수정
-
-        {
-            Blog blog1 = new Blog("BlogOwner1");
-            // blog1.setSortingType(Order.ASCENDING_BY_ARTICLE);
-
-            Article article1 = new Article("a", "Crticle1", "first_post");
-            Thread.sleep(100);
-            Article article2 = new Article("b", "Brticle2", "secone_post");
-            Thread.sleep(100);
-            Article article3 = new Article("c", "Article3", "third_post");
-            Thread.sleep(100);
+            Article article1 = new Article("a", "article1", "first_post");
+            // Thread.sleep(1000);
+            Article article2 = new Article("a", "article2", "secone_post");
+            // Thread.sleep(1000);
+            Article article3 = new Article("a", "article3", "third_post");
+            // Thread.sleep(1000);
 
             blog1.addArticle(article1);
             blog1.addArticle(article2);
             blog1.addArticle(article3);
-
+            article1.addArticleTag("a", "tag1");
+            article3.addArticleTag("a", "tag1");
             ArrayList<Article> articles = blog1.getArticles(); // 여기서 태그 달린것들만 가져와야함.
 
             for (var a : articles) {
                 System.out.println(a.getTitle());
             }
+        }
 
-            Comment comment1 = new Comment("one", "content1");
-            Comment comment2 = new Comment("two", "content2");
-            Comment comment3 = new Comment("three", "content3");
-            Comment comment4 = new Comment("four", "content4");
-            Comment comment5 = new Comment("five", "content5");
+        // 7. 블로그글 본문수정
 
-            // article1 에 comment 5개 추가
+        {
+            // Blog blog1 = new Blog("BlogOwner1");
+            // // blog1.setSortingType(Order.ASCENDING_BY_ARTICLE);
 
-            article1.addComment(comment1);
-            article1.addComment(comment2);
-            article1.addComment(comment3);
-            article1.addComment(comment4);
-            article1.addComment(comment5);
+            // Article article1 = new Article("a", "Crticle1", "first_post");
+            // Thread.sleep(100);
+            // Article article2 = new Article("b", "Brticle2", "secone_post");
+            // Thread.sleep(100);
+            // Article article3 = new Article("c", "Article3", "third_post");
+            // Thread.sleep(100);
 
-            /// comment1 에 subcomment 5개 추가
-            Comment subcomment1 = new Comment("one", "subcomment1");
-            Comment subcomment2 = new Comment("two", "subcomment2");
-            Comment subcomment3 = new Comment("three", "subcomment3");
-            Comment subcomment4 = new Comment("four", "subcomment4");
-            Comment subcomment5 = new Comment("five", "subcomment5");
+            // blog1.addArticle(article1);
+            // blog1.addArticle(article2);
+            // blog1.addArticle(article3);
 
-            comment1.addSubComment(subcomment1);
-            comment1.addSubComment(subcomment2);
-            comment1.addSubComment(subcomment3);
-            comment1.addSubComment(subcomment4);
-            comment1.addSubComment(subcomment5);
+            // ArrayList<Article> articles = blog1.getArticles(); // 여기서 태그 달린것들만 가져와야함.
 
-            /// subcomment1 에 5개 추가
+            // for (var a : articles) {
+            // System.out.println(a.getTitle());
+            // }
 
-            Comment subsubcomment1 = new Comment("one", "subsubcomment1");
-            Comment subsubcomment2 = new Comment("two", "subsubcomment2");
-            Comment subsubcomment3 = new Comment("three", "subsubcomment3");
-            Comment subsubcomment4 = new Comment("four", "subsubcomment4");
-            Comment subsubcomment5 = new Comment("five", "subsubcomment5");
+            // Comment comment1 = new Comment("one", "content1");
+            // Comment comment2 = new Comment("two", "content2");
+            // Comment comment3 = new Comment("three", "content3");
+            // Comment comment4 = new Comment("four", "content4");
+            // Comment comment5 = new Comment("five", "content5");
 
-            subcomment1.addSubComment(subsubcomment1);
-            subcomment1.addSubComment(subsubcomment2);
-            subcomment1.addSubComment(subsubcomment3);
-            subcomment1.addSubComment(subsubcomment4);
-            subcomment1.addSubComment(subsubcomment5);
+            // // article1 에 comment 5개 추가
 
-            /// comment1 추천 ///
-            comment1.recommendTheComment();
-            comment1.recommendTheComment();
-            comment1.recommendTheComment(); // 3
+            // article1.addComment(comment1);
+            // article1.addComment(comment2);
+            // article1.addComment(comment3);
+            // article1.addComment(comment4);
+            // article1.addComment(comment5);
 
-            comment2.notRecommendTheComment();
-            comment2.notRecommendTheComment(); // -2
+            // /// comment1 에 subcomment 5개 추가
+            // Comment subcomment1 = new Comment("one", "subcomment1");
+            // Comment subcomment2 = new Comment("two", "subcomment2");
+            // Comment subcomment3 = new Comment("three", "subcomment3");
+            // Comment subcomment4 = new Comment("four", "subcomment4");
+            // Comment subcomment5 = new Comment("five", "subcomment5");
 
-            comment3.recommendTheComment();
-            comment3.recommendTheComment();
-            comment3.recommendTheComment();
-            comment3.recommendTheComment(); // 4
+            // comment1.addSubComment(subcomment1);
+            // comment1.addSubComment(subcomment2);
+            // comment1.addSubComment(subcomment3);
+            // comment1.addSubComment(subcomment4);
+            // comment1.addSubComment(subcomment5);
 
-            comment4.notRecommendTheComment();
-            comment4.notRecommendTheComment();
-            comment4.notRecommendTheComment(); // -3
+            // /// subcomment1 에 5개 추가
 
-            comment5.recommendTheComment();
-            comment5.notRecommendTheComment(); // 0
+            // Comment subsubcomment1 = new Comment("one", "subsubcomment1");
+            // Comment subsubcomment2 = new Comment("two", "subsubcomment2");
+            // Comment subsubcomment3 = new Comment("three", "subsubcomment3");
+            // Comment subsubcomment4 = new Comment("four", "subsubcomment4");
+            // Comment subsubcomment5 = new Comment("five", "subsubcomment5");
 
-            var result = article1.getComments();
-            for (var a : result) {
-                System.out.println(a.getContent() + " " + a.getRCount());
-            }
+            // subcomment1.addSubComment(subsubcomment1);
+            // subcomment1.addSubComment(subsubcomment2);
+            // subcomment1.addSubComment(subsubcomment3);
+            // subcomment1.addSubComment(subsubcomment4);
+            // subcomment1.addSubComment(subsubcomment5);
 
-            System.out.println("-----------------------------------");
+            // /// comment1 추천 ///
+            // comment1.recommendTheComment();
+            // comment1.recommendTheComment();
+            // comment1.recommendTheComment(); // 3
 
-            comment1.recommendTheSubComment(0);
-            comment1.recommendTheSubComment(0);
-            comment1.recommendTheSubComment(0); // 3
+            // comment2.notRecommendTheComment();
+            // comment2.notRecommendTheComment(); // -2
 
-            comment1.notRecommendTheSubComment(1);
-            comment1.notRecommendTheSubComment(1); // -2
+            // comment3.recommendTheComment();
+            // comment3.recommendTheComment();
+            // comment3.recommendTheComment();
+            // comment3.recommendTheComment(); // 4
 
-            comment1.recommendTheSubComment(2);
-            comment1.recommendTheSubComment(2);
-            comment1.recommendTheSubComment(2);
-            comment1.recommendTheSubComment(2); // 4
+            // comment4.notRecommendTheComment();
+            // comment4.notRecommendTheComment();
+            // comment4.notRecommendTheComment(); // -3
 
-            comment1.notRecommendTheSubComment(3);
-            comment1.notRecommendTheSubComment(3);
-            comment1.notRecommendTheSubComment(3); // -3
+            // comment5.recommendTheComment();
+            // comment5.notRecommendTheComment(); // 0
 
-            comment1.recommendTheSubComment(4);
-            comment1.notRecommendTheSubComment(4); // 0
+            // var result = article1.getComments();
+            // for (var a : result) {
+            // System.out.println(a.getContent() + " " + a.getRCount());
+            // }
 
-            var resultsub = comment1.getSubComments();
+            // System.out.println("-----------------------------------");
 
-            for (var a : resultsub) {
-                System.out.println(a.getContent() + " " + a.getRCount());
-            }
+            // comment1.recommendTheSubComment(0);
+            // comment1.recommendTheSubComment(0);
+            // comment1.recommendTheSubComment(0); // 3
 
-            System.out.println("-----------------------------------");
+            // comment1.notRecommendTheSubComment(1);
+            // comment1.notRecommendTheSubComment(1); // -2
 
-            subcomment1.recommendTheSubComment(0);
-            subcomment1.recommendTheSubComment(0);
-            subcomment1.recommendTheSubComment(0); // 3
+            // comment1.recommendTheSubComment(2);
+            // comment1.recommendTheSubComment(2);
+            // comment1.recommendTheSubComment(2);
+            // comment1.recommendTheSubComment(2); // 4
 
-            subcomment1.notRecommendTheSubComment(1);
-            subcomment1.notRecommendTheSubComment(1); // -2
+            // comment1.notRecommendTheSubComment(3);
+            // comment1.notRecommendTheSubComment(3);
+            // comment1.notRecommendTheSubComment(3); // -3
 
-            subcomment1.recommendTheSubComment(2);
-            subcomment1.recommendTheSubComment(2);
-            subcomment1.recommendTheSubComment(2);
-            subcomment1.recommendTheSubComment(2); // 4
+            // comment1.recommendTheSubComment(4);
+            // comment1.notRecommendTheSubComment(4); // 0
 
-            subcomment1.notRecommendTheSubComment(3);
-            subcomment1.notRecommendTheSubComment(3);
-            subcomment1.notRecommendTheSubComment(3); // -3
+            // var resultsub = comment1.getSubComments();
 
-            subcomment1.recommendTheSubComment(4);
-            subcomment1.notRecommendTheSubComment(4); // 0
+            // for (var a : resultsub) {
+            // System.out.println(a.getContent() + " " + a.getRCount());
+            // }
 
-            var resultsubsub = subcomment1.getSubComments();
+            // System.out.println("-----------------------------------");
 
-            for (var a : resultsubsub) {
-                System.out.println(a.getContent() + " " + a.getRCount());
-            }
+            // subcomment1.recommendTheSubComment(0);
+            // subcomment1.recommendTheSubComment(0);
+            // subcomment1.recommendTheSubComment(0); // 3
 
-            subcomment1.changeSubComment("three", "fuckyou");
+            // subcomment1.notRecommendTheSubComment(1);
+            // subcomment1.notRecommendTheSubComment(1); // -2
 
-            var resultsubsub2 = subcomment1.getSubComments();
-            for (var a : resultsubsub2) {
-                System.out.println(a.getContent() + " " + a.getRCount());
-            }
+            // subcomment1.recommendTheSubComment(2);
+            // subcomment1.recommendTheSubComment(2);
+            // subcomment1.recommendTheSubComment(2);
+            // subcomment1.recommendTheSubComment(2); // 4
+
+            // subcomment1.notRecommendTheSubComment(3);
+            // subcomment1.notRecommendTheSubComment(3);
+            // subcomment1.notRecommendTheSubComment(3); // -3
+
+            // subcomment1.recommendTheSubComment(4);
+            // subcomment1.notRecommendTheSubComment(4); // 0
+
+            // var resultsubsub = subcomment1.getSubComments();
+
+            // for (var a : resultsubsub) {
+            // System.out.println(a.getContent() + " " + a.getRCount());
+            // }
+
+            // subcomment1.changeSubComment("three", "fuckyou");
+
+            // var resultsubsub2 = subcomment1.getSubComments();
+            // for (var a : resultsubsub2) {
+            // System.out.println(a.getContent() + " " + a.getRCount());
+            // }
         }
 
         // 8.
