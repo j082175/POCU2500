@@ -120,7 +120,15 @@ public class Blog {
     }
 
     public void setTagFilter(String tag) {
-        this.tagFilter.add(tag);
+        for (int i = 0; i < this.tagFilter.size(); i++) {
+            if (!this.tagFilter.get(i).equals(tag)) {
+                this.tagFilter.add(tag);
+            }
+        }
+
+        if (this.tagFilter.size() == 0) {
+            this.tagFilter.add(tag);
+        }
     }
 
     public void resetTagFilter() {

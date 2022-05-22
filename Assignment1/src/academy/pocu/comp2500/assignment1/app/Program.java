@@ -48,7 +48,7 @@ public class Program {
         blog1.resetTagFilter();
 
         blog1.setTagFilter("t1");
-        blog1.setTagFilter("t1");
+        blog1.setTagFilter("t2");
         blog1.setTagFilter("t1");
         blog1.setTagFilter("t1");
         blog1.setTagFilter("t1");
