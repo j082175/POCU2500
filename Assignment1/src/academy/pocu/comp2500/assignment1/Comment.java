@@ -4,7 +4,10 @@ import java.util.ArrayList;
 
 public class Comment {
     private ArrayList<Comment> subComments;
-    private int recommendCount[];
+    //private int recommendCount[];
+
+    private int upVoteCount;
+    private int downVoteCount;
     
     private String content;
     private String user;
@@ -16,7 +19,10 @@ public class Comment {
         this.user = user;
         this.rCount = 0;
 
-        recommendCount = new int[2];
+        //recommendCount = new int[2];
+        upVoteCount = 0;
+        downVoteCount = 0;
+
         subComments = new ArrayList<>();
     }
 
@@ -72,12 +78,14 @@ public class Comment {
     }
 
     public void recommendTheComment() {
-        this.recommendCount[0]++;
+        //this.recommendCount[0]++;
+        this.upVoteCount++;
         this.rCount++;
     }
 
     public void notRecommendTheComment() {
-        this.recommendCount[1]++;
+        //this.recommendCount[1]++;
+        this.downVoteCount++;
         this.rCount--;
     }
 
