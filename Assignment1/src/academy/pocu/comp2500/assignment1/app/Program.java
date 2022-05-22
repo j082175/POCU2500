@@ -279,6 +279,13 @@ public class Program {
             for (var a : resultsubsub) {
                 System.out.println(a.getContent() + " " + a.getRCount());
             }
+
+            subcomment1.changeSubComment("three", "fuckyou");
+
+            var resultsubsub2 = subcomment1.getSubComments();
+            for (var a : resultsubsub2) {
+                System.out.println(a.getContent() + " " + a.getRCount());
+            }
         }
 
         // 8.

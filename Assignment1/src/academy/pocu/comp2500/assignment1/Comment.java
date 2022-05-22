@@ -62,8 +62,9 @@ public class Comment {
     public void changeSubComment(String user, String content) {
         if (this.subComments != null) {
             for (int i = 0; i < this.subComments.size(); i++) {
-                if (this.user.equals(subComments.get(i).getUser())) {
-                    this.subComments.get(i).changeComment(content, user);
+                if (subComments.get(i).getUser().equals(user)) {
+                    
+                    this.subComments.get(i).changeComment(user, content);
                 }
             }
         }
