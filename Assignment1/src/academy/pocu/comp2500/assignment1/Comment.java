@@ -28,6 +28,14 @@ public class Comment {
         subComments = new ArrayList<>();
     }
 
+    public int getUpVoteCount() {
+        return this.upVoteCount;
+    }
+
+    public int getDownVoteCount() {
+        return this.downVoteCount;
+    }
+
     public String getContent() {
         return this.content;
     }
@@ -51,10 +59,6 @@ public class Comment {
         return this.subComments;
     }
 
-    // public int[] getRecommentCount() {
-    //     return this.recommendCount;
-    // }
-
     public String getUser() {
         return this.user;
     }
@@ -77,52 +81,22 @@ public class Comment {
         changeComment(user, content);
     }
 
-
-
     public void recommendTheComment() {
-        //this.recommendCount[0]++;
         this.upVoteCount++;
         this.rCount++;
     }
 
     public void notRecommendTheComment() {
-        //this.recommendCount[1]++;
         this.downVoteCount++;
         this.rCount--;
     }
 
     public void recommendTheSubComment() {
         recommendTheComment();
-        // if (this.subComments != null) {
-        //     this.subComments.get(commentId).recommendTheComment();
-        // }
-
-        // if (this.subComments != null) {
-        //     for (int i = 0; i < this.subComments.size(); i++) {
-        //         if (this.user.equals(subComments.get(i).getUser())) {
-        //             this.subComments.get(i).recommendCount[1]++;
-        //             this.subComments.get(i).rCount++;
-        //             //this.subComments.get(i).recommendTheComment();
-        //         }
-        //     }
-        // }
     }
 
     public void notRecommendTheSubComment() {
         notRecommendTheComment();
-        // if (this.subComments != null) {
-        //     this.subComments.get(commentId).notRecommendTheComment();
-        // }
-
-        // if (this.subComments != null) {
-        //     for (int i = 0; i < this.subComments.size(); i++) {
-        //         if (this.user.equals(subComments.get(i).getUser())) {
-        //             this.subComments.get(i).recommendCount[1]++;
-        //             this.subComments.get(i).rCount++;
-        //             //this.subComments.get(i).notRecommendTheComment();
-        //         }
-        //     }
-        // }
     }
 
 
