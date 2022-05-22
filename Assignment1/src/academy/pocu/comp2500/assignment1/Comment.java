@@ -43,9 +43,9 @@ public class Comment {
         return this.subComments;
     }
 
-    public int[] getRecommentCount() {
-        return this.recommendCount;
-    }
+    // public int[] getRecommentCount() {
+    //     return this.recommendCount;
+    // }
 
     public String getUser() {
         return this.user;
