@@ -49,9 +49,10 @@ public class Blog {
         //     }
         //     //this.articles = newArticles;
         // }
-
+        ArrayList<Article> result = new ArrayList<>();
+        result = this.articles;
         ArrayList<Article> newArticles = new ArrayList<>();
-        if (tagFilter != null) {
+        if (tagFilter.size() != 0) {
             for (int i = 0; i < this.articles.size(); i++) {
                 for (int j = 0; j < this.tagFilter.size(); j++) {
                     for (int k = 0; k < this.articles.get(i).getTag().size(); k++) {
@@ -73,7 +74,7 @@ public class Blog {
                 
                 checkCount = 0;
             }
-            //this.articles = newArticles;
+            result = newArticles;
         }
 
 
@@ -82,19 +83,19 @@ public class Blog {
         ArrayList<Article> newArticles2 = new ArrayList<>();
 
         if (userFilter != null) {
-            for (int i = 0; i < newArticles.size(); i++) {
-                if (newArticles.get(i).getUserName().equals(userFilter)) {
-                    newArticles2.add(newArticles.get(i));
+            for (int i = 0; i < result.size(); i++) {
+                if (result.get(i).getUserName().equals(userFilter)) {
+                    newArticles2.add(result.get(i));
                 }
             }
-            return newArticles2;
+            result = newArticles2;
 
         }
 
         if (this.articles == null) {
 
         }
-        return newArticles;
+        return result;
     }
 
     public String getUser() {
@@ -128,15 +129,10 @@ public class Blog {
 
     public void setUserFilter(String user) {
         this.userFilter = user;
+    }
 
-        // ArrayList<Article> newArticles = new ArrayList<>(100);
-        // for (int i = 0; i < articles.size(); i++) {
-        // if (userFilter.equals(user)) {
-        // newArticles.add(articles.get(i));
-        // }
-        // }
-
-        // articles = newArticles;
+    public void resetUserFilter() {
+        this.userFilter = null;
     }
 
     public void setSortingType(Order sortingType) {

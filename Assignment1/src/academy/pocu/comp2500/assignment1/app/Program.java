@@ -45,7 +45,6 @@ public class Program {
         }
         System.out.println("------------------");
 
-
         blog1.resetTagFilter();
 
         blog1.setTagFilter("t1");
@@ -57,16 +56,67 @@ public class Program {
         }
         System.out.println("------------------");
 
-
-
     }
 
     public static void tagUserComplexFilterTestCase() {
         Blog blog1 = new Blog("BlogOwner1");
 
         Article article1 = new Article("a1", "p1", "body");
-        Article article1 = new Article("a1", "p1", "body");
-        Article article1 = new Article("a1", "p1", "body");
+        Article article2 = new Article("a1", "p2", "body");
+        Article article3 = new Article("a2", "p3", "body");
+        Article article4 = new Article("a2", "p4", "body");
+
+        blog1.addArticle(article1);
+        blog1.addArticle(article2);
+        blog1.addArticle(article3);
+        blog1.addArticle(article4);
+
+        article1.addArticleTag("a1", "t1");
+        article2.addArticleTag("a1", "t2");
+        article3.addArticleTag("a2", "t1");
+        article4.addArticleTag("a2", "t2");
+
+        blog1.setTagFilter("t1");
+
+        var articles = blog1.getArticles();
+
+        for (var a : articles) {
+            System.out.println(a.getTitle());
+        }
+        System.out.println("----------------------------");
+
+        blog1.resetTagFilter();
+
+        blog1.setUserFilter("a1");
+
+        var articles2 = blog1.getArticles();
+
+        for (var a : articles2) {
+            System.out.println(a.getTitle());
+        }
+        System.out.println("----------------------------");
+
+        blog1.resetUserFilter();
+
+        blog1.setTagFilter("t1");
+
+        blog1.setUserFilter("a2");
+
+        var articles3 = blog1.getArticles();
+        for (var a : articles3) {
+            System.out.println(a.getTitle());
+        }
+
+        System.out.println("----------------------------");
+
+        blog1.resetTagFilter();
+        blog1.resetUserFilter();
+        blog1.setTagFilter("t2");
+        blog1.setUserFilter("a1");
+        var articles4 = blog1.getArticles();
+        for (var a : articles4) {
+            System.out.println(a.getTitle());
+        }
 
     }
 
@@ -368,6 +418,7 @@ public class Program {
 
         {
             multiTagFilterTestCase();
+            tagUserComplexFilterTestCase();
         }
     }
 }
