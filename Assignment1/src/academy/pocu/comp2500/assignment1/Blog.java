@@ -120,6 +120,10 @@ public class Blog {
     }
 
     public void setTagFilter(String tag) {
+        if (tag.equals("")) {
+            this.tagFilter.clear();
+        }
+
         for (int i = 0; i < this.tagFilter.size(); i++) {
             if (!this.tagFilter.get(i).equals(tag)) {
                 this.tagFilter.add(tag);
@@ -131,16 +135,11 @@ public class Blog {
         }
     }
 
-    public void resetTagFilter() {
-        this.tagFilter.clear();
-    }
-
     public void setUserFilter(String user) {
+        if (user.equals("")) {
+            this.userFilter = null;
+        }
         this.userFilter = user;
-    }
-
-    public void resetUserFilter() {
-        this.userFilter = null;
     }
 
     public void setSortingType(Order sortingType) {

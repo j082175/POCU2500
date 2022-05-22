@@ -35,7 +35,9 @@ public class Program {
             System.out.println(a.getTitle());
         }
         System.out.println("------------------");
-        blog1.resetTagFilter();
+
+        //blog1.resetTagFilter();
+        blog1.setTagFilter("");
 
         blog1.setTagFilter("t2");
 
@@ -45,7 +47,8 @@ public class Program {
         }
         System.out.println("------------------");
 
-        blog1.resetTagFilter();
+        //blog1.resetTagFilter();
+        blog1.setTagFilter("");
 
         blog1.setTagFilter("t1");
         blog1.setTagFilter("t2");
@@ -92,7 +95,8 @@ public class Program {
         }
         System.out.println("----------------------------");
 
-        blog1.resetTagFilter();
+        //blog1.resetTagFilter();
+        blog1.setTagFilter("");
 
         blog1.setUserFilter("a1");
 
@@ -103,7 +107,8 @@ public class Program {
         }
         System.out.println("----------------------------");
 
-        blog1.resetUserFilter();
+        //blog1.resetUserFilter();
+        blog1.setUserFilter("");
 
         blog1.setTagFilter("t1");
 
@@ -116,8 +121,13 @@ public class Program {
 
         System.out.println("----------------------------");
 
-        blog1.resetTagFilter();
-        blog1.resetUserFilter();
+        //blog1.resetTagFilter();
+        blog1.setTagFilter("");
+        //blog1.resetUserFilter();
+        blog1.setUserFilter("");
+
+
+
         blog1.setTagFilter("t2");
         blog1.setUserFilter("a1");
         var articles4 = blog1.getArticles();
