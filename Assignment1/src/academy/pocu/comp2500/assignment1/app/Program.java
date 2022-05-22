@@ -456,7 +456,7 @@ public class Program {
 
         {
             multiTagFilterTestCase();
-
+            tagUserComplexFilterTestCase();
         }
     }
 }

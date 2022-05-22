@@ -118,7 +118,6 @@ public class Blog {
     public void setTagsOrNull(String tagOrNull) {
         if (tagOrNull == null) {
             this.tagFilter.clear();
-            tagOrNull = "";
         }
 
         if (tagOrNull != null) {
