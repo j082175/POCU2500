@@ -21,8 +21,6 @@ public class Article {
         this.title = title;
         this.content = content;
 
-
-        
         createdTime = OffsetDateTime.now();
         revisedTime = createdTime;
 
@@ -31,6 +29,31 @@ public class Article {
 
         reactionCount = new int[5];
     }
+    ///////////reactions
+    // public int[] getReactionCount() {
+    //     return this.reactionCount;
+    // }
+
+    public int getReactionGreat() {
+        return this.reactionCount[0];
+    }
+
+    public int getReactionSad() {
+        return this.reactionCount[1];
+    }
+
+    public int getReactionAngry() {
+        return this.reactionCount[2];
+    }
+
+    public int getReactionFun() {
+        return this.reactionCount[3];
+    }
+
+    public int getReactionLove() {
+        return this.reactionCount[4];
+    }
+    //////////////////////
 
     public OffsetDateTime getTime() {
         return this.createdTime;
@@ -72,9 +95,7 @@ public class Article {
     // this.title = title;
     // }
 
-    public int[] getReactionCount() {
-        return this.reactionCount;
-    }
+
 
     // dangerous code
     public ArrayList<Comment> getComments() {

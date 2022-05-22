@@ -44,8 +44,8 @@ public class Blog {
                 }
                 if (checkCount == this.tagFilter.size()) {
                     newArticles.add(this.articles.get(i));
-                    checkCount = 0;
                 } 
+                checkCount = 0;
             }
 
             this.articles = newArticles;
