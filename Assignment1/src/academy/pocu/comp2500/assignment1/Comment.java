@@ -91,11 +91,11 @@ public class Comment {
         this.rCount--;
     }
 
-    public void recommendTheSubComment(int commentId) {
-
-        if (this.subComments != null) {
-            this.subComments.get(commentId).recommendTheComment();
-        }
+    public void recommendTheSubComment() {
+        recommendTheComment();
+        // if (this.subComments != null) {
+        //     this.subComments.get(commentId).recommendTheComment();
+        // }
 
         // if (this.subComments != null) {
         //     for (int i = 0; i < this.subComments.size(); i++) {
@@ -108,11 +108,11 @@ public class Comment {
         // }
     }
 
-    public void notRecommendTheSubComment(int commentId) {
-
-        if (this.subComments != null) {
-            this.subComments.get(commentId).notRecommendTheComment();
-        }
+    public void notRecommendTheSubComment() {
+        notRecommendTheComment();
+        // if (this.subComments != null) {
+        //     this.subComments.get(commentId).notRecommendTheComment();
+        // }
 
         // if (this.subComments != null) {
         //     for (int i = 0; i < this.subComments.size(); i++) {
