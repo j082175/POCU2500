@@ -133,7 +133,7 @@ public class Program {
             // ArrayList<Article> articles = blog1.getArticles(); // 여기서 태그 달린것들만 가져와야함.
 
             // for (var a : articles) {
-            //     System.out.println(a.getTitle());
+            // System.out.println(a.getTitle());
             // }
         }
 
@@ -157,7 +157,7 @@ public class Program {
             ArrayList<Article> articles = blog1.getArticles(); // 여기서 태그 달린것들만 가져와야함.
 
             for (var a : articles) {
-            System.out.println(a.getTitle());
+                System.out.println(a.getTitle());
             }
 
             Comment comment1 = new Comment("one", "content1");
@@ -175,11 +175,31 @@ public class Program {
             article1.addComment(comment5);
 
             /// comment1 에 subcomment 5개 추가
-            comment1.addSubComment("one", "subcomment1");
-            comment1.addSubComment("two", "subcomment2");
-            comment1.addSubComment("three", "subcomment3");
-            comment1.addSubComment("four", "subcomment4");
-            comment1.addSubComment("five", "subcomment5");
+            Comment subcomment1 = new Comment("one", "subcomment1");
+            Comment subcomment2 = new Comment("two", "subcomment2");
+            Comment subcomment3 = new Comment("three", "subcomment3");
+            Comment subcomment4 = new Comment("four", "subcomment4");
+            Comment subcomment5 = new Comment("five", "subcomment5");
+
+            comment1.addSubComment(subcomment1);
+            comment1.addSubComment(subcomment2);
+            comment1.addSubComment(subcomment3);
+            comment1.addSubComment(subcomment4);
+            comment1.addSubComment(subcomment5);
+
+            /// subcomment1 에 5개 추가
+
+            Comment subsubcomment1 = new Comment("one", "subsubcomment1");
+            Comment subsubcomment2 = new Comment("two", "subsubcomment2");
+            Comment subsubcomment3 = new Comment("three", "subsubcomment3");
+            Comment subsubcomment4 = new Comment("four", "subsubcomment4");
+            Comment subsubcomment5 = new Comment("five", "subsubcomment5");
+
+            subcomment1.addSubComment(subsubcomment1);
+            subcomment1.addSubComment(subsubcomment2);
+            subcomment1.addSubComment(subsubcomment3);
+            subcomment1.addSubComment(subsubcomment4);
+            subcomment1.addSubComment(subsubcomment5);
 
             /// comment1 추천 ///
             comment1.recommendTheComment();
@@ -201,11 +221,12 @@ public class Program {
             comment5.recommendTheComment();
             comment5.notRecommendTheComment(); // 0
 
-            // var result = article1.getComments();
-            // for (var a : result) {
-            // System.out.println(a.getContent() + " " + a.getRCount());
-            // }
+            var result = article1.getComments();
+            for (var a : result) {
+                System.out.println(a.getContent() + " " + a.getRCount());
+            }
 
+            System.out.println("-----------------------------------");
 
             comment1.recommendTheSubComment(0);
             comment1.recommendTheSubComment(0);
@@ -229,7 +250,34 @@ public class Program {
             var resultsub = comment1.getSubComments();
 
             for (var a : resultsub) {
-            System.out.println(a.getContent() + " " + a.getRCount());
+                System.out.println(a.getContent() + " " + a.getRCount());
+            }
+
+            System.out.println("-----------------------------------");
+
+            subcomment1.recommendTheSubComment(0);
+            subcomment1.recommendTheSubComment(0);
+            subcomment1.recommendTheSubComment(0); // 3
+
+            subcomment1.notRecommendTheSubComment(1);
+            subcomment1.notRecommendTheSubComment(1); // -2
+
+            subcomment1.recommendTheSubComment(2);
+            subcomment1.recommendTheSubComment(2);
+            subcomment1.recommendTheSubComment(2);
+            subcomment1.recommendTheSubComment(2); // 4
+
+            subcomment1.notRecommendTheSubComment(3);
+            subcomment1.notRecommendTheSubComment(3);
+            subcomment1.notRecommendTheSubComment(3); // -3
+
+            subcomment1.recommendTheSubComment(4);
+            subcomment1.notRecommendTheSubComment(4); // 0
+
+            var resultsubsub = subcomment1.getSubComments();
+
+            for (var a : resultsubsub) {
+                System.out.println(a.getContent() + " " + a.getRCount());
             }
         }
 

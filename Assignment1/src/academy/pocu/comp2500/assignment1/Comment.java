@@ -55,8 +55,8 @@ public class Comment {
 
     //구동부
 
-    public void addSubComment(String user, String content) {
-        this.subComments.add(new Comment(user, content));
+    public void addSubComment(Comment subcomment) {
+        this.subComments.add(subcomment);
     }
 
     public void changeSubComment(String user, String content) {
