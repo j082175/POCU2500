@@ -28,7 +28,7 @@ public class Program {
         article3.addArticleTag("a2", "t1");
         article3.addArticleTag("a2", "t2");
 
-        blog1.setTags("t1");
+        blog1.setTagsOrNull("t1");
 
         var articles = blog1.getArticles();
         for (var a : articles) {
@@ -37,9 +37,9 @@ public class Program {
         System.out.println("------------------");
 
         //blog1.resetTagFilter();
-        blog1.setTags("");
+        blog1.setTagsOrNull(null);
 
-        blog1.setTags("t2");
+        blog1.setTagsOrNull("t2");
 
         var articles1 = blog1.getArticles();
         for (var a : articles1) {
@@ -48,13 +48,13 @@ public class Program {
         System.out.println("------------------");
 
         //blog1.resetTagFilter();
-        blog1.setTags("");
+        blog1.setTagsOrNull(null);
 
-        blog1.setTags("t1");
-        blog1.setTags("t2");
-        blog1.setTags("t1");
-        blog1.setTags("t1");
-        blog1.setTags("t1");
+        blog1.setTagsOrNull("t1");
+        blog1.setTagsOrNull("t2");
+        blog1.setTagsOrNull("t1");
+        blog1.setTagsOrNull("t1");
+        blog1.setTagsOrNull("t1");
 
         var articles2 = blog1.getArticles();
         for (var a : articles2) {
@@ -107,7 +107,7 @@ public class Program {
         article3.addArticleTag("a2", "t1");
         article4.addArticleTag("a2", "t2");
 
-        blog1.setTags("t1");
+        blog1.setTagsOrNull("t1");
 
         var articles = blog1.getArticles();
 
@@ -117,9 +117,9 @@ public class Program {
         System.out.println("----------------------------");
 
         //blog1.resetTagFilter();
-        blog1.setTags("");
+        blog1.setTagsOrNull(null);
 
-        blog1.setUser("a1");
+        blog1.setUserOrNull("a1");
 
         var articles2 = blog1.getArticles();
 
@@ -129,11 +129,11 @@ public class Program {
         System.out.println("----------------------------");
 
         //blog1.resetUserFilter();
-        blog1.setUser("");
+        blog1.setUserOrNull(null);
 
-        blog1.setTags("t1");
+        blog1.setTagsOrNull("t1");
 
-        blog1.setUser("a2");
+        blog1.setUserOrNull("a2");
 
         var articles3 = blog1.getArticles();
         for (var a : articles3) {
@@ -143,14 +143,14 @@ public class Program {
         System.out.println("----------------------------");
 
         //blog1.resetTagFilter();
-        blog1.setTags("");
+        blog1.setTagsOrNull(null);
         //blog1.resetUserFilter();
-        blog1.setUser("");
+        blog1.setUserOrNull(null);
 
 
 
-        blog1.setTags("t2");
-        blog1.setUser("a1");
+        blog1.setTagsOrNull("t2");
+        blog1.setUserOrNull("a1");
         var articles4 = blog1.getArticles();
         for (var a : articles4) {
             System.out.println(a.getTitle());
@@ -190,7 +190,7 @@ public class Program {
         // 3. 태그 필터를 사용하여 지정된 태그 있는것만 가져옴.
         {
             Blog blog1 = new Blog("BlogOwner1");
-            blog1.setTags("TAG1");
+            blog1.setTagsOrNull("TAG1");
 
             Article article1 = new Article("Article1", "first_post", "a");
             Article article2 = new Article("Article2", "secone_post", "b");
@@ -213,7 +213,7 @@ public class Program {
         // 4. 작성자 필터
         {
             Blog blog1 = new Blog("BlogOwner1");
-            blog1.setTags("TAG1");
+            blog1.setTagsOrNull("TAG1");
             // blog1.setUserFilter("a");
 
             Article article1 = new Article("Article1", "first_post", "a");
@@ -261,10 +261,10 @@ public class Program {
         {
             Blog blog1 = new Blog("BlogOwner1");
             blog1.setSortingType(Order.DESCENDING_BY_WRITE_TIME);
-            blog1.setTags("tag1");
-            blog1.setTags("tag1");
-            blog1.setTags("tag1");
-            blog1.setUser("b");
+            blog1.setTagsOrNull("tag1");
+            blog1.setTagsOrNull("tag1");
+            blog1.setTagsOrNull("tag1");
+            blog1.setUserOrNull("b");
 
             Article article1 = new Article("a", "article1", "first_post");
             // Thread.sleep(1000);

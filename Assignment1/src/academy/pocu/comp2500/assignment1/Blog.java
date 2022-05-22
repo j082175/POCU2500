@@ -29,25 +29,25 @@ public class Blog {
 
         // ArrayList<Article> newArticles = new ArrayList<>();
         // if (tagFilter != null) {
-        //     for (int i = 0; i < this.articles.size(); i++) {
-        //         for (int j = 0; j < this.tagFilter.size(); j++) {
-        //             for (int k = 0; k < this.articles.get(i).getTag().size(); k++) {
-        //                 if (this.articles.get(i).getTag().get(k).equals(tagFilter.get(j))) {
-        //                     checkCount++;
-        //                     break;
-        //                     // newArticles.add(this.articles.get(i));
-        //                 } 
-        //             }
-        //             // if (check = false) {
-        //             //     break;
-        //             // }
-        //         }
-        //         if (checkCount == this.tagFilter.size()) {
-        //             newArticles.add(this.articles.get(i));
-        //         } 
-        //         checkCount = 0;
-        //     }
-        //     //this.articles = newArticles;
+        // for (int i = 0; i < this.articles.size(); i++) {
+        // for (int j = 0; j < this.tagFilter.size(); j++) {
+        // for (int k = 0; k < this.articles.get(i).getTag().size(); k++) {
+        // if (this.articles.get(i).getTag().get(k).equals(tagFilter.get(j))) {
+        // checkCount++;
+        // break;
+        // // newArticles.add(this.articles.get(i));
+        // }
+        // }
+        // // if (check = false) {
+        // // break;
+        // // }
+        // }
+        // if (checkCount == this.tagFilter.size()) {
+        // newArticles.add(this.articles.get(i));
+        // }
+        // checkCount = 0;
+        // }
+        // //this.articles = newArticles;
         // }
         ArrayList<Article> result = new ArrayList<>();
         result = this.articles;
@@ -64,21 +64,17 @@ public class Blog {
                         } else {
                             isChecked = false;
                         }
-                        
+
                     }
                     if (isChecked == true) {
                         break;
                     }
                 }
-                    
-                
+
                 checkCount = 0;
             }
             result = newArticles;
         }
-
-
-
 
         ArrayList<Article> newArticles2 = new ArrayList<>();
 
@@ -119,27 +115,31 @@ public class Blog {
         }
     }
 
-    public void setTags(String tag) {
-        if (tag.equals("")) {
+    public void setTagsOrNull(String tagOrNull) {
+        if (tagOrNull == null) {
             this.tagFilter.clear();
+            tagOrNull = "";
         }
 
-        for (int i = 0; i < this.tagFilter.size(); i++) {
-            if (!this.tagFilter.get(i).equals(tag)) {
-                this.tagFilter.add(tag);
+        if (tagOrNull != null) {
+            for (int i = 0; i < this.tagFilter.size(); i++) {
+                if (!this.tagFilter.get(i).equals(tagOrNull)) {
+                    this.tagFilter.add(tagOrNull);
+                }
             }
-        }
 
-        if (this.tagFilter.size() == 0) {
-            this.tagFilter.add(tag);
+            if (this.tagFilter.size() == 0) {
+                this.tagFilter.add(tagOrNull);
+            }
+
         }
     }
 
-    public void setUser(String user) {
-        if (user.equals("")) {
+    public void setUserOrNull(String userOrNull) {
+        if (userOrNull == null) {
             this.userFilter = null;
         }
-        this.userFilter = user;
+        this.userFilter = userOrNull;
     }
 
     public void setSortingType(Order sortingType) {
