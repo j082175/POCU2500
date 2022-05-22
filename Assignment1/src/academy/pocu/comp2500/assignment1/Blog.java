@@ -36,18 +36,24 @@ public class Blog {
                     }
                 }
             }
-        } else if (userFilter != null) {
+            this.articles = newArticles;
+
+        }
+        ArrayList<Article> newArticles2 = new ArrayList<>();
+
+        if (userFilter != null) {
             for (int i = 0; i < articles.size(); i++) {
                 if (this.articles.get(i).getUserName().equals(userFilter)) {
-                    newArticles.add(this.articles.get(i));
+                    newArticles2.add(this.articles.get(i));
                 }
             }
-        } else {
-            return this.articles;
+            articles = newArticles2;
+
         }
 
+        if (this.articles == null) {
 
-        articles = newArticles;
+        }
         return this.articles;
     }
 
@@ -86,9 +92,9 @@ public class Blog {
 
         // ArrayList<Article> newArticles = new ArrayList<>(100);
         // for (int i = 0; i < articles.size(); i++) {
-        //     if (userFilter.equals(user)) {
-        //         newArticles.add(articles.get(i));
-        //     }
+        // if (userFilter.equals(user)) {
+        // newArticles.add(articles.get(i));
+        // }
         // }
 
         // articles = newArticles;
