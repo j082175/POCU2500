@@ -53,13 +53,18 @@ public class Program {
         blog1.setTagFilter("t1");
         blog1.setTagFilter("t1");
 
-
         var articles2 = blog1.getArticles();
         for (var a : articles2) {
             System.out.println(a.getTitle());
         }
         System.out.println("------------------");
 
+        article1.addReaction("a1", Reaction.ANGRY);
+        article1.removeReaction("a1", Reaction.ANGRY);
+        var reactions = article1.getReactions();
+        for (int i = 0; i < reactions.size(); i++) {
+            System.out.println(reactions.get(i));
+        }
     }
 
     public static void tagUserComplexFilterTestCase() {
@@ -422,7 +427,7 @@ public class Program {
 
         {
             multiTagFilterTestCase();
-            
+
         }
     }
 }

@@ -6,12 +6,7 @@ import java.util.ArrayList;
 
 public class Article {
     //private final int reactionCount[];
-    private int reactionGreat;
-    private int reactionSad;
-    private int reactionAngry;
-    private int reactionFun;
-    private int reactionLove;
-
+    private ArrayList<Reaction> reactions;
 
     
     private ArrayList<Comment> comments;
@@ -36,43 +31,18 @@ public class Article {
         comments = new ArrayList<>();
 
         //reactionCount = new int[5];
-
-        this.reactionGreat = 0;
-        this.reactionSad = 0;
-        this.reactionAngry = 0;
-        this.reactionFun = 0;
-        this.reactionLove = 0;
+        this.reactions = new ArrayList<>();
     }
     ///////////reactions
     // public int[] getReactionCount() {
     //     return this.reactionCount;
     // }
 
-    public int getReactionGreat() {
-        //return this.reactionCount[0];
-        return this.reactionGreat;
-    }
 
-    public int getReactionSad() {
-        //return this.reactionCount[1];
-        return this.reactionSad;
-    }
-
-    public int getReactionAngry() {
-        //return this.reactionCount[2];
-        return this.reactionAngry;
-    }
-
-    public int getReactionFun() {
-        //return this.reactionCount[3];
-        return this.reactionFun;
-    }
-
-    public int getReactionLove() {
-        //return this.reactionCount[4];
-        return this.reactionLove;
-    }
     //////////////////////
+    public ArrayList<Reaction> getReactions() {
+        return this.reactions;
+    }
 
     public OffsetDateTime getTime() {
         return this.createdTime;
@@ -201,57 +171,51 @@ public class Article {
 
     // }
 
-    public void addReaction(Reaction reactionType) {
-        switch (reactionType) {
-            case GREAT:
-                //this.reactionCount[0]++;
-                this.reactionGreat++;
-                break;
-            case SAD:
-                //this.reactionCount[1]++;
-                this.reactionSad++;
-                break;
-            case ANGRY:
-                //this.reactionCount[2]++;
-                this.reactionAngry++;
-                break;
-            case FUN:
-                //this.reactionCount[3]++;
-                this.reactionFun++;
-                break;
-            case LOVE:
-                //this.reactionCount[4]++;
-                this.reactionLove++;
-                break;
-            default:
-                break;
+    public void addReaction(String user, Reaction reactionType) {
+        if (this.user.equals(user)) {
+            switch (reactionType) {
+                case GREAT:
+                    this.reactions.add(reactionType);
+                    break;
+                case SAD:
+                    this.reactions.add(reactionType);
+                    break;
+                case ANGRY:
+                    this.reactions.add(reactionType);
+                    break;
+                case FUN:
+                    this.reactions.add(reactionType);
+                    break;
+                case LOVE:
+                    this.reactions.add(reactionType);
+                    break;
+                default:
+                    break;
+            }
         }
     }
 
-    public void removeReaction(Reaction reactionType) {
-        switch (reactionType) {
-            case GREAT:
-                //this.reactionCount[0]--;
-                this.reactionGreat++;
-                break;
-            case SAD:
-                //this.reactionCount[1]--;
-                this.reactionSad++;
-                break;
-            case ANGRY:
-                //this.reactionCount[2]--;
-                this.reactionAngry++;
-                break;
-            case FUN:
-                //this.reactionCount[3]--;
-                this.reactionFun++;
-                break;
-            case LOVE:
-                //this.reactionCount[4]--;
-                this.reactionLove++;
-                break;
-            default:
-                break;
+    public void removeReaction(String user, Reaction reactionType) {
+        if (this.user.equals(user)) {
+            switch (reactionType) {
+                case GREAT:
+                    this.reactions.remove(reactionType);
+                    break;
+                case SAD:
+                    this.reactions.remove(reactionType);
+                    break;
+                case ANGRY:
+                    this.reactions.remove(reactionType);
+                    break;
+                case FUN:
+                    this.reactions.remove(reactionType);
+                    break;
+                case LOVE:
+                    this.reactions.remove(reactionType);
+                    break;
+                default:
+                    break;
+            }
         }
     }
 
