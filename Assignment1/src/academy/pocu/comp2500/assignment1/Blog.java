@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Blog {
     private ArrayList<Article> articles;
-    private String tagFilter;
+    private ArrayList<String> tagFilter;
     private String userFilter;
     private Order sortingType;
 
@@ -13,7 +13,7 @@ public class Blog {
 
     public Blog(String user) {
 
-        this.tagFilter = null;
+        this.tagFilter = new ArrayList<>();
         this.userFilter = null;
         this.sortingType = Order.DESCENDING_BY_WRITE_TIME;
         articles = new ArrayList<>(100);
@@ -24,17 +24,28 @@ public class Blog {
     // dangerous code
     public ArrayList<Article> getArticles() {
 
+        int checkCount = 0;
         setSortingType(this.sortingType);
 
         ArrayList<Article> newArticles = new ArrayList<>();
         if (tagFilter != null) {
             for (int i = 0; i < this.articles.size(); i++) {
-                for (int j = 0; j < this.articles.get(i).getTag().size(); j++) {
-                    if (this.articles.get(i).getTag().get(j).equals(tagFilter)) {
-                        newArticles.add(this.articles.get(i));
-                        break;
+                for (int j = 0; j < this.tagFilter.size(); j++) {
+                    for (int k = 0; k < this.articles.get(i).getTag().size(); k++) {
+                        if (this.articles.get(i).getTag().get(k).equals(tagFilter.get(j))) {
+                            checkCount++;
+                            break;
+                            // newArticles.add(this.articles.get(i));
+                        } 
                     }
+                    // if (check = false) {
+                    //     break;
+                    // }
                 }
+                if (checkCount == this.tagFilter.size()) {
+                    newArticles.add(this.articles.get(i));
+                    checkCount = 0;
+                } 
             }
 
             this.articles = newArticles;
@@ -67,25 +78,20 @@ public class Blog {
     // this.articles.add(new Article(title, content, name));
     // }
 
-    public String getTagFilter() {
-        if (tagFilter == null) {
-            return "";
-        } else {
-            return this.tagFilter;
-        }
+    public ArrayList<String> getTagFilter() {
+        return this.tagFilter;
     }
 
     public String getUserFilter() {
         if (userFilter == null) {
             return "";
         } else {
-            return this.tagFilter;
+            return this.userFilter;
         }
     }
 
     public void setTagFilter(String tag) {
-        this.tagFilter = tag;
-
+        this.tagFilter.add(tag);
     }
 
     public void setUserFilter(String user) {
