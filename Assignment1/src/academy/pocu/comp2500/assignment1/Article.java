@@ -40,8 +40,15 @@ public class Article {
 
 
     //////////////////////
-    public ArrayList<Reaction> getReactions() {
-        return this.reactions;
+    public int getReactionsCount(Reaction reactionType) {
+        int count = 0;
+        for (int i = 0; i < this.reactions.size(); i++) {
+            if (this.reactions.get(i) == reactionType) {
+                count++;
+            }
+        }
+
+        return count;
     }
 
     public OffsetDateTime getTime() {
@@ -263,9 +270,19 @@ public class Article {
     // }
 
     public void addArticleTag(String user, String tag) {
-        if (this.user.equals(user)) {
+        // if (this.user.equals(user)) {
+        //     this.tag.add(tag);
+        //     revisedTime = OffsetDateTime.now();
+        // }
+
+        for (int i = 0; i < this.tag.size(); i++) {
+            if (!this.tag.get(i).equals(tag)) {
+                this.tag.add(tag);
+            }
+        }
+
+        if (this.tag.size() == 0) {
             this.tag.add(tag);
-            revisedTime = OffsetDateTime.now();
         }
     }
 

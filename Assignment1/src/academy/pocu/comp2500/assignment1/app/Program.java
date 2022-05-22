@@ -59,12 +59,10 @@ public class Program {
         }
         System.out.println("------------------");
 
+        article1.addReaction("a1", Reaction.GREAT);
         article1.addReaction("a1", Reaction.ANGRY);
-        article1.removeReaction("a1", Reaction.ANGRY);
-        var reactions = article1.getReactions();
-        for (int i = 0; i < reactions.size(); i++) {
-            System.out.println(reactions.get(i));
-        }
+        int reactions = article1.getReactionsCount(Reaction.ANGRY);
+        System.out.println(reactions);
     }
 
     public static void tagUserComplexFilterTestCase() {
