@@ -65,8 +65,28 @@ public class Program {
         article1.addReaction("a1", Reaction.ANGRY);
         article1.addReaction("a1", Reaction.ANGRY);
         article1.removeReaction("a1", Reaction.ANGRY);
-        int reactions = article1.getReactions(Reaction.ANGRY);
-        System.out.println(reactions);
+
+        article1.addReaction("a1", Reaction.FUN);
+        article1.addReaction("a1", Reaction.FUN);
+        article1.addReaction("a1", Reaction.FUN);
+
+        article1.addReaction("a1", Reaction.GREAT);
+
+        article1.addReaction("a1", Reaction.LOVE);
+        article1.addReaction("a1", Reaction.LOVE);
+        article1.addReaction("a1", Reaction.LOVE);
+        article1.addReaction("a1", Reaction.LOVE);
+
+        article1.addReaction("a1", Reaction.SAD);
+        article1.addReaction("a1", Reaction.SAD);
+        article1.addReaction("a1", Reaction.SAD);
+
+        System.out.println(article1.getReactions(Reaction.ANGRY));
+        System.out.println(article1.getReactions(Reaction.FUN));
+        System.out.println(article1.getReactions(Reaction.GREAT));
+        System.out.println(article1.getReactions(Reaction.LOVE));
+        System.out.println(article1.getReactions(Reaction.SAD));
+
     }
 
     public static void tagUserComplexFilterTestCase() {

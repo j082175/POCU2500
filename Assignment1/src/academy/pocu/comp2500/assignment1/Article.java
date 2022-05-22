@@ -8,7 +8,8 @@ public class Article {
     //private final int reactionCount[];
     private ArrayList<Reaction> reactions;
 
-    
+    private String reactionUser;
+
     private ArrayList<Comment> comments;
     private final ArrayList<String> tag;
 
@@ -32,6 +33,8 @@ public class Article {
 
         //reactionCount = new int[5];
         this.reactions = new ArrayList<>();
+
+        reactionUser = null;
     }
     ///////////reactions
     // public int[] getReactionCount() {
@@ -179,31 +182,31 @@ public class Article {
     // }
 
     public void addReaction(String user, Reaction reactionType) {
-        if (this.user.equals(user)) {
-            switch (reactionType) {
-                case GREAT:
-                    this.reactions.add(reactionType);
-                    break;
-                case SAD:
-                    this.reactions.add(reactionType);
-                    break;
-                case ANGRY:
-                    this.reactions.add(reactionType);
-                    break;
-                case FUN:
-                    this.reactions.add(reactionType);
-                    break;
-                case LOVE:
-                    this.reactions.add(reactionType);
-                    break;
-                default:
-                    break;
-            }
+        this.reactionUser = user;
+        
+        switch (reactionType) {
+            case GREAT:
+                this.reactions.add(reactionType);
+                break;
+            case SAD:
+                this.reactions.add(reactionType);
+                break;
+            case ANGRY:
+                this.reactions.add(reactionType);
+                break;
+            case FUN:
+                this.reactions.add(reactionType);
+                break;
+            case LOVE:
+                this.reactions.add(reactionType);
+                break;
+            default:
+                break;
         }
     }
 
     public void removeReaction(String user, Reaction reactionType) {
-        if (this.user.equals(user)) {
+        if (this.reactionUser.equals(user)) {
             switch (reactionType) {
                 case GREAT:
                     this.reactions.remove(reactionType);
@@ -225,28 +228,6 @@ public class Article {
             }
         }
     }
-
-    // public void recommendTheComment(Article article, Comment comment) {
-
-    // }
-
-    // public void notRecommendTheComment(Article article, Comment comment) {
-
-    // }
-
-    // public void getSubComments(Article article, Comment comment) {
-
-    // }
-
-    // public void recommendTheSubComment(Article article, Comment comment, Comment
-    // subcomment) {
-
-    // }
-
-    // public void notRecommendTheSubComment(Article article, Comment comment,
-    // Comment subcomment) {
-
-    // }
 
     public void changeArticleTitle(String user, String title) {
         if (this.user.equals(user)) {
@@ -278,11 +259,13 @@ public class Article {
         for (int i = 0; i < this.tag.size(); i++) {
             if (!this.tag.get(i).equals(tag)) {
                 this.tag.add(tag);
+                revisedTime = OffsetDateTime.now();
             }
         }
 
         if (this.tag.size() == 0) {
             this.tag.add(tag);
+            revisedTime = OffsetDateTime.now();
         }
     }
 
