@@ -1,7 +1,7 @@
 package academy.pocu.comp2500.lab4;
 
 public class Singleton {
-    
+
     public static Singleton instance;
 
     private int num;
@@ -25,7 +25,7 @@ public class Singleton {
     public static void clear() {
         assert instance != null;
 
-        instance = new Singleton();
+        instance = null;
     }
 
     public int getNum() {
