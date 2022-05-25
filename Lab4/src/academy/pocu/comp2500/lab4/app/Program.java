@@ -10,23 +10,24 @@ public class Program {
 
     public static void test() {
         {
+            // 똑같은거 접근하는것도 사용된 거로 처리됨 (??? ㅡ,.ㅡ)
             MemoryCache memCacheA = MemoryCache.getInstance("A");
 
             MemoryCache memCacheB = MemoryCache.getInstance("B");
             MemoryCache memCacheC = MemoryCache.getInstance("C");
 
-            assert memCacheA == MemoryCache.getInstance("A");
-            assert memCacheB == MemoryCache.getInstance("B");
-            assert memCacheC == MemoryCache.getInstance("C");
+            assert memCacheA == MemoryCache.getInstance("A"); //이미 존재
+            assert memCacheB == MemoryCache.getInstance("B"); //이미 존재
+            assert memCacheC == MemoryCache.getInstance("C"); //이미 존재
 
-            MemoryCache.setMaxInstanceCount(3);
+            MemoryCache.setMaxInstanceCount(3); 
 
-            MemoryCache memCacheD = MemoryCache.getInstance("D"); // 3
+            MemoryCache memCacheD = MemoryCache.getInstance("D"); // a 제거된 b c d 상태
 
-            assert memCacheA != MemoryCache.getInstance("A"); //0
-            assert memCacheC == MemoryCache.getInstance("C"); //2
-            assert memCacheB != MemoryCache.getInstance("B");
-            assert memCacheD != MemoryCache.getInstance("D");
+            assert memCacheA != MemoryCache.getInstance("A"); //0  // c d a
+            assert memCacheC == MemoryCache.getInstance("C"); //2 // d a c
+            assert memCacheB != MemoryCache.getInstance("B"); // a c b
+            assert memCacheD != MemoryCache.getInstance("D"); // c b d
         }
 
         {
