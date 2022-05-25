@@ -117,73 +117,57 @@ public class Program {
     }
 
     public static void main(String[] args) {
-        // Singleton a = Singleton.getInstance(44);
-        // Singleton b = Singleton.getInstance(29);
-
-        // assert a != null;
-
-        // Singleton.clear();
-        // Singleton c = Singleton.getInstance(229);
-        
-
-        // //assert a == null;
-
-        // MemoryCache memCacheA = MemoryCache.getInstance("A");
-        // MemoryCache memCacheB = MemoryCache.getInstance("B");
-        // MemoryCache memCacheC = MemoryCache.getInstance("C");
-
-        // MemoryCache.clear();
-
-        // assert memCacheA != null;
-        test();
-
-        
-            MemoryCache.clear();
-            MemoryCache.setMaxInstanceCount(5); // 여기 삭제하고도 잘 작동하는지??
-         
-            MemoryCache memCacheA = MemoryCache.getInstance("A");
-            MemoryCache memCacheB = MemoryCache.getInstance("B");
-            MemoryCache memCacheC = MemoryCache.getInstance("C");
-            MemoryCache memCacheD = MemoryCache.getInstance("D");
-            MemoryCache memCacheE = MemoryCache.getInstance("E");
-         
-         
-            assert memCacheA != null;
-            assert memCacheB != null;
-            assert memCacheC != null;
-            assert memCacheD != null;
-            assert memCacheE != null;
-         
-            assert memCacheA == MemoryCache.getInstance("A");
-            assert memCacheB == MemoryCache.getInstance("B");
-            assert memCacheC == MemoryCache.getInstance("C");
-            assert memCacheD == MemoryCache.getInstance("D");
-            assert memCacheE == MemoryCache.getInstance("E");
-         
-         
-            memCacheA.addEntry("test", "test");
-            assert memCacheA.getEntryOrNull("test").equals("test");
-            memCacheA.addEntry("test", "test2");
-            assert memCacheA.getEntryOrNull("test").equals("test2");
-         
-            memCacheB.addEntry("test", "test");
-            assert memCacheB.getEntryOrNull("test").equals("test");
-         
-            MemoryCache.setMaxInstanceCount(3);
-         
-            assert memCacheC == MemoryCache.getInstance("C");
-            assert memCacheD == MemoryCache.getInstance("D");
-            assert memCacheE == MemoryCache.getInstance("E");
-            assert memCacheA != MemoryCache.getInstance("A");
-            assert memCacheB != MemoryCache.getInstance("B");
-         
-            // A, B는 삭제후 새로 생성된 instance이니 위에서 추가했던 entry가 없을것임
-            memCacheA = MemoryCache.getInstance("A");
-            memCacheB = MemoryCache.getInstance("B");
-            assert memCacheA.getEntryOrNull("test") == null;
-            assert memCacheB.getEntryOrNull("test") == null;
-         
-            MemoryCache.clear();
-         
+        {
+            {
+                MemoryCache.clear();
+                MemoryCache.setMaxInstanceCount(5); // 여기 삭제하고도 잘 작동하는지??
+             
+                MemoryCache memCacheA = MemoryCache.getInstance("A");
+                MemoryCache memCacheB = MemoryCache.getInstance("B");
+                MemoryCache memCacheC = MemoryCache.getInstance("C");
+                MemoryCache memCacheD = MemoryCache.getInstance("D");
+                MemoryCache memCacheE = MemoryCache.getInstance("E");
+             
+             
+                assert memCacheA != null;
+                assert memCacheB != null;
+                assert memCacheC != null;
+                assert memCacheD != null;
+                assert memCacheE != null;
+             
+                assert memCacheA == MemoryCache.getInstance("A");
+                assert memCacheB == MemoryCache.getInstance("B");
+                assert memCacheC == MemoryCache.getInstance("C");
+                assert memCacheD == MemoryCache.getInstance("D");
+                assert memCacheE == MemoryCache.getInstance("E");
+             
+             
+                memCacheA.addEntry("test", "test");
+                assert memCacheA.getEntryOrNull("test").equals("test");
+                memCacheA.addEntry("test", "test2");
+                assert memCacheA.getEntryOrNull("test").equals("test2");
+             
+                memCacheB.addEntry("test", "test");
+                assert memCacheB.getEntryOrNull("test").equals("test");
+             
+                MemoryCache.setMaxInstanceCount(3);
+             
+                assert memCacheC == MemoryCache.getInstance("C");
+                assert memCacheD == MemoryCache.getInstance("D");
+                assert memCacheE == MemoryCache.getInstance("E");
+                assert memCacheA != MemoryCache.getInstance("A");
+                assert memCacheB != MemoryCache.getInstance("B");
+             
+                // A, B는 삭제후 새로 생성된 instance이니 위에서 추가했던 entry가 없을것임
+                memCacheA = MemoryCache.getInstance("A");
+                memCacheB = MemoryCache.getInstance("B");
+                assert memCacheA.getEntryOrNull("test") == null;
+                assert memCacheB.getEntryOrNull("test") == null;
+             
+                MemoryCache.clear();
+             }
+             
+             
+            }
     }
 }
