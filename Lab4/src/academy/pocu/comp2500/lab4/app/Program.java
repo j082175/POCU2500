@@ -1,10 +1,7 @@
 package academy.pocu.comp2500.lab4.app;
 
-import java.util.ArrayList;
-
 import academy.pocu.comp2500.lab4.EvictionPolicy;
 import academy.pocu.comp2500.lab4.MemoryCache;
-import academy.pocu.comp2500.lab4.Singleton;
 
 public class Program {
 
@@ -16,16 +13,16 @@ public class Program {
             MemoryCache memCacheB = MemoryCache.getInstance("B");
             MemoryCache memCacheC = MemoryCache.getInstance("C");
 
-            assert memCacheA == MemoryCache.getInstance("A"); //이미 존재
-            assert memCacheB == MemoryCache.getInstance("B"); //이미 존재
-            assert memCacheC == MemoryCache.getInstance("C"); //이미 존재
+            assert memCacheA == MemoryCache.getInstance("A"); // 이미 존재
+            assert memCacheB == MemoryCache.getInstance("B"); // 이미 존재
+            assert memCacheC == MemoryCache.getInstance("C"); // 이미 존재
 
-            MemoryCache.setMaxInstanceCount(3); 
+            MemoryCache.setMaxInstanceCount(3);
 
             MemoryCache memCacheD = MemoryCache.getInstance("D"); // a 제거된 b c d 상태
 
-            assert memCacheA != MemoryCache.getInstance("A"); //0  // c d a
-            assert memCacheC == MemoryCache.getInstance("C"); //2 // d a c
+            assert memCacheA != MemoryCache.getInstance("A"); // 0 // c d a
+            assert memCacheC == MemoryCache.getInstance("C"); // 2 // d a c
             assert memCacheB != MemoryCache.getInstance("B"); // a c b
             assert memCacheD != MemoryCache.getInstance("D"); // c b d
         }
@@ -114,60 +111,65 @@ public class Program {
             assert memCache.getEntryOrNull("key15") != null;
             assert memCache.getEntryOrNull("key16") != null;
         }
+
+    }
+
+    public static void test2() {
+        {
+            MemoryCache.clear();
+            MemoryCache.setMaxInstanceCount(5); // 여기 삭제하고도 잘 작동하는지??
+
+            MemoryCache memCacheA = MemoryCache.getInstance("A");
+            MemoryCache memCacheB = MemoryCache.getInstance("B");
+            MemoryCache memCacheC = MemoryCache.getInstance("C");
+            MemoryCache memCacheD = MemoryCache.getInstance("D");
+            MemoryCache memCacheE = MemoryCache.getInstance("E");
+
+            assert memCacheA != null;
+            assert memCacheB != null;
+            assert memCacheC != null;
+            assert memCacheD != null;
+            assert memCacheE != null;
+
+            assert memCacheA == MemoryCache.getInstance("A");
+            assert memCacheB == MemoryCache.getInstance("B");
+            assert memCacheC == MemoryCache.getInstance("C");
+            assert memCacheD == MemoryCache.getInstance("D");
+            assert memCacheE == MemoryCache.getInstance("E");
+
+            memCacheA.addEntry("test", "test");
+            assert memCacheA.getEntryOrNull("test").equals("test");
+            memCacheA.addEntry("test", "test2");
+            assert memCacheA.getEntryOrNull("test").equals("test2");
+
+            memCacheB.addEntry("test", "test");
+            assert memCacheB.getEntryOrNull("test").equals("test");
+
+            MemoryCache.setMaxInstanceCount(3);
+
+            assert memCacheC == MemoryCache.getInstance("C");
+            assert memCacheD == MemoryCache.getInstance("D");
+            assert memCacheE == MemoryCache.getInstance("E");
+            assert memCacheA != MemoryCache.getInstance("A");
+            assert memCacheB != MemoryCache.getInstance("B");
+
+            // A, B는 삭제후 새로 생성된 instance이니 위에서 추가했던 entry가 없을것임
+            memCacheA = MemoryCache.getInstance("A");
+            memCacheB = MemoryCache.getInstance("B");
+            assert memCacheA.getEntryOrNull("test") == null;
+            assert memCacheB.getEntryOrNull("test") == null;
+
+            MemoryCache.clear();
+        }
+
     }
 
     public static void main(String[] args) {
-        {
-            {
-                MemoryCache.clear();
-                MemoryCache.setMaxInstanceCount(5); // 여기 삭제하고도 잘 작동하는지??
-             
-                MemoryCache memCacheA = MemoryCache.getInstance("A");
-                MemoryCache memCacheB = MemoryCache.getInstance("B");
-                MemoryCache memCacheC = MemoryCache.getInstance("C");
-                MemoryCache memCacheD = MemoryCache.getInstance("D");
-                MemoryCache memCacheE = MemoryCache.getInstance("E");
-             
-             
-                assert memCacheA != null;
-                assert memCacheB != null;
-                assert memCacheC != null;
-                assert memCacheD != null;
-                assert memCacheE != null;
-             
-                assert memCacheA == MemoryCache.getInstance("A");
-                assert memCacheB == MemoryCache.getInstance("B");
-                assert memCacheC == MemoryCache.getInstance("C");
-                assert memCacheD == MemoryCache.getInstance("D");
-                assert memCacheE == MemoryCache.getInstance("E");
-             
-             
-                memCacheA.addEntry("test", "test");
-                assert memCacheA.getEntryOrNull("test").equals("test");
-                memCacheA.addEntry("test", "test2");
-                assert memCacheA.getEntryOrNull("test").equals("test2");
-             
-                memCacheB.addEntry("test", "test");
-                assert memCacheB.getEntryOrNull("test").equals("test");
-             
-                MemoryCache.setMaxInstanceCount(3);
-             
-                assert memCacheC == MemoryCache.getInstance("C");
-                assert memCacheD == MemoryCache.getInstance("D");
-                assert memCacheE == MemoryCache.getInstance("E");
-                assert memCacheA != MemoryCache.getInstance("A");
-                assert memCacheB != MemoryCache.getInstance("B");
-             
-                // A, B는 삭제후 새로 생성된 instance이니 위에서 추가했던 entry가 없을것임
-                memCacheA = MemoryCache.getInstance("A");
-                memCacheB = MemoryCache.getInstance("B");
-                assert memCacheA.getEntryOrNull("test") == null;
-                assert memCacheB.getEntryOrNull("test") == null;
-             
-                MemoryCache.clear();
-             }
-             
-             
-            }
+
+        System.out.println("rewrwe");
+        System.out.println("12134");
+        test();
+        test2();
+
     }
 }

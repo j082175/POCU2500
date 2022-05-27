@@ -3,9 +3,10 @@
   "configurations": [
     {
       "type": "java",
-      "name": "Java 런치",
+      "name": "Launch Program",
       "request": "launch",
-      "mainClass": "",
+      "mainClass": "academy.pocu.comp2500.lab4.app.Program",
+      "projectName": "POCU2500_f55f3a6b",
       "vmArgs": "-enableassertions"
     }
   ]
