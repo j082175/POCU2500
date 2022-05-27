@@ -10,8 +10,8 @@ public class MemoryCache {
 
     private static int createdOrder = 0;
 
-    private static int maxInstanceCount = 10;
-    private int maxEntryCount = 10;
+    private static int maxInstanceCount = 10000;
+    private int maxEntryCount = 10000;
 
     private int createdCount;
     private static int addCount = 0;
