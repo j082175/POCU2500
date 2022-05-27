@@ -10,8 +10,8 @@ public class MemoryCache {
 
     private static int createdOrder = 0;
 
-    private static int maxInstanceCount = Integer.MAX_VALUE;
-    private int maxEntryCount = Integer.MAX_VALUE;
+    private static int maxInstanceCount = 10;
+    private int maxEntryCount = 10;
 
     private int createdCount;
     private static int addCount = 0;
@@ -92,9 +92,9 @@ public class MemoryCache {
         if (createdOrder < maxInstanceCount) {
             instance.put(hardDiskName, new MemoryCache());
             instanceManagerLRU.add(hardDiskName);
-            //isInstanceExistsCount = 0;
+            // isInstanceExistsCount = 0;
         } else if (createdOrder >= maxInstanceCount && instance.size() > 2) {
-            //isInstanceExistsCount = 0;
+            // isInstanceExistsCount = 0;
             int index = 0;
             int min = instance.get(instanceManagerLRU.get(0)).createdCount;
             for (int i = 1; i < instance.size(); i++) {
@@ -125,8 +125,10 @@ public class MemoryCache {
     }
 
     public static void setMaxInstanceCount(int count) {
-        maxInstanceCount = count;
-        isInstanceExistsCount = 0;
+        if (count < Integer.MAX_VALUE) {
+            maxInstanceCount = count;
+            isInstanceExistsCount = 0;
+        }
     }
 
     public void setMaxEntryCount(int count) {
