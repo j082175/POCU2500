@@ -166,10 +166,20 @@ public class Program {
 
     public static void main(String[] args) {
 
-        System.out.println("rewrwe");
-        System.out.println("12134");
         test();
-        test2();
+        // MemoryCache memCacheA = MemoryCache.getInstance("A");
+
+        // MemoryCache memCacheB = MemoryCache.getInstance("B");
+        // MemoryCache memCacheC = MemoryCache.getInstance("C");
+        // MemoryCache memCacheD = MemoryCache.getInstance("D");
+        // MemoryCache memCacheE = MemoryCache.getInstance("E");
+
+        // MemoryCache.setMaxInstanceCount(2);
+        // assert memCacheA == MemoryCache.getInstance("A"); // 이미 존재
+        // assert memCacheB == MemoryCache.getInstance("B"); // 이미 존재
+        // assert memCacheC != MemoryCache.getInstance("C"); // 이미 존재
+        // assert memCacheD != MemoryCache.getInstance("D"); // 이미 존재
+        // assert memCacheE != MemoryCache.getInstance("E"); // 이미 존재
 
     }
 }

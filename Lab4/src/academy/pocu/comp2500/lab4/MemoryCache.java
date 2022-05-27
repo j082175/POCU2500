@@ -42,49 +42,48 @@ public class MemoryCache {
         String backup = null;
 
         // 지정된 하드디스크 전용 인스턴스가 존재할때
-        
-        if (instance.containsKey(hardDiskName)) {
-            instance.get(hardDiskName).revisedTime = OffsetDateTime.now();
-            addCount++;
-            instance.get(hardDiskName).createdCount = addCount;
-            
-            for (int i = 0; i < instanceManagerLRU.size(); i++) {
-                if (instanceManagerLRU.get(i).equals(hardDiskName)) {
-                    instanceManagerLRU.remove(i);
-                    instanceManagerLRU.add(0, hardDiskName);
-                }
-            }
-            isInstanceExistsCount++;
-            if (isInstanceExistsCount > maxInstanceCount) {
-                int count = instance.size();
-                while (count-- > maxInstanceCount) {
-                    int index = 0;
-                    int min = instance.get(instanceManagerLRU.get(0)).createdCount;
-                    for (int i = 1; i < instance.size(); i++) {
-                        if (min > instance.get(instanceManagerLRU.get(i)).createdCount) {
-                            min = instance.get(instanceManagerLRU.get(i)).createdCount;
-                            index = i;
-                        }
+
+        if (isInstanceExistsCount < maxInstanceCount) {
+            if (instance.containsKey(hardDiskName)) {
+                instance.get(hardDiskName).revisedTime = OffsetDateTime.now();
+                addCount++;
+                instance.get(hardDiskName).createdCount = addCount;
+
+                for (int i = 0; i < instanceManagerLRU.size(); i++) {
+                    if (instanceManagerLRU.get(i).equals(hardDiskName)) {
+                        instanceManagerLRU.remove(i);
+                        instanceManagerLRU.add(0, hardDiskName);
                     }
-                    // 제일 안쓰인놈 지우기
-                    createdOrder--;
-                    instance.remove(instanceManagerLRU.get(index));
-
-                    instanceManagerLRU.remove(index);
-
-                    // 새로 만들어주기
-                    instance.put(hardDiskName, new MemoryCache());
-
-                    instanceManagerLRU.add(index, hardDiskName);
                 }
-            }
-            
-            return instance.get(hardDiskName);
-        }
-    
+                isInstanceExistsCount++;
 
-        while (instance.size() > maxInstanceCount) { // = 추가
-            // lru에 기초하여 초과분 제거
+                if (isInstanceExistsCount > maxInstanceCount) {
+                    int count = instance.size();
+                    while (count > maxInstanceCount) {
+                        int index = 0;
+                        int min = instance.get(instanceManagerLRU.get(0)).createdCount;
+                        for (int i = 1; i < instance.size(); i++) {
+                            if (min > instance.get(instanceManagerLRU.get(i)).createdCount) {
+                                min = instance.get(instanceManagerLRU.get(i)).createdCount;
+                                index = i;
+                            }
+                        }
+                        // 제일 안쓰인놈 지우기
+                        createdOrder--;
+                        instance.remove(instanceManagerLRU.get(index));
+
+                        instanceManagerLRU.remove(index);
+
+                        // 새로 만들어주기
+                        instance.put(hardDiskName, new MemoryCache());
+
+                        instanceManagerLRU.add(index, hardDiskName);
+                        count--;
+                    }
+
+                }
+                return instance.get(hardDiskName);
+            }
 
         }
 
@@ -93,9 +92,9 @@ public class MemoryCache {
         if (createdOrder < maxInstanceCount) {
             instance.put(hardDiskName, new MemoryCache());
             instanceManagerLRU.add(hardDiskName);
-            isInstanceExistsCount = 0;
+            //isInstanceExistsCount = 0;
         } else if (createdOrder >= maxInstanceCount && instance.size() > 2) {
-            isInstanceExistsCount = 0;
+            //isInstanceExistsCount = 0;
             int index = 0;
             int min = instance.get(instanceManagerLRU.get(0)).createdCount;
             for (int i = 1; i < instance.size(); i++) {
@@ -128,26 +127,6 @@ public class MemoryCache {
     public static void setMaxInstanceCount(int count) {
         maxInstanceCount = count;
         isInstanceExistsCount = 0;
-        // while (instance.size() > maxInstanceCount) { // = 추가
-        // // lru에 기초하여 초과분 제거
-        // switch (policy) {
-        // case FIRST_IN_FIRST_OUT:
-        // instance.remove(instanceManagerFIFO.get(0));
-        // instanceManagerFIFO.remove(0);
-        // break;
-        // case LAST_IN_FIRST_OUT:
-        // instance.remove(instanceManagerLIFO.get(instanceManagerLIFO.size() - 1));
-        // instanceManagerLIFO.remove(instanceManagerLIFO.size() - 1);
-        // break;
-        // case LEAST_RECENTLY_USED:
-        // // 제일 안쓰인놈 지우기
-        // instance.remove(instanceManagerLRU.get(instanceManagerLRU.size() - 1));
-        // instanceManagerLRU.remove(instanceManagerLRU.size() - 1);
-        // break;
-        // default:
-        // break;
-        // }
-        // }
     }
 
     public void setMaxEntryCount(int count) {
