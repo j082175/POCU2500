@@ -6,6 +6,14 @@
       "name": "Launch Program",
       "request": "launch",
       "mainClass": "academy.pocu.comp2500.lab4.app.Program",
+      "projectName": "POCU2500_1414f147",
+      "vmArgs": "-enableassertions"
+    },
+    {
+      "type": "java",
+      "name": "Launch Program",
+      "request": "launch",
+      "mainClass": "academy.pocu.comp2500.lab4.app.Program",
       "projectName": "POCU2500_f55f3a6b",
       "vmArgs": "-enableassertions"
     }

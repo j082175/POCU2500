@@ -123,7 +123,16 @@ public class MemoryCache {
             instance.get(instanceManagerLRU.get(i)).keyValueManagerLRU.clear();
             instance.get(instanceManagerLRU.get(i)).keyValueManagerFIFO.clear();
             instance.get(instanceManagerLRU.get(i)).keyValueManagerLIFO.clear();
+            instance.get(instanceManagerLRU.get(i)).maxEntryCount = 0;
+            instance.get(instanceManagerLRU.get(i)).createdCount = 0;
+
         }
+
+        createdOrder = 0;
+        maxInstanceCount = 0;
+        addCount = 0;
+        isInstanceExistsCount = 0;
+
     }
 
     public static void setMaxInstanceCount(int count) {
