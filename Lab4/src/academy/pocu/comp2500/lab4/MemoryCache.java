@@ -1,10 +1,10 @@
 package academy.pocu.comp2500.lab4;
 
-import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.TreeMap;
 
-import javax.swing.plaf.basic.BasicInternalFrameTitlePane.MaximizeAction;
+import javax.xml.crypto.dsig.keyinfo.KeyValue;
+
 
 public class MemoryCache {
 
@@ -28,24 +28,19 @@ public class MemoryCache {
 
     private static EvictionPolicy policy = EvictionPolicy.LEAST_RECENTLY_USED;
 
-    private OffsetDateTime revisedTime;
-
     private MemoryCache() {
         addCount++;
         createdOrder++;
-        revisedTime = OffsetDateTime.now();
         createdCount = addCount;
     }
 
     // getInstance는 무조건 LRU 방식으로 데이터 지움
     public static MemoryCache getInstance(String hardDiskName) {
-        String backup = null;
 
         // 지정된 하드디스크 전용 인스턴스가 존재할때
 
         if (isInstanceExistsCount < maxInstanceCount) {
             if (instance.containsKey(hardDiskName)) {
-                instance.get(hardDiskName).revisedTime = OffsetDateTime.now();
                 addCount++;
                 instance.get(hardDiskName).createdCount = addCount;
 
@@ -122,6 +117,13 @@ public class MemoryCache {
         instance.clear();
         instanceManagerLRU.clear();
         createdOrder = 0;
+        
+        for (int i = 0; i < instance.size(); i++) {
+            instance.get(instanceManagerLRU.get(i)).keyValue.clear();
+            instance.get(instanceManagerLRU.get(i)).keyValueManagerLRU.clear();
+            instance.get(instanceManagerLRU.get(i)).keyValueManagerFIFO.clear();
+            instance.get(instanceManagerLRU.get(i)).keyValueManagerLIFO.clear();
+        }
     }
 
     public static void setMaxInstanceCount(int count) {
@@ -133,7 +135,6 @@ public class MemoryCache {
 
     public void setMaxEntryCount(int count) {
         this.maxEntryCount = count;
-        revisedTime = OffsetDateTime.now();
         createdCount = addCount;
 
         int count1 = keyValue.size();
@@ -213,12 +214,10 @@ public class MemoryCache {
 
     public void setEvictionPolicy(EvictionPolicy e) {
         policy = e;
-        revisedTime = OffsetDateTime.now();
         createdCount = addCount;
     }
 
     public void addEntry(String key, String value) {
-        revisedTime = OffsetDateTime.now();
         createdCount = ++addCount;
         String backup = null;
 
@@ -345,7 +344,6 @@ public class MemoryCache {
     }
 
     public String getEntryOrNull(String key) {
-        revisedTime = OffsetDateTime.now();
         createdCount = addCount;
 
         for (int i = 0; i < keyValueManagerLRU.size(); i++) {
@@ -354,12 +352,6 @@ public class MemoryCache {
                 keyValueManagerLRU.add(0, key);
             }
         }
-
-        // keyValueManagerLRU.remove(keyValueManagerLRU.size() - 1);
-        // keyValueManagerLRU.add(0, key);
-
         return this.keyValue.get(key);
-
     }
-
 }

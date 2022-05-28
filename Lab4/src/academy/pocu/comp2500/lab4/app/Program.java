@@ -212,11 +212,26 @@ public class Program {
 
     }
 
+    public static void test4() {
+        MemoryCache A = MemoryCache.getInstance("one");
+        MemoryCache B = MemoryCache.getInstance("two");
+        MemoryCache C = MemoryCache.getInstance("three");
+        MemoryCache D = MemoryCache.getInstance("four");
+        MemoryCache E = MemoryCache.getInstance("five");
+
+        MemoryCache.setMaxInstanceCount(Integer.MAX_VALUE);
+
+        
+
+    }
+
     public static void main(String[] args) {
 
-        //test();
+        test();
         test2();
-        // test3();
+        test3();
+        
+        assert 1 > 2;
 
     }
 }
