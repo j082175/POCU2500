@@ -145,9 +145,9 @@ public class MemoryCache {
         }
     }
 
-    public static int getMaxInstanceCount() {
-        return maxInstanceCount;
-    }
+    // public static int getMaxInstanceCount() {
+    //     return maxInstanceCount;
+    // }
 
     public void setMaxEntryCount(int count) {
         this.maxEntryCount = count;
