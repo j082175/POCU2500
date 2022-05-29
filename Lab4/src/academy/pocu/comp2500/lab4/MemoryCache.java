@@ -37,14 +37,6 @@ public class MemoryCache {
         this.hardDiskName = hardDiskName;
     }
 
-    public String getHardDiskName() {
-        return hardDiskName;
-    }
-
-    public int getCurrentEntryCount() {
-        return currentEntryCount;
-    }
-
     // getInstance는 무조건 LRU 방식으로 데이터 지움
     public static MemoryCache getInstance(String hardDiskName) {
 
@@ -266,7 +258,7 @@ public class MemoryCache {
         // 지정된 키가 존재하지 않을때
 
         if (keyValue.size() < maxEntryCount) {
-            this.setCurrentEntryCount(this.getCurrentEntryCount() + 1);
+            this.currentEntryCount++;
             keyValue.put(key, value);
             keyValueManagerLRU.add(0, key);
 
@@ -382,9 +374,9 @@ public class MemoryCache {
         return this.keyValue.get(key);
     }
 
-    // public String getHardDisk() {
-    //     return this.hardDiskName;
-    // }
+    public String getHardDisk() {
+        return this.hardDiskName;
+    }
 
     // public EvictionPolicy getEvictionPolicy() {
     //     return policy;
@@ -393,4 +385,9 @@ public class MemoryCache {
     // public int getMaxEntryCount() {
     //     return this.currentEntryCount;
     // }
+
+    public int getCurrentEntryCount() {
+        return this.currentEntryCount;
+    }
+
 }
