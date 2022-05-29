@@ -105,17 +105,6 @@ public class MemoryCache {
             // 제일 안쓰인놈 지우기
             createdOrder--;
 
-            // MemoryCache.instance.get("A").maxEntryCount = 0;
-            // MemoryCache.instance.get("A").createdCount = 0;
-            // MemoryCache.instance.get("A").hardDiskName = null;
-            // MemoryCache.instance.get("A").keyValue.clear();
-            // MemoryCache.instance.get("A").keyValueManagerLRU.clear();
-            // MemoryCache.instance.get("A").keyValueManagerFIFO.clear();
-            // MemoryCache.instance.get("A").keyValueManagerLIFO.clear();
-
-
-            // MemoryCache.instance.put("A",null);
-
 
             instance.remove(instanceManagerLRU.get(index));
 
@@ -385,15 +374,15 @@ public class MemoryCache {
         return this.keyValue.get(key);
     }
 
-    public String getHardDisk() {
-        return this.hardDiskName;
-    }
+    // public String getHardDisk() {
+    //     return this.hardDiskName;
+    // }
 
-    public EvictionPolicy getEvictionPolicy() {
-        return policy;
-    }
+    // public EvictionPolicy getEvictionPolicy() {
+    //     return policy;
+    // }
 
-    public int getMaxEntryCount() {
-        return this.currentEntryCount;
-    }
+    // public int getMaxEntryCount() {
+    //     return this.currentEntryCount;
+    // }
 }

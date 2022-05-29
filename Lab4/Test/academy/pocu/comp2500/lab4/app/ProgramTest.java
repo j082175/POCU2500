@@ -497,7 +497,7 @@ class ProgramTest {
         test.testGetInstance();
         test.testClear();
 
-        test.testSetMaxInstanceCount();
+        //test.testSetMaxInstanceCount();
 
         test.testGetMaxInstanceCount();
         test.testSetEvictionPolicy();
