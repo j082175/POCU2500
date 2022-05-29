@@ -8,10 +8,10 @@ public class MemoryCache {
 
     private static int createdOrder = 0;
 
-    private static int maxInstanceCount = Integer.MAX_VALUE;
-    private static int currentInstanceCount = 0;
+    private static int maxInstanceCount = 1;
+    private static int instanceCapacity = 10;
     private int maxEntryCount = Integer.MAX_VALUE;
-    private int currentEntryCount = 0;
+    private int entryCapacity = 0;
 
     private int createdCount;
     private static int addCount = 0;
@@ -88,7 +88,7 @@ public class MemoryCache {
         // 지정된 하드디스크 전용 인스턴스가 존재하지 않을때
 
         if (createdOrder < maxInstanceCount) {
-            currentInstanceCount++;
+            instanceCapacity++;
             instance.put(hardDiskName, new MemoryCache(hardDiskName));
             instanceManagerLRU.add(hardDiskName);
             // isInstanceExistsCount = 0;
@@ -142,13 +142,11 @@ public class MemoryCache {
     public static void setMaxInstanceCount(int count) {
         if (count <= Integer.MAX_VALUE) {
             maxInstanceCount = count;
-            currentInstanceCount = maxInstanceCount;
-            isInstanceExistsCount = 0;
         }
     }
 
     public static int getMaxInstanceCount() {
-        return currentInstanceCount;
+        return maxInstanceCount;
     }
 
     public void setMaxEntryCount(int count) {
@@ -258,7 +256,7 @@ public class MemoryCache {
         // 지정된 키가 존재하지 않을때
 
         if (keyValue.size() < maxEntryCount) {
-            this.currentEntryCount++;
+            this.entryCapacity++;
             keyValue.put(key, value);
             keyValueManagerLRU.add(0, key);
 
@@ -387,7 +385,11 @@ public class MemoryCache {
     // }
 
     public int getCurrentEntryCount() {
-        return this.currentEntryCount;
+        return this.entryCapacity;
+    }
+
+    public static int getInstanceCapacity() {
+        return instanceCapacity;
     }
 
 }
