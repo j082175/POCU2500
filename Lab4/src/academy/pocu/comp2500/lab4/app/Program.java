@@ -219,18 +219,41 @@ public class Program {
         MemoryCache D = MemoryCache.getInstance("four");
         MemoryCache E = MemoryCache.getInstance("five");
 
+        assert A == MemoryCache.getInstance("one");
+        assert B == MemoryCache.getInstance("two");
+        assert C == MemoryCache.getInstance("three");
+        assert D == MemoryCache.getInstance("four");
+        assert E == MemoryCache.getInstance("five");
+
+        MemoryCache.clear();
         MemoryCache.setMaxInstanceCount(Integer.MAX_VALUE);
 
-        
+        A = MemoryCache.getInstance("one");
+        B = MemoryCache.getInstance("two");
+        C = MemoryCache.getInstance("three");
+        D = MemoryCache.getInstance("four");
+        E = MemoryCache.getInstance("five");
 
+        assert A == MemoryCache.getInstance("one");
+        assert B == MemoryCache.getInstance("two");
+        assert C == MemoryCache.getInstance("three");
+        assert D == MemoryCache.getInstance("four");
+        assert E == MemoryCache.getInstance("five");
+
+        MemoryCache.clear();
+        assert A != MemoryCache.getInstance("one");
+        assert B != MemoryCache.getInstance("two");
+        assert C != MemoryCache.getInstance("three");
+        assert D != MemoryCache.getInstance("four");
+        assert E != MemoryCache.getInstance("five");
     }
 
     public static void main(String[] args) {
 
-        test();
-        test2();
-        test3();
-        
+        // test();
+        // test2();
+        // test3();
+        test4();
         assert 1 > 2;
 
     }
