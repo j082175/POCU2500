@@ -250,10 +250,10 @@ public class Program {
 
     public static void main(String[] args) {
 
-        // test();
+        test();
         // test2();
         // test3();
-        test4();
+        // test4();
         assert 1 > 2;
 
     }

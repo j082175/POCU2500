@@ -2,7 +2,7 @@ package academy.pocu.comp2500.lab4.app;
 
 import academy.pocu.comp2500.lab4.EvictionPolicy;
 import academy.pocu.comp2500.lab4.MemoryCache;
-import academy.pocu.comp2500.lab4.Singleton;
+
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

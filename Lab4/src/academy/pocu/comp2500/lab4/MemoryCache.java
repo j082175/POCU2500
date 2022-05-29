@@ -8,7 +8,8 @@ public class MemoryCache {
 
     private static int createdOrder = 0;
 
-    private static int maxInstanceCount = 10;
+    private static int maxInstanceCount = Integer.MAX_VALUE;
+    private static int currentInstanceCount = 0;
     private int maxEntryCount = Integer.MAX_VALUE;
     private int currentEntryCount = 0;
 
@@ -87,6 +88,7 @@ public class MemoryCache {
         // 지정된 하드디스크 전용 인스턴스가 존재하지 않을때
 
         if (createdOrder < maxInstanceCount) {
+            currentInstanceCount++;
             instance.put(hardDiskName, new MemoryCache(hardDiskName));
             instanceManagerLRU.add(hardDiskName);
             // isInstanceExistsCount = 0;
@@ -103,16 +105,16 @@ public class MemoryCache {
             // 제일 안쓰인놈 지우기
             createdOrder--;
 
-            MemoryCache.instance.get("A").maxEntryCount = 0;
-            MemoryCache.instance.get("A").createdCount = 0;
-            MemoryCache.instance.get("A").hardDiskName = null;
-            MemoryCache.instance.get("A").keyValue.clear();
-            MemoryCache.instance.get("A").keyValueManagerLRU.clear();
-            MemoryCache.instance.get("A").keyValueManagerFIFO.clear();
-            MemoryCache.instance.get("A").keyValueManagerLIFO.clear();
+            // MemoryCache.instance.get("A").maxEntryCount = 0;
+            // MemoryCache.instance.get("A").createdCount = 0;
+            // MemoryCache.instance.get("A").hardDiskName = null;
+            // MemoryCache.instance.get("A").keyValue.clear();
+            // MemoryCache.instance.get("A").keyValueManagerLRU.clear();
+            // MemoryCache.instance.get("A").keyValueManagerFIFO.clear();
+            // MemoryCache.instance.get("A").keyValueManagerLIFO.clear();
 
 
-            MemoryCache.instance.put("A",null);
+            // MemoryCache.instance.put("A",null);
 
 
             instance.remove(instanceManagerLRU.get(index));
@@ -151,12 +153,13 @@ public class MemoryCache {
     public static void setMaxInstanceCount(int count) {
         if (count <= Integer.MAX_VALUE) {
             maxInstanceCount = count;
+            currentInstanceCount = maxInstanceCount;
             isInstanceExistsCount = 0;
         }
     }
 
     public static int getMaxInstanceCount() {
-        return maxInstanceCount;
+        return currentInstanceCount;
     }
 
     public void setMaxEntryCount(int count) {
