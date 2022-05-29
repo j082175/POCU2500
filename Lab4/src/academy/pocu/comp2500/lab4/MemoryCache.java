@@ -3,15 +3,14 @@ package academy.pocu.comp2500.lab4;
 import java.util.ArrayList;
 import java.util.TreeMap;
 
-import javax.xml.crypto.dsig.keyinfo.KeyValue;
-
 
 public class MemoryCache {
 
     private static int createdOrder = 0;
 
     private static int maxInstanceCount = 10;
-    private int maxEntryCount = 10;
+    private int maxEntryCount = Integer.MAX_VALUE;
+    private int currentEntryCount = 0;
 
     private int createdCount;
     private static int addCount = 0;
@@ -104,7 +103,17 @@ public class MemoryCache {
             // 제일 안쓰인놈 지우기
             createdOrder--;
 
-            instance.put(instanceManagerLRU.get(index),null);
+/*            MemoryCache.instance.get("A").maxEntryCount = 0;
+            MemoryCache.instance.get("A").createdCount = 0;
+            MemoryCache.instance.get("A").hardDiskName = null;
+            MemoryCache.instance.get("A").keyValue.clear();
+            MemoryCache.instance.get("A").keyValueManagerLRU.clear();
+            MemoryCache.instance.get("A").keyValueManagerFIFO.clear();
+            MemoryCache.instance.get("A").keyValueManagerLIFO.clear();
+
+
+            MemoryCache.instance.put("A",null);*/
+
 
             instance.remove(instanceManagerLRU.get(index));
 
@@ -188,7 +197,7 @@ public class MemoryCache {
                     /////////////////////////////////////////////////////////////////////
                     for (int i = 0; i < keyValueManagerFIFO.size(); i++) {
                         if (backup.equals(keyValueManagerFIFO.get(i))) {
-                            keyValueManagerLRU.remove(i);
+                            keyValueManagerFIFO.remove(i);
                         }
                     }
 
@@ -257,6 +266,7 @@ public class MemoryCache {
         // 지정된 키가 존재하지 않을때
 
         if (keyValue.size() < maxEntryCount) {
+            this.currentEntryCount++;
             keyValue.put(key, value);
             keyValueManagerLRU.add(0, key);
 
@@ -381,6 +391,6 @@ public class MemoryCache {
     }
 
     public int getMaxEntryCount() {
-        return this.maxEntryCount;
+        return this.currentEntryCount;
     }
 }

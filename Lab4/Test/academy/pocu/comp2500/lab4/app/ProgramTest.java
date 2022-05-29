@@ -2,9 +2,11 @@ package academy.pocu.comp2500.lab4.app;
 
 import academy.pocu.comp2500.lab4.EvictionPolicy;
 import academy.pocu.comp2500.lab4.MemoryCache;
+import academy.pocu.comp2500.lab4.Singleton;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.TreeMap;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -402,7 +404,7 @@ class ProgramTest {
             MemoryCache memCacheC = MemoryCache.getInstance("C");
             MemoryCache.setMaxInstanceCount(3);
             MemoryCache memCacheD = MemoryCache.getInstance("D"); // memCacheA가 제거됨
-            assert memCacheA == null;
+            System.out.println(memCacheA.getHardDisk());
             //memCacheA = null;
             assertEquals(null, memCacheA);
         }
@@ -485,27 +487,28 @@ class ProgramTest {
 
     @Test
     void main() {
-/*        test();
-        test2();
-        test3();*/
+        //test();
+        //test2();
+        //test3();
         //test4();
         //test5();
         MemoryCacheTest test = new MemoryCacheTest();
+        test.testGetHardisk();
+        test.testGetInstance();
+        test.testClear();
+
         test.testSetMaxInstanceCount();
 
+        test.testGetMaxInstanceCount();
+        test.testSetEvictionPolicy();
+        test.testGetEvictionPolicy();
+        test.testAddEntry();
+        test.testSetMaxEntryCount();
+        test.testGetMaxEntryCount();
+        test.testGetEntryOrNull();
 
-/*        MemoryCache memCacheA = MemoryCache.getInstance("A");
 
-        MemoryCache memCacheB = MemoryCache.getInstance("B");
-        MemoryCache memCacheC = MemoryCache.getInstance("C");
-        MemoryCache memCacheD = MemoryCache.getInstance("D");
-        MemoryCache memCacheE = MemoryCache.getInstance("E");
 
-        MemoryCache.setMaxInstanceCount(2);
-        assert memCacheA == MemoryCache.getInstance("A"); // 이미 존재
-        assert memCacheB == MemoryCache.getInstance("B"); // 이미 존재
-        assert memCacheC != MemoryCache.getInstance("C"); // 이미 존재
-        assert memCacheD != MemoryCache.getInstance("D"); // 이미 존재
-        assert memCacheE != MemoryCache.getInstance("E"); // 이미 존재*/
+
     }
 }
