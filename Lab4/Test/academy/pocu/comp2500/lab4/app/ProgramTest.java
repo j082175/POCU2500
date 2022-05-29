@@ -491,9 +491,9 @@ class ProgramTest {
         //test2();
         //test3();
         //test4();
-        //test5();
+        test5();
         MemoryCacheTest test = new MemoryCacheTest();
-        test.testGetHardisk();
+/*        test.testGetHardisk();
         test.testGetInstance();
         test.testClear();
 
@@ -505,7 +505,7 @@ class ProgramTest {
         test.testAddEntry();
         test.testSetMaxEntryCount();
         test.testGetMaxEntryCount();
-        test.testGetEntryOrNull();
+        test.testGetEntryOrNull();*/
 
 
 
