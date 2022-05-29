@@ -372,9 +372,9 @@ public class MemoryCache {
         return this.keyValue.get(key);
     }
 
-    public String getHardDisk() {
-        return this.hardDiskName;
-    }
+    // public String getHardDisk() {
+    //     return this.hardDiskName;
+    // }
 
     // public EvictionPolicy getEvictionPolicy() {
     //     return policy;
@@ -384,12 +384,12 @@ public class MemoryCache {
     //     return this.currentEntryCount;
     // }
 
-    public int getCurrentEntryCount() {
-        return this.entryCapacity;
-    }
+    // public int getCurrentEntryCount() {
+    //     return this.entryCapacity;
+    // }
 
-    public static int getInstanceCapacity() {
-        return instanceCapacity;
-    }
+    // public static int getInstanceCapacity() {
+    //     return instanceCapacity;
+    // }
 
 }
