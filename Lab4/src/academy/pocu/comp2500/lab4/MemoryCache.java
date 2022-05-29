@@ -28,10 +28,13 @@ public class MemoryCache {
 
     private static EvictionPolicy policy = EvictionPolicy.LEAST_RECENTLY_USED;
 
-    private MemoryCache() {
+    private String hardDiskName;
+
+    private MemoryCache(String hardDiskName) {
         addCount++;
         createdOrder++;
         createdCount = addCount;
+        this.hardDiskName = hardDiskName;
     }
 
     // getInstance는 무조건 LRU 방식으로 데이터 지움
@@ -70,7 +73,7 @@ public class MemoryCache {
                         instanceManagerLRU.remove(index);
 
                         // 새로 만들어주기
-                        instance.put(hardDiskName, new MemoryCache());
+                        instance.put(hardDiskName, new MemoryCache(hardDiskName));
 
                         instanceManagerLRU.add(index, hardDiskName);
                         count--;
@@ -85,7 +88,7 @@ public class MemoryCache {
         // 지정된 하드디스크 전용 인스턴스가 존재하지 않을때
 
         if (createdOrder < maxInstanceCount) {
-            instance.put(hardDiskName, new MemoryCache());
+            instance.put(hardDiskName, new MemoryCache(hardDiskName));
             instanceManagerLRU.add(hardDiskName);
             // isInstanceExistsCount = 0;
         } else if (createdOrder >= maxInstanceCount && instance.size() > 2) {
@@ -100,12 +103,15 @@ public class MemoryCache {
             }
             // 제일 안쓰인놈 지우기
             createdOrder--;
+
+            instance.put(instanceManagerLRU.get(index),null);
+
             instance.remove(instanceManagerLRU.get(index));
 
             instanceManagerLRU.remove(index);
 
             // 새로 만들어주기
-            instance.put(hardDiskName, new MemoryCache());
+            instance.put(hardDiskName, new MemoryCache(hardDiskName));
 
             instanceManagerLRU.add(index, hardDiskName);
 
@@ -134,10 +140,14 @@ public class MemoryCache {
     }
 
     public static void setMaxInstanceCount(int count) {
-        if (count < Integer.MAX_VALUE) {
+        if (count <= Integer.MAX_VALUE) {
             maxInstanceCount = count;
             isInstanceExistsCount = 0;
         }
+    }
+
+    public static int getMaxInstanceCount() {
+        return maxInstanceCount;
     }
 
     public void setMaxEntryCount(int count) {
@@ -360,5 +370,17 @@ public class MemoryCache {
             }
         }
         return this.keyValue.get(key);
+    }
+
+    public String getHardDisk() {
+        return this.hardDiskName;
+    }
+
+    public EvictionPolicy getEvictionPolicy() {
+        return policy;
+    }
+
+    public int getMaxEntryCount() {
+        return this.maxEntryCount;
     }
 }

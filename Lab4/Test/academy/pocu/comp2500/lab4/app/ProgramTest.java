@@ -4,6 +4,8 @@ import academy.pocu.comp2500.lab4.EvictionPolicy;
 import academy.pocu.comp2500.lab4.MemoryCache;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class ProgramTest {
@@ -252,12 +254,246 @@ class ProgramTest {
         assert E != MemoryCache.getInstance("five");
     }
 
+    void test5() {
+        {
+            /*
+             * COMP2500 202005 Lab4 시간복잡도 테스트 케이스(seolbeen)
+             *
+             * maxN: 총 반복 횟수
+             * count: setMaxInstanceCount/setMaxEntryCount에서 사용하는 매개 변수
+             * step: step 만큼의 시간 측정
+             */
+            int maxN = 100000;
+            int count = 70000;
+            int step = 10000;
+
+            System.out.printf("===================================\n");
+            System.out.printf("Time complexity test(MAX N: %d)\n", maxN);
+            System.out.printf("===================================\n");
+            ArrayList<String> strings = new ArrayList<>(maxN);
+            for (int i = 0; i < maxN; i++) {
+                strings.add(Integer.toString(i));
+            }
+
+            // initialization for instance test
+            MemoryCache.clear();
+            MemoryCache.setMaxInstanceCount(count);
+
+            // test getInstance()
+            System.out.printf("\ngetInstance() test\n");
+            for (int n = 0; n < maxN; n += step) {
+                System.out.printf("%6d ~ %6d: ", n, n + step - 1);
+
+                long start = System.currentTimeMillis();
+                for (int i = n; i < n + step; i++) {
+                    MemoryCache.getInstance(strings.get(i));
+                }
+                long end = System.currentTimeMillis();
+
+                System.out.printf("%dms\n", end - start);
+            }
+
+            // initialization for entry test
+            MemoryCache.clear();
+            MemoryCache.setMaxInstanceCount(3);
+
+            MemoryCache memCacheFifo = MemoryCache.getInstance("FIFO");
+            MemoryCache memCacheFilo = MemoryCache.getInstance("FILO");
+            MemoryCache memCacheLru = MemoryCache.getInstance("LRU");
+
+            memCacheFifo.setEvictionPolicy(EvictionPolicy.FIRST_IN_FIRST_OUT);
+            memCacheFilo.setEvictionPolicy(EvictionPolicy.LAST_IN_FIRST_OUT);
+            memCacheLru.setEvictionPolicy(EvictionPolicy.LEAST_RECENTLY_USED);
+
+            memCacheFifo.setMaxEntryCount(count);
+            memCacheFilo.setMaxEntryCount(count);
+            memCacheLru.setMaxEntryCount(count);
+
+            // test addEntry()
+            System.out.printf("\naddEntry() test [FIFO / FILO / LRU]\n");
+            for (int n = 0; n < maxN; n += step) {
+                System.out.printf("%6d ~ %6d: ", n, n + step - 1);
+
+                long startFifo = System.currentTimeMillis();
+                for (int i = n; i < n + step; i++) {
+                    memCacheFifo.addEntry(strings.get(i), strings.get(i));
+                }
+                long endFifo = System.currentTimeMillis();
+
+                long startFilo = System.currentTimeMillis();
+                for (int i = n; i < n + step; i++) {
+                    memCacheFilo.addEntry(strings.get(i), strings.get(i));
+                }
+                long endFilo = System.currentTimeMillis();
+
+                long startLru = System.currentTimeMillis();
+                for (int i = n; i < n + step; i++) {
+                    memCacheLru.addEntry(strings.get(i), strings.get(i));
+                }
+                long endLru = System.currentTimeMillis();
+
+                System.out.printf("%dms / %dms / %dms\n", endFifo - startFifo, endFilo - startFilo, endLru - startLru);
+            }
+
+            // test getEntryOrNull()
+            System.out.printf("\ngetEntryOrNull() test [FIFO / FILO / LRU]\n");
+            for (int n = 0; n < maxN; n += step) {
+                System.out.printf("%6d ~ %6d: ", n, n + step - 1);
+
+                long startFifo = System.currentTimeMillis();
+                for (int i = n; i < n + step; i++) {
+                    memCacheFifo.getEntryOrNull(strings.get(i));
+                }
+                long endFifo = System.currentTimeMillis();
+
+                long startFilo = System.currentTimeMillis();
+                for (int i = n; i < n + step; i++) {
+                    memCacheFilo.getEntryOrNull(strings.get(i));
+                }
+                long endFilo = System.currentTimeMillis();
+
+                long startLru = System.currentTimeMillis();
+                for (int i = n; i < n + step; i++) {
+                    memCacheLru.getEntryOrNull(strings.get(i));
+                }
+                long endLru = System.currentTimeMillis();
+
+                System.out.printf("%dms / %dms / %dms\n", endFifo - startFifo, endFilo - startFilo, endLru - startLru);
+            }
+        }
+    }
+
+    public class MemoryCacheTest {
+
+        @Test
+        public void testGetHardisk() {
+            MemoryCache memCacheA = MemoryCache.getInstance("A");
+            String a = memCacheA.getHardDisk();
+            assertEquals("A", a);
+        }
+
+        @Test
+        public void testGetInstance() {
+            MemoryCache memCacheA = MemoryCache.getInstance("A");
+            MemoryCache memCacheB = MemoryCache.getInstance("B");
+            MemoryCache memCacheC = MemoryCache.getInstance("C");
+
+            assertEquals(true, (memCacheA != memCacheB) && memCacheA != memCacheC);
+            assertEquals(true, memCacheB != memCacheC);
+        }
+
+        @Test
+        public void testClear() {
+            MemoryCache memCacheA = MemoryCache.getInstance("A");
+            MemoryCache memCacheB = MemoryCache.getInstance("B");
+            MemoryCache memCacheC = MemoryCache.getInstance("C");
+
+            MemoryCache.clear();
+            assert (memCacheA != MemoryCache.getInstance("A"));
+            assert (memCacheB != MemoryCache.getInstance("B"));
+            assert (memCacheC != MemoryCache.getInstance("C"));
+        }
+
+        @Test
+        public void testSetMaxInstanceCount() {
+
+            MemoryCache memCacheA = MemoryCache.getInstance("A");
+            MemoryCache memCacheB = MemoryCache.getInstance("B");
+            MemoryCache memCacheC = MemoryCache.getInstance("C");
+            MemoryCache.setMaxInstanceCount(3);
+            MemoryCache memCacheD = MemoryCache.getInstance("D"); // memCacheA가 제거됨
+            assert memCacheA == null;
+            //memCacheA = null;
+            assertEquals(null, memCacheA);
+        }
+
+        @Test
+        public void testGetMaxInstanceCount() {
+            MemoryCache.setMaxInstanceCount(3);
+            int count = MemoryCache.getMaxInstanceCount();
+            assertEquals(3, count);
+        }
+
+        @Test
+        public void testSetEvictionPolicy() {
+            MemoryCache memCache = MemoryCache.getInstance("A");
+
+            memCache.setEvictionPolicy(EvictionPolicy.FIRST_IN_FIRST_OUT);
+            memCache.setEvictionPolicy(EvictionPolicy.LAST_IN_FIRST_OUT);
+            memCache.setEvictionPolicy(EvictionPolicy.LEAST_RECENTLY_USED);
+
+            assertEquals(EvictionPolicy.LEAST_RECENTLY_USED, memCache.getEvictionPolicy());
+        }
+
+        @Test
+        public void testGetEvictionPolicy() {
+            MemoryCache memCache = MemoryCache.getInstance("A");
+            EvictionPolicy e = memCache.getEvictionPolicy();
+            assertEquals(EvictionPolicy.LEAST_RECENTLY_USED, e);
+        }
+
+        @Test
+        public void testAddEntry() {
+            MemoryCache memCache = MemoryCache.getInstance("A");
+
+            memCache.addEntry("key1", "value1");
+            assertEquals("value1", memCache.getEntryOrNull("key1"));
+
+            memCache.addEntry("key1", "value11");
+            memCache.addEntry("key2", "value2");
+
+            assertEquals("value11", memCache.getEntryOrNull("key1"));
+            assertEquals("value2", memCache.getEntryOrNull("key2"));
+        }
+
+        @Test
+        public void testSetMaxEntryCount() {
+            MemoryCache memCache = MemoryCache.getInstance("A");
+            memCache.setMaxEntryCount(3);
+
+            memCache.addEntry("key1", "value1");
+            memCache.addEntry("key2", "value2");
+            memCache.addEntry("key3", "value3");
+
+            memCache.addEntry("key4", "value4"); // 캐시로부터 key1이 제거됨
+            assertEquals(null, memCache.getEntryOrNull("key1"));
+        }
+
+        @Test
+        public void testGetMaxEntryCount() {
+            MemoryCache memCacheA = MemoryCache.getInstance("A");
+            memCacheA.addEntry("key1", "value1");
+            memCacheA.addEntry("key2", "value2");
+            memCacheA.addEntry("key3", "value3");
+            int count = memCacheA.getMaxEntryCount();
+            assertEquals(3, count);
+        }
+
+        @Test
+        public void testGetEntryOrNull() {
+            MemoryCache memCache = MemoryCache.getInstance("A");
+
+            memCache.addEntry("key1", "value1");
+
+            String value = memCache.getEntryOrNull("key1"); // value: value1
+            String valueNull = memCache.getEntryOrNull("keyNull");
+
+            assertEquals("value1", value);
+            assertEquals(null, valueNull);
+        }
+    }
+
     @Test
     void main() {
 /*        test();
         test2();
         test3();*/
-        test4();
+        //test4();
+        //test5();
+        MemoryCacheTest test = new MemoryCacheTest();
+        test.testSetMaxInstanceCount();
+
+
 /*        MemoryCache memCacheA = MemoryCache.getInstance("A");
 
         MemoryCache memCacheB = MemoryCache.getInstance("B");
