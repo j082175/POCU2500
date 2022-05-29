@@ -365,7 +365,7 @@ class ProgramTest {
         }
     }
 
-    public class MemoryCacheTest {
+    /*public class MemoryCacheTest {
 
         @Test
         public void testGetHardisk() {
@@ -483,16 +483,16 @@ class ProgramTest {
             assertEquals("value1", value);
             assertEquals(null, valueNull);
         }
-    }
+    }*/
 
     @Test
     void main() {
-        //test();
+        test();
         //test2();
         //test3();
         //test4();
         //test5();
-        MemoryCacheTest test = new MemoryCacheTest();
+/*        MemoryCacheTest test = new MemoryCacheTest();
         test.testGetHardisk();
         test.testGetInstance();
         test.testClear();
@@ -505,7 +505,9 @@ class ProgramTest {
         test.testAddEntry();
         test.testSetMaxEntryCount();
         test.testGetMaxEntryCount();
-        test.testGetEntryOrNull();
+        test.testGetEntryOrNull();*/
+
+
 
 
 

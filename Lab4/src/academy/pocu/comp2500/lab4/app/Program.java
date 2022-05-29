@@ -254,6 +254,12 @@ public class Program {
         // test2();
         // test3();
         // test4();
+        for (int i = 0; i < Integer.MAX_VALUE + 10; i++) {
+            MemoryCache a = MemoryCache.getInstance("i");
+        }
+
+        MemoryCache.setMaxInstanceCount(Integer.MAX_VALUE);
+
         assert 1 > 2;
 
     }
