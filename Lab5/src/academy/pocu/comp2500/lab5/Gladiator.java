@@ -39,7 +39,7 @@ public class Gladiator extends Barbarian {
 
     public void attack(String nameOfSkill, Barbarian target) {
         if (moves.containsKey(nameOfSkill) && this.isAlive() && target != this) {
-            if (moves.get(nameOfSkill).getMaxCountToUsingSkill() > 0) {
+            if (moves.get(nameOfSkill).getCurrentMaxCountToUsingSkill() > 0) {
                 // 피해치 = (공격자의 공격력 / 방어자의 방어력 * 스킬의 파워) / 2
                 // 계산을 할 때는 double 자료형을 사용하고 계산 뒤에는 소수점 이하는 버리세요.
                 moves.get(nameOfSkill).decreaseMaxCountToUsingSkill();
@@ -48,18 +48,14 @@ public class Gladiator extends Barbarian {
                         * (double) moves.get(nameOfSkill).getDamageOfAttackSkill()) / 2.0;
                 int total = 0;
 
-                if (damage >= target.getHp()) {
+
+                if (damage < 1) {
+                    total = 1;
+                } else if (damage >= target.getHp()) {
                     total = target.getHp();
                 } else {
                     total = (int) damage;
                 }
-                // if (damage < 1) {
-                //     total = 1;
-                // } else if (damage >= target.getHp()) {
-                //     total = target.getHp();
-                // } else {
-                //     total = (int) damage;
-                // }
 
                 int health = target.getHp() - total;
                 target.setHp(health);
