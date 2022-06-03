@@ -2,19 +2,21 @@ package academy.pocu.comp2500.lab5;
 
 public class Barbarian {
     private String name;
-    protected int HP;
+    protected int health;
     private int damage;
     private int defense;
+    private boolean isAlive;
 
     public Barbarian(String name, int maxHP, int damage, int defense) {
         this.name = name;
-        this.HP = maxHP;
+        this.health = maxHP;
         this.damage = damage;
         this.defense = defense;
+        this.isAlive = true;
     }
 
     public int getHp() {
-        return this.HP;
+        return this.health;
     }
 
     public int getDamage() {
@@ -25,31 +27,37 @@ public class Barbarian {
         return this.defense;
     }
 
-    public String getName() {
-        return this.name;
-    }
-
     public void attack(Barbarian target) {
-//         피해치 = (공격자의 공격력 - 방어자의 방어력) / 2
-//         계산을 할 때는 double 자료형을 사용하고 계산 뒤에는 소수점 이하는 버리세요. (아래 예 참조)
+        // 피해치 = (공격자의 공격력 - 방어자의 방어력) / 2
+        // 계산을 할 때는 double 자료형을 사용하고 계산 뒤에는 소수점 이하는 버리세요. (아래 예 참조)
 
-// 예>
-// 피해치 = (121 - 100) / 2 = 10.5
-// 피해치 = 10
-// 다른 야만용사에게 공격을 받은 야만용사의 최소 피해치는 1입니다.
-        double totalDamage = (double)(this.damage - target.defense) / 2.0;
-        int total = (int)totalDamage;
-
-        target.HP -= total;
-    }
-
-    public boolean isAlive() {
-        if (this.HP <= 0) {
-            return false;
-        } else {
-            return true;
+        // 예>
+        // 피해치 = (121 - 100) / 2 = 10.5
+        // 피해치 = 10
+        // 다른 야만용사에게 공격을 받은 야만용사의 최소 피해치는 1입니다.
+        if (isAlive) {
+            double totalDamage = ((double)this.damage - (double)target.defense) / 2.0;
+            int total = 0;
+            
+            if (totalDamage < 1) {
+                total = 1;
+            } else if (totalDamage > target.getHp()) {
+                total = target.getHp();
+            } else {
+                total = (int)totalDamage;
+            }
+    
+            target.health -= total;
         }
     }
 
-
+    public boolean isAlive() {
+        if (this.health <= 0) {
+            this.isAlive = false;
+            return this.isAlive;
+        } else {
+            this.isAlive = true;
+            return this.isAlive;
+        }
+    }
 }

@@ -9,10 +9,6 @@ public class Pet {
         this.damage = damage;
     }
 
-    public String getName() {
-        return this.name;
-    }
-
     public int getDamage() {
         return this.damage;
     }
