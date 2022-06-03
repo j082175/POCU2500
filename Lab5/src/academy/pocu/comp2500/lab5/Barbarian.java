@@ -17,10 +17,6 @@ public class Barbarian {
         this.currentHealth = health;
     }
 
-    public String getName() {
-        return this.name;
-    }
-
     public int getHp() {
         return this.currentHealth;
     }

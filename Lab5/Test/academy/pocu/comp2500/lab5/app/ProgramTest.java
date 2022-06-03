@@ -76,5 +76,7 @@ class ProgramTest {
         g2.rest();
         int b = g2.getHp();
         g1.rest();
+        Barbarian b1 = new Barbarian("fe",1,1,1);
+
     }
 }
