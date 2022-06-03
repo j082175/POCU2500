@@ -10,9 +10,7 @@ import academy.pocu.comp2500.lab5.Knight;
 import academy.pocu.comp2500.lab5.Move;
 import academy.pocu.comp2500.lab5.Pet;
 class ProgramTest {
-
-    @Test
-    void main() {
+    void test1() {
         Barbarian barbarian0 = new Barbarian("Dragonborn Whiterun", 250, 210, 60);
         Barbarian barbarian1 = new Barbarian("Ulfric Stormcloak", 200, 70, 10);
 
@@ -66,5 +64,11 @@ class ProgramTest {
         knight0.attackTogether(knight1);
 
         assert knight1.getHp() == 61;
+    }
+    @Test
+    void main() {
+        Barbarian b1 = new Barbarian("One",100,10,5);
+        b1.setHp(0);
+        b1.attack(b1);
     }
 }

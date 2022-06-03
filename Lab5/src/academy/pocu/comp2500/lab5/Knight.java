@@ -20,7 +20,7 @@ public class Knight extends Gladiator {
             double damage = (this.getDamage() + this.pet.getDamage() - target.getDefense()) / 2;
             int total = (int) damage;
 
-            target.health -= total;
+            target.setHp(target.getHp() - total);
         }
     }
 }

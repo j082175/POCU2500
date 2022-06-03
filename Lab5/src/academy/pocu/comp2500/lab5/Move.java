@@ -4,7 +4,7 @@ public class Move {
     private String nameOfAttackSkill;
     private int damageOfAttackSkill;
     private int maxCountToUsingSkill;
-    
+
     public Move(String nameOfAttackSkill, int damageOfAttackSkill, int maxCountToUsingSkill) {
         this.nameOfAttackSkill = nameOfAttackSkill;
         this.damageOfAttackSkill = damageOfAttackSkill;
@@ -25,5 +25,9 @@ public class Move {
 
     public void increaseMaxCountToUsingSkill() {
         this.maxCountToUsingSkill++;
+    }
+
+    public void decreaseMaxCountToUsingSkill() {
+        this.maxCountToUsingSkill--;
     }
 }

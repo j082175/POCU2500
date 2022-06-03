@@ -2,7 +2,7 @@ package academy.pocu.comp2500.lab5;
 
 public class Barbarian {
     private String name;
-    protected int health;
+    private int health;
     private int damage;
     private int defense;
     private boolean isAlive;
@@ -17,6 +17,10 @@ public class Barbarian {
 
     public int getHp() {
         return this.health;
+    }
+
+    public void setHp(int hp) {
+        this.health = hp;
     }
 
     public int getDamage() {
@@ -35,16 +39,16 @@ public class Barbarian {
         // 피해치 = (121 - 100) / 2 = 10.5
         // 피해치 = 10
         // 다른 야만용사에게 공격을 받은 야만용사의 최소 피해치는 1입니다.
-        if (isAlive) {
-            double totalDamage = ((double)this.damage - (double)target.defense) / 2.0;
+        if (isAlive && (target != this)) {
+            double totalDamage = ((double) this.damage - (double) target.defense) / 2.0;
             int total = 0;
-            
+
             if (totalDamage < 1) {
                 total = 1;
             } else if (totalDamage > target.getHp()) {
                 total = target.getHp();
             } else {
-                total = (int)totalDamage;
+                total = (int) totalDamage;
             }
     
             target.health -= total;
