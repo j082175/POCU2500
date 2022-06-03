@@ -48,13 +48,18 @@ public class Gladiator extends Barbarian {
                         * (double) moves.get(nameOfSkill).getDamageOfAttackSkill()) / 2.0;
                 int total = 0;
 
-                if (damage < 1) {
-                    total = 1;
-                } else if (damage >= target.getHp()) {
+                if (damage >= target.getHp()) {
                     total = target.getHp();
                 } else {
                     total = (int) damage;
                 }
+                // if (damage < 1) {
+                //     total = 1;
+                // } else if (damage >= target.getHp()) {
+                //     total = target.getHp();
+                // } else {
+                //     total = (int) damage;
+                // }
 
                 int health = target.getHp() - total;
                 target.setHp(health);
