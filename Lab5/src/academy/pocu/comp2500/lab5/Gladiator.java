@@ -65,14 +65,20 @@ public class Gladiator extends Barbarian {
 
     public void rest() {
         if ((this.getHp() + 10) <= this.getMaxHp()) {
-
             this.setHp(this.getHp() + 10);
-            for (int i = 0; i < moves.size(); i++) {
-                if (moves.containsKey(movesManager.get(i))) {
-                    if (moves.get(movesManager.get(i)).getCurrentMaxCountToUsingSkill() < moves.get(movesManager.get(i))
-                            .getMaxCountToUsingSkill()) {
-                        moves.get(movesManager.get(i)).increaseMaxCountToUsingSkill();
-                    }
+            this.setting();
+        } else {
+            this.setHp(this.getMaxHp());
+            this.setting();
+        }
+    }
+
+    private void setting() {
+        for (int i = 0; i < moves.size(); i++) {
+            if (moves.containsKey(movesManager.get(i))) {
+                if (moves.get(movesManager.get(i)).getCurrentMaxCountToUsingSkill() < moves.get(movesManager.get(i))
+                        .getMaxCountToUsingSkill()) {
+                    moves.get(movesManager.get(i)).increaseMaxCountToUsingSkill();
                 }
             }
         }
