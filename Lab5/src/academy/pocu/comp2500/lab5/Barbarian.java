@@ -22,11 +22,11 @@ public class Barbarian {
     }
 
     public int getHp() {
-        return this.health;
+        return this.currentHealth;
     }
 
-    public int getCurrentHp() {
-        return this.currentHealth;
+    public int getMaxHp() {
+        return this.health;
     }
 
     public void setHp(int hp) {
