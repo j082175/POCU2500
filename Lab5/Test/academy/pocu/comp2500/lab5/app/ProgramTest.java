@@ -67,8 +67,14 @@ class ProgramTest {
     }
     @Test
     void main() {
+        test1();
         Barbarian b1 = new Barbarian("One",100,10,5);
-        b1.setHp(0);
-        b1.attack(b1);
+        Barbarian b2 = new Barbarian("two",100,1000,10);
+        b2.attack(b1);
+        b1.attack(b2);
+        b1.isAlive();
+        b2.isAlive();
+        b1.getHp();
+        b2.getHp();
     }
 }

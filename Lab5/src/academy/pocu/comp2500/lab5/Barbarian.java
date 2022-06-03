@@ -15,11 +15,18 @@ public class Barbarian {
         this.isAlive = true;
     }
 
+    public String getName() {
+        return this.name;
+    }
+
     public int getHp() {
         return this.health;
     }
 
     public void setHp(int hp) {
+        if (hp <= 0) {
+            this.isAlive = false;
+        }
         this.health = hp;
     }
 
@@ -52,6 +59,9 @@ public class Barbarian {
             }
     
             target.health -= total;
+            if (target.health <= 0) {
+                target.isAlive = false;
+            }
         }
     }
 

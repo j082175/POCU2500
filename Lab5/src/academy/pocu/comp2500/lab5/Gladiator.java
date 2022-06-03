@@ -1,10 +1,7 @@
 package academy.pocu.comp2500.lab5;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class Gladiator extends Barbarian {
@@ -49,7 +46,13 @@ public class Gladiator extends Barbarian {
                 // 공격에 성공하면 최소 1의 피해를 입힙니다.
                 double damage = (((double) this.getDamage() / (double) target.getDefense())
                         * (double) moves.get(nameOfSkill).getDamageOfAttackSkill()) / 2.0;
-                int total = (int) damage;
+                int total = 0;
+                if (damage >= target.getHp()) {
+                    total = target.getHp();
+                } else {
+                    total = (int) damage;
+                }
+
                 int health = target.getHp() - total;
                 target.setHp(health);
                 
