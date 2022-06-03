@@ -3,7 +3,7 @@ package academy.pocu.comp2500.lab5;
 public class Barbarian {
     private String name;
     private final int health;
-    protected int currentHealth;
+    private int currentHealth;
     private int damage;
     private int defense;
     private boolean isAlive;
@@ -21,22 +21,22 @@ public class Barbarian {
         return this.currentHealth;
     }
 
-    public int getMaxHp() {
+    protected int getMaxHp() {
         return this.health;
     }
 
-    public void setHp(int hp) {
+    protected void setHp(int hp) {
         if (hp <= 0) {
             this.isAlive = false;
         }
         this.currentHealth = hp;
     }
 
-    public int getDamage() {
+    protected int getDamage() {
         return this.damage;
     }
 
-    public int getDefense() {
+    protected int getDefense() {
         return this.defense;
     }
 
