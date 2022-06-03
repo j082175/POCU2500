@@ -4,11 +4,11 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import academy.pocu.comp2500.Barbarian;
-import academy.pocu.comp2500.Gladiator;
-import academy.pocu.comp2500.Knight;
-import academy.pocu.comp2500.Move;
-import academy.pocu.comp2500.Pet;
+import academy.pocu.comp2500.lab5.Barbarian;
+import academy.pocu.comp2500.lab5.Gladiator;
+import academy.pocu.comp2500.lab5.Knight;
+import academy.pocu.comp2500.lab5.Move;
+import academy.pocu.comp2500.lab5.Pet;
 class ProgramTest {
 
     @Test
