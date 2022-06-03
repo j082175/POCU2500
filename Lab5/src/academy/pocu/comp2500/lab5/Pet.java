@@ -12,8 +12,4 @@ public class Pet {
     public int getDamage() {
         return this.damage;
     }
-
-    public String getName() {
-        return this.name;
-    }
 }
