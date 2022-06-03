@@ -25,6 +25,10 @@ public class Barbarian {
         return this.defense;
     }
 
+    public String getName() {
+        return this.name;
+    }
+
     public void attack(Barbarian target) {
 //         피해치 = (공격자의 공격력 - 방어자의 방어력) / 2
 //         계산을 할 때는 double 자료형을 사용하고 계산 뒤에는 소수점 이하는 버리세요. (아래 예 참조)
