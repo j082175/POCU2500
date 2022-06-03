@@ -40,7 +40,7 @@ public class Barbarian {
     }
 
     public boolean isAlive() {
-        if (this.HP < 0) {
+        if (this.HP <= 0) {
             return false;
         } else {
             return true;
