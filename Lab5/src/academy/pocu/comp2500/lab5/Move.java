@@ -3,12 +3,14 @@ package academy.pocu.comp2500.lab5;
 public class Move {
     private String nameOfAttackSkill;
     private int damageOfAttackSkill;
-    private int maxCountToUsingSkill;
+    private final int maxCountToUsingSkill;
+    private int currentMaxCountToUsingSkill;
 
     public Move(String nameOfAttackSkill, int damageOfAttackSkill, int maxCountToUsingSkill) {
         this.nameOfAttackSkill = nameOfAttackSkill;
         this.damageOfAttackSkill = damageOfAttackSkill;
         this.maxCountToUsingSkill = maxCountToUsingSkill;
+        this.currentMaxCountToUsingSkill = this.maxCountToUsingSkill;
     }
 
     public String getNameOfAttackSkill() {
@@ -23,11 +25,16 @@ public class Move {
         return this.maxCountToUsingSkill;
     }
 
+    public int getCurrentMaxCountToUsingSkill() {
+        return this.currentMaxCountToUsingSkill;
+    }
+
     public void increaseMaxCountToUsingSkill() {
-        this.maxCountToUsingSkill++;
+        this.currentMaxCountToUsingSkill++;
     }
 
     public void decreaseMaxCountToUsingSkill() {
-        this.maxCountToUsingSkill--;
+        this.currentMaxCountToUsingSkill--;
     }
+
 }

@@ -2,7 +2,8 @@ package academy.pocu.comp2500.lab5;
 
 public class Barbarian {
     private String name;
-    private int health;
+    private final int health;
+    private int currentHealth;
     private int damage;
     private int defense;
     private boolean isAlive;
@@ -13,6 +14,7 @@ public class Barbarian {
         this.damage = damage;
         this.defense = defense;
         this.isAlive = true;
+        this.currentHealth = health;
     }
 
     public String getName() {
@@ -23,11 +25,15 @@ public class Barbarian {
         return this.health;
     }
 
+    public int getCurrentHp() {
+        return this.currentHealth;
+    }
+
     public void setHp(int hp) {
         if (hp <= 0) {
             this.isAlive = false;
         }
-        this.health = hp;
+        this.currentHealth = hp;
     }
 
     public int getDamage() {
@@ -52,21 +58,21 @@ public class Barbarian {
 
             if (totalDamage < 1) {
                 total = 1;
-            } else if (totalDamage > target.getHp()) {
+            } else if (totalDamage >= target.getHp()) {
                 total = target.getHp();
             } else {
                 total = (int) totalDamage;
             }
     
-            target.health -= total;
-            if (target.health <= 0) {
+            target.currentHealth -= total;
+            if (target.currentHealth <= 0) {
                 target.isAlive = false;
             }
         }
     }
 
     public boolean isAlive() {
-        if (this.health <= 0) {
+        if (this.currentHealth <= 0) {
             this.isAlive = false;
             return this.isAlive;
         } else {

@@ -47,7 +47,10 @@ public class Gladiator extends Barbarian {
                 double damage = (((double) this.getDamage() / (double) target.getDefense())
                         * (double) moves.get(nameOfSkill).getDamageOfAttackSkill()) / 2.0;
                 int total = 0;
-                if (damage >= target.getHp()) {
+
+                if (damage < 1) {
+                    total = 1;
+                } else if (damage >= target.getHp()) {
                     total = target.getHp();
                 } else {
                     total = (int) damage;
@@ -61,10 +64,17 @@ public class Gladiator extends Barbarian {
     }
 
     public void rest() {
-        this.setHp(this.getHp() + 10);
-        for (int i = 0; i < moves.size(); i++) {
-            if (moves.containsKey(movesManager.get(i))) {
-                moves.get(movesManager.get(i)).increaseMaxCountToUsingSkill();
+        if ((this.getCurrentHp() + 10) <= this.getHp()) {
+            for (int i = 0; i < moves.size(); i++) {
+                if (moves.get(movesManager.get(i)).getCurrentMaxCountToUsingSkill() < moves.get(movesManager.get(i))
+                        .getMaxCountToUsingSkill()) {
+                    this.setHp(this.getHp() + 10);
+                    for (int j = 0; j < moves.size(); j++) {
+                        if (moves.containsKey(movesManager.get(i))) {
+                            moves.get(movesManager.get(i)).increaseMaxCountToUsingSkill();
+                        }
+                    }
+                }
             }
         }
     }
