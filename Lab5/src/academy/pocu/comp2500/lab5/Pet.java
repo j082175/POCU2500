@@ -9,7 +9,11 @@ public class Pet {
         this.damage = damage;
     }
 
-    protected int getDamage() {
+    public int getDamage() {
         return this.damage;
+    }
+
+    public String getName() {
+        return this.name;
     }
 }
