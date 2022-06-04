@@ -21,11 +21,11 @@ public class Barbarian {
         return this.currentHealth;
     }
 
-    protected int getMaxHp() {
+    public int getMaxHp() {
         return this.health;
     }
 
-    protected void setHp(int hp) {
+    public void setHp(int hp) {
         if (hp <= 0) {
             this.isAlive = false;
         }
@@ -36,7 +36,7 @@ public class Barbarian {
         return this.damage;
     }
 
-    protected int getDefense() {
+    public int getDefense() {
         return this.defense;
     }
 
