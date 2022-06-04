@@ -32,7 +32,7 @@ public class Barbarian {
         this.currentHealth = hp;
     }
 
-    protected int getDamage() {
+    public int getDamage() {
         return this.damage;
     }
 
