@@ -2,7 +2,7 @@ package academy.pocu.comp2500.lab5;
 
 public class Barbarian {
     private String name;
-    private final int health;
+    protected final int health;
     private int currentHealth;
     private int damage;
     private int defense;
