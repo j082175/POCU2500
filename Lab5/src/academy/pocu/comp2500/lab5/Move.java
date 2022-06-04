@@ -13,27 +13,27 @@ public class Move {
         this.currentMaxCountToUsingSkill = this.maxCountToUsingSkill;
     }
 
-    public String getNameOfAttackSkill() {
+    protected String getNameOfAttackSkill() {
         return this.nameOfAttackSkill;
     }
 
-    public int getDamageOfAttackSkill() {
+    protected int getDamageOfAttackSkill() {
         return this.damageOfAttackSkill;
     }
 
-    public int getMaxCountToUsingSkill() {
+    protected int getMaxCountToUsingSkill() {
         return this.maxCountToUsingSkill;
     }
 
-    public int getCurrentMaxCountToUsingSkill() {
+    protected int getCurrentMaxCountToUsingSkill() {
         return this.currentMaxCountToUsingSkill;
     }
 
-    public void increaseMaxCountToUsingSkill() {
+    protected void increaseMaxCountToUsingSkill() {
         this.currentMaxCountToUsingSkill++;
     }
 
-    public void decreaseMaxCountToUsingSkill() {
+    protected void decreaseMaxCountToUsingSkill() {
         this.currentMaxCountToUsingSkill--;
     }
 

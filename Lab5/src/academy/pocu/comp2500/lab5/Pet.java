@@ -9,7 +9,7 @@ public class Pet {
         this.damage = damage;
     }
 
-    public int getDamage() {
+    protected int getDamage() {
         return this.damage;
     }
 

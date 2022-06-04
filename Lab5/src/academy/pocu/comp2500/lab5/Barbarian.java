@@ -21,22 +21,22 @@ public class Barbarian {
         return this.currentHealth;
     }
 
-    public int getMaxHp() {
+    protected int getMaxHp() {
         return this.health;
     }
 
-    public void setHp(int hp) {
+    protected void setHp(int hp) {
         if (hp <= 0) {
             this.isAlive = false;
         }
         this.currentHealth = hp;
     }
 
-    public int getDamage() {
+    protected int getDamage() {
         return this.damage;
     }
 
-    public int getDefense() {
+    protected int getDefense() {
         return this.defense;
     }
 
