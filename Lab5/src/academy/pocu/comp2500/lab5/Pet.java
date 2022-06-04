@@ -13,7 +13,4 @@ public class Pet {
         return this.damage;
     }
 
-    public String getName() {
-        return this.name;
-    }
 }
