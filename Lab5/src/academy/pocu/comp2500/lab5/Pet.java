@@ -12,4 +12,5 @@ public class Pet {
     protected int getDamage() {
         return this.damage;
     }
+
 }
