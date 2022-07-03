@@ -44,16 +44,24 @@ public class ReadingList {
             return false;
         }
 
+        boolean check = false;
         ReadingList readingList = (ReadingList) obj;
-        if (this.name.equals(readingList.name)) {
+        if (this.name.equals(readingList.name) && this.books.size() == readingList.books.size()) {
             for (int i = 0; i < this.books.size(); i++) {
                 if (this.books.get(i).equals(readingList.books.get(i))) {
-                    return true;
+                    check = true;
+                } else {
+                    check = false;
+                    break;
                 }
             }
         }
 
-        return false;
+        if (check) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override
