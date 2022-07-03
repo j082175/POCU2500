@@ -47,15 +47,26 @@ public class Bundle {
             return false;
         }
 
+        boolean check = false;
         Bundle b = (Bundle) obj;
         if (this.bundleName.equals(b.bundleName)) {
             for (var list : this.books) {
-                if (list.equals(b.books.iterator().next())) {
-                    return true;
+                for (var list2 : b.books) {
+                    if (list.equals(list2)) {
+                        check = true;
+                    } else {
+                        check = false;
+                        break;
+                    }
                 }
             }
         }
-        return false;
+
+        if (check) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override

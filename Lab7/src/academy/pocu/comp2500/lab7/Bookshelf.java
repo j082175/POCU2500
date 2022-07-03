@@ -48,16 +48,24 @@ public class Bookshelf {
             return false;
         }
 
+        boolean check = false;
         Bookshelf b = (Bookshelf) obj;
         if (this.maxBookCount == b.maxBookCount) {
             for (int i = 0; i < this.books.size(); i++) {
                 if (this.books.get(i).equals(b.books.get(i))) {
-                    return true;
+                    check = true;
+                } else {
+                    check = false;
+                    break;
                 }
             }
         }
 
-        return false;
+        if (check) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override
