@@ -12,7 +12,7 @@ public class Author {
     // <firstName> <lastName>
     @Override
     public String toString() {
-        return super.toString();
+        return new String(this.firstName + " " + this.lastName);
     }
 
     @Override
@@ -35,6 +35,9 @@ public class Author {
 
     @Override
     public int hashCode() {
-        return super.hashCode();
+        int hash = 17;
+        hash = hash * 31 + this.firstName.hashCode();
+        hash = hash * 31 + this.lastName.hashCode();
+        return hash;
     }
 }

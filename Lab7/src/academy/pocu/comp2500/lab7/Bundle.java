@@ -44,6 +44,9 @@ public class Bundle {
 
     @Override
     public int hashCode() {
-        return super.hashCode();
+        int hash = 17;
+        hash = hash * 31 + this.bundleName.hashCode();
+        hash = hash * 31 + this.bundleName.hashCode();
+        return hash;
     }
 }

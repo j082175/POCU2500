@@ -10,38 +10,18 @@ import academy.pocu.comp2500.lab7.ReadingList;
 public class Program {
 
     public static void main(String[] args) {
-        Author author = new Author("James", "Bond");
-        Book book0 = new Book("How to be the best", author, 1990, Genre.BIOGRAPHY);
-        Bookshelf bookshelf = new Bookshelf(10);
+        Book a1 = new Book("title1", new Author("hoho","fuck"), 4000, Genre.ROMANCE);
+        Book a2 = new Book("title2", new Author("hoho","fuck"), 4000, Genre.ROMANCE);
+        Book a3 = new Book("title3", new Author("hoho","fuck"), 4000, Genre.ROMANCE);
+        Book a4 = new Book("title4", new Author("hoho","fuck"), 4000, Genre.ROMANCE);
 
-        assert (bookshelf.add(book0));
-        assert (bookshelf.remove(book0));
-        assert (!bookshelf.remove(book0));
 
-        Book book1 = new Book("C# for dummies", new Author("Jason", "Bourne"), 2005, Genre.ROMANCE);
-        Book book2 = new Book("C# for dummies", new Author("Jason", "Bourne"), 2005, Genre.ROMANCE);
-        Book book3 = new Book("Java for dummies", new Author("James", "Bond"), 2007, Genre.MYSTERY);
+        ReadingList r = new ReadingList("first");
+        r.add(a1);
+        r.add(a2);
+        r.add(a3);
+        r.add(a4);
 
-        Bundle bundle = new Bundle("Programming");
-
-        assert (bundle.add(book0));
-        assert (bundle.add(book1));
-        assert (!bundle.add(book2));
-        assert (bundle.add(book3));
-
-        assert (bundle.remove(book3));
-        assert (bundle.remove(book0));
-        assert (!bundle.remove(book0));
-
-        ReadingList readingList = new ReadingList("Summer Break Homework");
-
-        readingList.add(book0);
-        readingList.add(book1);
-        readingList.add(book2);
-        readingList.add(book3);
-
-        assert (readingList.remove(book3));
-        assert (readingList.remove(book0));
-        assert (!readingList.remove(book0));
+        System.out.println(r.toString());
     }
 }

@@ -16,7 +16,7 @@ public class Book {
     // <title> [<author>]
     @Override
     public String toString() {
-        return super.toString();
+        return new String(this.title + " [" + this.author.toString() + "]");
     }
 
     @Override
@@ -39,6 +39,9 @@ public class Book {
 
     @Override
     public int hashCode() {
-        return super.hashCode();
+        int hash = 17;
+        hash = hash * 31 + this.title.hashCode();
+        hash = hash * 31 + this.author.hashCode();
+        return hash;
     }
 }

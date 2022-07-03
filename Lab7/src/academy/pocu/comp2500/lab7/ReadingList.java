@@ -22,11 +22,16 @@ public class ReadingList {
         }
     }
 
-    // < 첫번째 책>
-    // < 두번째 책>
+    // 1. <첫번째 책>
+    // 2. <두번째 책>
     @Override
     public String toString() {
-        return super.toString();
+        StringBuffer buffer = new StringBuffer();
+        for (int i = 0; i < this.books.size(); i++) {
+            buffer.append(i + 1 + ". <" + this.books.get(i).toString() + ">\n");
+        }
+
+        return buffer.toString();
     }
 
     @Override
@@ -53,6 +58,9 @@ public class ReadingList {
 
     @Override
     public int hashCode() {
-        return super.hashCode();
+        int hash = 17;
+        hash = hash * 31 + this.name.hashCode();
+        hash = hash * 31 + this.name.hashCode();
+        return hash;
     }
 }
