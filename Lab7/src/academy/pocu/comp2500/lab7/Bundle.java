@@ -51,22 +51,12 @@ public class Bundle {
         Bundle b = (Bundle) obj;
         if (this.bundleName.equals(b.bundleName)) {
             for (var list : this.books) {
-                for (var list2 : b.books) {
-                    if (list.equals(list2)) {
-                        check = true;
-                    } else {
-                        check = false;
-                        break;
-                    }
+                if (list.equals(b.books.iterator().next())) {
+                    return true;
                 }
             }
         }
-
-        if (check) {
-            return true;
-        } else {
-            return false;
-        }
+        return false;
     }
 
     @Override
