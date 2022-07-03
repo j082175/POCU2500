@@ -56,7 +56,7 @@ public class ReadingList {
         boolean check = false;
         ReadingList readingList = (ReadingList) obj;
 
-        if (this.books.size() == 0 && readingList.books.size() == 0) {
+        if (this.name.equals(readingList.name) && this.books.size() == 0 && readingList.books.size() == 0) {
             return true;
         }
 
@@ -80,7 +80,8 @@ public class ReadingList {
 
     @Override
     public int hashCode() {
-        int hash = this.name.hashCode() * 5381;
+        int hash = 0;
+        hash = hash ^ this.name.hashCode() * 5381;
         for (int i = 0; i < this.books.size(); i++) {
             hash = hash ^ this.books.get(i).hashCode() * 5381;
         }
