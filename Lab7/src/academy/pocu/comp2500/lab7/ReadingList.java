@@ -36,6 +36,10 @@ public class ReadingList {
 
     @Override
     public boolean equals(Object obj) {
+        if (super.equals(obj)) {
+            return true;
+        }
+
         if (this == obj) {
             return true;
         }

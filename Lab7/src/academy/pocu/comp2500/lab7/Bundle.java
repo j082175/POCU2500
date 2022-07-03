@@ -5,7 +5,7 @@ import java.util.HashSet;
 
 public class Bundle {
     private String bundleName;
-    private HashSet<Book> books = new HashSet<>(4);
+    private HashSet<Book> books = new HashSet<>();
     private final int MAX_VALUE = 4;
     private int currentCount;
 
@@ -39,6 +39,10 @@ public class Bundle {
 
     @Override
     public boolean equals(Object obj) {
+        if (super.equals(obj)) {
+            return true;
+        }
+
         if (obj == this) {
             return true;
         }
