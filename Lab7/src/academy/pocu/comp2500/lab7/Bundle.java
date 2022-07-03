@@ -5,7 +5,7 @@ import java.util.HashSet;
 
 public class Bundle {
     private String bundleName;
-    private HashSet<Book> books = new HashSet<>();
+    private HashSet<Book> books = new HashSet<>(4);
     private final int MAX_VALUE = 4;
     private int currentCount;
 

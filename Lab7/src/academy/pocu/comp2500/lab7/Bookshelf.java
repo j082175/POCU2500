@@ -16,26 +16,23 @@ public class Bookshelf {
         if (book == null || this.count >= this.maxBookCount ) {
             return false;
         }
-        if (this.books.contains(book)) {
-            return false;
-        } else {
-            this.books.add(book);
-            count++;
-            return true;
-        }
+        this.books.add(book);
+        count++;
+        return true;
     }
 
     public boolean remove(Book book) {
         if (book == null) {
             return false;
         }
-        if (this.books.contains(book)) {
-            this.books.remove(book);
-            count--;
-            return true;
-        } else {
-            return false;
+        for (int i = 0; i < this.books.size(); i++) {
+            if (this.books.get(i).equals(book)) {
+                this.books.remove(i);
+                return true;
+            }
         }
+
+        return false;
     }
 
     @Override
