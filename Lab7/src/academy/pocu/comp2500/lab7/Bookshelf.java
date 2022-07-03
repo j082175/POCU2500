@@ -26,7 +26,24 @@ public class Bookshelf {
 
     @Override
     public boolean equals(Object obj) {
-        return super.equals(obj);
+        if (this == obj) {
+            return true;
+        }
+
+        if (obj == null || !(obj instanceof Bookshelf)) {
+            return false;
+        }
+
+        Bookshelf b = (Bookshelf) obj;
+        if (this.maxBookCount == b.maxBookCount) {
+            for (int i = 0; i < this.books.size(); i++) {
+                if (!this.books.get(i).equals(b.books.get(i))) {
+                    return false;
+                }
+            }
+        }
+
+        return true;
     }
 
     @Override

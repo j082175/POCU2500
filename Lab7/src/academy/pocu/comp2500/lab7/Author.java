@@ -17,7 +17,20 @@ public class Author {
 
     @Override
     public boolean equals(Object obj) {
-        return super.equals(obj);
+        if (this == obj) {
+            return true;
+        }
+
+        if (obj == null || !(obj instanceof Author)) {
+            return false;
+        }
+
+        Author author = (Author) obj;
+        if (this.firstName.equals(author.firstName) && this.lastName.equals(author.lastName)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override

@@ -21,7 +21,20 @@ public class Book {
 
     @Override
     public boolean equals(Object obj) {
-        return super.equals(obj);
+        if (this == obj) {
+            return true;
+        }
+
+        if (obj == null || !(obj instanceof Book)) {
+            return false;
+        }
+
+        Book b = (Book) obj;
+        if (this.title.equals(b.title) && this.genre == b.genre && this.publicationYear == b.publicationYear && this.author.equals(b.author)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override

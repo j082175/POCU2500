@@ -31,7 +31,24 @@ public class ReadingList {
 
     @Override
     public boolean equals(Object obj) {
-        return super.equals(obj);
+        if (this == obj) {
+            return true;
+        }
+
+        if (obj == null || !(obj instanceof ReadingList)) {
+            return false;
+        }
+
+        ReadingList readingList = (ReadingList) obj;
+        if (this.name.equals(readingList.name)) {
+            for (int i = 0; i < this.books.size(); i++) {
+                if (!this.books.get(i).equals(readingList.books.get(i))) {
+                    return false;
+                }
+            }
+        }
+
+        return true;
     }
 
     @Override

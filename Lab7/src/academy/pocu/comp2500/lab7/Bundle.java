@@ -11,6 +11,11 @@ public class Bundle {
     }
 
     public boolean add(Book book) {
+        for (int i = 0; i < this.books.size(); i++) {
+            if (this.books.get(i).equals(book)) {
+                return false;
+            }
+        }
         books.add(book);
         return true;
     }
@@ -25,7 +30,16 @@ public class Bundle {
 
     @Override
     public boolean equals(Object obj) {
-        return super.equals(obj);
+        if (obj == this) {
+            return true;
+        }
+
+        if (obj == null || !(obj instanceof Bundle)) {
+            return false;
+        }
+
+        Bundle b = (Bundle) obj;
+        return this.bundleName.equals(((Bundle) obj).bundleName);
     }
 
     @Override
