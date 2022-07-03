@@ -174,5 +174,8 @@ class ProgramTest {
     {
         test1();
         test2();
+
+        Bookshelf bookshelf = new Bookshelf(5);
+        bookshelf.add()
     }
 }

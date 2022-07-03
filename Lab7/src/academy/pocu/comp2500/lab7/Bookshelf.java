@@ -5,6 +5,7 @@ import java.util.ArrayList;
 //책꽃이
 public class Bookshelf {
     private int maxBookCount;
+    private int count = 0;
     private ArrayList<Book> books = new ArrayList<>();
 
     public Bookshelf(int maxBookCount) {
@@ -12,13 +13,14 @@ public class Bookshelf {
     }
 
     public boolean add(Book book) {
-        if (book == null) {
+        if (book == null || this.count >= this.maxBookCount ) {
             return false;
         }
         if (this.books.contains(book)) {
             return false;
         } else {
             this.books.add(book);
+            count++;
             return true;
         }
     }
