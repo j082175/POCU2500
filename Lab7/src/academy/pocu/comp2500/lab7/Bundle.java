@@ -11,17 +11,17 @@ public class Bundle {
     }
 
     public boolean add(Book book) {
-        for (int i = 0; i < this.books.size(); i++) {
-            if (this.books.get(i).equals(book)) {
-                return false;
-            }
+        if (this.books.contains(book)) {
+            return false;
+        } else {
+            this.books.add(book);
+            return true;
         }
-        books.add(book);
-        return true;
     }
 
     public boolean remove(Book book) {
-        if (books.remove(book)) {
+        if (this.books.contains(book)) {
+            this.books.remove(book);
             return true;
         } else {
             return false;

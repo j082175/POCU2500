@@ -21,7 +21,8 @@ public class Bookshelf {
     }
 
     public boolean remove(Book book) {
-        if (this.books.remove(book)) {
+        if (this.books.contains(book)) {
+            this.books.remove(book);
             return true;
         } else {
             return false;
