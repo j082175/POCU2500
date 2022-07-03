@@ -13,7 +13,7 @@ public class Bookshelf {
     }
 
     public boolean add(Book book) {
-        if (book == null || this.count >= this.maxBookCount ) {
+        if ( book == null || this.count >= this.maxBookCount ) {
             return false;
         }
         this.books.add(book);

@@ -69,9 +69,9 @@ public class ReadingList {
     public int hashCode() {
         int hash = 41;
         for (int i = 0; i < this.books.size(); i++) {
-            hash = (hash << 6) + (hash << 16) ^ hash + this.books.get(i).hashCode();
+            hash = (hash << 6) + (hash << 16) - hash + this.books.get(i).hashCode();
         }
-        hash = (hash << 6) + (hash << 16) ^ hash + this.name.hashCode();
+        hash = (hash << 6) + (hash << 16) - hash + this.name.hashCode();
         return hash;
     }
 }
