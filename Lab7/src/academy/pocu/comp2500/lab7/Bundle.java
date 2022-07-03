@@ -51,18 +51,22 @@ public class Bundle {
             return false;
         }
 
-        int hash = 0;
-        int hash2 = 0;
-        for (var a : this.books) {
-            hash += a.hashCode();
-        }
+        if (this.bundleName.equals(((Bundle) obj).bundleName)) {
+            int hash = 0;
+            int hash2 = 0;
+            for (var a : this.books) {
+                hash += a.hashCode();
+            }
 
-        for (var a : ((Bundle) obj).books) {
-            hash2 += a.hashCode();
-        }
+            for (var a : ((Bundle) obj).books) {
+                hash2 += a.hashCode();
+            }
 
-        if (hash == hash2) {
-            return true;
+            if (hash == hash2) {
+                return true;
+            } else {
+                return false;
+            }
         } else {
             return false;
         }

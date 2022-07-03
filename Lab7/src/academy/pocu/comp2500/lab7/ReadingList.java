@@ -27,8 +27,10 @@ public class ReadingList {
     @Override
     public String toString() {
         StringBuffer buffer = new StringBuffer();
+        int count = 1;
         for (int i = 0; i < this.books.size(); i++) {
-            buffer.append(i + 1 + ". " + this.books.get(i).toString() + System.lineSeparator());
+            buffer.append(count + ". " + this.books.get(i).toString() + System.lineSeparator());
+            count++;
         }
 
         return buffer.toString();
@@ -67,11 +69,11 @@ public class ReadingList {
 
     @Override
     public int hashCode() {
-        int hash = 41;
+        int hash = this.name.hashCode();
         for (int i = 0; i < this.books.size(); i++) {
-            hash = (hash << 6) + (hash << 16) - hash + this.books.get(i).hashCode();
+            hash = hash ^ this.books.get(i).hashCode();
         }
-        hash = (hash << 6) + (hash << 16) - hash + this.name.hashCode();
+
         return hash;
     }
 }
