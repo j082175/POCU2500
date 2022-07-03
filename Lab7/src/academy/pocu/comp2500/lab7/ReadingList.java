@@ -45,7 +45,11 @@ public class ReadingList {
     @Override
     public boolean equals(Object obj) {
 
-        if (this == obj) {
+        if (super.equals(obj)) {
+            return true;
+        }
+
+        if (obj == this) {
             return true;
         }
 
@@ -55,7 +59,7 @@ public class ReadingList {
 
         boolean check = false;
         ReadingList readingList = (ReadingList) obj;
-        if (this.name.equals(readingList.name) && this.books.size() == readingList.books.size()) {
+        if (this.name.equals(readingList.name) && (this.books.size() == readingList.books.size())) {
             for (int i = 0; i < this.books.size(); i++) {
                 if (this.books.get(i).equals(readingList.books.get(i))) {
                     check = true;
