@@ -51,16 +51,21 @@ public class Bundle {
             return false;
         }
 
-        boolean check = false;
-        Bundle b = (Bundle) obj;
-        if (this.bundleName.equals(b.bundleName)) {
-            for (var list : this.books) {
-                if (list.equals(b.books.iterator().next())) {
-                    return true;
-                }
-            }
+        int hash = 0;
+        int hash2 = 0;
+        for (var a : this.books) {
+            hash += a.hashCode();
         }
-        return false;
+
+        for (var a : ((Bundle) obj).books) {
+            hash2 += a.hashCode();
+        }
+
+        if (hash == hash2) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override
