@@ -56,8 +56,8 @@ public class ReadingList {
         boolean check = false;
         ReadingList readingList = (ReadingList) obj;
 
-        if(this.books.size() == 0 || readingList.books.size() == 0) {
-            return false;
+        if (this.books.size() == 0 && readingList.books.size() == 0) {
+            return true;
         }
 
         if (this.name.equals(readingList.name) && (this.books.size() == readingList.books.size())) {

@@ -202,39 +202,9 @@ class ProgramTest {
 
         ReadingList r1 = new ReadingList("A");
         ReadingList r2 = new ReadingList("A");
-        ReadingList r3 = new ReadingList("B");
-        ReadingList r4 = new ReadingList("C");
-        ReadingList r5 = new ReadingList("D");
-
-
-        Author a1 = new Author("abc","def");
-        Book b1 = new Book("a",a1,2000,Genre.FANTASY);
-        Book b2 = new Book("b",a1,2222,Genre.FANTASY);
-        Book b3 = new Book("b",a1,2222,Genre.FANTASY);
-        Book b4 = new Book("b",a1,2222,Genre.FANTASY);
-        Book b5 = new Book("b",a1,2222,Genre.FANTASY);
-
-        r1.add(b1);
-        r1.add(b2);
-        r1.add(b3);
-        r1.add(b4);
-        r1.add(b5);
-
+        Book b1 = new Book("few",new Author("few","f"),1,Genre.FANTASY);
         r2.add(b1);
-        r2.add(b2);
-        r2.add(b3);
-        r2.add(b4);
-        r2.add(b5);
 
-        r3.add(b4);
-
-
-        int a = r1.hashCode();
-        int b = r2.hashCode();
-        int c = r3.hashCode();
-        int d =r4.hashCode();
-        int e = r5.hashCode();
-
-        assert (r2.equals(r1));
+        assert (r1.equals(r2));
     }
 }
