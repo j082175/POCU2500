@@ -12,8 +12,12 @@ public class Bookshelf {
     }
 
     public boolean add(Book book) {
-        this.books.add(book);
-        return true;
+        if (this.books.contains(book)) {
+            return false;
+        } else {
+            this.books.add(book);
+            return true;
+        }
     }
 
     public boolean remove(Book book) {

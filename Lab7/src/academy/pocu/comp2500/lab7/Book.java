@@ -10,7 +10,7 @@ public class Book {
         this.title = title;
         this.author = author;
         this.publicationYear = publicationYear;
-        this.genre= genre;
+        this.genre = genre;
     }
 
     // <title> [<author>]
