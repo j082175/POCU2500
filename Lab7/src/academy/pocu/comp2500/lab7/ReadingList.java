@@ -36,9 +36,6 @@ public class ReadingList {
 
     @Override
     public boolean equals(Object obj) {
-        if (super.equals(obj)) {
-            return true;
-        }
 
         if (this == obj) {
             return true;
@@ -70,11 +67,11 @@ public class ReadingList {
 
     @Override
     public int hashCode() {
-        int hash = 17;
+        int hash = 41;
         for (int i = 0; i < this.books.size(); i++) {
-            hash = hash * 31 + this.books.get(i).hashCode();
+            hash = (hash << 6) + (hash << 16) ^ hash + this.books.get(i).hashCode();
         }
-        hash = hash * 31 + this.name.hashCode();
+        hash = (hash << 6) + (hash << 16) ^ hash + this.name.hashCode();
         return hash;
     }
 }
