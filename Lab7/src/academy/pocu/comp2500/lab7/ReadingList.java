@@ -55,6 +55,11 @@ public class ReadingList {
 
         boolean check = false;
         ReadingList readingList = (ReadingList) obj;
+
+        if(this.books.size() == 0 || readingList.books.size() == 0) {
+            return false;
+        }
+
         if (this.name.equals(readingList.name) && (this.books.size() == readingList.books.size())) {
             for (int i = 0; i < this.books.size(); i++) {
                 if (this.books.get(i).equals(readingList.books.get(i))) {
@@ -75,9 +80,9 @@ public class ReadingList {
 
     @Override
     public int hashCode() {
-        int hash = this.name.hashCode() * 5381 * 5381;
+        int hash = this.name.hashCode() * 5381;
         for (int i = 0; i < this.books.size(); i++) {
-            hash = hash ^ this.books.get(i).hashCode() * 5381 * 5381;
+            hash = hash ^ this.books.get(i).hashCode() * 5381;
         }
 
         return hash;

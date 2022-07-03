@@ -216,7 +216,7 @@ class ProgramTest {
 
         r1.add(b1);
         r1.add(b2);
-        r1.add(new Book("b",a1,2221,Genre.FANTASY));
+        r1.add(b3);
         r1.add(b4);
         r1.add(b5);
 
@@ -226,12 +226,7 @@ class ProgramTest {
         r2.add(b4);
         r2.add(b5);
 
-        HashSet<ReadingList> hashSet = new HashSet<>();
-        hashSet.add(r1);
-        hashSet.add(r2);
-        hashSet.add(r3);
-        hashSet.add(r4);
-        hashSet.add(r5);
+        r3.add(b4);
 
 
         int a = r1.hashCode();
