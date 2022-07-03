@@ -200,14 +200,29 @@ class ProgramTest {
         test2();
         test3();
 
-        Bookshelf bookshelf = new Bookshelf(5);
-        Bookshelf bookshelf1 = new Bookshelf(5);
-        Book book = new Book("fuckyou",new Author("ji","ho"),3,Genre.ROMANCE);
-        Book book1 = new Book("few",new Author("ji","ho"),3,Genre.ROMANCE);
-        Book book2 = new Book("aa",new Author("few","ee"),4,Genre.BIOGRAPHY);
-        bookshelf.add(book);
-        bookshelf1.add(book1);
-        bookshelf1.add(book2);
-        assert (!bookshelf.equals(bookshelf1));
+        ReadingList r1 = new ReadingList("A");
+        ReadingList r2 = new ReadingList("A");
+
+        Author a1 = new Author("abc","def");
+        Book b1 = new Book("a",a1,2000,Genre.FANTASY);
+        Book b2 = new Book("b",a1,2222,Genre.FANTASY);
+        Book b3 = new Book("b",a1,2222,Genre.FANTASY);
+        Book b4 = new Book("b",a1,2222,Genre.FANTASY);
+        Book b5 = new Book("b",a1,2222,Genre.FANTASY);
+
+        r1.add(b1);
+        r1.add(b2);
+        r1.add(new Book("b",a1,2221,Genre.FANTASY));
+        r1.add(b4);
+        r1.add(b5);
+
+        r2.add(b1);
+        r2.add(b2);
+        r2.add(b3);
+        r2.add(b4);
+        r2.add(b5);
+
+
+        assert (r2.equals(r1));
     }
 }

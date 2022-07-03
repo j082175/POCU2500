@@ -15,11 +15,17 @@ public class ReadingList {
     }
 
     public boolean remove(Book book) {
-        if (books.remove(book)) {
-            return true;
-        } else {
+        if (book == null) {
             return false;
         }
+        for (int i = 0; i < this.books.size(); i++) {
+            if (this.books.get(i).equals(book)) {
+                this.books.remove(i);
+                return true;
+            }
+        }
+
+        return false;
     }
 
     // 1. <첫번째 책>
