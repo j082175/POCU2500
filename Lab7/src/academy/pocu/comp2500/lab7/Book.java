@@ -42,6 +42,8 @@ public class Book {
         int hash = 17;
         hash = hash * 31 + this.title.hashCode();
         hash = hash * 31 + this.author.hashCode();
+        hash = hash * 31 + this.publicationYear;
+        hash = hash * 31 + this.genre.hashCode();
         return hash;
     }
 }

@@ -37,20 +37,21 @@ public class Bookshelf {
         Bookshelf b = (Bookshelf) obj;
         if (this.maxBookCount == b.maxBookCount) {
             for (int i = 0; i < this.books.size(); i++) {
-                if (!this.books.get(i).equals(b.books.get(i))) {
-                    return false;
+                if (this.books.get(i).equals(b.books.get(i))) {
+                    return true;
                 }
             }
         }
 
-        return true;
+        return false;
     }
 
     @Override
     public int hashCode() {
-        int hash = 17;
-        hash = hash * 31 + this.maxBookCount;
-        hash = hash * 31 + this.maxBookCount;
+        int hash = 17 + super.hashCode();
+        for (int i = 0; i < this.books.size(); i++) {
+            hash = hash * 31 + this.books.get(i).hashCode();
+        }
         return hash;
     }
 }

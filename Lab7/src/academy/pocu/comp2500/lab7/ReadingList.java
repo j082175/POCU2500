@@ -28,7 +28,7 @@ public class ReadingList {
     public String toString() {
         StringBuffer buffer = new StringBuffer();
         for (int i = 0; i < this.books.size(); i++) {
-            buffer.append(i + 1 + ". <" + this.books.get(i).toString() + ">\n");
+            buffer.append(i + 1 + ". " + this.books.get(i).toString() + System.lineSeparator());
         }
 
         return buffer.toString();
@@ -47,19 +47,21 @@ public class ReadingList {
         ReadingList readingList = (ReadingList) obj;
         if (this.name.equals(readingList.name)) {
             for (int i = 0; i < this.books.size(); i++) {
-                if (!this.books.get(i).equals(readingList.books.get(i))) {
-                    return false;
+                if (this.books.get(i).equals(readingList.books.get(i))) {
+                    return true;
                 }
             }
         }
 
-        return true;
+        return false;
     }
 
     @Override
     public int hashCode() {
         int hash = 17;
-        hash = hash * 31 + this.name.hashCode();
+        for (int i = 0; i < this.books.size(); i++) {
+            hash = hash * 31 + this.books.get(i).hashCode();
+        }
         hash = hash * 31 + this.name.hashCode();
         return hash;
     }

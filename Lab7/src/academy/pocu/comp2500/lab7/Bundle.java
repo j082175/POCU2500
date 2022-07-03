@@ -45,7 +45,9 @@ public class Bundle {
     @Override
     public int hashCode() {
         int hash = 17;
-        hash = hash * 31 + this.bundleName.hashCode();
+        for (int i = 0; i < this.books.size(); i++) {
+            hash = hash * 31 + this.books.get(i).hashCode();
+        }
         hash = hash * 31 + this.bundleName.hashCode();
         return hash;
     }
