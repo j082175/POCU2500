@@ -202,6 +202,10 @@ class ProgramTest {
 
         ReadingList r1 = new ReadingList("A");
         ReadingList r2 = new ReadingList("A");
+        ReadingList r3 = new ReadingList("B");
+        ReadingList r4 = new ReadingList("C");
+        ReadingList r5 = new ReadingList("D");
+
 
         Author a1 = new Author("abc","def");
         Book b1 = new Book("a",a1,2000,Genre.FANTASY);
@@ -222,6 +226,19 @@ class ProgramTest {
         r2.add(b4);
         r2.add(b5);
 
+        HashSet<ReadingList> hashSet = new HashSet<>();
+        hashSet.add(r1);
+        hashSet.add(r2);
+        hashSet.add(r3);
+        hashSet.add(r4);
+        hashSet.add(r5);
+
+
+        int a = r1.hashCode();
+        int b = r2.hashCode();
+        int c = r3.hashCode();
+        int d =r4.hashCode();
+        int e = r5.hashCode();
 
         assert (r2.equals(r1));
     }

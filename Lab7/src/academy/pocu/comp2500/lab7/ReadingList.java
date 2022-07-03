@@ -45,11 +45,7 @@ public class ReadingList {
     @Override
     public boolean equals(Object obj) {
 
-        if (super.equals(obj)) {
-            return true;
-        }
-
-        if (obj == this) {
+        if (this == obj) {
             return true;
         }
 
@@ -79,9 +75,9 @@ public class ReadingList {
 
     @Override
     public int hashCode() {
-        int hash = this.name.hashCode();
+        int hash = this.name.hashCode() * 5381 * 5381;
         for (int i = 0; i < this.books.size(); i++) {
-            hash = hash ^ this.books.get(i).hashCode();
+            hash = hash ^ this.books.get(i).hashCode() * 5381 * 5381;
         }
 
         return hash;
