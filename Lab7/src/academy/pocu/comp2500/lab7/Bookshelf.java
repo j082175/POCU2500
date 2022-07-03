@@ -12,6 +12,9 @@ public class Bookshelf {
     }
 
     public boolean add(Book book) {
+        if (book == null) {
+            return false;
+        }
         if (this.books.contains(book)) {
             return false;
         } else {
@@ -21,6 +24,9 @@ public class Bookshelf {
     }
 
     public boolean remove(Book book) {
+        if (book == null) {
+            return false;
+        }
         if (this.books.contains(book)) {
             this.books.remove(book);
             return true;
