@@ -31,6 +31,7 @@ public class Bookshelf {
         }
         if (this.books.contains(book)) {
             this.books.remove(book);
+            count--;
             return true;
         } else {
             return false;

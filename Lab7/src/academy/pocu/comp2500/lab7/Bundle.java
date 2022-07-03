@@ -1,20 +1,28 @@
 package academy.pocu.comp2500.lab7;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public class Bundle {
     private String bundleName;
-    private ArrayList<Book> books = new ArrayList<>();
+    private HashSet<Book> books = new HashSet<>();
+    private final int MAX_VALUE = 4;
+    private int currentCount;
 
     public Bundle(String bundleName) {
         this.bundleName = bundleName;
+        this.currentCount = 0;
     }
 
     public boolean add(Book book) {
         if (this.books.contains(book)) {
             return false;
         } else {
+            if (this.currentCount >= MAX_VALUE) {
+                return false;
+            }
             this.books.add(book);
+            this.currentCount++;
             return true;
         }
     }
@@ -22,6 +30,7 @@ public class Bundle {
     public boolean remove(Book book) {
         if (this.books.contains(book)) {
             this.books.remove(book);
+            this.currentCount--;
             return true;
         } else {
             return false;
@@ -39,14 +48,21 @@ public class Bundle {
         }
 
         Bundle b = (Bundle) obj;
-        return this.bundleName.equals(((Bundle) obj).bundleName);
+        if (this.bundleName.equals(b.bundleName)) {
+            for (var list : this.books) {
+                if (list.equals(b.books.iterator().next())) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     @Override
     public int hashCode() {
         int hash = 17;
-        for (int i = 0; i < this.books.size(); i++) {
-            hash = hash * 31 + this.books.get(i).hashCode();
+        for (var list : this.books) {
+            hash = hash * 31 + list.hashCode();
         }
         hash = hash * 31 + this.bundleName.hashCode();
         return hash;

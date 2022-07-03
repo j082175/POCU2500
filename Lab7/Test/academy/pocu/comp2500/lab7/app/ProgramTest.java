@@ -10,6 +10,8 @@ import academy.pocu.comp2500.lab7.Genre;
 import academy.pocu.comp2500.lab7.ReadingList;
 import org.junit.jupiter.api.Test;
 
+import java.util.HashSet;
+
 class ProgramTest {
     void test1()
     {
@@ -169,13 +171,43 @@ class ProgramTest {
         assert (readingList1.hashCode() != readingList3.hashCode());
 
     }
+
+    void test3()
+    {
+        Book book1 = new Book("book1", new Author("a", "b"), 1 , Genre.BIOGRAPHY);
+        Book book2 = new Book("book2", new Author("a", "b"), 1 , Genre.BIOGRAPHY);
+        Book book3 = new Book("book3", new Author("a", "b"), 1 , Genre.BIOGRAPHY);
+
+        HashSet<Book> books1 = new HashSet<>();
+        books1.add(book1);
+        books1.add(book2);
+        books1.add(book3);
+        HashSet<Book> books2 = new HashSet<>();
+        books2.add(book2);
+        books2.add(book3);
+        books2.add(book1);
+        HashSet<Book> books3 = new HashSet<>();
+        books3.add(book1);
+        books3.add(book1);
+
+        System.out.println(books1.hashCode() == books2.hashCode()); // true
+        System.out.println(books1.hashCode() == books3.hashCode()); // false
+    }
     @Test
     void main()
     {
         test1();
         test2();
+        test3();
 
         Bookshelf bookshelf = new Bookshelf(5);
-        bookshelf.add()
+        Bookshelf bookshelf1 = new Bookshelf(5);
+        Book book = new Book("fuckyou",new Author("ji","ho"),3,Genre.ROMANCE);
+        Book book1 = new Book("few",new Author("ji","ho"),3,Genre.ROMANCE);
+        Book book2 = new Book("aa",new Author("few","ee"),4,Genre.BIOGRAPHY);
+        bookshelf.add(book);
+        bookshelf1.add(book1);
+        bookshelf1.add(book2);
+        assert (!bookshelf.equals(bookshelf1));
     }
 }
