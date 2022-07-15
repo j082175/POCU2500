@@ -30,4 +30,4 @@ public final class Book {
     public UUID getSku() {
         return this.sku;
     }
-}
+}1
