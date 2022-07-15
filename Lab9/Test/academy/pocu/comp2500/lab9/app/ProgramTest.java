@@ -32,7 +32,7 @@ class ProgramTest {
         books1.add(book2);
         books1.add(book3);
 
-        assert (model0.getTotalPrice(books1) == 70);
+        //assert (model0.getTotalPrice(books1) == 70);
         assert (model1.getTotalPrice(books1) == 70);
         assert (model2.getTotalPrice(books1) == 70);
 
@@ -83,8 +83,8 @@ class ProgramTest {
         SkyIsTheLimit model2 = new SkyIsTheLimit(100);
 
         assert (model0.getTotalPrice(books) == 105);
-        //assert (model1.getTotalPrice(books) == 100);
-        //assert (model2.getTotalPrice(books) == 106);
+        assert (model1.getTotalPrice(books) == 100);
+        assert (model2.getTotalPrice(books) == 106);
     }
 
     void testSelf() {
@@ -127,5 +127,6 @@ class ProgramTest {
     @Test
     void main() {
         test1();
+        test0();
     }
 }

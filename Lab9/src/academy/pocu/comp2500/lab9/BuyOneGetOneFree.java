@@ -37,9 +37,6 @@ public class BuyOneGetOneFree {
             }
 
 
-
-
-
             itr = skuNumber.iterator();
             count = 0;
         }
