@@ -18,7 +18,7 @@ public final class Cart {
         return this.books.size();
     }
 
-    public void addBooks(final UUID[] skus, final String[] titles, final int[] prices, final int[] publishedYears) {
+/*    public void addBooks(final UUID[] skus, final String[] titles, final int[] prices, final int[] publishedYears) {
         if (skus.length != titles.length || skus.length != prices.length || skus.length != publishedYears.length) {
             return;
         }
@@ -27,12 +27,12 @@ public final class Cart {
             Book book = new Book(skus[i], titles[i], prices[i], publishedYears[i]);
             this.books.add(book);
         }
-    }
+    }*/
 
-    public void addBook(final UUID sku, final String title, final int price, final int publishedYear) {
+/*    public void addBook(final UUID sku, final String title, final int price, final int publishedYear) {
         Book book = new Book(sku, title, price, publishedYear);
         this.books.add(book);
-    }
+    }*/
 
     public boolean remove(final int index) {
         if (this.books.size() <= index) {
@@ -44,7 +44,7 @@ public final class Cart {
         return true;
     }
 
-    public int getTotalPrice() {
+/*    public int getTotalPrice() {
         int sum = 0;
 
         for (Book book : this.books) {
@@ -52,5 +52,5 @@ public final class Cart {
         }
 
         return sum;
-    }
+    }*/
 }

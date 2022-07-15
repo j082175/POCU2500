@@ -1,7 +1,7 @@
 package academy.pocu.comp2500.lab9;
 
 import java.util.UUID;
-
+// 메서드의 매개변수를 변경하는 것만 허용된다.
 public final class Book {
     private final UUID sku;
     private final String title;
