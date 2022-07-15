@@ -127,11 +127,14 @@ class ProgramTest {
     @Test
     void main() {
         HashSet<UUID> hashSet = new HashSet<>();
-        hashSet.add(UUID.randomUUID());
-        hashSet.add(UUID.randomUUID());
-        hashSet.add(UUID.randomUUID());
+        UUID uuid = UUID.randomUUID();
+        hashSet.add(uuid);
         BuyOneGetOneFree buyOneGetOneFree = new BuyOneGetOneFree(hashSet);
         ArrayList<Book> books = new ArrayList<>();
-        buyOneGetOneFree.getTotalPrice(books);
+        Book book = new Book(uuid, "few", 22, 2000);
+        books.add(book);
+        int a = buyOneGetOneFree.getTotalPrice(books);
+
+        int b;
     }
 }

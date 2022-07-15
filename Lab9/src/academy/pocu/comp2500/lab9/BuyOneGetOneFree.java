@@ -48,6 +48,8 @@ public class BuyOneGetOneFree implements IPriceModel {
             if (num != 0) {
                 int value = data[i] / stack[i] * num;
                 totalPrice += (data[i] - value);
+            } else {
+                totalPrice += data[i];
             }
         }
 
