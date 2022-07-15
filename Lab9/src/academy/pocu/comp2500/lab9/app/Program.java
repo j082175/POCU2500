@@ -111,15 +111,7 @@ public class Program {
         books.add(book7);
         books.add(book8);
 
-        HashSet<UUID> skus = new HashSet<>();
-        skus.add(sku0);
-        skus.add(sku1);
-        skus.add(sku2);
 
-        BuyOneGetOneFree model0 = new BuyOneGetOneFree(skus);
-        int a = model0.getTotalPrice(books);
-        BuyOneGetOneFree model1 = new BuyOneGetOneFree(skus);
-        int b = model1.getTotalPrice(model0);
     }
 
     public static void decadeMadnessTest() {

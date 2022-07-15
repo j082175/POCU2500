@@ -126,7 +126,12 @@ class ProgramTest {
 
     @Test
     void main() {
-        test1();
-        test0();
+        HashSet<UUID> hashSet = new HashSet<>();
+        hashSet.add(UUID.randomUUID());
+        hashSet.add(UUID.randomUUID());
+        hashSet.add(UUID.randomUUID());
+        BuyOneGetOneFree buyOneGetOneFree = new BuyOneGetOneFree(hashSet);
+        ArrayList<Book> books = new ArrayList<>();
+        buyOneGetOneFree.getTotalPrice(books);
     }
 }

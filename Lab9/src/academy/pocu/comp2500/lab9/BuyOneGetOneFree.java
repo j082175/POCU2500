@@ -45,8 +45,10 @@ public class BuyOneGetOneFree implements IPriceModel {
 
         for (int i = 0; i < skuNumber.size(); i++) {
             int num = stack[i] / 2;
-            int value = data[i] / stack[i] * num;
-            totalPrice += (data[i] - value);
+            if (num != 0) {
+                int value = data[i] / stack[i] * num;
+                totalPrice += (data[i] - value);
+            }
         }
 
         this.books = books;
