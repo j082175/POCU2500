@@ -167,5 +167,8 @@ public class Program {
     }
     public static void main(String[] args) {
 	    skyIsTheLimitTest();
+        SkyIsTheLimit s = new SkyIsTheLimit(10);
+        ArrayList<Book> books = new ArrayList<>();
+        s.getTotalPrice(books);
     }
 }

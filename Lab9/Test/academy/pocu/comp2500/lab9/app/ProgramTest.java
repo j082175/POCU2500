@@ -28,7 +28,7 @@ class ProgramTest {
         books1.add(book2);
         books1.add(book3);
 
-        //assert (model0.getTotalPrice(books1) == 70);
+        assert (model0.getTotalPrice(books1) == 70);
         assert (model1.getTotalPrice(books1) == 70);
         assert (model2.getTotalPrice(books1) == 70);
 

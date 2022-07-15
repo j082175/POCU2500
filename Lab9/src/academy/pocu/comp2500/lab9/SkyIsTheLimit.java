@@ -16,16 +16,24 @@ public class SkyIsTheLimit implements IPriceModel { // Cart 클래스도 변경
         double sum = 0;
         double totalPrice = 0;
         double priceArr[] = new double[books.size()];
-        for (int i = 0; i < books.size(); i++) {
-            sum += books.get(i).getPrice();
-            priceArr[i] = books.get(i).getPrice();
+
+        if (books.size() >= 5) {
+            for (int i = 0; i < books.size(); i++) {
+                sum += books.get(i).getPrice();
+                priceArr[i] = books.get(i).getPrice();
+            }
+
+            if (sum >= this.price) {
+                totalPrice = calculateDiscount(priceArr);
+            } else {
+                totalPrice = sum;
+            }
+        } else {
+            for (int i = 0; i < books.size(); i++) {
+                totalPrice += books.get(i).getPrice();
+            }
         }
 
-        if (sum >= this.price) {
-            totalPrice = calculateDiscount(priceArr);
-        } else {
-            totalPrice = sum;
-        }
 
 
         return (int) totalPrice;
