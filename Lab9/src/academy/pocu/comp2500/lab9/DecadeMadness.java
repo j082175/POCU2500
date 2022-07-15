@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 
-public class DecadeMadness extends Cart { //Cart 클래스도 변경
+public class DecadeMadness { //Cart 클래스도 변경
 
     private final double DISCOUNT_RATE = 0.8;
     public DecadeMadness() {
