@@ -4,7 +4,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.UUID;
 
-public abstract class Cart {
+public class Cart {
     private ArrayList<Book> books = new ArrayList<>();
 
     public Book getBookOrNull(final int index) {
@@ -51,6 +51,5 @@ public abstract class Cart {
         return sum;
     }
 
-    public abstract int getTotalPrice(ArrayList<Book> books);
 
 }

@@ -10,7 +10,7 @@ public class DecadeMadness extends Cart { //Cart 클래스도 변경
     public DecadeMadness() {
     }
 
-    @Override
+
     public int getTotalPrice(ArrayList<Book> books) { //계산은 double로
         double totalPrice = 0;
         int checkDecade[];

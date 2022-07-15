@@ -7,7 +7,7 @@ public class SimplePricing extends Cart{ // 기본 가격 결정모델 Cart 도 
     public SimplePricing() {
     }
 
-    @Override
+
     public int getTotalPrice(ArrayList<Book> books) {
         int totalPrice = 0;
         for (int i = 0; i < books.size(); i++) {

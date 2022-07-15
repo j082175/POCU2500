@@ -15,7 +15,7 @@ public class BuyOneGetOneFree extends Cart{
         this.skuNumber = skuNumber;
     }
 
-    @Override
+
     public int getTotalPrice(ArrayList<Book> books) {
         int stack[] = new int[skuNumber.size()];
         int data[] = new int[skuNumber.size()];
@@ -52,7 +52,7 @@ public class BuyOneGetOneFree extends Cart{
         return totalPrice;
     }
 
-    
+
     public int getTotalPrice(BuyOneGetOneFree buyOneGetOneFree) {
 
         return buyOneGetOneFree.getTotalPrice(buyOneGetOneFree.books);
