@@ -2,8 +2,9 @@ package academy.pocu.comp2500.lab9;
 
 import java.util.ArrayList;
 
-public class SkyIsTheLimit extends PriceModel { // Cart 클래스도 변경
+public class SkyIsTheLimit implements PriceModel { // Cart 클래스도 변경
     private int price;
+    private final double DISCOUNT_RATE = 0.5;
 
     public SkyIsTheLimit(int price) {
         this.price = price;
@@ -57,7 +58,7 @@ public class SkyIsTheLimit extends PriceModel { // Cart 클래스도 변경
             totalPrice += priceArr[i];
         }
 
-        totalPrice += (max + max2) * 0.5;
+        totalPrice += (max + max2) * DISCOUNT_RATE;
         return totalPrice;
     }
 }
