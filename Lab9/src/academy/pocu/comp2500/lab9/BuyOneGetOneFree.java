@@ -54,8 +54,8 @@ public class BuyOneGetOneFree implements IPriceModel {
     }
 
 
-    public int getTotalPrice(BuyOneGetOneFree buyOneGetOneFree) {
+/*    public int getTotalPrice(BuyOneGetOneFree buyOneGetOneFree) {
 
         return buyOneGetOneFree.getTotalPrice(buyOneGetOneFree.books);
-    }
+    }*/
 }
