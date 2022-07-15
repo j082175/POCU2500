@@ -2,7 +2,7 @@ package academy.pocu.comp2500.lab9;
 
 import java.util.ArrayList;
 
-public class SkyIsTheLimit extends PriceModel{ // Cart 클래스도 변경
+public class SkyIsTheLimit extends PriceModel { // Cart 클래스도 변경
     private int price;
 
     public SkyIsTheLimit(int price) {

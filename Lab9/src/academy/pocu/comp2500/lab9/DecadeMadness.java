@@ -4,9 +4,10 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 
-public class DecadeMadness extends PriceModel{ //Cart 클래스도 변경
+public class DecadeMadness extends PriceModel { //Cart 클래스도 변경
 
     private final double DISCOUNT_RATE = 0.8;
+
     public DecadeMadness() {
     }
 
@@ -29,7 +30,7 @@ public class DecadeMadness extends PriceModel{ //Cart 클래스도 변경
         priceArr = new double[yearArr.size()];
 
         itr = yearArr.iterator();
-        for (int i = 0; i< yearArr.size(); i++) {
+        for (int i = 0; i < yearArr.size(); i++) {
             checkDecade[i] = itr.next();
         }
 
@@ -50,10 +51,7 @@ public class DecadeMadness extends PriceModel{ //Cart 클래스도 변경
                 totalPrice += priceArr[j];
             }
         }
-
-
-
-
-        return (int)totalPrice;
+        
+        return (int) totalPrice;
     }
 }
