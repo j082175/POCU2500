@@ -41,13 +41,8 @@ public final class Cart {
         return true;
     }
 
-/*    public int getTotalPrice() {
-        int sum = 0;
+    public int getTotalPrice(PriceModel priceModel) {
 
-        for (Book book : this.books) {
-            sum += book.getPrice();
-        }
-
-        return sum;
-    }*/
+        return priceModel.getTotalPrice(books);
+    }
 }
