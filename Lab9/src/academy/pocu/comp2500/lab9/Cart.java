@@ -41,7 +41,7 @@ public final class Cart {
         return true;
     }
 
-    public int getTotalPrice() {
+/*    public int getTotalPrice() {
         int sum = 0;
 
         for (Book book : this.books) {
@@ -49,5 +49,5 @@ public final class Cart {
         }
 
         return sum;
-    }
+    }*/
 }
