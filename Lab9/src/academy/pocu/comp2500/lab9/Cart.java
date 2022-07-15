@@ -1,5 +1,6 @@
 package academy.pocu.comp2500.lab9;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -18,20 +19,16 @@ public final class Cart {
         return this.books.size();
     }
 
-    public void addBooks(final UUID[] skus, final String[] titles, final int[] prices, final int[] publishedYears) {
-        if (skus.length != titles.length || skus.length != prices.length || skus.length != publishedYears.length) {
-            return;
-        }
+    public void addBooks(ArrayList<Book> books) {
 
-        for (int i = 0; i < skus.length; ++i) {
-            //Book book = new Book(skus[i], titles[i], prices[i], publishedYears[i]);
-            //this.books.add(book);
+        for (int i = 0; i < books.size(); ++i) {
+            Book book = books.get(i);
+            this.books.add(book);
         }
     }
 
-    public void addBook(final UUID sku, final String title, final int price, final int publishedYear) {
-        //Book book = new Book(sku, title, price, publishedYear);
-        //this.books.add(book);
+    public void addBook(Book book) {
+        this.books.add(book);
     }
 
     public boolean remove(final int index) {
