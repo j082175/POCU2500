@@ -6,7 +6,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.UUID;
 
-public class BuyOneGetOneFree implements PriceModel {
+public class BuyOneGetOneFree implements IPriceModel {
 
     private ArrayList<Book> books;
     private HashSet<UUID> skuNumber;

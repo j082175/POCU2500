@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 
-public class DecadeMadness implements PriceModel { //Cart 클래스도 변경
+public class DecadeMadness implements IPriceModel { //Cart 클래스도 변경
 
     private final double DISCOUNT_RATE = 0.8;
 
