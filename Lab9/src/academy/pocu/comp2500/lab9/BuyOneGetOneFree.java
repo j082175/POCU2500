@@ -5,7 +5,7 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.UUID;
 
-public class BuyOneGetOneFree{
+public class BuyOneGetOneFree {
 
     public BuyOneGetOneFree(HashSet<UUID> skuNumber) {
 
