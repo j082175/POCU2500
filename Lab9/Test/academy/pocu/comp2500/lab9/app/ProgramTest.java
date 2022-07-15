@@ -1,13 +1,9 @@
 package academy.pocu.comp2500.lab9.app;
 
+import academy.pocu.comp2500.lab9.*;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
-
-import academy.pocu.comp2500.lab9.Book;
-import academy.pocu.comp2500.lab9.BuyOneGetOneFree;
-import academy.pocu.comp2500.lab9.DecadeMadness;
-import academy.pocu.comp2500.lab9.SkyIsTheLimit;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -119,6 +115,10 @@ class ProgramTest {
         skus.add(sku0);
         skus.add(sku1);
         skus.add(sku2);
+
+        Cart cart = new Cart();
+        cart.addBooks(books);
+
 
         BuyOneGetOneFree model0 = new BuyOneGetOneFree(skus);
         int a = model0.getTotalPrice(books);

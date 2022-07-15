@@ -6,7 +6,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.UUID;
 
-public class BuyOneGetOneFree{
+public class BuyOneGetOneFree extends PriceModel{
 
     private ArrayList<Book> books;
     private HashSet<UUID> skuNumber;
@@ -16,6 +16,7 @@ public class BuyOneGetOneFree{
     }
 
 
+    @Override
     public int getTotalPrice(ArrayList<Book> books) {
         int stack[] = new int[skuNumber.size()];
         int data[] = new int[skuNumber.size()];
