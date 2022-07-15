@@ -121,7 +121,29 @@ public class Program {
         BuyOneGetOneFree model1 = new BuyOneGetOneFree(skus);
         int b = model1.getTotalPrice(model0);
     }
+
+    public static void decadeMadnessTest() {
+
+        Book book0 = new Book(UUID.randomUUID(), "Hello", 10, 1991);
+        Book book1 = new Book(UUID.randomUUID(), "Hello", 15, 1995);
+        Book book2 = new Book(UUID.randomUUID(), "Hello", 10, 1996);
+        Book book3 = new Book(UUID.randomUUID(), "Hello", 20, 2011);
+        Book book4 = new Book(UUID.randomUUID(), "Hello", 20, 2003);
+        Book book5 = new Book(UUID.randomUUID(), "Millennium", 10, 2001);
+
+        ArrayList<Book> books = new ArrayList<>();
+
+        books.add(book0);
+        books.add(book1);
+        books.add(book2);
+        books.add(book3);
+        books.add(book4);
+        books.add(book5);
+
+        DecadeMadness decadeMadness = new DecadeMadness();
+        int a = decadeMadness.getTotalPrice(books);
+    }
     public static void main(String[] args) {
-	    testSelf();
+	    decadeMadnessTest();
     }
 }
