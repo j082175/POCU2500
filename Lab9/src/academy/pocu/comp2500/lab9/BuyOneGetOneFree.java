@@ -6,7 +6,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.UUID;
 
-public class BuyOneGetOneFree {
+public class BuyOneGetOneFree extends Cart{
 
     private ArrayList<Book> books;
     private HashSet<UUID> skuNumber;
@@ -15,6 +15,7 @@ public class BuyOneGetOneFree {
         this.skuNumber = skuNumber;
     }
 
+    @Override
     public int getTotalPrice(ArrayList<Book> books) {
         int stack[] = new int[skuNumber.size()];
         int data[] = new int[skuNumber.size()];
@@ -51,6 +52,7 @@ public class BuyOneGetOneFree {
         return totalPrice;
     }
 
+    
     public int getTotalPrice(BuyOneGetOneFree buyOneGetOneFree) {
 
         return buyOneGetOneFree.getTotalPrice(buyOneGetOneFree.books);

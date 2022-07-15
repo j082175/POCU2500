@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 
-public class DecadeMadness { //Cart 클래스도 변경
+public class DecadeMadness extends Cart { //Cart 클래스도 변경
 
     private final double DISCOUNT_RATE = 0.8;
     public DecadeMadness() {
-
     }
 
+    @Override
     public int getTotalPrice(ArrayList<Book> books) { //계산은 double로
         double totalPrice = 0;
         int checkDecade[];
