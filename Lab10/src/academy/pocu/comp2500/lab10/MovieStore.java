@@ -1,8 +1,6 @@
 package academy.pocu.comp2500.lab10;
 
-import academy.pocu.comp2500.lab10.pocuflix.Movie;
-import academy.pocu.comp2500.lab10.pocuflix.NotFoundResult;
-import academy.pocu.comp2500.lab10.pocuflix.ResultBase;
+import academy.pocu.comp2500.lab10.pocuflix.*;
 
 import java.util.ArrayList;
 
@@ -30,6 +28,12 @@ public class MovieStore implements IRequestHandler{
     @Override
     public ResultBase handle(Request request) {
         // 영화가 있다면 OkResult 없다면 NotFoundResult 반환
-        return null;
+        for (int i = 0; i < movies.size(); i++) {
+            if (this.movies.get(i).getTitle().equals(request.title)) {
+                return new OkResult(this.movies.get(i));
+            }
+        }
+
+        return new NotFoundResult();
     }
 }

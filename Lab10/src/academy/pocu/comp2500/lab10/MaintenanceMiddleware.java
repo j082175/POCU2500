@@ -3,6 +3,8 @@ package academy.pocu.comp2500.lab10;
 import academy.pocu.comp2500.lab10.pocuflix.ResultBase;
 
 import java.time.OffsetDateTime;
+import java.time.ZoneOffset;
+import java.time.ZonedDateTime;
 
 public class MaintenanceMiddleware implements IRequestHandler{
     //점검시간은 1시간
@@ -18,11 +20,15 @@ public class MaintenanceMiddleware implements IRequestHandler{
     @Override
     public ResultBase handle(Request request) {
         // 점검중일때
-        if (this.iRequestHandler != null) {
-            return new ServiceUnavailableResult(offsetDateTime, offsetDateTime);
+        OffsetDateTime currentDateTime = OffsetDateTime.now(ZoneOffset.UTC);
+
+
+
+        if (this.offsetDateTime.isAfter(currentDateTime.minusHours(1))) {
+            return new ServiceUnavailableResult(offsetDateTime, offsetDateTime.plusHours(1));
         }
 
         // 다음 핸들러에 요청을 넘김
-        return null;
+        return this.iRequestHandler.handle(request);
     }
 }
