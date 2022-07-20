@@ -190,7 +190,7 @@ class ProgramTest {
                 assert (result instanceof CachedResult);
 
                 cachedResult = (CachedResult) result;
-                //assert (cachedResult.getExpiryCount() == 2);
+                assert (cachedResult.getExpiryCount() == 2);
             }
 
             // ===========================================
@@ -526,7 +526,7 @@ class ProgramTest {
 
     @Test
     void main() {
-        test3();
+        //test3();
         MovieStore store = new MovieStore();
 
         store.add(new Movie("Harry Potter", Rating.PG13, 180));

@@ -20,6 +20,7 @@ public class AuthorizationMiddleware implements IRequestHandler{
     @Override
     public ResultBase handle(Request request) {
 
+
         if (this.users.contains(request.user)) {
             return iRequestHandler.handle(request);
         }

@@ -32,7 +32,7 @@ public class CacheMiddleware implements IRequestHandler{
                 if (request.user.equals(this.requestHashSet.get(request.title))) {
                     if (this.cacheExpiredRate != 1) {
 
-                            this.cacheExpiredRate--;
+                        this.cacheExpiredRate--;
 
 
                         return new CachedResult(this.cacheExpiredRate);
@@ -44,7 +44,7 @@ public class CacheMiddleware implements IRequestHandler{
                 if (this.requestHashSet.get(request.title).equals(request.user)) {
                     if (this.cacheExpiredRate != 1) {
 
-                            this.cacheExpiredRate--;
+                        this.cacheExpiredRate--;
 
                         return new CachedResult(this.cacheExpiredRate);
                     }

@@ -11,7 +11,7 @@ public class ResultValidator {
     }
 
     public boolean isValid(ResultCode resultCode) {
-        if (this.resultBase.getCode() == resultCode) {
+        if (this.resultBase.getCode().getClass() == resultCode.getClass()) {
             return true;
         }
 
