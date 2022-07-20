@@ -8,6 +8,7 @@ public class Request {
 
     public Request(String title) {
         this.title = title;
+        this.user = new User("", "");
     }
 
     public void setUser(User user) {
