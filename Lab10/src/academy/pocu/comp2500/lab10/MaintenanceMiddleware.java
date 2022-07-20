@@ -10,11 +10,11 @@ public class MaintenanceMiddleware implements IRequestHandler{
     //점검시간은 1시간
 
     private IRequestHandler iRequestHandler;
-    private OffsetDateTime offsetDateTime;
+    private OffsetDateTime startDateTime;
 
-    public MaintenanceMiddleware(IRequestHandler iRequestHandler, OffsetDateTime offsetDateTime) {
+    public MaintenanceMiddleware(IRequestHandler iRequestHandler, OffsetDateTime startDateTime) {
         this.iRequestHandler = iRequestHandler;
-        this.offsetDateTime = offsetDateTime;
+        this.startDateTime = startDateTime;
     }
 
     @Override
@@ -22,10 +22,12 @@ public class MaintenanceMiddleware implements IRequestHandler{
         // 점검중일때
         OffsetDateTime currentDateTime = OffsetDateTime.now(ZoneOffset.UTC);
 
+        if (this.startDateTime.isAfter(currentDateTime)) {
+            return this.iRequestHandler.handle(request);
+        }
 
-
-        if (this.offsetDateTime.isAfter(currentDateTime.minusHours(1))) {
-            return new ServiceUnavailableResult(offsetDateTime, offsetDateTime.plusHours(1));
+        if (this.startDateTime.isAfter(currentDateTime.minusHours(1))) {
+            return new ServiceUnavailableResult(startDateTime, startDateTime.plusHours(1));
         }
 
         // 다음 핸들러에 요청을 넘김

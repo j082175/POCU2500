@@ -396,8 +396,8 @@ class ProgramTest {
 
             ResultBase result = middleware.handle(request);
 
-            //assert (result.getCode() == ResultCode.OK);
-            //assert (result instanceof OkResult);
+            assert (result.getCode() == ResultCode.OK);
+            assert (result instanceof OkResult);
 
             sleep(10);
 
@@ -526,7 +526,6 @@ class ProgramTest {
 
     @Test
     void main() {
-        //test1();
-        test2();
+        test1();
     }
 }
