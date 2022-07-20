@@ -29,6 +29,10 @@ public class CacheMiddleware implements IRequestHandler{
 
         if (this.requestHashSet.containsKey(request.title)) {
             if (request.user != null) {
+
+                var a = request.user.getUsername();
+                var b = this.requestHashSet.get(request.title).getUsername();
+
                 if (request.user.equals(this.requestHashSet.get(request.title))) {
                     if (this.cacheExpiredRate != 1) {
 
