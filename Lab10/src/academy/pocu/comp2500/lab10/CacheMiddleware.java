@@ -25,7 +25,9 @@ public class CacheMiddleware implements IRequestHandler{
     @Override
     public ResultBase handle(Request request) {
 
-        //ResultBase resultBase = this.iRequestHandler.handle(request);
+        if (this.cacheExpiredRate == 0) {
+            return this.iRequestHandler.handle(request);
+        }
 
         if (this.requestHashSet.containsKey(request.hashCode())) {
             if (request.user != null) {
@@ -34,12 +36,15 @@ public class CacheMiddleware implements IRequestHandler{
                 //var b = this.requestHashSet.get(request.title).getUsername();
 
 
-                    if (this.requestHashSet.get(request.hashCode()) != 1) {
+                    if (this.requestHashSet.get(request.hashCode()) > 1) {
 
                         this.requestHashSet.put(request.hashCode(), this.requestHashSet.get(request.hashCode()) - 1);
 
 
                         return new CachedResult(this.requestHashSet.get(request.hashCode()));
+                    } else {
+                        this.requestHashSet.remove(request.hashCode());
+                        return this.iRequestHandler.handle(request);
                     }
 
             }
