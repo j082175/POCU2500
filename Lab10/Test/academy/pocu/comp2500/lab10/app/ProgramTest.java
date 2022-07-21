@@ -530,7 +530,7 @@ class ProgramTest {
 
         test1();
 
-        //test2();
+        test2();
 
         MovieStore store = new MovieStore();
 
