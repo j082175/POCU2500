@@ -15,7 +15,8 @@ public class Request {
         this.user = user;
     }
 
-/*    public boolean equals(Object obj) {
+    @Override
+    public boolean equals(Object obj) {
         if (obj == this) {
             return true;
         }
@@ -28,5 +29,10 @@ public class Request {
 
         Request other = (Request) obj;
         return this.title.equals(other.title) && this.user.equals(other.user);
-    }*/
+    }
+
+    @Override
+    public int hashCode() {
+        return this.title.hashCode() ^ (this.user.hashCode() << 16);
+    }
 }

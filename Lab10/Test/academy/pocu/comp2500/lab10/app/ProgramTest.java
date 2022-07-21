@@ -363,7 +363,7 @@ class ProgramTest {
         assert (!store.remove(2));
         assert (store.remove(1));
 
-        {
+/*        {
             Request request = new Request("None");
 
             ResultBase result = store.handle(request);
@@ -510,7 +510,7 @@ class ProgramTest {
 
             assert (result.getCode() == ResultCode.OK);
             assert (result instanceof OkResult);
-        }
+        }*/
         {
             OffsetDateTime now = OffsetDateTime.now(ZoneOffset.UTC);
 
@@ -526,7 +526,10 @@ class ProgramTest {
 
     @Test
     void main() {
-        //test3();
+        test3();
+
+        test2();
+
         MovieStore store = new MovieStore();
 
         store.add(new Movie("Harry Potter", Rating.PG13, 180));

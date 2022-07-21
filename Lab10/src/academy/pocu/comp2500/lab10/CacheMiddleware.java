@@ -12,7 +12,7 @@ public class CacheMiddleware implements IRequestHandler{
     private IRequestHandler iRequestHandler;
     private int cacheExpiredRate;
 
-    private HashMap<String, User> requestHashSet;
+    private HashMap<Integer, Integer> requestHashSet;
 
 
     public CacheMiddleware(IRequestHandler iRequestHandler, int cacheExpiredRate) {
@@ -27,33 +27,23 @@ public class CacheMiddleware implements IRequestHandler{
 
         //ResultBase resultBase = this.iRequestHandler.handle(request);
 
-        if (this.requestHashSet.containsKey(request.title)) {
+        if (this.requestHashSet.containsKey(request.hashCode())) {
             if (request.user != null) {
 
-                var a = request.user.getUsername();
-                var b = this.requestHashSet.get(request.title).getUsername();
-
-                if (request.user.equals(this.requestHashSet.get(request.title))) {
-                    if (this.cacheExpiredRate != 1) {
-
-                        this.cacheExpiredRate--;
+                //var a = request.user.getUsername();
+                //var b = this.requestHashSet.get(request.title).getUsername();
 
 
-                        return new CachedResult(this.cacheExpiredRate);
+                    if (this.requestHashSet.get(request.hashCode()) != 1) {
+
+                        this.requestHashSet.put(request.hashCode(), this.requestHashSet.get(request.hashCode()) - 1);
+
+
+                        return new CachedResult(this.requestHashSet.get(request.hashCode()));
                     }
-                }
+
             }
 
-            else if (this.requestHashSet.get(request.title) != null) {
-                if (this.requestHashSet.get(request.title).equals(request.user)) {
-                    if (this.cacheExpiredRate != 1) {
-
-                        this.cacheExpiredRate--;
-
-                        return new CachedResult(this.cacheExpiredRate);
-                    }
-                }
-            }
         }
 
 
@@ -66,7 +56,7 @@ public class CacheMiddleware implements IRequestHandler{
         }*/
 
 
-        this.requestHashSet.put(request.title, request.user);
+        this.requestHashSet.put(request.hashCode(), this.cacheExpiredRate);
         return this.iRequestHandler.handle(request);
 
     }
