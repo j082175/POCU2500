@@ -9,7 +9,7 @@ import java.util.HashSet;
 
 public class AuthorizationMiddleware implements IRequestHandler{
     private IRequestHandler iRequestHandler;
-    public HashSet<User> users;
+    private HashSet<User> users;
 
     public AuthorizationMiddleware(IRequestHandler iRequestHandler, HashSet<User> users) {
         this.iRequestHandler = iRequestHandler;

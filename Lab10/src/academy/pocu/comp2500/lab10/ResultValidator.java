@@ -4,7 +4,7 @@ import academy.pocu.comp2500.lab10.pocuflix.ResultBase;
 import academy.pocu.comp2500.lab10.pocuflix.ResultCode;
 
 public class ResultValidator {
-    ResultBase resultBase;
+    private ResultBase resultBase;
 
     public ResultValidator(ResultBase resultBase) {
         this.resultBase = resultBase;
