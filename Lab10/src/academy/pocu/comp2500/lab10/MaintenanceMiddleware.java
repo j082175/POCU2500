@@ -5,7 +5,7 @@ import academy.pocu.comp2500.lab10.pocuflix.ResultBase;
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
 
-public class MaintenanceMiddleware implements IRequestHandler{
+public class MaintenanceMiddleware implements IRequestHandler {
     //점검시간은 1시간
 
     private IRequestHandler iRequestHandler;

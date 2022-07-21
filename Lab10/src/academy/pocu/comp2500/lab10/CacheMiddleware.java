@@ -8,7 +8,7 @@ import academy.pocu.comp2500.lab10.pocuflix.User;
 import java.util.HashMap;
 import java.util.HashSet;
 
-public class CacheMiddleware implements IRequestHandler{
+public class CacheMiddleware implements IRequestHandler {
     private IRequestHandler iRequestHandler;
     private int cacheExpiredRate;
 
@@ -48,7 +48,6 @@ public class CacheMiddleware implements IRequestHandler{
 
                 return new CachedResult(this.requestHashSet.get(request.hashCode()));
             }
-
 
 
         }

@@ -7,7 +7,7 @@ import academy.pocu.comp2500.lab10.pocuflix.User;
 
 import java.util.HashSet;
 
-public class AuthorizationMiddleware implements IRequestHandler{
+public class AuthorizationMiddleware implements IRequestHandler {
     private IRequestHandler iRequestHandler;
     private HashSet<User> users;
 
