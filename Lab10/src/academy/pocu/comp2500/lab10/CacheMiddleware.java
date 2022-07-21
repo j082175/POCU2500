@@ -40,17 +40,12 @@ public class CacheMiddleware implements IRequestHandler{
 
                         this.requestHashSet.put(request.hashCode(), this.requestHashSet.get(request.hashCode()) - 1);
 
-                        if (this.requestHashSet.get(request.hashCode()) == 1) {
-                            int a = this.requestHashSet.get(request.hashCode());
-                            this.requestHashSet.remove(request.hashCode());
-                            return new CachedResult(a);
-                        }
 
                         return new CachedResult(this.requestHashSet.get(request.hashCode()));
-                    } /*else {
+                    } else {
                         this.requestHashSet.remove(request.hashCode());
                         return this.iRequestHandler.handle(request);
-                    }*/
+                    }
 
             }
 
