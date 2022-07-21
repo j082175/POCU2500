@@ -51,7 +51,7 @@ class ProgramTest {
             // ===========================================
             // 1.MaintenanceMiddleware -> CacheMiddleware
             // ===========================================
-/*            {
+            {
                 // maintain middleware
                 OffsetDateTime now = OffsetDateTime.now(ZoneOffset.UTC);
                 OffsetDateTime startDateTime = now.plusSeconds(3);
@@ -96,7 +96,7 @@ class ProgramTest {
                 assert (result.getCode() == ResultCode.SERVICE_UNAVAILABLE);
                 assert (result instanceof ServiceUnavailableResult);
 
-            }*/
+            }
 
             // ===========================================
             // 2.AuthorizationMiddleware -> CacheMiddleware
