@@ -31,15 +31,8 @@ public class App {
 
         // 목록 출력
 
-
-        boolean check = true;
         int count = 0;
-        int count1 = 0;
         String s;
-        User user;
-        Wallet wallet;
-        Warehouse warehouse;
-        ArrayList<Product> arrayList;
         do {
             System.out.println(builder.toString());
             s = in.readLine();
@@ -56,150 +49,13 @@ public class App {
 
             switch (s) {
                 case "1":
-                    user = new User();
-                    wallet = null;
-
-                    count1 = 0;
-
-                    try {
-                        wallet = new SafeWallet(user);
-                    } catch (PermanentlyClosedException e) {
-                        err.println("AUTH_ERROR");
-                    }
-                    if (wallet != null) {
-                        out.printf("BALANCE: %d\n", wallet.getAmount());
-                    }
-
-                    do {
-                        warehouse = new Warehouse(WarehouseType.APPLE);
-                        arrayList = warehouse.getProducts();
-
-                        if (arrayList.size() == 0) {
-                            return;
-                        }
-
-                        out.println("PRODUCT_LIST: Choose the product you want to buy!");
-                        for (int i = 0; i < arrayList.size(); i++) {
-                            out.printf("%d. %s\t\t%d\n", i + 1, arrayList.get(i).getName(), arrayList.get(i).getPrice());
-                        }
-
-                        s = in.readLine();
-
-                        if (s.equals("exit")) {
-                            return;
-                        }
-
-                        try {
-                            count1 = Integer.parseInt(s);
-                        } catch (NumberFormatException e) {
-                            continue;
-                        }
-
-
-                        if (count1 > 0 && count1 <= arrayList.size()) {
-                            check = wallet.withdraw(arrayList.get(count1 - 1).getPrice());
-                            if (check) {
-                                //warehouse.removeProduct(arrayList.get(count - 1).getId());
-                                out.printf("BALANCE: %d\n", wallet.getAmount());
-                            }
-                        }
-
-                    } while (check);
-
+                    printScreen(in, out, err, WarehouseType.APPLE);
                     break;
                 case "2":
-                    user = new User();
-                    wallet = null;
-
-                    warehouse = new Warehouse(WarehouseType.MICROSOFT);
-                    arrayList = warehouse.getProducts();
-
-
-                    count1 = 0;
-
-                    try {
-                        wallet = new SafeWallet(user);
-                    } catch (PermanentlyClosedException e) {
-                        err.println("AUTH_ERROR");
-                    }
-                    if (wallet != null) {
-                        out.printf("BALANCE: %d\n", wallet.getAmount());
-                    }
-
-                    do {
-                        out.println("PRODUCT_LIST: Choose the product you want to buy!");
-                        for (int i = 0; i < arrayList.size(); i++) {
-                            out.printf("%d. %s\t\t%d\n", i + 1, arrayList.get(i).getName(), arrayList.get(i).getPrice());
-                        }
-
-                        s = in.readLine();
-
-                        if (s.equals("exit")) {
-                            return;
-                        }
-
-                        try {
-                            count1 = Integer.parseInt(s);
-                        } catch (NumberFormatException e) {
-                            continue;
-                        }
-
-
-                        if (count1 > 0 && count1 <= arrayList.size()) {
-                            check = wallet.withdraw(arrayList.get(count1 - 1).getPrice());
-                            if (check) {
-                                out.printf("BALANCE: %d\n", wallet.getAmount());
-                            }
-                        }
-
-                    } while (check);
+                    printScreen(in, out, err, WarehouseType.MICROSOFT);
                     break;
                 case "3":
-                    user = new User();
-                    wallet = null;
-
-                    warehouse = new Warehouse(WarehouseType.SAMSUNG);
-                    arrayList = warehouse.getProducts();
-
-
-                    count1 = 0;
-
-                    try {
-                        wallet = new SafeWallet(user);
-                    } catch (PermanentlyClosedException e) {
-                        err.println("AUTH_ERROR");
-                    }
-                    if (wallet != null) {
-                        out.printf("BALANCE: %d\n", wallet.getAmount());
-                    }
-
-                    do {
-                        out.println("PRODUCT_LIST: Choose the product you want to buy!");
-                        for (int i = 0; i < arrayList.size(); i++) {
-                            out.printf("%d. %s\t\t%d\n", i + 1, arrayList.get(i).getName(), arrayList.get(i).getPrice());
-                        }
-
-                        s = in.readLine();
-
-                        if (s.equals("exit")) {
-                            return;
-                        }
-
-                        try {
-                            count1 = Integer.parseInt(s);
-                        } catch (NumberFormatException e) {
-                            continue;
-                        }
-
-
-                        if (count1 > 0 && count1 <= arrayList.size()) {
-                            check = wallet.withdraw(arrayList.get(count1 - 1).getPrice());
-                            if (check) {
-                                out.printf("BALANCE: %d\n", wallet.getAmount());
-                            }
-                        }
-
-                    } while (check);
+                    printScreen(in, out, err, WarehouseType.SAMSUNG);
                     break;
                 default:
                     out.println("you picked the wrong number fool!");
@@ -207,5 +63,57 @@ public class App {
                     continue;
             }
         } while (count < 1 || count > 3);
+    }
+
+    private void printScreen(BufferedReader in, PrintStream out, PrintStream err, WarehouseType warehouseType) throws IOException {
+        boolean check = true;
+        String s;
+        User user = new User();
+        Wallet wallet = null;
+
+        Warehouse warehouse = new Warehouse(warehouseType);
+        ArrayList<Product> arrayList = warehouse.getProducts();
+
+
+        int count1 = 0;
+
+        try {
+            wallet = new SafeWallet(user);
+        } catch (PermanentlyClosedException e) {
+            err.println("AUTH_ERROR");
+        } catch (IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
+        if (wallet != null) {
+            out.printf("BALANCE: %d\n", wallet.getAmount());
+        }
+
+        do {
+            out.println("PRODUCT_LIST: Choose the product you want to buy!");
+            for (int i = 0; i < arrayList.size(); i++) {
+                out.printf("%d. %s\t\t%d\n", i + 1, arrayList.get(i).getName(), arrayList.get(i).getPrice());
+            }
+
+            s = in.readLine();
+
+            if (s.equals("exit")) {
+                return;
+            }
+
+            try {
+                count1 = Integer.parseInt(s);
+            } catch (NumberFormatException e) {
+                continue;
+            }
+
+
+            if (count1 > 0 && count1 <= arrayList.size()) {
+                check = wallet.withdraw(arrayList.get(count1 - 1).getPrice());
+                if (check) {
+                    out.printf("BALANCE: %d\n", wallet.getAmount());
+                }
+            }
+
+        } while (check);
     }
 }
