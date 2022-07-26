@@ -34,7 +34,7 @@ public class App {
         Warehouse warehouse;
         ArrayList<Product> arrayList;
         do {
-            System.out.println(builder.toString());
+            System.out.print(builder.toString());
             s = in.readLine();
 
             if (s.equals("exit")) {
@@ -96,14 +96,14 @@ public class App {
 
                     count1 = 0;
 
-                        try {
-                            wallet = new SafeWallet(user);
-                        } catch (PermanentlyClosedException e) {
-                            err.println("AUTH_ERROR");
-                        }
-                        if (wallet != null) {
-                            out.printf("BALANCE: %d\n", wallet.getAmount());
-                        }
+                    try {
+                        wallet = new SafeWallet(user);
+                    } catch (PermanentlyClosedException e) {
+                        err.println("AUTH_ERROR");
+                    }
+                    if (wallet != null) {
+                        out.printf("BALANCE: %d\n", wallet.getAmount());
+                    }
 
                     do {
                         out.println("PRODUCT_LIST: Choose the product you want to buy!");
@@ -146,14 +146,14 @@ public class App {
 
                     count1 = 0;
 
-                        try {
-                            wallet = new SafeWallet(user);
-                        } catch (PermanentlyClosedException e) {
-                            err.println("AUTH_ERROR");
-                        }
-                        if (wallet != null) {
-                            out.printf("BALANCE: %d\n", wallet.getAmount());
-                        }
+                    try {
+                        wallet = new SafeWallet(user);
+                    } catch (PermanentlyClosedException e) {
+                        err.println("AUTH_ERROR");
+                    }
+                    if (wallet != null) {
+                        out.printf("BALANCE: %d\n", wallet.getAmount());
+                    }
 
                     do {
                         out.println("PRODUCT_LIST: Choose the product you want to buy!");
@@ -195,14 +195,14 @@ public class App {
 
                     count1 = 0;
 
-                        try {
-                            wallet = new SafeWallet(user);
-                        } catch (PermanentlyClosedException e) {
-                            err.println("AUTH_ERROR");
-                        }
-                        if (wallet != null) {
-                            out.printf("BALANCE: %d\n", wallet.getAmount());
-                        }
+                    try {
+                        wallet = new SafeWallet(user);
+                    } catch (PermanentlyClosedException e) {
+                        err.println("AUTH_ERROR");
+                    }
+                    if (wallet != null) {
+                        out.printf("BALANCE: %d\n", wallet.getAmount());
+                    }
 
                     do {
                         out.println("PRODUCT_LIST: Choose the product you want to buy!");
