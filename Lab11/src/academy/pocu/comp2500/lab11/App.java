@@ -1,7 +1,12 @@
 package academy.pocu.comp2500.lab11;
 
 
-import academy.pocu.comp2500.lab11.pocu.*;
+import academy.pocu.comp2500.lab11.pocu.User;
+import academy.pocu.comp2500.lab11.pocu.Wallet;
+import academy.pocu.comp2500.lab11.pocu.Warehouse;
+import academy.pocu.comp2500.lab11.pocu.WarehouseType;
+import academy.pocu.comp2500.lab11.pocu.Product;
+import academy.pocu.comp2500.lab11.pocu.PermanentlyClosedException;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -35,11 +40,10 @@ public class App {
         Warehouse warehouse;
         ArrayList<Product> arrayList;
         do {
-            System.out.print(builder.toString());
+            System.out.println(builder.toString());
             s = in.readLine();
 
             if (s.equals("exit")) {
-                out.println("exited");
                 return;
             }
 

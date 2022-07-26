@@ -14,7 +14,7 @@ public class SafeWallet extends Wallet {
         if (super.deposit(amount)) {
             return true;
         } else {
-            throw new OverflowException("aa");
+            throw new OverflowException("overflow");
         }
     }
 }
