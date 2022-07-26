@@ -95,7 +95,7 @@ public class App {
 
 
                     count1 = 0;
-                    do {
+
                         try {
                             wallet = new SafeWallet(user);
                         } catch (PermanentlyClosedException e) {
@@ -105,7 +105,7 @@ public class App {
                             out.printf("BALANCE: %d\n", wallet.getAmount());
                         }
 
-
+                    do {
                         out.println("PRODUCT_LIST: Choose the product you want to buy!");
                         for (int i = 0; i < arrayList.size(); i++) {
                             out.printf("%d. %s\t\t%d\n", i + 1, arrayList.get(i).getName(), arrayList.get(i).getPrice());
@@ -129,7 +129,7 @@ public class App {
                             if (!check) {
                                 continue;
                             } else {
-                                out.printf("wallet : %d\n", wallet.getAmount());
+                                out.printf("BALANCE: %d\n", wallet.getAmount());
                             }
                         }
 
@@ -137,9 +137,6 @@ public class App {
 
                     break;
                 case "2":
-                    out.println("MS choosed");
-
-
                     user = new User();
                     wallet = null;
 
@@ -148,7 +145,7 @@ public class App {
 
 
                     count1 = 0;
-                    do {
+
                         try {
                             wallet = new SafeWallet(user);
                         } catch (PermanentlyClosedException e) {
@@ -158,7 +155,7 @@ public class App {
                             out.printf("BALANCE: %d\n", wallet.getAmount());
                         }
 
-
+                    do {
                         out.println("PRODUCT_LIST: Choose the product you want to buy!");
                         for (int i = 0; i < arrayList.size(); i++) {
                             out.printf("%d. %s\t\t%d\n", i + 1, arrayList.get(i).getName(), arrayList.get(i).getPrice());
@@ -180,18 +177,15 @@ public class App {
                         if (count1 > 0 && count1 <= arrayList.size()) {
                             boolean check = wallet.withdraw(arrayList.get(count1 - 1).getPrice());
                             if (!check) {
-                                continue;
+                                break;
                             } else {
-                                out.printf("wallet : %d\n", wallet.getAmount());
+                                out.printf("BALANCE: %d\n", wallet.getAmount());
                             }
                         }
 
-                    } while (count1 < 1 || count1 > arrayList.size());
-                    break;
+                    } while (true);
+                    //break;
                 case "3":
-                    out.println("SAMSUNG choosed");
-
-
                     user = new User();
                     wallet = null;
 
@@ -200,7 +194,7 @@ public class App {
 
 
                     count1 = 0;
-                    do {
+
                         try {
                             wallet = new SafeWallet(user);
                         } catch (PermanentlyClosedException e) {
@@ -210,7 +204,7 @@ public class App {
                             out.printf("BALANCE: %d\n", wallet.getAmount());
                         }
 
-
+                    do {
                         out.println("PRODUCT_LIST: Choose the product you want to buy!");
                         for (int i = 0; i < arrayList.size(); i++) {
                             out.printf("%d. %s\t\t%d\n", i + 1, arrayList.get(i).getName(), arrayList.get(i).getPrice());
@@ -234,7 +228,7 @@ public class App {
                             if (!check) {
                                 continue;
                             } else {
-                                out.printf("wallet : %d\n", wallet.getAmount());
+                                out.printf("BALANCE: %d\n", wallet.getAmount());
                             }
                         }
 
