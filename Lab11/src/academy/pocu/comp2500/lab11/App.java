@@ -32,6 +32,7 @@ public class App {
         // 목록 출력
 
 
+        boolean check = true;
         int count = 0;
         int count1 = 0;
         String s;
@@ -55,49 +56,8 @@ public class App {
 
             switch (s) {
                 case "1":
-/*                    String firstName;
-                    String lastName;
-                    Department department = Department.ENGINEERING;
-                    out.println("APPLE choosed");
-                    out.println("Input user information");
-                    out.println("firstname: ");
-                    firstName = in.readLine();
-                    out.println("lastname: ");
-                    lastName = in.readLine();
-
-                    int count;
-                    do {
-                        out.println("department: ");
-                        out.println("1. ENGINEERING");
-                        out.println("2. OPERATION");
-                        out.println("3. QUALITY_ASSURANCE");
-                        out.println("4. HUMAN_RESOURCES");
-                        count = in.read();
-                        switch (count) {
-                            case 1:
-                                department = Department.ENGINEERING;
-                                break;
-                            case 2:
-                                department = Department.OPERATION;
-                                break;
-                            case 3:
-                                department = Department.QUALITY_ASSURANCE;
-                                break;
-                            case 4:
-                                department = Department.HUMAN_RESOURCES;
-                                break;
-                            default:
-                                out.println("department: ");
-                        }
-                    }while (count < 1 || count > 4);*/
-
-                    //User user = new User(firstName, lastName, department);
                     user = new User();
                     wallet = null;
-
-                    warehouse = new Warehouse(WarehouseType.APPLE);
-                    arrayList = warehouse.getProducts();
-
 
                     count1 = 0;
 
@@ -111,6 +71,13 @@ public class App {
                     }
 
                     do {
+                        warehouse = new Warehouse(WarehouseType.APPLE);
+                        arrayList = warehouse.getProducts();
+
+                        if (arrayList.size() == 0) {
+                            return;
+                        }
+
                         out.println("PRODUCT_LIST: Choose the product you want to buy!");
                         for (int i = 0; i < arrayList.size(); i++) {
                             out.printf("%d. %s\t\t%d\n", i + 1, arrayList.get(i).getName(), arrayList.get(i).getPrice());
@@ -130,15 +97,14 @@ public class App {
 
 
                         if (count1 > 0 && count1 <= arrayList.size()) {
-                            boolean check = wallet.withdraw(arrayList.get(count1 - 1).getPrice());
-                            if (!check) {
-                                continue;
-                            } else {
+                            check = wallet.withdraw(arrayList.get(count1 - 1).getPrice());
+                            if (check) {
+                                //warehouse.removeProduct(arrayList.get(count - 1).getId());
                                 out.printf("BALANCE: %d\n", wallet.getAmount());
                             }
                         }
 
-                    } while (count1 < 1 || count1 > arrayList.size());
+                    } while (check);
 
                     break;
                 case "2":
@@ -180,16 +146,14 @@ public class App {
 
 
                         if (count1 > 0 && count1 <= arrayList.size()) {
-                            boolean check = wallet.withdraw(arrayList.get(count1 - 1).getPrice());
-                            if (!check) {
-                                break;
-                            } else {
+                            check = wallet.withdraw(arrayList.get(count1 - 1).getPrice());
+                            if (check) {
                                 out.printf("BALANCE: %d\n", wallet.getAmount());
                             }
                         }
 
-                    } while (true);
-                    //break;
+                    } while (check);
+                    break;
                 case "3":
                     user = new User();
                     wallet = null;
@@ -229,15 +193,13 @@ public class App {
 
 
                         if (count1 > 0 && count1 <= arrayList.size()) {
-                            boolean check = wallet.withdraw(arrayList.get(count1 - 1).getPrice());
-                            if (!check) {
-                                continue;
-                            } else {
+                            check = wallet.withdraw(arrayList.get(count1 - 1).getPrice());
+                            if (check) {
                                 out.printf("BALANCE: %d\n", wallet.getAmount());
                             }
                         }
 
-                    } while (count1 < 1 || count1 > arrayList.size());
+                    } while (check);
                     break;
                 default:
                     out.println("you picked the wrong number fool!");
@@ -245,6 +207,5 @@ public class App {
                     continue;
             }
         } while (count < 1 || count > 3);
-
     }
 }
