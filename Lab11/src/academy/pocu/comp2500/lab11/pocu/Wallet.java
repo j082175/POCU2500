@@ -48,10 +48,12 @@ public class Wallet {
         return true;
     }
 
+    //mock
     private static int retrieveAmountMock() {
         return 100;
     }
 
+    //mock
     private static HashSet<Department> retrieveDepartmentsMock() {
         HashSet<Department> set = new HashSet<>();
 
@@ -62,6 +64,7 @@ public class Wallet {
         return set;
     }
 
+    //mock
     private static HashSet<User> retrieveAllowedUsersMock(Department department) {
         HashSet<User> set = new HashSet<>();
 

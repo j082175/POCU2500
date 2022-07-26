@@ -50,6 +50,7 @@ public class User {
         return hash;
     }
 
+    //mock
     private void loadUserMock() {
         this.firstName = "John";
         this.lastName = "Doe";

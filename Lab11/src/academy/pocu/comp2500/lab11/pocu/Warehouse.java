@@ -45,6 +45,7 @@ public class Warehouse {
         }
     }
 
+    //mock
     private static HashSet<WarehouseType> retrieveWarehousesMock() {
         HashSet<WarehouseType> warehouses = new HashSet<>();
 
@@ -54,6 +55,7 @@ public class Warehouse {
         return warehouses;
     }
 
+    //mock
     private ArrayList<Product> retrieveProductsMock() {
         ArrayList<Product> products = new ArrayList<>();
 
@@ -65,6 +67,7 @@ public class Warehouse {
         return products;
     }
 
+    //mock
     private static boolean isProductOutOfStockMock(int index) {
         return index == 3;
     }
