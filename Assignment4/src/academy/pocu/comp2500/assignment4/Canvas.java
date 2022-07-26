@@ -23,21 +23,21 @@ public class Canvas {
         return this.height;
     }
 
-    private void drawPixel(int x, int y, char ch) {
-        if (Math.abs(x) <= (width / 2) && Math.abs(y) <= (height / 2)) {
+    public void drawPixel(int x, int y, char ch) {
+        if (Math.abs(x) < (width) && Math.abs(y) < (height)) {
             this.pixel[x][y] = ch;
         }
     }
 
     private char getPixel(int x, int y) {
-        if (Math.abs(x) <= (width / 2) && Math.abs(y) <= (height / 2)) {
+        if (Math.abs(x) < (width) && Math.abs(y) < (height)) {
             return this.pixel[x][y];
         } else {
             return 0;
         }
     }
 
-    private boolean increasePixel(int x, int y) {
+    public boolean increasePixel(int x, int y) {
         if (this.pixel[x][y] >= 32 && this.pixel[x][y] < 126) {
             this.pixel[x][y]++;
             return true;
@@ -46,7 +46,7 @@ public class Canvas {
         }
     }
 
-    private boolean decreasePixel(int x, int y) {
+    public boolean decreasePixel(int x, int y) {
         if (this.pixel[x][y] > 32 && this.pixel[x][y] <= 126) {
             this.pixel[x][y]--;
             return true;
@@ -55,39 +55,69 @@ public class Canvas {
         }
     }
 
-    private void toUpper(int x, int y) {
+    public void toUpper(int x, int y) {
         if (this.pixel[x][y] >= 97 && this.pixel[x][y] <= 122) {
             this.pixel[x][y] -= 32;
         }
     }
 
-    private void toLower(int x, int y) {
+    public void toLower(int x, int y) {
         if (this.pixel[x][y] >= 65 && this.pixel[x][y] <= 90) {
             this.pixel[x][y] += 32;
         }
     }
 
-    private void fillHorizontalLine(int y, char ch) {
-        if (Math.abs(y) <= (height / 2)) {
-            for (int i = 0; i < height; i ++) {
+    public void fillHorizontalLine(int y, char ch) {
+        if (Math.abs(y) < (height)) {
+            for (int i = 0; i < width; i ++) {
                 this.pixel[i][y] = ch;
             }
         }
     }
 
-    private void fillVerticalLine(int x, char ch) {
-        if (Math.abs(x) <= (width / 2)) {
-            for (int i = 0; i < width; i++) {
+    public void fillVerticalLine(int x, char ch) {
+        if (Math.abs(x) < (width)) {
+            for (int i = 0; i < height; i++) {
                 this.pixel[x][i] = ch;
             }
         }
     }
 
-    private void clear() {
+    public void clear() {
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
                 this.pixel[i][j] = ' ';
             }
         }
+    }
+
+    public String getDrawing() {
+        int top = height / -2 + 1;
+        int bottom = height / 2 + 1;
+        int left = width / -2 + 1;
+        int right = width / 2 + 1;
+        StringBuilder builder = new StringBuilder();
+
+        for (int j = 0; j < height + 2; j++) {
+            if (j == 0 || j == height + 1) {
+                builder.append('+');
+                for (int i = 0; i < width; i++) {
+                    builder.append('-');
+                }
+                builder.append('+');
+                builder.append('\n');
+                continue;
+            }
+
+            builder.append('|');
+            for (int k = 0; k < width; k++) {
+                builder.append(this.pixel[k][j - 1]);
+            }
+            builder.append('|');
+            builder.append('\n');
+
+        }
+
+        return builder.toString();
     }
 }
