@@ -9,9 +9,11 @@ public class Program {
         CommandHistoryManager commandHistoryManager = new CommandHistoryManager(canvas);
 
         // 반복
-        DrawPixelCommand drawPixelCommand = new DrawPixelCommand(3, 3, '?');
-        commandHistoryManager.execute(drawPixelCommand);
-        System.out.println(canvas.getDrawing());
+        DrawPixelCommand d1 = new DrawPixelCommand(3, 3, '?');
+        DrawPixelCommand d2 = new DrawPixelCommand(3, 3, 'x');
+        commandHistoryManager.execute(d1);
+        commandHistoryManager.execute(d2);
+        System.out.println();
         if (commandHistoryManager.canUndo()) {
             commandHistoryManager.undo();
         }
@@ -21,6 +23,10 @@ public class Program {
         }
         System.out.println(canvas.getDrawing());
         // 반복
+
+
+
+
 
         /*// 반복
         IncreasePixelCommand increasePixelCommand = new IncreasePixelCommand();
