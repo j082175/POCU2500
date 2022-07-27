@@ -34,7 +34,7 @@ public class App {
         int count = 0;
         String s;
         do {
-            System.out.println(builder.toString());
+            out.println(builder.toString());
             s = in.readLine();
 
             if (s.equals("exit")) {
@@ -58,8 +58,6 @@ public class App {
                     printScreen(in, out, err, WarehouseType.SAMSUNG);
                     break;
                 default:
-                    out.println("you picked the wrong number fool!");
-                    System.out.println(builder.toString());
                     continue;
             }
         } while (count < 1 || count > 3);
