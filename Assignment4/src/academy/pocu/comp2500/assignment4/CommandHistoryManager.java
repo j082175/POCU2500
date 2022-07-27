@@ -14,9 +14,14 @@ public class CommandHistoryManager {
     }
 
     public boolean execute(ICommand iCommand) {
-        this.iCommandArrayList.add(iCommand);
-        iCommandArrayListCurrentcount++;
-        return this.iCommand.execute(this.canvas);
+        this.iCommand = iCommand;
+        if (this.iCommand.execute(this.canvas)) {
+            this.iCommandArrayList.add(iCommand);
+            iCommandArrayListCurrentcount++;
+            return true;
+        }
+
+        return false;
     }
 
     public boolean canUndo() {

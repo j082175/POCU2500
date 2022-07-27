@@ -69,7 +69,7 @@ public class Canvas {
 
     public void fillHorizontalLine(int y, char ch) {
         if (Math.abs(y) < (height)) {
-            for (int i = 0; i < width; i ++) {
+            for (int i = 0; i < width; i++) {
                 this.pixel[i][y] = ch;
             }
         }

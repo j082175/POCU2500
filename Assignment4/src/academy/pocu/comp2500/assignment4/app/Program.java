@@ -5,7 +5,7 @@ import academy.pocu.comp2500.assignment4.*;
 public class Program {
 
     public static void main(String[] args) {
-        Canvas canvas = new Canvas(10, 10);
+        Canvas canvas = new Canvas(4, 4);
         CommandHistoryManager commandHistoryManager = new CommandHistoryManager(canvas);
 
         // 반복
@@ -13,6 +13,7 @@ public class Program {
         DrawPixelCommand d2 = new DrawPixelCommand(3, 3, 'x');
         commandHistoryManager.execute(d1);
         commandHistoryManager.execute(d2);
+        commandHistoryManager.execute(d1);
         System.out.println();
         if (commandHistoryManager.canUndo()) {
             commandHistoryManager.undo();
