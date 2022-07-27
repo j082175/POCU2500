@@ -29,7 +29,7 @@ public class Canvas {
         }
     }
 
-    private char getPixel(int x, int y) {
+    public char getPixel(int x, int y) {
         if (Math.abs(x) < (width) && Math.abs(y) < (height)) {
             return this.pixel[x][y];
         } else {
@@ -92,10 +92,7 @@ public class Canvas {
     }
 
     public String getDrawing() {
-        int top = height / -2 + 1;
-        int bottom = height / 2 + 1;
-        int left = width / -2 + 1;
-        int right = width / 2 + 1;
+
         StringBuilder builder = new StringBuilder();
 
         for (int j = 0; j < height + 2; j++) {
