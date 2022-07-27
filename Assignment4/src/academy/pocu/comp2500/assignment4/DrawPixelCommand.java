@@ -12,9 +12,9 @@ public class DrawPixelCommand implements ICommand {
         return this.canvas;
     }
 
-    public DrawPixelCommand(int x, int y, char character) {
-        this.x = x;
-        this.y = y;
+    public DrawPixelCommand(int i, int j, char character) {
+        this.x = i;
+        this.y = j;
         this.character = character;
     }
     @Override
