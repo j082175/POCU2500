@@ -13,42 +13,20 @@ import java.io.PrintStream;
 import java.util.ArrayList;
 
 public class App {
-
-    private WarehouseType typeArr[];
-
     public void run(BufferedReader in, PrintStream out, PrintStream err) throws IOException {
         // in : 사용자 입력, out : 텍스트 출력, err : 오류 코드 출력
-        StringBuilder builder = new StringBuilder();
-        builder.append("WAREHOUSE: Choose your warehouse!");
-        builder.append(System.lineSeparator());
-        builder.append("1. ");
-        builder.append(WarehouseType.APPLE);
-        builder.append(System.lineSeparator());
-        builder.append("2. ");
-        builder.append(WarehouseType.MICROSOFT);
-        builder.append(System.lineSeparator());
-        builder.append("3. ");
-        builder.append(WarehouseType.SAMSUNG);
-
-        typeArr = new WarehouseType[3];
-        typeArr[0] = WarehouseType.APPLE;
-        typeArr[1] = WarehouseType.MICROSOFT;
-        typeArr[2] = WarehouseType.SAMSUNG;
 
         // 목록 출력
-
         int count = 0;
         String s;
         do {
-            //out.println(builder);
-
             out.println("WAREHOUSE: Choose your warehouse!");
-/*            out.printf("%d. %s\n", 1, WarehouseType.APPLE);
-            out.printf("%d. %s\n", 2, WarehouseType.MICROSOFT);
-            out.printf("%d. %s\n", 3, WarehouseType.SAMSUNG);*/
 
-            for (int i = 0; i < 3; i++) {
-                out.printf("%d. %s\n", i + 1, typeArr[i]);
+            {
+                int i = 1;
+                for (var a : WarehouseType.values()) {
+                    out.printf("%d. %s\n", i++, a);
+                }
             }
 
 
@@ -89,7 +67,6 @@ public class App {
         Warehouse warehouse = new Warehouse(warehouseType);
         ArrayList<Product> arrayList = warehouse.getProducts();
 
-
         int count1 = 0;
 
         try {
@@ -120,7 +97,6 @@ public class App {
             } catch (NumberFormatException e) {
                 continue;
             }
-
 
             if (count1 > 0 && count1 <= arrayList.size()) {
                 check = wallet.withdraw(arrayList.get(count1 - 1).getPrice());
