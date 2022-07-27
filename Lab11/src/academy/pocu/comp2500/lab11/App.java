@@ -33,7 +33,14 @@ public class App {
         int count = 0;
         String s;
         do {
-            out.println(builder);
+            //out.println(builder);
+
+            out.println("WAREHOUSE: Choose your warehouse!");
+            out.printf("%d. %s\n", 1, WarehouseType.APPLE);
+            out.printf("%d. %s\n", 2, WarehouseType.MICROSOFT);
+            out.printf("%d. %s\n", 3, WarehouseType.SAMSUNG);
+
+
             s = in.readLine();
 
             if (s.equals("exit")) {
