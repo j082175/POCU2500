@@ -1,6 +1,5 @@
 package academy.pocu.comp2500.lab11;
 
-
 import academy.pocu.comp2500.lab11.pocu.User;
 import academy.pocu.comp2500.lab11.pocu.Wallet;
 import academy.pocu.comp2500.lab11.pocu.Warehouse;
@@ -15,7 +14,7 @@ import java.util.ArrayList;
 
 public class App {
 
-    public void run(BufferedReader in, PrintStream out, PrintStream err) throws IOException, IllegalAccessException {
+    public void run(BufferedReader in, PrintStream out, PrintStream err) throws IOException {
         // in : 사용자 입력, out : 텍스트 출력, err : 오류 코드 출력
         StringBuilder builder = new StringBuilder();
         builder.append("WAREHOUSE: Choose your warehouse!");
@@ -34,7 +33,7 @@ public class App {
         int count = 0;
         String s;
         do {
-            out.println(builder.toString());
+            out.println(builder);
             s = in.readLine();
 
             if (s.equals("exit")) {

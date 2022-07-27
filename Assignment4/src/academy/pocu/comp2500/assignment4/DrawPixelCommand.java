@@ -18,12 +18,12 @@ public class DrawPixelCommand implements ICommand {
         this.character = character;
     }
     @Override
-    public boolean execute(Canvas c) {
+    public boolean execute(Canvas canvas) {
         if (isExecuted) {
             return false;
         }
         isExecuted = true;
-        this.canvas = c;
+        this.canvas = canvas;
 
         this.canvas.drawPixel(this.x, this.y, this.character);
         return true;
