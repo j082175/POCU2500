@@ -14,6 +14,8 @@ import java.util.ArrayList;
 
 public class App {
 
+    private WarehouseType typeArr[];
+
     public void run(BufferedReader in, PrintStream out, PrintStream err) throws IOException {
         // in : 사용자 입력, out : 텍스트 출력, err : 오류 코드 출력
         StringBuilder builder = new StringBuilder();
@@ -28,6 +30,11 @@ public class App {
         builder.append("3. ");
         builder.append(WarehouseType.SAMSUNG);
 
+        typeArr = new WarehouseType[3];
+        typeArr[0] = WarehouseType.APPLE;
+        typeArr[1] = WarehouseType.MICROSOFT;
+        typeArr[2] = WarehouseType.SAMSUNG;
+
         // 목록 출력
 
         int count = 0;
@@ -36,9 +43,13 @@ public class App {
             //out.println(builder);
 
             out.println("WAREHOUSE: Choose your warehouse!");
-            out.printf("%d. %s\n", 1, WarehouseType.APPLE);
+/*            out.printf("%d. %s\n", 1, WarehouseType.APPLE);
             out.printf("%d. %s\n", 2, WarehouseType.MICROSOFT);
-            out.printf("%d. %s\n", 3, WarehouseType.SAMSUNG);
+            out.printf("%d. %s\n", 3, WarehouseType.SAMSUNG);*/
+
+            for (int i = 0; i < 3; i++) {
+                out.printf("%d. %s\n", i + 1, typeArr[i]);
+            }
 
 
             s = in.readLine();
