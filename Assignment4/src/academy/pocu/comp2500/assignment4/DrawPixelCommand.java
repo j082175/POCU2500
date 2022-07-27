@@ -18,28 +18,33 @@ public class DrawPixelCommand implements ICommand {
         this.character = character;
     }
     @Override
-    public boolean execute(Canvas canvas) {
+    public boolean execute(Canvas c) {
         if (isExecuted) {
             return false;
         }
         isExecuted = true;
-        this.canvas = canvas;
+        this.canvas = c;
+
         this.canvas.drawPixel(this.x, this.y, this.character);
         return true;
     }
     @Override
     public boolean undo() {
-        //this.canvas = this.canvasArrayList.get(this.arrayListCurrentIndex - 1);
-        return true;
+        if (isExecuted) {
+            this.canvas.drawPixel(this.x, this.y, ' ');
+            return true;
+        }
+
+        return false;
     }
 
     @Override
     public boolean redo() {
-/*        if (this.arrayListCurrentIndex == this.canvasArrayList.size() + 1) {
-            return false;
+        if (isExecuted) {
+            this.canvas.drawPixel(this.x, this.y, this.character);
+            return true;
         }
 
-        this.canvas = this.canvasArrayList.get(this.arrayListCurrentIndex - 1);*/
-        return true;
+        return false;
     }
 }
