@@ -2,9 +2,9 @@ package academy.pocu.comp2500.assignment4;
 
 public class ClearCommand implements ICommand {
     private Canvas currentCanvas;
-    private Canvas reverseCanvas;
+    //private Canvas reverseCanvas;
     private Canvas backupCurrentCanvas;
-    private Character originPixelList[][];
+    //private Character originPixelList[][];
     private boolean isExecuted = false;
 
     public ClearCommand() {
@@ -19,21 +19,21 @@ public class ClearCommand implements ICommand {
         isExecuted = true;
 
         // 기존 canvas 상태 저장
-        this.originPixelList = new Character[canvas.getHeight()][canvas.getWidth()];
-        this.reverseCanvas = new Canvas(canvas.getWidth(), canvas.getHeight());
+        //this.originPixelList = new Character[canvas.getHeight()][canvas.getWidth()];
+        //this.reverseCanvas = new Canvas(canvas.getWidth(), canvas.getHeight());
         this.backupCurrentCanvas = new Canvas(canvas.getWidth(), canvas.getHeight());
 
-        for (int i = 0; i < canvas.getHeight(); i++) {
+/*        for (int i = 0; i < canvas.getHeight(); i++) {
             for (int j = 0; j < canvas.getWidth(); j++) {
                 this.originPixelList[i][j] = canvas.getPixel(i, j);
             }
-        }
+        }*/
 
-        for (int i = 0; i < canvas.getHeight(); i++) {
+/*        for (int i = 0; i < canvas.getHeight(); i++) {
             for (int j = 0; j < canvas.getWidth(); j++) {
                 this.reverseCanvas.drawPixel(i, j, this.originPixelList[i][j]);
             }
-        }
+        }*/
 
         //canvas 변경
         this.currentCanvas = canvas;
@@ -66,7 +66,7 @@ public class ClearCommand implements ICommand {
             }
             //
 
-            for (int i = 0; i < currentCanvas.getHeight(); i++) {
+            /*for (int i = 0; i < currentCanvas.getHeight(); i++) {
                 for (int j = 0; j < currentCanvas.getWidth(); j++) {
                     if (this.currentCanvas.getPixel(i, j) == this.originPixelList[i][j]) {
                         continue;
@@ -89,7 +89,7 @@ public class ClearCommand implements ICommand {
                         return true;
                     }
                 }
-            }
+            }*/
 
             return false;
         }
@@ -112,7 +112,7 @@ public class ClearCommand implements ICommand {
             }
             //
 
-            for (int i = 0; i < currentCanvas.getHeight(); i++) {
+            /*for (int i = 0; i < currentCanvas.getHeight(); i++) {
                 for (int j = 0; j < currentCanvas.getWidth(); j++) {
                     if (this.currentCanvas.getPixel(i, j) == this.originPixelList[i][j]) {
                         continue;
@@ -127,7 +127,7 @@ public class ClearCommand implements ICommand {
                     this.currentCanvas.drawPixel(m, n, this.reverseCanvas.getPixel(m, n));
                     this.reverseCanvas.drawPixel(m, n, this.originPixelList[m][n]);
                 }
-            }
+            }*/
 
             //backup
             for (int m = 0; m < currentCanvas.getHeight(); m++) {
