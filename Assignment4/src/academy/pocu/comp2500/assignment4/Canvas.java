@@ -1,13 +1,9 @@
 package academy.pocu.comp2500.assignment4;
 
 public class Canvas {
-
     private int width;
     private int height;
     private char pixel[][];
-
-    private int x;
-    private int y;
 
     public Canvas(int width, int height) {
         this.width = width;
@@ -24,13 +20,13 @@ public class Canvas {
     }
 
     public void drawPixel(int x, int y, char ch) {
-        if (Math.abs(x) < (width) && Math.abs(y) < (height)) {
+        if (x >= 0 && y >= 0 && x < width && y < height) {
             this.pixel[x][y] = ch;
         }
     }
 
     public char getPixel(int x, int y) {
-        if (Math.abs(x) < (width) && Math.abs(y) < (height)) {
+        if (x >= 0 && y >= 0 && x < width && y < height) {
             return this.pixel[x][y];
         } else {
             return 0;
@@ -68,7 +64,7 @@ public class Canvas {
     }
 
     public void fillHorizontalLine(int y, char ch) {
-        if (Math.abs(y) < (height)) {
+        if (y >= 0 && y < height) {
             for (int i = 0; i < width; i++) {
                 this.pixel[i][y] = ch;
             }
@@ -76,7 +72,7 @@ public class Canvas {
     }
 
     public void fillVerticalLine(int x, char ch) {
-        if (Math.abs(x) < (width)) {
+        if (x >= 0 && x < width) {
             for (int i = 0; i < height; i++) {
                 this.pixel[x][i] = ch;
             }

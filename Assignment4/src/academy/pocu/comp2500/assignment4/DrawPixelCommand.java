@@ -19,7 +19,7 @@ public class DrawPixelCommand implements ICommand {
     }
     @Override
     public boolean execute(Canvas canvas) {
-        if (Math.abs(x) < (canvas.getWidth()) && Math.abs(y) < (canvas.getHeight())) {
+        if (this.x >= 0 && this.y >= 0 && this.x < canvas.getWidth() && this.y < canvas.getHeight()) {
             if (isExecuted) {
                 return false;
             }

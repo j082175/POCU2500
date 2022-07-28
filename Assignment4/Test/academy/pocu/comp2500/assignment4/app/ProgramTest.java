@@ -19,7 +19,7 @@ class ProgramTest {
         CommandHistoryManager commandHistoryManager = new CommandHistoryManager(canvas);
 
         // 반복
-        DrawPixelCommand d1 = new DrawPixelCommand(3, 3, '?');
+        DrawPixelCommand d1 = new DrawPixelCommand(0, 0, '?');
 
         commandHistoryManager.execute(d1);
 
