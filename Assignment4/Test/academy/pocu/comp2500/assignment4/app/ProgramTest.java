@@ -9,6 +9,26 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ProgramTest {
+    void kaizer() {
+        Canvas canvas = new Canvas(20, 10);
+        CommandHistoryManager chm = new CommandHistoryManager(canvas);
+        DrawPixelCommand c1 = new DrawPixelCommand(1, 2, '1');
+        DrawPixelCommand c2 = new DrawPixelCommand(3, 5, '2');
+
+        assert (chm.execute(c1) == true);
+        assert (chm.execute(c2) == true);
+
+        assert (chm.undo() == true);
+        assert (chm.redo() == true);
+
+        assert (chm.undo() == true);
+
+        canvas.drawPixel(1, 2, '5');
+
+        assert (chm.undo() == false);
+        assert (chm.redo() == true);
+
+    }
 
     void testDrawPixelCommand2 () {
         Canvas canvas = new Canvas(20, 10);
@@ -46,7 +66,7 @@ class ProgramTest {
         CommandHistoryManager commandHistoryManager = new CommandHistoryManager(canvas);
 
         // 반복
-        DrawPixelCommand d1 = new DrawPixelCommand(0, 0, '?');
+        ClearCommand d1 = new ClearCommand();
 
         commandHistoryManager.execute(d1);
 

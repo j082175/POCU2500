@@ -10,44 +10,46 @@ public class ClearCommand implements ICommand {
     public ClearCommand() {
 
     }
+
     @Override
     public boolean execute(Canvas canvas) {
-            if (isExecuted) {
-                return false;
+        if (isExecuted) {
+            return false;
+        }
+        isExecuted = true;
+
+        // 기존 canvas 상태 저장
+        this.originPixelList = new Character[canvas.getHeight()][canvas.getWidth()];
+        this.reverseCanvas = new Canvas(canvas.getWidth(), canvas.getHeight());
+        this.backupCurrentCanvas = new Canvas(canvas.getWidth(), canvas.getHeight());
+
+        for (int i = 0; i < canvas.getHeight(); i++) {
+            for (int j = 0; j < canvas.getWidth(); j++) {
+                this.originPixelList[i][j] = canvas.getPixel(i, j);
             }
-            isExecuted = true;
+        }
 
-            // 기존 canvas 상태 저장
-            this.originPixelList = new Character[canvas.getHeight()][canvas.getWidth()];
-            this.reverseCanvas = new Canvas(canvas.getWidth(), canvas.getHeight());
-            this.backupCurrentCanvas = new Canvas(canvas.getWidth(), canvas.getHeight());
-
-            for (int i = 0; i < canvas.getHeight(); i++) {
-                for (int j = 0; j < canvas.getWidth(); j++) {
-                    this.originPixelList[i][j] = canvas.getPixel(i, j);
-                }
+        for (int i = 0; i < canvas.getHeight(); i++) {
+            for (int j = 0; j < canvas.getWidth(); j++) {
+                this.reverseCanvas.drawPixel(i, j, this.originPixelList[i][j]);
             }
+        }
 
-            for (int i = 0; i < canvas.getHeight(); i++) {
-                for (int j = 0; j < canvas.getWidth(); j++) {
-                    this.reverseCanvas.drawPixel(i, j, this.originPixelList[i][j]);
-                }
+        //canvas 변경
+        this.currentCanvas = canvas;
+        this.currentCanvas.clear();
+
+        for (int i = 0; i < canvas.getHeight(); i++) {
+            for (int j = 0; j < canvas.getWidth(); j++) {
+                this.backupCurrentCanvas.drawPixel(i, j, this.currentCanvas.getPixel(i, j));
             }
+        }
 
-            //canvas 변경
-            this.currentCanvas = canvas;
-            this.currentCanvas.clear();
-
-            for (int i = 0; i < canvas.getHeight(); i++) {
-                for (int j = 0; j < canvas.getWidth(); j++) {
-                    this.backupCurrentCanvas.drawPixel(i, j, this.currentCanvas.getPixel(i, j));
-                }
-            }
-
-            return true;
+        return true;
 
 
     }
+
     @Override
     public boolean undo() {
         if (isExecuted) {
