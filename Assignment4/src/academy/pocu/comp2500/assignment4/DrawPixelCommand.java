@@ -8,9 +8,9 @@ public class DrawPixelCommand implements ICommand {
     private char character;
     private Canvas canvas;
     private boolean isExecuted = false;
-    public Canvas getCanvas() {
+/*    public Canvas getCanvas() {
         return this.canvas;
-    }
+    }*/
 
     public DrawPixelCommand(int x, int y, char character) {
         this.x = x;
@@ -18,15 +18,15 @@ public class DrawPixelCommand implements ICommand {
         this.character = character;
     }
     @Override
-    public void execute(Canvas canvas) {
+    public boolean execute(Canvas canvas) {
         if (isExecuted) {
-            //return false;
+            return true;
         }
         isExecuted = true;
         this.canvas = canvas;
 
         this.canvas.drawPixel(this.x, this.y, this.character);
-        //return true;
+        return true;
     }
     @Override
     public boolean undo() {
