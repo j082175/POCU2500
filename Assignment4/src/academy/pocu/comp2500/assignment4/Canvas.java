@@ -9,6 +9,7 @@ public class Canvas {
         this.width = width;
         this.height = height;
         this.pixel = new char[width][height];
+        this.clear();
     }
 
     public int getWidth() {
