@@ -1,6 +1,5 @@
 package academy.pocu.comp2500.lab11;
 
-
 import academy.pocu.comp2500.lab11.pocu.User;
 import academy.pocu.comp2500.lab11.pocu.Wallet;
 import academy.pocu.comp2500.lab11.pocu.Warehouse;
@@ -14,7 +13,6 @@ import java.io.PrintStream;
 import java.util.ArrayList;
 
 public class App {
-
     public void run(BufferedReader in, PrintStream out, PrintStream err) throws IOException {
         // in : 사용자 입력, out : 텍스트 출력, err : 오류 코드 출력
         StringBuilder builder = new StringBuilder();
@@ -30,11 +28,23 @@ public class App {
         builder.append(WarehouseType.SAMSUNG);
 
         // 목록 출력
-
         int count = 0;
         String s;
         do {
-            out.println(builder);
+            //out.println(builder);
+            out.println("WAREHOUSE: Choose your warehouse!");
+
+            {
+                int i = 1;
+                for (var a : WarehouseType.values()) {
+                    out.printf("%d. %s", i++, a);
+                    if (i != 4) {
+                        out.println();
+                    }
+                }
+            }
+
+
             s = in.readLine();
 
             if (s.equals("exit")) {
@@ -72,7 +82,6 @@ public class App {
         Warehouse warehouse = new Warehouse(warehouseType);
         ArrayList<Product> arrayList = warehouse.getProducts();
 
-
         int count1 = 0;
 
         try {
@@ -103,7 +112,6 @@ public class App {
             } catch (NumberFormatException e) {
                 continue;
             }
-
 
             if (count1 > 0 && count1 <= arrayList.size()) {
                 check = wallet.withdraw(arrayList.get(count1 - 1).getPrice());
