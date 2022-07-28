@@ -15,7 +15,7 @@ import java.util.ArrayList;
 
 public class App {
 
-    public void run(BufferedReader in, PrintStream out, PrintStream err) throws IOException, IllegalAccessException {
+    public void run(BufferedReader in, PrintStream out, PrintStream err) throws IOException {
         // in : 사용자 입력, out : 텍스트 출력, err : 오류 코드 출력
         StringBuilder builder = new StringBuilder();
         builder.append("WAREHOUSE: Choose your warehouse!");

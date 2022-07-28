@@ -8,7 +8,7 @@ import java.io.InputStreamReader;
 
 public class Program {
 
-    public static void main(String[] args) throws IOException, IllegalAccessException {
+    public static void main(String[] args) throws IOException {
         App app = new App();
 
         app.run(new BufferedReader(new InputStreamReader(System.in)), System.out, System.err);
