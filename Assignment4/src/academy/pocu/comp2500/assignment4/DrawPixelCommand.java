@@ -14,7 +14,7 @@ public class DrawPixelCommand implements ICommand {
         this.x = x;
         this.y = y;
         this.character = character;
-        this.canvas.drawPixel(this.x, this.y, this.character);
+        //this.canvas.drawPixel(this.x, this.y, this.character);
     }
     @Override
     public boolean execute(Canvas canvas) {
@@ -24,7 +24,7 @@ public class DrawPixelCommand implements ICommand {
         isExecuted = true;
         this.canvas = canvas;
 
-        //this.canvas.drawPixel(this.x, this.y, this.character);
+        this.canvas.drawPixel(this.x, this.y, this.character);
         return true;
     }
     @Override

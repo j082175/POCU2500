@@ -5,8 +5,13 @@ import academy.pocu.comp2500.assignment4.*;
 public class Program {
 
     public static void main(String[] args) {
-        Canvas canvas = new Canvas(4, 4);
-        CommandHistoryManager commandHistoryManager = new CommandHistoryManager(canvas);
+        Canvas canvas = new Canvas(2, 3);
+        canvas.drawPixel(0, 0, '*');
+        canvas.drawPixel(1, 2, '$');
+        canvas.drawPixel(0, 1, '&');
+        System.out.println(canvas.getDrawing());
+
+/*        CommandHistoryManager commandHistoryManager = new CommandHistoryManager(canvas);
 
         // 반복
         DrawPixelCommand d1 = new DrawPixelCommand(3, 3, '?');
@@ -15,7 +20,7 @@ public class Program {
         commandHistoryManager.undo();
         System.out.println(canvas.getDrawing());
         commandHistoryManager.redo();
-        System.out.println(canvas.getDrawing());
+        System.out.println(canvas.getDrawing());*/
         // 반복
 
 
