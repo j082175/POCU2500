@@ -1,11 +1,14 @@
 package academy.pocu.comp2500.assignment4;
 
+import java.util.ArrayList;
+
 public class DrawPixelCommand implements ICommand {
     private int x;
     private int y;
     private char character;
     private Canvas canvas;
-    private char backupPixel = 0;
+    private ArrayList<Canvas> canvasArrayList = new ArrayList<>();
+    private int index = 0;
     private boolean isExecuted = false;
 /*    public Canvas getCanvas() {
         return this.canvas;
@@ -25,8 +28,10 @@ public class DrawPixelCommand implements ICommand {
             }
             isExecuted = true;
             this.canvas = canvas;
+            this.canvasArrayList.add(this.canvas);
             this.canvas.drawPixel(this.x, this.y, this.character);
-            this.backupPixel = this.canvas.getPixel(this.x, this.y);
+            this.canvasArrayList.add(this.canvas);
+            this.index++;
             return true;
         }
 
@@ -35,8 +40,9 @@ public class DrawPixelCommand implements ICommand {
     @Override
     public boolean undo() {
         if (isExecuted) {
-            if (this.backupPixel != 0) {
-                this.backupPixel = 0;
+            if (this.index > 0) {
+                this.index--;
+                this.canvas = this.canvasArrayList.get(this.index);
                 return true;
             }
         }
@@ -46,8 +52,9 @@ public class DrawPixelCommand implements ICommand {
     @Override
     public boolean redo() {
         if (isExecuted) {
-            if (this.backupPixel == 0) {
-                this.backupPixel = this.canvas.getPixel(this.x, this.y);
+            if (this.index == 0 && this.canvasArrayList.size() != 0) {
+                this.index++;
+                this.canvas = this.canvasArrayList.get(this.index);
                 return true;
             }
         }

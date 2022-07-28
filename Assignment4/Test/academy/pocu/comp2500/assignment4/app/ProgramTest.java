@@ -31,9 +31,19 @@ class ProgramTest {
 
         assert commandHistoryManager.undo() == false;
 
+        assert commandHistoryManager.undo() == false;
+
+        commandHistoryManager.execute(d1);
+
         assert commandHistoryManager.redo() == true;
 
         assert commandHistoryManager.redo() == false;
+
+        assert commandHistoryManager.redo() == false;
+
+        assert commandHistoryManager.undo() == true;
+
+        assert commandHistoryManager.redo() == true;
 
         // 반복
     }
