@@ -5,10 +5,17 @@ import academy.pocu.comp2500.assignment4.*;
 public class Program {
 
     public static void main(String[] args) {
-        Canvas canvas = new Canvas(2, 3);
+        Canvas canvas = new Canvas(4, 8);
         canvas.drawPixel(0, 0, '*');
-        canvas.drawPixel(1, 2, '$');
-        canvas.drawPixel(0, 1, '&');
+        canvas.drawPixel(1, 1, '*');
+        canvas.drawPixel(2, 2, '*');
+        canvas.drawPixel(3, 3, '*');
+        canvas.drawPixel(0, 4, '*');
+        canvas.drawPixel(1, 5, '*');
+        canvas.drawPixel(2, 6, '*');
+        canvas.drawPixel(3, 7, '*');
+
+
         System.out.println(canvas.getDrawing());
 
 /*        CommandHistoryManager commandHistoryManager = new CommandHistoryManager(canvas);

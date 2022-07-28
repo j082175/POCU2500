@@ -18,14 +18,18 @@ public class DrawPixelCommand implements ICommand {
     }
     @Override
     public boolean execute(Canvas canvas) {
-        if (isExecuted) {
-            return false;
-        }
-        isExecuted = true;
-        this.canvas = canvas;
+        if (Math.abs(x) < (canvas.getWidth()) && Math.abs(y) < (canvas.getHeight())) {
+            if (isExecuted) {
+                return false;
+            }
+            isExecuted = true;
+            this.canvas = canvas;
 
-        this.canvas.drawPixel(this.x, this.y, this.character);
-        return true;
+            this.canvas.drawPixel(this.x, this.y, this.character);
+            return true;
+        }
+
+        return false;
     }
     @Override
     public boolean undo() {
