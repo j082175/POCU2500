@@ -1,7 +1,5 @@
 package academy.pocu.comp2500.assignment4;
 
-import java.util.ArrayList;
-
 public class DrawPixelCommand implements ICommand {
     private int x;
     private int y;
@@ -16,16 +14,17 @@ public class DrawPixelCommand implements ICommand {
         this.x = x;
         this.y = y;
         this.character = character;
+        this.canvas.drawPixel(this.x, this.y, this.character);
     }
     @Override
     public boolean execute(Canvas canvas) {
         if (isExecuted) {
-            return true;
+            return false;
         }
         isExecuted = true;
         this.canvas = canvas;
 
-        this.canvas.drawPixel(this.x, this.y, this.character);
+        //this.canvas.drawPixel(this.x, this.y, this.character);
         return true;
     }
     @Override

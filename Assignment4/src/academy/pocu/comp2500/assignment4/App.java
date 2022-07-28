@@ -8,7 +8,7 @@ public class App {
         // registry.registerDrawPixelCommandCreator("Foo");
         // OR
         // registry.registerDrawPixelCommandCreator("Foo", "bar");
-        registry.registerDrawPixelCommandCreator("DrawPixelCommand", "execute");
+        registry.registerDrawPixelCommandCreator("DrawPixelCommand");
         registry.registerIncreasePixelCommandCreator("IncreasePixelCommand", "execute");
         registry.registerDecreasePixelCommandCreator("DecreasePixelCommand", "execute");
         registry.registerFillHorizontalLineCommandCreator("FillHorizontalLineCommand", "execute");
