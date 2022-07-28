@@ -31,7 +31,7 @@ public class App {
         int count = 0;
         String s;
         do {
-            out.print(builder);
+            out.println(builder);
             //out.println("WAREHOUSE: Choose your warehouse!");
 
 /*            {
