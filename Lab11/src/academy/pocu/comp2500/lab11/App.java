@@ -34,7 +34,7 @@ public class App {
         int count = 0;
         String s;
         do {
-            out.println(builder.toString());
+            out.println(builder);
             s = in.readLine();
 
             if (s.equals("exit")) {
