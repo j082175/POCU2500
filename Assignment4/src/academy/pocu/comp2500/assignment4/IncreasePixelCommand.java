@@ -13,9 +13,10 @@ public class IncreasePixelCommand implements ICommand {
         this.x = x;
         this.y = y;
     }
+
     @Override
     public boolean execute(Canvas canvas) {
-        if (this.x >= 0 && this.y >= 0 && this.x < canvas.getWidth() && this.y < canvas.getHeight()) {
+        if (this.x >= 0 && this.y >= 0 && this.x < canvas.getWidth() && this.y < canvas.getHeight() && canvas.getPixel(this.x, this.y) >= 32 && canvas.getPixel(this.x, this.y) < 126) {
             if (isExecuted) {
                 return false;
             }
@@ -53,6 +54,7 @@ public class IncreasePixelCommand implements ICommand {
 
         return false;
     }
+
     @Override
     public boolean undo() {
         if (isExecuted) {
