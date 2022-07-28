@@ -11,13 +11,14 @@ import static org.junit.jupiter.api.Assertions.*;
 class ProgramTest {
 
     void testDrawPixelCommand2 () {
-        Canvas canvas = new Canvas(3, 3);
+        Canvas canvas = new Canvas(20, 10);
         CommandHistoryManager chm = new CommandHistoryManager(canvas);
         ArrayList<ICommand> commandList = new ArrayList<>();
         commandList.add(new DrawPixelCommand(1, 2, '3'));
+        commandList.add(new FillHorizontalLineCommand(3, 'h'));
 /*        commandList.add(new CommandDecreasePixel(1, 2));
         commandList.add(new CommandIncreasePixel(1, 2));
-        commandList.add(new CommandFillHorizontalLine(3, 'h'));
+
         commandList.add(new CommandFillVerticalLine(3, 'h'));
         commandList.add(new CommandToUpper(3, 2));
         commandList.add(new CommandToLower(3, 2));

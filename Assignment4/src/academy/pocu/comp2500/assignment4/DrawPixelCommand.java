@@ -7,14 +7,8 @@ public class DrawPixelCommand implements ICommand {
     private Canvas currentCanvas;
     private Canvas reverseCanvas;
     private Canvas backupCurrentCanvas;
-
-    //private ArrayList<Canvas> canvasArrayList = new ArrayList<>();
-    private int index = 0;
-    private boolean isExecuted = false;
     private Character originPixelList[][];
-/*    public Canvas getCanvas() {
-        return this.canvas;
-    }*/
+    private boolean isExecuted = false;
 
     public DrawPixelCommand(int x, int y, char character) {
         this.x = x;
@@ -28,11 +22,6 @@ public class DrawPixelCommand implements ICommand {
                 return false;
             }
             isExecuted = true;
-/*            this.canvas = canvas;
-            this.canvasArrayList.add(this.canvas);
-            this.canvas.drawPixel(this.x, this.y, this.character);
-            this.canvasArrayList.add(this.canvas);
-            this.index++;*/
 
             // 기존 canvas 상태 저장
             this.originPixelList = new Character[canvas.getHeight()][canvas.getWidth()];
@@ -60,8 +49,6 @@ public class DrawPixelCommand implements ICommand {
                     this.backupCurrentCanvas.drawPixel(i, j, this.currentCanvas.getPixel(i, j));
                 }
             }
-/*            char a = this.currentCanvas.getPixel(1, 2);
-            char b = this.backupCurrentCanvas.getPixel(1, 2);*/
 
             return true;
         }
@@ -71,20 +58,8 @@ public class DrawPixelCommand implements ICommand {
     @Override
     public boolean undo() {
         if (isExecuted) {
-/*            if (this.index > 0) {
-                this.index--;
-                this.canvas = this.canvasArrayList.get(this.index);
-                return true;
-            }*/
 
             //check
-/*            char e = this.currentCanvas.getPixel(1, 2);
-            char f = this.backupCurrentCanvas.getPixel(1, 2);
-
-            char a = this.currentCanvas.getPixel(0, 0);
-            char b = this.backupCurrentCanvas.getPixel(0, 0);
-            char c = this.originPixelList[0][0];
-            char d = this.reverseCanvas.getPixel(0,0);*/
             for (int i = 0; i < this.currentCanvas.getHeight(); i++) {
                 for (int j = 0; j < this.currentCanvas.getWidth(); j++) {
                     if (this.currentCanvas.getPixel(i, j) == this.backupCurrentCanvas.getPixel(i, j)) {
@@ -129,11 +104,7 @@ public class DrawPixelCommand implements ICommand {
     @Override
     public boolean redo() {
         if (isExecuted) {
-/*            if (this.index == 0 && this.canvasArrayList.size() != 0) {
-                this.index++;
-                this.canvas = this.canvasArrayList.get(this.index);
-                return true;
-            }*/
+
             //check
             for (int i = 0; i < this.currentCanvas.getHeight(); i++) {
                 for (int j = 0; j < this.currentCanvas.getWidth(); j++) {
