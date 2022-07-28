@@ -16,24 +16,24 @@ class ProgramTest {
         ArrayList<ICommand> commandList = new ArrayList<>();
         commandList.add(new DrawPixelCommand(1, 2, '3'));
         commandList.add(new FillHorizontalLineCommand(3, 'h'));
-/*        commandList.add(new CommandDecreasePixel(1, 2));
-        commandList.add(new CommandIncreasePixel(1, 2));
+        commandList.add(new DecreasePixelCommand(1, 2));
+        commandList.add(new IncreasePixelCommand(1, 2));
 
-        commandList.add(new CommandFillVerticalLine(3, 'h'));
-        commandList.add(new CommandToUpper(3, 2));
-        commandList.add(new CommandToLower(3, 2));
-        commandList.add(new CommandClear());*/
+        commandList.add(new FillVerticalLineCommand(3, 'h'));
+        commandList.add(new ToUpperCommand(3, 2));
+        commandList.add(new ToLowerCommand(3, 2));
+        commandList.add(new ClearCommand());
         for (ICommand command : commandList) {
             assert (chm.execute(command) == true);
             assert (chm.undo() == true);
             assert (chm.redo() == true);
-            canvas.drawPixel(0, 0, '5');
+            canvas.drawPixel(9, 9, '5');
             assert (chm.undo() == false);
-            canvas.drawPixel(0, 0, ' ');
+            canvas.drawPixel(9, 9, ' ');
             assert (chm.undo() == true);
-            canvas.drawPixel(0, 0, '5');
+            canvas.drawPixel(9, 9, '5');
             assert (chm.redo() == false);
-            canvas.drawPixel(0, 0, ' ');
+            canvas.drawPixel(9, 9, ' ');
             assert (chm.redo() == true);
         }
 
