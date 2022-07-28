@@ -15,19 +15,31 @@ import java.util.ArrayList;
 public class App {
     public void run(BufferedReader in, PrintStream out, PrintStream err) throws IOException {
         // in : 사용자 입력, out : 텍스트 출력, err : 오류 코드 출력
+        StringBuilder builder = new StringBuilder();
+        builder.append("WAREHOUSE: Choose your warehouse!");
+        builder.append(System.lineSeparator());
+        builder.append("1. ");
+        builder.append(WarehouseType.APPLE);
+        builder.append(System.lineSeparator());
+        builder.append("2. ");
+        builder.append(WarehouseType.MICROSOFT);
+        builder.append(System.lineSeparator());
+        builder.append("3. ");
+        builder.append(WarehouseType.SAMSUNG);
 
         // 목록 출력
         int count = 0;
         String s;
         do {
-            out.println("WAREHOUSE: Choose your warehouse!");
+            out.print(builder);
+            //out.println("WAREHOUSE: Choose your warehouse!");
 
-            {
+/*            {
                 int i = 1;
                 for (var a : WarehouseType.values()) {
                     out.printf("%d. %s\n", i++, a);
                 }
-            }
+            }*/
 
 
             s = in.readLine();
