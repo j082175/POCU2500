@@ -8,6 +8,7 @@ public class IncreasePixelCommand implements ICommand {
     private Canvas backupCurrentCanvas;
     private Character originPixelList[][];
     private boolean isExecuted = false;
+    private boolean isSame = false;
 
     public IncreasePixelCommand(int x, int y) {
         this.x = x;
@@ -49,6 +50,25 @@ public class IncreasePixelCommand implements ICommand {
                 }
             }
 
+            boolean c = false;
+            // 기존 canvas 랑 새로운 거랑 똑같은지
+            for (int i = 0; i < canvas.getHeight(); i++) {
+                for (int j = 0; j < canvas.getWidth(); j++) {
+                    if (this.originPixelList[i][j] == this.currentCanvas.getPixel(i, j)) {
+                        continue;
+                    } else {
+                        isSame = false;
+                        c = true;
+                        break;
+                    }
+                }
+                if (c) {
+                    break;
+                } else {
+                    isSame = true;
+                }
+            }
+
             return true;
         }
 
@@ -58,6 +78,10 @@ public class IncreasePixelCommand implements ICommand {
     @Override
     public boolean undo() {
         if (isExecuted) {
+
+            if (isSame) {
+                return true;
+            }
 
             //check
             for (int i = 0; i < this.currentCanvas.getHeight(); i++) {
@@ -104,6 +128,10 @@ public class IncreasePixelCommand implements ICommand {
     @Override
     public boolean redo() {
         if (isExecuted) {
+
+            if (isSame) {
+                return false;
+            }
 
             //check
             for (int i = 0; i < this.currentCanvas.getHeight(); i++) {

@@ -14,6 +14,7 @@ public class ToLowerCommand implements ICommand {
         this.x = x;
         this.y = y;
     }
+
     @Override
     public boolean execute(Canvas canvas) {
         if (this.x >= 0 && this.y >= 0 && this.x < canvas.getWidth() && this.y < canvas.getHeight()) {
@@ -73,6 +74,7 @@ public class ToLowerCommand implements ICommand {
 
         return false;
     }
+
     @Override
     public boolean undo() {
         if (isExecuted) {
@@ -132,15 +134,15 @@ public class ToLowerCommand implements ICommand {
             }
 
             //check
-                for (int i = 0; i < this.currentCanvas.getHeight(); i++) {
-                    for (int j = 0; j < this.currentCanvas.getWidth(); j++) {
-                        if (this.currentCanvas.getPixel(i, j) == this.backupCurrentCanvas.getPixel(i, j)) {
-                            continue;
-                        } else {
-                            return false;
-                        }
+            for (int i = 0; i < this.currentCanvas.getHeight(); i++) {
+                for (int j = 0; j < this.currentCanvas.getWidth(); j++) {
+                    if (this.currentCanvas.getPixel(i, j) == this.backupCurrentCanvas.getPixel(i, j)) {
+                        continue;
+                    } else {
+                        return false;
                     }
                 }
+            }
             //
 
 

@@ -73,7 +73,11 @@ public class ClearCommand implements ICommand {
 
     @Override
     public boolean undo() {
-        if (isExecuted && !isSame) {
+        if (isExecuted) {
+
+            if (isSame) {
+                return true;
+            }
 
             //check
             for (int i = 0; i < this.currentCanvas.getHeight(); i++) {
@@ -119,7 +123,11 @@ public class ClearCommand implements ICommand {
 
     @Override
     public boolean redo() {
-        if (isExecuted && !isSame) {
+        if (isExecuted) {
+
+            if (isSame) {
+                return false;
+            }
 
             //check
             for (int i = 0; i < this.currentCanvas.getHeight(); i++) {

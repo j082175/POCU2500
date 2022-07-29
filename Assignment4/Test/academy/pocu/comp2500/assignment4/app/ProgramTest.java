@@ -11,16 +11,16 @@ import static org.junit.jupiter.api.Assertions.*;
 class ProgramTest {
 
     void mixTest() {
-        Canvas canvas = new Canvas(3, 3);
+        Canvas canvas = new Canvas(30, 25);
 
         CommandHistoryManager historyManager = new CommandHistoryManager(canvas);
-        historyManager.execute(new FillVerticalLineCommand(1, '8'));
+        historyManager.execute(new FillVerticalLineCommand(21, '8'));
         System.out.println(canvas.getDrawing());
-        historyManager.execute(new FillHorizontalLineCommand(1, '#'));
+        historyManager.execute(new FillHorizontalLineCommand(10, '#'));
         System.out.println(canvas.getDrawing());
 
         //assert historyManager.execute(new DrawPixelCommand(0, 0, '?')) == true;
-        assert historyManager.execute(new ToLowerCommand(2, 2)) == true;
+        assert historyManager.execute(new ToLowerCommand(5, 1)) == true;
 
         System.out.println(canvas.getDrawing());
         assert historyManager.redo() == false;
