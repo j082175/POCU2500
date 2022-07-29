@@ -20,7 +20,7 @@ class ProgramTest {
         System.out.println(canvas.getDrawing());
 
         //historyManager.execute(new DrawPixelCommand(0, 0, '?'));
-        historyManager.execute(new ToLowerCommand(5, 1));
+        historyManager.execute(new ToLowerCommand(0, 0));
 
         System.out.println(canvas.getDrawing());
         assert historyManager.redo() == false;
@@ -82,7 +82,6 @@ class ProgramTest {
         }
 
 
-
         System.out.print(analyzer.getDrawing());
         System.out.println(analyzer.getPixelHistory(0, 0)); // 오류 생기는 부분 직접 입력
 
@@ -95,8 +94,9 @@ class ProgramTest {
         }
 
     }
+
     void clearCommandTest() {
-        Canvas canvas = new Canvas(2,2);
+        Canvas canvas = new Canvas(2, 2);
 
         CommandHistoryManager commandHistoryManager = new CommandHistoryManager(canvas);
 
@@ -104,8 +104,9 @@ class ProgramTest {
 
 
     }
+
     void test3() {
-        Canvas canvas = new Canvas(2,2);
+        Canvas canvas = new Canvas(2, 2);
         CommandHistoryManager commandHistoryManager = new CommandHistoryManager(canvas);
 
         System.out.println(canvas.getDrawing());
@@ -134,61 +135,62 @@ class ProgramTest {
         }
 
         if (commandHistoryManager.canRedo())
-        assert commandHistoryManager.redo() == true;
+            assert commandHistoryManager.redo() == true;
         System.out.println(canvas.getDrawing());
 
         if (commandHistoryManager.canRedo())
-        assert commandHistoryManager.redo() == false;
+            assert commandHistoryManager.redo() == false;
         System.out.println(canvas.getDrawing());
 
         if (commandHistoryManager.canUndo())
-        assert commandHistoryManager.undo() == true;
+            assert commandHistoryManager.undo() == true;
         System.out.println(canvas.getDrawing());
 
         if (commandHistoryManager.canUndo())
-        assert commandHistoryManager.undo() == true;
+            assert commandHistoryManager.undo() == true;
         System.out.println(canvas.getDrawing());
 
         if (commandHistoryManager.canUndo())
-        assert commandHistoryManager.undo() == true;
+            assert commandHistoryManager.undo() == true;
         System.out.println(canvas.getDrawing());
 
         if (commandHistoryManager.canUndo())
-        assert commandHistoryManager.undo() == true;
+            assert commandHistoryManager.undo() == true;
         System.out.println(canvas.getDrawing());
 
         if (commandHistoryManager.canUndo())
-        assert commandHistoryManager.undo() == true;
+            assert commandHistoryManager.undo() == true;
         System.out.println(canvas.getDrawing());
 
         if (commandHistoryManager.canUndo())
-        assert commandHistoryManager.undo() == false;
+            assert commandHistoryManager.undo() == false;
         System.out.println(canvas.getDrawing());
 
         if (commandHistoryManager.canRedo())
-        assert commandHistoryManager.redo() == true;
+            assert commandHistoryManager.redo() == true;
         System.out.println(canvas.getDrawing());
 
         if (commandHistoryManager.canRedo())
-        assert commandHistoryManager.redo() == true;
+            assert commandHistoryManager.redo() == true;
         System.out.println(canvas.getDrawing());
 
         if (commandHistoryManager.canRedo())
-        assert commandHistoryManager.redo() == true;
+            assert commandHistoryManager.redo() == true;
         System.out.println(canvas.getDrawing());
 
         if (commandHistoryManager.canRedo())
-        assert commandHistoryManager.redo() == true;
+            assert commandHistoryManager.redo() == true;
         System.out.println(canvas.getDrawing());
 
         if (commandHistoryManager.canRedo())
-        assert commandHistoryManager.redo() == true;
+            assert commandHistoryManager.redo() == true;
         System.out.println(canvas.getDrawing());
 
         if (commandHistoryManager.canRedo())
-        assert commandHistoryManager.redo() == false;
+            assert commandHistoryManager.redo() == false;
         System.out.println(canvas.getDrawing());
     }
+
     void kaizer() {
         Canvas canvas = new Canvas(20, 10);
         CommandHistoryManager chm = new CommandHistoryManager(canvas);
@@ -210,15 +212,14 @@ class ProgramTest {
 
     }
 
-    void testDrawPixelCommand2 () {
+    void testDrawPixelCommand2() {
         Canvas canvas = new Canvas(20, 10);
         CommandHistoryManager chm = new CommandHistoryManager(canvas);
         ArrayList<ICommand> commandList = new ArrayList<>();
         commandList.add(new DrawPixelCommand(1, 2, '3'));
-        commandList.add(new FillHorizontalLineCommand(3, 'h'));
         commandList.add(new DecreasePixelCommand(1, 2));
         commandList.add(new IncreasePixelCommand(1, 2));
-
+        commandList.add(new FillHorizontalLineCommand(3, 'h'));
         commandList.add(new FillVerticalLineCommand(3, 'h'));
         commandList.add(new ToUpperCommand(3, 2));
         commandList.add(new ToLowerCommand(3, 2));
@@ -236,8 +237,8 @@ class ProgramTest {
             canvas.drawPixel(9, 9, ' ');
             assert (chm.redo() == true);
         }
-
     }
+
     void testDrawPixelCommand() {
         Canvas canvas = new Canvas(2, 2);
 
@@ -259,6 +260,7 @@ class ProgramTest {
 
         // 반복
     }
+
     @Test
     void main() {
         Registry registry = new Registry();
@@ -266,9 +268,9 @@ class ProgramTest {
         registry.validate();
 
         //testDrawPixelCommand();
-        //testDrawPixelCommand2();
-        //test3();
-        overdrawTestL14();
+        testDrawPixelCommand2();
+        test3();
+        //overdrawTestL14();
         //mixTest();
 
     }

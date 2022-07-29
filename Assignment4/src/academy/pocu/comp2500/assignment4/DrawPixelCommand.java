@@ -50,7 +50,7 @@ public class DrawPixelCommand implements ICommand {
                 }
             }
 
-
+            return true;
         }
 
         return false;
