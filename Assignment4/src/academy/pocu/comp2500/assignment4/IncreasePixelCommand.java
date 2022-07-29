@@ -9,6 +9,8 @@ public class IncreasePixelCommand implements ICommand {
     private Character originPixelList[][];
     private boolean isExecuted = false;
     private boolean isSame = false;
+    private boolean checkedUndo = false;
+    private boolean checkedRedo = false;
 
     public IncreasePixelCommand(int x, int y) {
         this.x = x;
@@ -17,7 +19,7 @@ public class IncreasePixelCommand implements ICommand {
 
     @Override
     public boolean execute(Canvas canvas) {
-        if (this.x >= 0 && this.y >= 0 && this.x < canvas.getWidth() && this.y < canvas.getHeight() && canvas.getPixel(this.x, this.y) >= 32 && canvas.getPixel(this.x, this.y) < 126) {
+        if (this.x >= 0 && this.y >= 0 && this.x < canvas.getWidth() && this.y < canvas.getHeight()) {
             if (isExecuted) {
                 return false;
             }
@@ -79,8 +81,10 @@ public class IncreasePixelCommand implements ICommand {
     public boolean undo() {
         if (isExecuted) {
 
-            if (isSame) {
-                return false;
+            if (isSame && !checkedUndo) {
+                checkedUndo = true;
+                checkedRedo = false;
+                return true;
             }
 
             //check
@@ -129,7 +133,9 @@ public class IncreasePixelCommand implements ICommand {
     public boolean redo() {
         if (isExecuted) {
 
-            if (isSame) {
+            if (isSame && !checkedRedo) {
+                checkedRedo = true;
+                checkedUndo = false;
                 return false;
             }
 

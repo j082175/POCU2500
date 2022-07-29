@@ -10,6 +10,8 @@ public class DrawPixelCommand implements ICommand {
     private Character originPixelList[][];
     private boolean isExecuted = false;
     private boolean isSame = false;
+    private boolean checkedUndo = false;
+    private boolean checkedRedo = false;
 
     public DrawPixelCommand(int x, int y, char character) {
         this.x = x;
@@ -79,8 +81,10 @@ public class DrawPixelCommand implements ICommand {
     public boolean undo() {
         if (isExecuted) {
 
-            if (isSame) {
-                return false;
+            if (isSame && !checkedUndo) {
+                checkedUndo = true;
+                checkedRedo = false;
+                return true;
             }
 
             //check
@@ -129,7 +133,9 @@ public class DrawPixelCommand implements ICommand {
     public boolean redo() {
         if (isExecuted) {
 
-            if (isSame) {
+            if (isSame && !checkedRedo) {
+                checkedRedo = true;
+                checkedUndo = false;
                 return false;
             }
 

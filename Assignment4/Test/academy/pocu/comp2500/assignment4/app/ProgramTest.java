@@ -10,6 +10,31 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ProgramTest {
 
+    void mixTest4() {
+        Canvas canvas = new Canvas(25, 30);
+        CommandHistoryManager historyManager = new CommandHistoryManager(canvas);
+        historyManager.redo();
+        historyManager.execute(new FillHorizontalLineCommand(8, 'y'));
+        historyManager.execute(new DrawPixelCommand(2, 11, '.'));
+        historyManager.execute(new ToLowerCommand(23, 28));
+        historyManager.execute(new DrawPixelCommand(16, 29, '?'));
+        historyManager.execute(new IncreasePixelCommand(9, 27));
+        historyManager.execute(new FillHorizontalLineCommand(3, '8'));
+        historyManager.execute(new DrawPixelCommand(10, 9, 'N'));
+        historyManager.execute(new DrawPixelCommand(17, 17, 'c'));
+        System.out.println(canvas.getDrawing());
+        assert historyManager.redo() == false;
+        System.out.println(canvas.getDrawing());
+        historyManager.execute(new DecreasePixelCommand(21, 21));
+        System.out.println(canvas.getDrawing());
+        historyManager.execute(new ToUpperCommand(18, 7));
+        System.out.println(canvas.getDrawing());
+        historyManager.undo();
+        System.out.println(canvas.getDrawing());
+        historyManager.undo();
+        System.out.println(canvas.getDrawing());
+    }
+
     void mixTest3() {
         Canvas canvas = new Canvas(30, 25);
         CommandHistoryManager historyManager = new CommandHistoryManager(canvas);
@@ -57,7 +82,7 @@ class ProgramTest {
         System.out.println(canvas.getDrawing());
 
         //assert historyManager.execute(new DrawPixelCommand(0, 0, '?')) == true;
-        assert historyManager.execute(new ToLowerCommand(5, 1)) == true;
+        assert historyManager.execute(new ToUpperCommand(5, 1)) == true;
 
         System.out.println(canvas.getDrawing());
         assert historyManager.redo() == false;
@@ -325,14 +350,15 @@ class ProgramTest {
         registry.validate();
 
         //testDrawPixelCommand();
-        testDrawPixelCommand2();
-        test3();
+        //testDrawPixelCommand2();
+        //test3();
 
         //overdrawTestL14();
 
-        clearCommandTest();
+        //clearCommandTest();
         mixTest();
-        mixTest2();
+        //mixTest2();
         mixTest3();
+        mixTest4();
     }
 }

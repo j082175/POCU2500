@@ -7,6 +7,8 @@ public class ClearCommand implements ICommand {
     private Character originPixelList[][];
     private boolean isExecuted = false;
     private boolean isSame = false;
+    private boolean checkedUndo = false;
+    private boolean checkedRedo = false;
 
     public ClearCommand() {
 
@@ -75,8 +77,10 @@ public class ClearCommand implements ICommand {
     public boolean undo() {
         if (isExecuted) {
 
-            if (isSame) {
-                return false;
+            if (isSame && !checkedUndo) {
+                checkedUndo = true;
+                checkedRedo = false;
+                return true;
             }
 
             //check
@@ -124,7 +128,9 @@ public class ClearCommand implements ICommand {
     public boolean redo() {
         if (isExecuted) {
 
-            if (isSame) {
+            if (isSame && !checkedRedo) {
+                checkedRedo = true;
+                checkedUndo = false;
                 return false;
             }
 

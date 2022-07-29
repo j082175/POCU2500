@@ -9,6 +9,8 @@ public class ToLowerCommand implements ICommand {
     private Character originPixelList[][];
     private boolean isExecuted = false;
     private boolean isSame = false;
+    private boolean checkedUndo = false;
+    private boolean checkedRedo = false;
 
     public ToLowerCommand(int x, int y) {
         this.x = x;
@@ -71,7 +73,7 @@ public class ToLowerCommand implements ICommand {
 
             return true;
         }
-
+        isExecuted = true;
         return false;
     }
 
@@ -79,8 +81,10 @@ public class ToLowerCommand implements ICommand {
     public boolean undo() {
         if (isExecuted) {
 
-            if (isSame) {
-                return false;
+            if (isSame && !checkedUndo) {
+                checkedUndo = true;
+                checkedRedo = false;
+                return true;
             }
 
             //check
@@ -129,7 +133,9 @@ public class ToLowerCommand implements ICommand {
     public boolean redo() {
         if (isExecuted) {
 
-            if (isSame) {
+            if (isSame && !checkedRedo) {
+                checkedRedo = true;
+                checkedUndo = false;
                 return false;
             }
 

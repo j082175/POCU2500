@@ -9,6 +9,8 @@ public class ToUpperCommand implements ICommand {
     private Character originPixelList[][];
     private boolean isExecuted = false;
     private boolean isSame = false;
+    private boolean checkedUndo = false;
+    private boolean checkedRedo = false;
 
     public ToUpperCommand(int x, int y) {
         this.x = x;
@@ -77,8 +79,10 @@ public class ToUpperCommand implements ICommand {
     public boolean undo() {
         if (isExecuted) {
 
-            if (isSame) {
-                return false;
+            if (isSame && !checkedUndo) {
+                checkedUndo = true;
+                checkedRedo = false;
+                return true;
             }
 
             //check
@@ -127,7 +131,9 @@ public class ToUpperCommand implements ICommand {
     public boolean redo() {
         if (isExecuted) {
 
-            if (isSame) {
+            if (isSame && !checkedRedo) {
+                checkedRedo = true;
+                checkedUndo = false;
                 return false;
             }
 
