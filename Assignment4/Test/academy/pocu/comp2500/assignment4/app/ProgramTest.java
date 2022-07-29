@@ -217,6 +217,7 @@ class ProgramTest {
         CommandHistoryManager chm = new CommandHistoryManager(canvas);
         ArrayList<ICommand> commandList = new ArrayList<>();
         commandList.add(new DrawPixelCommand(1, 2, '3'));
+
         commandList.add(new DecreasePixelCommand(1, 2));
         commandList.add(new IncreasePixelCommand(1, 2));
         commandList.add(new FillHorizontalLineCommand(3, 'h'));
@@ -226,6 +227,7 @@ class ProgramTest {
         commandList.add(new ClearCommand());
         for (ICommand command : commandList) {
             assert (chm.execute(command) == true);
+            char a = canvas.getPixel(1, 2);
             assert (chm.undo() == true);
             assert (chm.redo() == true);
             canvas.drawPixel(0, 0, '5');
@@ -236,6 +238,7 @@ class ProgramTest {
             assert (chm.redo() == false);
             canvas.drawPixel(0, 0, ' ');
             assert (chm.redo() == true);
+
         }
     }
 
@@ -271,7 +274,7 @@ class ProgramTest {
         testDrawPixelCommand2();
         test3();
         //overdrawTestL14();
-        //mixTest();
+        mixTest();
 
     }
 }

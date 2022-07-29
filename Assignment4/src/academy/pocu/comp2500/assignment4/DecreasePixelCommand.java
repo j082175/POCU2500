@@ -97,6 +97,8 @@ public class DecreasePixelCommand implements ICommand {
             }
 
             return false;
+
+
         }
         return false;
     }

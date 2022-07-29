@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 public class CommandHistoryManager {
     private Canvas canvas;
-    private ICommand iCommand;
     private ArrayList<ICommand> iCommandArrayList = new ArrayList<>();
     private int index = 0;
     private boolean isExecuted = false;
@@ -15,13 +14,12 @@ public class CommandHistoryManager {
 
     public boolean execute(ICommand iCommand) {
         this.isExecuted = true;
-        this.iCommand = iCommand;
-        if (this.iCommand.execute(this.canvas)) {
+
+        if (iCommand.execute(this.canvas)) {
             this.iCommandArrayList.add(iCommand);
             index++;
             return true;
         }
-
         return false;
     }
 
@@ -72,7 +70,13 @@ public class CommandHistoryManager {
             boolean result = iCommandArrayList.get(this.index - 1).undo();
             if (!result && this.index > 1) {
                 this.index--;
-                return iCommandArrayList.get(this.index - 1).undo();
+                if (iCommandArrayList.get(this.index - 1).undo()) {
+                    return true;
+                } else {
+                    this.index++;
+                    return false;
+                }
+
             }
             return result;
         }
@@ -84,7 +88,12 @@ public class CommandHistoryManager {
             boolean result = iCommandArrayList.get(this.index - 1).redo();
             if (!result && this.index < this.iCommandArrayList.size()) {
                 this.index++;
-                return iCommandArrayList.get(this.index - 1).redo();
+                if (iCommandArrayList.get(this.index - 1).redo()) {
+                    return true;
+                } else {
+                    this.index--;
+                    return false;
+                }
             }
 
             return result;
