@@ -48,6 +48,7 @@ public class ToLowerCommand implements ICommand {
                 }
             }
 
+
             return true;
         }
 
@@ -104,16 +105,17 @@ public class ToLowerCommand implements ICommand {
         if (isExecuted) {
 
             //check
-            for (int i = 0; i < this.currentCanvas.getHeight(); i++) {
-                for (int j = 0; j < this.currentCanvas.getWidth(); j++) {
-                    if (this.currentCanvas.getPixel(i, j) == this.backupCurrentCanvas.getPixel(i, j)) {
-                        continue;
-                    } else {
-                        return false;
+                for (int i = 0; i < this.currentCanvas.getHeight(); i++) {
+                    for (int j = 0; j < this.currentCanvas.getWidth(); j++) {
+                        if (this.currentCanvas.getPixel(i, j) == this.backupCurrentCanvas.getPixel(i, j)) {
+                            continue;
+                        } else {
+                            return false;
+                        }
                     }
                 }
-            }
             //
+
 
             for (int i = 0; i < currentCanvas.getHeight(); i++) {
                 for (int j = 0; j < currentCanvas.getWidth(); j++) {
