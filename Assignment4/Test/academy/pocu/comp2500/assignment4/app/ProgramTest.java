@@ -10,6 +10,23 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ProgramTest {
 
+    void mixTest3() {
+        Canvas canvas = new Canvas(30, 25);
+        CommandHistoryManager historyManager = new CommandHistoryManager(canvas);
+        historyManager.execute(new IncreasePixelCommand(21, 13));
+        historyManager.execute(new ToUpperCommand(22, 14));
+        historyManager.execute(new DecreasePixelCommand(12, 8));
+        System.out.println(canvas.getDrawing());
+        historyManager.execute(new FillHorizontalLineCommand(8, '2'));
+        System.out.println(canvas.getDrawing());
+        historyManager.execute(new ToUpperCommand(25, 18));
+        System.out.println(canvas.getDrawing());
+        historyManager.undo();
+        System.out.println(canvas.getDrawing());
+        historyManager.undo();
+        System.out.println(canvas.getDrawing());
+    }
+
     void mixTest2() {
         Canvas canvas = new Canvas(30, 25);
         CommandHistoryManager historyManager = new CommandHistoryManager(canvas);
@@ -310,12 +327,12 @@ class ProgramTest {
         //testDrawPixelCommand();
         testDrawPixelCommand2();
         test3();
-        mixTest();
 
         //overdrawTestL14();
 
         clearCommandTest();
         mixTest();
         mixTest2();
+        mixTest3();
     }
 }

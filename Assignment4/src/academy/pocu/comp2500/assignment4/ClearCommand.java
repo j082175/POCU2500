@@ -76,7 +76,7 @@ public class ClearCommand implements ICommand {
         if (isExecuted) {
 
             if (isSame) {
-                return true;
+                return false;
             }
 
             //check

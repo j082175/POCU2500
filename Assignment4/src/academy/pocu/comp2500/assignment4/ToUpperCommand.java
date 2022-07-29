@@ -78,7 +78,7 @@ public class ToUpperCommand implements ICommand {
         if (isExecuted) {
 
             if (isSame) {
-                return true;
+                return false;
             }
 
             //check

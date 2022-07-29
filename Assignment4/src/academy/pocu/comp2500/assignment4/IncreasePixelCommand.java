@@ -80,7 +80,7 @@ public class IncreasePixelCommand implements ICommand {
         if (isExecuted) {
 
             if (isSame) {
-                return true;
+                return false;
             }
 
             //check
