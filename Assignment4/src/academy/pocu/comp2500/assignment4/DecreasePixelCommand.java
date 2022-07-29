@@ -17,25 +17,24 @@ public class DecreasePixelCommand implements ICommand {
 
     @Override
     public boolean execute(Canvas canvas) {
-        if (this.x >= 0 && this.y >= 0 && this.x < canvas.getWidth() && this.y < canvas.getHeight() && canvas.getPixel(this.x, this.y) > 32 && canvas.getPixel(this.x, this.y) <= 126) {
-            if (isExecuted) {
-                return false;
-            }
+        if (this.x >= 0 && this.y >= 0 && this.x < canvas.getWidth() && this.y < canvas.getHeight() && canvas.getPixel(this.x, this.y) > 32 && canvas.getPixel(this.x, this.y) <= 126) {if (isExecuted) {
+            return false;
+        }
             isExecuted = true;
 
             // 기존 canvas 상태 저장
-            this.originPixelList = new Character[canvas.getHeight()][canvas.getWidth()];
+            this.originPixelList = new Character[canvas.getWidth()][canvas.getHeight()];
             this.reverseCanvas = new Canvas(canvas.getWidth(), canvas.getHeight());
             this.backupCurrentCanvas = new Canvas(canvas.getWidth(), canvas.getHeight());
 
-            for (int i = 0; i < canvas.getHeight(); i++) {
-                for (int j = 0; j < canvas.getWidth(); j++) {
+            for (int i = 0; i < canvas.getWidth(); i++) {
+                for (int j = 0; j < canvas.getHeight(); j++) {
                     this.originPixelList[i][j] = canvas.getPixel(i, j);
                 }
             }
 
-            for (int i = 0; i < canvas.getHeight(); i++) {
-                for (int j = 0; j < canvas.getWidth(); j++) {
+            for (int i = 0; i < canvas.getWidth(); i++) {
+                for (int j = 0; j < canvas.getHeight(); j++) {
                     this.reverseCanvas.drawPixel(i, j, this.originPixelList[i][j]);
                 }
             }
@@ -44,16 +43,16 @@ public class DecreasePixelCommand implements ICommand {
             this.currentCanvas = canvas;
             this.currentCanvas.decreasePixel(this.x, this.y);
 
-            for (int i = 0; i < canvas.getHeight(); i++) {
-                for (int j = 0; j < canvas.getWidth(); j++) {
+            for (int i = 0; i < canvas.getWidth(); i++) {
+                for (int j = 0; j < canvas.getHeight(); j++) {
                     this.backupCurrentCanvas.drawPixel(i, j, this.currentCanvas.getPixel(i, j));
                 }
             }
 
             boolean c = false;
             // 기존 canvas 랑 새로운 거랑 똑같은지
-            for (int i = 0; i < canvas.getHeight(); i++) {
-                for (int j = 0; j < canvas.getWidth(); j++) {
+            for (int i = 0; i < canvas.getWidth(); i++) {
+                for (int j = 0; j < canvas.getHeight(); j++) {
                     if (this.originPixelList[i][j] == this.currentCanvas.getPixel(i, j)) {
                         continue;
                     } else {
@@ -84,8 +83,8 @@ public class DecreasePixelCommand implements ICommand {
             }
 
             //check
-            for (int i = 0; i < this.currentCanvas.getHeight(); i++) {
-                for (int j = 0; j < this.currentCanvas.getWidth(); j++) {
+            for (int i = 0; i < this.currentCanvas.getWidth(); i++) {
+                for (int j = 0; j < this.currentCanvas.getHeight(); j++) {
                     if (this.currentCanvas.getPixel(i, j) == this.backupCurrentCanvas.getPixel(i, j)) {
                         continue;
                     } else {
@@ -95,13 +94,13 @@ public class DecreasePixelCommand implements ICommand {
             }
             //
 
-            for (int i = 0; i < currentCanvas.getHeight(); i++) {
-                for (int j = 0; j < currentCanvas.getWidth(); j++) {
+            for (int i = 0; i < currentCanvas.getWidth(); i++) {
+                for (int j = 0; j < currentCanvas.getHeight(); j++) {
                     if (this.currentCanvas.getPixel(i, j) == this.originPixelList[i][j]) {
                         continue;
                     } else {
-                        for (int m = 0; m < currentCanvas.getHeight(); m++) {
-                            for (int n = 0; n < currentCanvas.getWidth(); n++) {
+                        for (int m = 0; m < currentCanvas.getWidth(); m++) {
+                            for (int n = 0; n < currentCanvas.getHeight(); n++) {
                                 this.reverseCanvas.drawPixel(m, n, this.currentCanvas.getPixel(m, n));
                                 this.currentCanvas.drawPixel(m, n, this.originPixelList[m][n]);
                             }
@@ -109,8 +108,8 @@ public class DecreasePixelCommand implements ICommand {
 
 
                         //backup
-                        for (int m = 0; m < currentCanvas.getHeight(); m++) {
-                            for (int n = 0; n < currentCanvas.getWidth(); n++) {
+                        for (int m = 0; m < currentCanvas.getWidth(); m++) {
+                            for (int n = 0; n < currentCanvas.getHeight(); n++) {
                                 this.backupCurrentCanvas.drawPixel(m, n, this.currentCanvas.getPixel(m, n));
                             }
                         }
@@ -121,8 +120,6 @@ public class DecreasePixelCommand implements ICommand {
             }
 
             return false;
-
-
         }
         return false;
     }
@@ -136,8 +133,8 @@ public class DecreasePixelCommand implements ICommand {
             }
 
             //check
-            for (int i = 0; i < this.currentCanvas.getHeight(); i++) {
-                for (int j = 0; j < this.currentCanvas.getWidth(); j++) {
+            for (int i = 0; i < this.currentCanvas.getWidth(); i++) {
+                for (int j = 0; j < this.currentCanvas.getHeight(); j++) {
                     if (this.currentCanvas.getPixel(i, j) == this.backupCurrentCanvas.getPixel(i, j)) {
                         continue;
                     } else {
@@ -147,8 +144,8 @@ public class DecreasePixelCommand implements ICommand {
             }
             //
 
-            for (int i = 0; i < currentCanvas.getHeight(); i++) {
-                for (int j = 0; j < currentCanvas.getWidth(); j++) {
+            for (int i = 0; i < currentCanvas.getWidth(); i++) {
+                for (int j = 0; j < currentCanvas.getHeight(); j++) {
                     if (this.currentCanvas.getPixel(i, j) == this.originPixelList[i][j]) {
                         continue;
                     } else {
@@ -157,16 +154,16 @@ public class DecreasePixelCommand implements ICommand {
                 }
             }
 
-            for (int m = 0; m < currentCanvas.getHeight(); m++) {
-                for (int n = 0; n < currentCanvas.getWidth(); n++) {
+            for (int m = 0; m < currentCanvas.getWidth(); m++) {
+                for (int n = 0; n < currentCanvas.getHeight(); n++) {
                     this.currentCanvas.drawPixel(m, n, this.reverseCanvas.getPixel(m, n));
                     this.reverseCanvas.drawPixel(m, n, this.originPixelList[m][n]);
                 }
             }
 
             //backup
-            for (int m = 0; m < currentCanvas.getHeight(); m++) {
-                for (int n = 0; n < currentCanvas.getWidth(); n++) {
+            for (int m = 0; m < currentCanvas.getWidth(); m++) {
+                for (int n = 0; n < currentCanvas.getHeight(); n++) {
                     this.backupCurrentCanvas.drawPixel(m, n, this.currentCanvas.getPixel(m, n));
                 }
             }
@@ -174,6 +171,5 @@ public class DecreasePixelCommand implements ICommand {
             return true;
         }
         return false;
-
     }
 }
