@@ -9,6 +9,75 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ProgramTest {
+    void test3() {
+        Canvas canvas = new Canvas(2,2);
+        CommandHistoryManager commandHistoryManager = new CommandHistoryManager(canvas);
+
+        System.out.println(canvas.getDrawing());
+
+        DrawPixelCommand d1 = new DrawPixelCommand(0, 0, '!');
+        DrawPixelCommand d2 = new DrawPixelCommand(0, 0, '1');
+        DrawPixelCommand d3 = new DrawPixelCommand(0, 0, '2');
+        DrawPixelCommand d4 = new DrawPixelCommand(0, 0, '3');
+        DrawPixelCommand d5 = new DrawPixelCommand(0, 0, '4');
+
+        commandHistoryManager.execute(d1);
+        commandHistoryManager.execute(d2);
+        commandHistoryManager.execute(d3);
+        commandHistoryManager.execute(d4);
+        commandHistoryManager.execute(d5);
+
+        System.out.println(canvas.getDrawing());
+
+        /*assert commandHistoryManager.redo() == false;
+        assert commandHistoryManager.undo() == true;
+        System.out.println(canvas.getDrawing());*/
+
+        assert commandHistoryManager.undo() == true;
+        System.out.println(canvas.getDrawing());
+
+        assert commandHistoryManager.redo() == true;
+        System.out.println(canvas.getDrawing());
+
+        assert commandHistoryManager.redo() == false;
+        System.out.println(canvas.getDrawing());
+
+        assert commandHistoryManager.undo() == true;
+        System.out.println(canvas.getDrawing());
+
+        assert commandHistoryManager.undo() == true;
+        System.out.println(canvas.getDrawing());
+
+        assert commandHistoryManager.undo() == true;
+        System.out.println(canvas.getDrawing());
+
+        assert commandHistoryManager.undo() == true;
+        System.out.println(canvas.getDrawing());
+
+        assert commandHistoryManager.undo() == true;
+        System.out.println(canvas.getDrawing());
+
+        assert commandHistoryManager.undo() == false;
+        System.out.println(canvas.getDrawing());
+
+        assert commandHistoryManager.redo() == true;
+        System.out.println(canvas.getDrawing());
+
+        assert commandHistoryManager.redo() == true;
+        System.out.println(canvas.getDrawing());
+
+        assert commandHistoryManager.redo() == true;
+        System.out.println(canvas.getDrawing());
+
+        assert commandHistoryManager.redo() == true;
+        System.out.println(canvas.getDrawing());
+
+        assert commandHistoryManager.redo() == true;
+        System.out.println(canvas.getDrawing());
+
+        assert commandHistoryManager.redo() == false;
+        System.out.println(canvas.getDrawing());
+    }
     void kaizer() {
         Canvas canvas = new Canvas(20, 10);
         CommandHistoryManager chm = new CommandHistoryManager(canvas);
@@ -63,20 +132,19 @@ class ProgramTest {
 
         //canvas.drawPixel(1,1,'1');
 
-        System.out.println(canvas.getDrawing());
 
         CommandHistoryManager commandHistoryManager = new CommandHistoryManager(canvas);
 
         // 반복
-        ClearCommand d1 = new ClearCommand();
+        DrawPixelCommand d1 = new DrawPixelCommand(0, 0, '0');
 
         commandHistoryManager.execute(d1);
 
-        assert commandHistoryManager.undo() == false;
+        assert commandHistoryManager.undo() == true;
 
-        assert commandHistoryManager.redo() == false;
+        assert commandHistoryManager.redo() == true;
 
-        assert commandHistoryManager.undo() == false;
+        assert commandHistoryManager.undo() == true;
 
         assert commandHistoryManager.undo() == false;
 
@@ -84,15 +152,15 @@ class ProgramTest {
 
         commandHistoryManager.execute(d1);
 
-        assert commandHistoryManager.redo() == false;
+        assert commandHistoryManager.redo() == true;
 
         assert commandHistoryManager.redo() == false;
 
         assert commandHistoryManager.redo() == false;
 
-        assert commandHistoryManager.undo() == false;
+        assert commandHistoryManager.undo() == true;
 
-        assert commandHistoryManager.redo() == false;
+        assert commandHistoryManager.redo() == true;
 
         // 반복
     }
@@ -102,7 +170,8 @@ class ProgramTest {
         App app = new App(registry);
         registry.validate();
 
-        testDrawPixelCommand();
-        testDrawPixelCommand2();
+        //testDrawPixelCommand();
+        //testDrawPixelCommand2();
+        test3();
     }
 }

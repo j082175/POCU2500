@@ -6,17 +6,19 @@ public class CommandHistoryManager {
     private Canvas canvas;
     private ICommand iCommand;
     private ArrayList<ICommand> iCommandArrayList = new ArrayList<>();
-    private int iCommandArrayListCurrentcount = 0;
+    private int index = 0;
+    private boolean isExecuted = false;
 
     public CommandHistoryManager(Canvas canvas) {
         this.canvas = canvas;
     }
 
     public boolean execute(ICommand iCommand) {
+        this.isExecuted = true;
         this.iCommand = iCommand;
         if (this.iCommand.execute(this.canvas)) {
             this.iCommandArrayList.add(iCommand);
-            iCommandArrayListCurrentcount++;
+            index++;
             return true;
         }
 
@@ -24,26 +26,50 @@ public class CommandHistoryManager {
     }
 
     public boolean canUndo() {
-        if (this.iCommandArrayListCurrentcount == 0) {
-            return false;
+        if (isExecuted && this.index != 0) {
+            boolean result = iCommandArrayList.get(this.index - 1).undo();
+            if (!result && this.index > 1) {
+                this.index--;
+                return iCommandArrayList.get(this.index - 1).undo();
+            }
+            return result;
         }
-
-        for (int i = 0; i < this.iCommandArrayList.size(); i++) {
-            this.iCommandArrayList.get(i).undo();
-        }
-
-        return this.iCommand.undo();
+        return false;
     }
 
     public boolean canRedo() {
-        return this.iCommand.redo();
+        if (isExecuted && this.index <= this.iCommandArrayList.size()) {
+            boolean result = iCommandArrayList.get(this.index - 1).redo();
+            if (!result && this.index < this.iCommandArrayList.size()) {
+                this.index++;
+                return iCommandArrayList.get(this.index - 1).redo();
+            }
+            return result;
+        }
+        return false;
     }
 
     public boolean undo() {
-        return this.iCommand.undo();
+        if (isExecuted && this.index != 0) {
+            boolean result = iCommandArrayList.get(this.index - 1).undo();
+            if (!result && this.index > 1) {
+                this.index--;
+                return iCommandArrayList.get(this.index - 1).undo();
+            }
+            return result;
+        }
+        return false;
     }
 
     public boolean redo() {
-        return this.iCommand.redo();
+        if (isExecuted && this.index <= this.iCommandArrayList.size()) {
+            boolean result = iCommandArrayList.get(this.index - 1).redo();
+            if (!result && this.index < this.iCommandArrayList.size()) {
+                this.index++;
+                return iCommandArrayList.get(this.index - 1).redo();
+            }
+            return result;
+        }
+        return false;
     }
 }
