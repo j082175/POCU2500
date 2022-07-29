@@ -10,6 +10,25 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ProgramTest {
 
+    void mixTest() {
+        Canvas canvas = new Canvas(3, 3);
+
+        CommandHistoryManager historyManager = new CommandHistoryManager(canvas);
+        historyManager.execute(new FillVerticalLineCommand(1, '8'));
+        System.out.println(canvas.getDrawing());
+        historyManager.execute(new FillHorizontalLineCommand(1, '#'));
+        System.out.println(canvas.getDrawing());
+
+        historyManager.execute(new DrawPixelCommand(0, 0, '?'));
+        //historyManager.execute(new ToLowerCommand(5, 1));
+
+        System.out.println(canvas.getDrawing());
+        assert historyManager.redo() == false;
+        System.out.println(canvas.getDrawing());
+        assert historyManager.undo() == true;
+        System.out.println(canvas.getDrawing());
+    }
+
     void overdrawTestL14() {
         OverdrawAnalyzer analyzer = new OverdrawAnalyzer(6, 6);
         CommandHistoryManager manager = new CommandHistoryManager((Canvas) analyzer);
@@ -62,7 +81,15 @@ class ProgramTest {
 
 
         System.out.print(analyzer.getDrawing());
-        System.out.println(analyzer.getPixelHistory(0, 1)); // 오류 생기는 부분 직접 입력
+        System.out.println(analyzer.getPixelHistory(0, 0)); // 오류 생기는 부분 직접 입력
+
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < 6; j++) {
+                System.out.printf("%d %d: ", i, j);
+                System.out.print(analyzer.getPixelHistory(i, j)); // 오류 생기는 부분 직접 입력
+                System.out.println();
+            }
+        }
 
     }
     void clearCommandTest() {
@@ -218,30 +245,14 @@ class ProgramTest {
 
         // 반복
         DrawPixelCommand d1 = new DrawPixelCommand(0, 0, '0');
+        DrawPixelCommand d2 = new DrawPixelCommand(0, 0, '0');
 
         commandHistoryManager.execute(d1);
-
-        assert commandHistoryManager.undo() == true;
-
-        assert commandHistoryManager.redo() == true;
-
-        assert commandHistoryManager.undo() == true;
-
-        assert commandHistoryManager.undo() == false;
-
-        assert commandHistoryManager.undo() == false;
-
-        commandHistoryManager.execute(d1);
-
-        assert commandHistoryManager.redo() == true;
-
-        assert commandHistoryManager.redo() == false;
+        commandHistoryManager.execute(d2);
 
         assert commandHistoryManager.redo() == false;
 
         assert commandHistoryManager.undo() == true;
-
-        assert commandHistoryManager.redo() == true;
 
         // 반복
     }
@@ -254,7 +265,8 @@ class ProgramTest {
         //testDrawPixelCommand();
         //testDrawPixelCommand2();
         //test3();
-        overdrawTestL14();
+        //overdrawTestL14();
+        mixTest();
 
     }
 }

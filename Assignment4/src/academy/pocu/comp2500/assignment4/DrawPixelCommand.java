@@ -9,6 +9,7 @@ public class DrawPixelCommand implements ICommand {
     private Canvas backupCurrentCanvas;
     private Character originPixelList[][];
     private boolean isExecuted = false;
+    private boolean isSame = false;
 
     public DrawPixelCommand(int x, int y, char character) {
         this.x = x;
@@ -50,14 +51,17 @@ public class DrawPixelCommand implements ICommand {
                 }
             }
 
-            return true;
+            if (this.originPixelList[this.x][this.y] == this.currentCanvas.getPixel(this.x, this.y)) {
+                isSame = true;
+            }
+
         }
 
         return false;
     }
     @Override
     public boolean undo() {
-        if (isExecuted) {
+        if (isExecuted && !isSame) {
 
             //check
             for (int i = 0; i < this.currentCanvas.getHeight(); i++) {
@@ -103,7 +107,7 @@ public class DrawPixelCommand implements ICommand {
 
     @Override
     public boolean redo() {
-        if (isExecuted) {
+        if (isExecuted && !isSame) {
 
             //check
             for (int i = 0; i < this.currentCanvas.getHeight(); i++) {

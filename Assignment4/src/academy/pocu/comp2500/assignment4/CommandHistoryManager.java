@@ -86,6 +86,7 @@ public class CommandHistoryManager {
                 this.index++;
                 return iCommandArrayList.get(this.index - 1).redo();
             }
+
             return result;
         }
         return false;
