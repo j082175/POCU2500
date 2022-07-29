@@ -40,7 +40,11 @@ public class ClearCommand implements ICommand {
         this.currentCanvas = canvas;
         this.currentCanvas.clear();
 
-        this.backupCurrentCanvas.clear();
+        for (int i = 0; i < canvas.getWidth(); i++) {
+            for (int j = 0; j < canvas.getHeight(); j++) {
+                this.backupCurrentCanvas.drawPixel(i, j, this.currentCanvas.getPixel(i, j));
+            }
+        }
 
         boolean c = false;
         // 기존 canvas 랑 새로운 거랑 똑같은지
@@ -72,7 +76,7 @@ public class ClearCommand implements ICommand {
         if (isExecuted) {
 
             if (isSame) {
-                return false;
+                return true;
             }
 
             //check

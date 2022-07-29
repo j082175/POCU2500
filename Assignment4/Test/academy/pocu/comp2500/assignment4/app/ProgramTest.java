@@ -21,8 +21,10 @@ class ProgramTest {
         historyManager.undo();
         historyManager.execute(new ClearCommand());
         historyManager.execute(new DrawPixelCommand(22, 18, 'k'));
+        System.out.println(canvas.getDrawing());
         historyManager.execute(new ClearCommand());
-        historyManager.undo();
+        System.out.println(canvas.getDrawing());
+        assert historyManager.undo() == true;
         System.out.println(canvas.getDrawing());
 
     }
@@ -306,14 +308,14 @@ class ProgramTest {
         registry.validate();
 
         //testDrawPixelCommand();
-        //testDrawPixelCommand2();
-        //test3();
-        //mixTest();
+        testDrawPixelCommand2();
+        test3();
+        mixTest();
 
         //overdrawTestL14();
 
-        //clearCommandTest();
-        //mixTest();
+        clearCommandTest();
+        mixTest();
         mixTest2();
     }
 }

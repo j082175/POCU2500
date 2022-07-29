@@ -17,7 +17,7 @@ public class CommandHistoryManager {
 
         if (iCommand.execute(this.canvas)) {
             this.iCommandArrayList.add(iCommand);
-            index++;
+            this.index = this.iCommandArrayList.size();
             return true;
         }
         return false;
@@ -81,6 +81,16 @@ public class CommandHistoryManager {
             return result;
         }
         return false;
+
+/*        if (isExecuted && this.index != 0) {
+            boolean result = iCommandArrayList.get(this.index - 1).undo();
+            if (!result && this.index > 1) {
+                this.index--;
+                return iCommandArrayList.get(this.index - 1).undo();
+            }
+            return result;
+        }
+        return false;*/
     }
 
     public boolean redo() {
@@ -99,5 +109,15 @@ public class CommandHistoryManager {
             return result;
         }
         return false;
+
+/*        if (isExecuted && this.index <= this.iCommandArrayList.size()) {
+            boolean result = iCommandArrayList.get(this.index - 1).redo();
+            if (!result && this.index < this.iCommandArrayList.size()) {
+                this.index++;
+                return iCommandArrayList.get(this.index - 1).redo();
+            }
+            return result;
+        }
+        return false;*/
     }
 }
