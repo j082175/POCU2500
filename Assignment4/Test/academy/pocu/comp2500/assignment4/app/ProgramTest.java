@@ -13,25 +13,16 @@ class ProgramTest {
     void mixTest2() {
         Canvas canvas = new Canvas(30, 25);
         CommandHistoryManager historyManager = new CommandHistoryManager(canvas);
-        assert historyManager.undo() == false;
-        assert historyManager.undo() == false;
-        historyManager.execute(new ToLowerCommand(3,14));
-        historyManager.execute(new DecreasePixelCommand(10, 10));
+        historyManager.execute(new FillHorizontalLineCommand(10, 't'));
+        historyManager.execute(new FillHorizontalLineCommand(2, 'k'));
+        historyManager.execute(new DrawPixelCommand(8, 6, '0'));
         historyManager.execute(new ClearCommand());
-        historyManager.execute(new DrawPixelCommand(15, 17, '!'));
         historyManager.undo();
-        historyManager.execute(new FillVerticalLineCommand(25, 'p'));
-        historyManager.execute(new ToLowerCommand(16, 0));
-        historyManager.redo();
-        historyManager.execute(new IncreasePixelCommand(24, 22));
-        historyManager.execute(new IncreasePixelCommand(21, 3));
-        historyManager.execute(new ToLowerCommand(28, 2));
-        System.out.println(canvas.getDrawing());
+        historyManager.undo();
         historyManager.execute(new ClearCommand());
-        System.out.println(canvas.getDrawing());
-        assert historyManager.redo() == false;
-        System.out.println(canvas.getDrawing());
-        assert historyManager.undo() == true;
+        historyManager.execute(new DrawPixelCommand(22, 18, 'k'));
+        historyManager.execute(new ClearCommand());
+        historyManager.undo();
         System.out.println(canvas.getDrawing());
 
     }
@@ -321,8 +312,8 @@ class ProgramTest {
 
         //overdrawTestL14();
 
-        clearCommandTest();
+        //clearCommandTest();
         //mixTest();
-        //mixTest2();
+        mixTest2();
     }
 }
