@@ -197,7 +197,7 @@ class ProgramTest {
 
         //testDrawPixelCommand();
         //testDrawPixelCommand2();
-        //test3();
+        test3();
 
     }
 }

@@ -85,7 +85,7 @@ public class OverdrawAnalyzer extends Canvas{
     }
     @Override
     public void fillVerticalLine(int x, char ch) {
-        super.fillHorizontalLine(x, ch);
+        super.fillVerticalLine(x, ch);
         for (int i = 0; i < super.getHeight(); i++) {
             if (super.getPixel(x, i) == ch) {
                 continue;

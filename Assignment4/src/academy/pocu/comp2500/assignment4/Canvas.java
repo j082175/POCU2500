@@ -101,7 +101,7 @@ public class Canvas {
                     builder.append('-');
                 }
                 builder.append('+');
-                builder.append('\n');
+                builder.append(System.lineSeparator());
                 continue;
             }
 
@@ -110,7 +110,7 @@ public class Canvas {
                 builder.append(this.pixel[k][j - 1]);
             }
             builder.append('|');
-            builder.append('\n');
+            builder.append(System.lineSeparator());
 
         }
 

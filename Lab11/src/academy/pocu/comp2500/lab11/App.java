@@ -31,18 +31,19 @@ public class App {
         int count = 0;
         String s;
         do {
-            //out.println(builder);
-            out.println("WAREHOUSE: Choose your warehouse!");
+            out.print(builder);
+            out.print(System.lineSeparator());
+            //out.println("WAREHOUSE: Choose your warehouse!");
 
-            {
+/*            {
                 int i = 1;
                 for (var a : WarehouseType.values()) {
                     out.printf("%d. %s", i++, a);
                     if (i != 4) {
-                        out.println();
+                        out.print(System.lineSeparator());
                     }
                 }
-            }
+            }*/
 
 
             s = in.readLine();
