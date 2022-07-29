@@ -213,7 +213,7 @@ class ProgramTest {
     }
 
     void testDrawPixelCommand2() {
-        Canvas canvas = new Canvas(20, 10);
+        Canvas canvas = new Canvas(4, 4);
         CommandHistoryManager chm = new CommandHistoryManager(canvas);
         ArrayList<ICommand> commandList = new ArrayList<>();
         commandList.add(new DrawPixelCommand(1, 2, '3'));
@@ -228,13 +228,13 @@ class ProgramTest {
             assert (chm.execute(command) == true);
             assert (chm.undo() == true);
             assert (chm.redo() == true);
-            canvas.drawPixel(9, 9, '5');
+            canvas.drawPixel(0, 0, '5');
             assert (chm.undo() == false);
-            canvas.drawPixel(9, 9, ' ');
+            canvas.drawPixel(0, 0, ' ');
             assert (chm.undo() == true);
-            canvas.drawPixel(9, 9, '5');
+            canvas.drawPixel(0, 0, '5');
             assert (chm.redo() == false);
-            canvas.drawPixel(9, 9, ' ');
+            canvas.drawPixel(0, 0, ' ');
             assert (chm.redo() == true);
         }
     }
