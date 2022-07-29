@@ -28,9 +28,18 @@ public class CommandHistoryManager {
     public boolean canUndo() {
         if (isExecuted && this.index != 0) {
             boolean result = iCommandArrayList.get(this.index - 1).undo();
+            if (result) {
+                iCommandArrayList.get(this.index - 1).redo();
+                return result;
+            }
+
             if (!result && this.index > 1) {
                 this.index--;
-                return iCommandArrayList.get(this.index - 1).undo();
+                boolean result2 = iCommandArrayList.get(this.index - 1).undo();
+                if (result2) {
+                    iCommandArrayList.get(this.index - 1).redo();
+                    return result2;
+                }
             }
             return result;
         }
@@ -40,9 +49,18 @@ public class CommandHistoryManager {
     public boolean canRedo() {
         if (isExecuted && this.index <= this.iCommandArrayList.size()) {
             boolean result = iCommandArrayList.get(this.index - 1).redo();
+            if (result) {
+                iCommandArrayList.get(this.index - 1).undo();
+                return result;
+            }
+
             if (!result && this.index < this.iCommandArrayList.size()) {
                 this.index++;
-                return iCommandArrayList.get(this.index - 1).redo();
+                boolean result2 = iCommandArrayList.get(this.index - 1).redo();
+                if (result2) {
+                    iCommandArrayList.get(this.index - 1).undo();
+                    return result2;
+                }
             }
             return result;
         }

@@ -9,6 +9,15 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ProgramTest {
+    void clearCommandTest() {
+        Canvas canvas = new Canvas(2,2);
+
+        CommandHistoryManager commandHistoryManager = new CommandHistoryManager(canvas);
+
+        System.out.println(canvas.getDrawing());
+
+
+    }
     void test3() {
         Canvas canvas = new Canvas(2,2);
         CommandHistoryManager commandHistoryManager = new CommandHistoryManager(canvas);
@@ -33,48 +42,64 @@ class ProgramTest {
         assert commandHistoryManager.undo() == true;
         System.out.println(canvas.getDrawing());*/
 
-        assert commandHistoryManager.undo() == true;
-        System.out.println(canvas.getDrawing());
+        if (commandHistoryManager.canUndo()) {
+            assert commandHistoryManager.undo() == true;
+            System.out.println(canvas.getDrawing());
+        }
 
+        if (commandHistoryManager.canRedo())
         assert commandHistoryManager.redo() == true;
         System.out.println(canvas.getDrawing());
 
+        if (commandHistoryManager.canRedo())
         assert commandHistoryManager.redo() == false;
         System.out.println(canvas.getDrawing());
 
+        if (commandHistoryManager.canUndo())
         assert commandHistoryManager.undo() == true;
         System.out.println(canvas.getDrawing());
 
+        if (commandHistoryManager.canUndo())
         assert commandHistoryManager.undo() == true;
         System.out.println(canvas.getDrawing());
 
+        if (commandHistoryManager.canUndo())
         assert commandHistoryManager.undo() == true;
         System.out.println(canvas.getDrawing());
 
+        if (commandHistoryManager.canUndo())
         assert commandHistoryManager.undo() == true;
         System.out.println(canvas.getDrawing());
 
+        if (commandHistoryManager.canUndo())
         assert commandHistoryManager.undo() == true;
         System.out.println(canvas.getDrawing());
 
+        if (commandHistoryManager.canUndo())
         assert commandHistoryManager.undo() == false;
         System.out.println(canvas.getDrawing());
 
+        if (commandHistoryManager.canRedo())
         assert commandHistoryManager.redo() == true;
         System.out.println(canvas.getDrawing());
 
+        if (commandHistoryManager.canRedo())
         assert commandHistoryManager.redo() == true;
         System.out.println(canvas.getDrawing());
 
+        if (commandHistoryManager.canRedo())
         assert commandHistoryManager.redo() == true;
         System.out.println(canvas.getDrawing());
 
+        if (commandHistoryManager.canRedo())
         assert commandHistoryManager.redo() == true;
         System.out.println(canvas.getDrawing());
 
+        if (commandHistoryManager.canRedo())
         assert commandHistoryManager.redo() == true;
         System.out.println(canvas.getDrawing());
 
+        if (commandHistoryManager.canRedo())
         assert commandHistoryManager.redo() == false;
         System.out.println(canvas.getDrawing());
     }
