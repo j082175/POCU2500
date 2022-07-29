@@ -10,10 +10,37 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ProgramTest {
 
+    void mixTest2() {
+        Canvas canvas = new Canvas(30, 25);
+        CommandHistoryManager historyManager = new CommandHistoryManager(canvas);
+        assert historyManager.undo() == false;
+        assert historyManager.undo() == false;
+        historyManager.execute(new ToLowerCommand(3,14));
+        historyManager.execute(new DecreasePixelCommand(10, 10));
+        historyManager.execute(new ClearCommand());
+        historyManager.execute(new DrawPixelCommand(15, 17, '!'));
+        historyManager.undo();
+        historyManager.execute(new FillVerticalLineCommand(25, 'p'));
+        historyManager.execute(new ToLowerCommand(16, 0));
+        historyManager.redo();
+        historyManager.execute(new IncreasePixelCommand(24, 22));
+        historyManager.execute(new IncreasePixelCommand(21, 3));
+        historyManager.execute(new ToLowerCommand(28, 2));
+        System.out.println(canvas.getDrawing());
+        historyManager.execute(new ClearCommand());
+        System.out.println(canvas.getDrawing());
+        assert historyManager.redo() == false;
+        System.out.println(canvas.getDrawing());
+        assert historyManager.undo() == true;
+        System.out.println(canvas.getDrawing());
+
+    }
+
     void mixTest() {
         Canvas canvas = new Canvas(30, 25);
 
         CommandHistoryManager historyManager = new CommandHistoryManager(canvas);
+
         historyManager.execute(new FillVerticalLineCommand(21, '8'));
         System.out.println(canvas.getDrawing());
         historyManager.execute(new FillHorizontalLineCommand(10, '#'));
@@ -94,11 +121,30 @@ class ProgramTest {
     }
 
     void clearCommandTest() {
-        Canvas canvas = new Canvas(2, 2);
-
-        CommandHistoryManager commandHistoryManager = new CommandHistoryManager(canvas);
-
+        Canvas canvas = new Canvas(30, 25);
+        CommandHistoryManager historyManager = new CommandHistoryManager(canvas);
+        assert historyManager.undo() == false;
+        assert historyManager.undo() == false;
+        historyManager.execute(new ToLowerCommand(0,0));
+        historyManager.execute(new DecreasePixelCommand(1, 1));
+        historyManager.execute(new ClearCommand());
+        historyManager.execute(new DrawPixelCommand(2, 2, '!'));
+        historyManager.undo();
+        historyManager.execute(new FillVerticalLineCommand(25, 'p'));
+        historyManager.execute(new ToLowerCommand(1, 0));
+        historyManager.redo();
+        historyManager.execute(new IncreasePixelCommand(15, 22));
+        historyManager.execute(new IncreasePixelCommand(16, 3));
+        historyManager.execute(new ToLowerCommand(4, 2));
         System.out.println(canvas.getDrawing());
+        historyManager.execute(new ClearCommand());
+        //historyManager.execute(new DrawPixelCommand(0, 0, '0'));
+        System.out.println(canvas.getDrawing());
+        assert historyManager.redo() == false;
+        System.out.println(canvas.getDrawing());
+        assert historyManager.undo() == true;
+        System.out.println(canvas.getDrawing());
+
 
 
     }
@@ -268,11 +314,15 @@ class ProgramTest {
         App app = new App(registry);
         registry.validate();
 
-        testDrawPixelCommand();
-        testDrawPixelCommand2();
-        test3();
-        //overdrawTestL14();
-        mixTest();
+        //testDrawPixelCommand();
+        //testDrawPixelCommand2();
+        //test3();
+        //mixTest();
 
+        //overdrawTestL14();
+
+        clearCommandTest();
+        //mixTest();
+        //mixTest2();
     }
 }
