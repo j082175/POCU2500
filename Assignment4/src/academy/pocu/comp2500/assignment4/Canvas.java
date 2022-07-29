@@ -83,7 +83,9 @@ public class Canvas {
     public void clear() {
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
-                this.pixel[i][j] = ' ';
+                if (this.pixel[i][j] != ' ') {
+                    this.pixel[i][j] = ' ';
+                }
             }
         }
     }
