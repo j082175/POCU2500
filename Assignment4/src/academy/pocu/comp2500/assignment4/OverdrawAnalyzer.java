@@ -1,17 +1,20 @@
 package academy.pocu.comp2500.assignment4;
 
 import java.util.LinkedList;
-public class OverdrawAnalyzer extends Canvas{
+
+public class OverdrawAnalyzer extends Canvas {
     private LinkedList<Character> pixelHistory = new LinkedList<>();
     private int listCount = 0;
+    private LinkedList<Character> pixels[][];
     private int totalOverdrawCount = 0;
+
     public OverdrawAnalyzer(int width, int height) {
         super(width, height);
+        this.pixels = new LinkedList[width][height];
     }
 
     public LinkedList<Character> getPixelHistory(int x, int y) {
-
-        return this.pixelHistory;
+        return this.pixels[x][y];
     }
 
     public int getOverdrawCount(int x, int y) {
@@ -30,6 +33,7 @@ public class OverdrawAnalyzer extends Canvas{
             this.pixelHistory.add(this.listCount++, super.getPixel(x, y));
         }
     }
+
     @Override
     public boolean increasePixel(int x, int y) {
         if (super.getPixel(x, y) == 126) {
@@ -41,6 +45,7 @@ public class OverdrawAnalyzer extends Canvas{
         this.pixelHistory.add(this.listCount++, super.getPixel(x, y));
         return result;
     }
+
     @Override
     public boolean decreasePixel(int x, int y) {
         if (super.getPixel(x, y) == 32) {
@@ -52,6 +57,7 @@ public class OverdrawAnalyzer extends Canvas{
         this.pixelHistory.add(this.listCount++, super.getPixel(x, y));
         return result;
     }
+
     @Override
     public void toUpper(int x, int y) {
         if (super.getPixel(x, y) >= 65 && super.getPixel(x, y) <= 90) {
@@ -62,6 +68,7 @@ public class OverdrawAnalyzer extends Canvas{
         totalOverdrawCount++;
         this.pixelHistory.add(this.listCount++, super.getPixel(x, y));
     }
+
     @Override
     public void toLower(int x, int y) {
         if (super.getPixel(x, y) >= 97 && super.getPixel(x, y) <= 122) {
@@ -72,6 +79,7 @@ public class OverdrawAnalyzer extends Canvas{
         totalOverdrawCount++;
         this.pixelHistory.add(this.listCount++, super.getPixel(x, y));
     }
+
     @Override
     public void fillHorizontalLine(int y, char ch) {
         super.fillHorizontalLine(y, ch);
@@ -83,6 +91,7 @@ public class OverdrawAnalyzer extends Canvas{
             totalOverdrawCount++;
         }
     }
+
     @Override
     public void fillVerticalLine(int x, char ch) {
         super.fillVerticalLine(x, ch);
