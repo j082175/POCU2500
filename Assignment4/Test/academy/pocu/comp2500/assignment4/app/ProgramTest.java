@@ -19,8 +19,8 @@ class ProgramTest {
         historyManager.execute(new FillHorizontalLineCommand(1, '#'));
         System.out.println(canvas.getDrawing());
 
-        assert historyManager.execute(new DrawPixelCommand(0, 0, '?')) == true;
-        //assert historyManager.execute(new ToLowerCommand(2, 2)) == true;
+        //assert historyManager.execute(new DrawPixelCommand(0, 0, '?')) == true;
+        assert historyManager.execute(new ToLowerCommand(2, 2)) == true;
 
         System.out.println(canvas.getDrawing());
         assert historyManager.redo() == false;
@@ -268,11 +268,11 @@ class ProgramTest {
         App app = new App(registry);
         registry.validate();
 
-        //testDrawPixelCommand();
+        testDrawPixelCommand();
         testDrawPixelCommand2();
         test3();
         //overdrawTestL14();
-        //mixTest();
+        mixTest();
 
     }
 }
