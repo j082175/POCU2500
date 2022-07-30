@@ -5,6 +5,7 @@ import academy.pocu.comp2500.assignment4.registry.Registry;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -48,6 +49,35 @@ class ProgramTest {
         h.redo();
         h.execute(new ToLowerCommand(20, 3));
         h.execute(new ClearCommand());
+        h.execute(new FillHorizontalLineCommand(19, 'm'));
+        h.execute(new DecreasePixelCommand(18, 2));
+        h.execute(new ToUpperCommand(13, 6));
+        h.execute(new FillVerticalLineCommand(26, 'I'));
+        h.execute(new IncreasePixelCommand(2, 7));
+        h.execute(new ClearCommand());
+        h.execute(new IncreasePixelCommand(7, 18));
+        h.execute(new ToLowerCommand(27, 24));
+        h.execute(new FillVerticalLineCommand(1, '7'));
+        h.execute(new IncreasePixelCommand(18, 18));
+        h.execute(new DecreasePixelCommand(10, 12));
+        h.undo();
+
+        System.out.println(canvas.getDrawing());
+
+        canvas = new Canvas(30, 30);
+        h = new CommandHistoryManager(canvas);
+
+        h.redo();
+        h.redo();
+        h.execute(new ToUpperCommand(21, 8));
+        h.execute(new DrawPixelCommand(14, 10, 'v'));
+        h.redo();
+        h.undo();
+        h.redo();
+        h.execute(new DecreasePixelCommand(23, 17));
+        h.undo();
+
+        System.out.println(canvas.getDrawing());
     }
 
     void mixTest5(){
@@ -422,11 +452,26 @@ class ProgramTest {
 
         //clearCommandTest();
 
-        mixTest();
+/*        mixTest();
         mixTest5();
         mixTest4();
         mixTest3();
 
         mixTest4619();
+        mixTest4610();*/
+
+
+        LinkedList<Character> arr[][] = new LinkedList[2][2];
+        arr[0][0] = new LinkedList<>();
+        //arr[0][0].add('a');
+
+        System.out.println(arr[0][0]);
+
+        LinkedList<Character> l = new LinkedList<>();
+        l.add('a');
+
+        ArrayList<LinkedList<Character>> array = new ArrayList<>();
+        array.add(l);
+        System.out.println(array.get(0));
     }
 }
