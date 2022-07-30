@@ -1,14 +1,11 @@
 package academy.pocu.comp2500.assignment4;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 
 public class CommandHistoryManager {
     private Canvas canvas;
     private ArrayList<ICommand> iCommandArrayList = new ArrayList<>();
     private int index = 0;
-
-    private LinkedList<ICommand> iCommandLinkedList = new LinkedList<>();
     private boolean isExecuted = false;
 
     public CommandHistoryManager(Canvas canvas) {
@@ -19,8 +16,8 @@ public class CommandHistoryManager {
         this.isExecuted = true;
 
         if (iCommand.execute(this.canvas)) {
-            this.iCommandLinkedList.add(iCommand);
-            //this.index = this.iCommandArrayList.size();
+            this.iCommandArrayList.add(iCommand);
+            this.index = this.iCommandArrayList.size();
             return true;
         }
         return false;

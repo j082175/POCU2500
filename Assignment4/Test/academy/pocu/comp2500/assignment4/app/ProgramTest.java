@@ -102,16 +102,16 @@ class ProgramTest {
         CommandHistoryManager historyManager = new CommandHistoryManager(canvas);
 
         historyManager.execute(new FillVerticalLineCommand(21, '8'));
-        System.out.println(canvas.getDrawing());
+        //System.out.println(canvas.getDrawing());
         historyManager.execute(new FillHorizontalLineCommand(10, '#'));
-        System.out.println(canvas.getDrawing());
+        //System.out.println(canvas.getDrawing());
 
         //assert historyManager.execute(new DrawPixelCommand(0, 0, '?')) == true;
         assert historyManager.execute(new ToUpperCommand(5, 1)) == true;
 
-        System.out.println(canvas.getDrawing());
+        //System.out.println(canvas.getDrawing());
         assert historyManager.redo() == false;
-        System.out.println(canvas.getDrawing());
+        //System.out.println(canvas.getDrawing());
         assert historyManager.undo() == true;
         System.out.println(canvas.getDrawing());
 
@@ -386,5 +386,6 @@ class ProgramTest {
         //mixTest3();
         //mixTest4();
         mixTest5();
+        mixTest4();
     }
 }
