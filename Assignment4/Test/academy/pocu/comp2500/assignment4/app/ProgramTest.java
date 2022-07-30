@@ -22,21 +22,22 @@ class ProgramTest {
         h.execute(new DecreasePixelCommand(12, 3));
         h.execute(new ClearCommand());
         h.execute(new FillHorizontalLineCommand(5, '='));
-            //System.out.println(canvas.getDrawing());
+        //System.out.println(canvas.getDrawing());
         h.execute(new IncreasePixelCommand(18, 18));
-            //System.out.println(canvas.getDrawing());
+        //System.out.println(canvas.getDrawing());
         h.execute(new FillHorizontalLineCommand(10, 'v'));
-            //System.out.println(canvas.getDrawing());
+        //System.out.println(canvas.getDrawing());
         h.undo();
-            //System.out.println(canvas.getDrawing());
+        //System.out.println(canvas.getDrawing());
         h.execute(new FillHorizontalLineCommand(27, '$'));
-            //System.out.println(canvas.getDrawing());
+        //System.out.println(canvas.getDrawing());
         h.undo();
-            //System.out.println(canvas.getDrawing());
+        //System.out.println(canvas.getDrawing());
         h.undo();
 
-            System.out.println(canvas.getDrawing());
+        System.out.println(canvas.getDrawing());
     }
+
     void mixTest4610() {
         Canvas canvas = new Canvas(30, 30);
         CommandHistoryManager h = new CommandHistoryManager(canvas);
@@ -80,7 +81,7 @@ class ProgramTest {
         System.out.println(canvas.getDrawing());
     }
 
-    void mixTest5(){
+    void mixTest5() {
         Canvas canvas = new Canvas(30, 30);
         CommandHistoryManager historyManager = new CommandHistoryManager(canvas);
 
@@ -255,7 +256,7 @@ class ProgramTest {
         CommandHistoryManager historyManager = new CommandHistoryManager(canvas);
         assert historyManager.undo() == false;
         assert historyManager.undo() == false;
-        historyManager.execute(new ToLowerCommand(0,0));
+        historyManager.execute(new ToLowerCommand(0, 0));
         historyManager.execute(new DecreasePixelCommand(1, 1));
         historyManager.execute(new ClearCommand());
         historyManager.execute(new DrawPixelCommand(2, 2, '!'));
@@ -274,7 +275,6 @@ class ProgramTest {
         System.out.println(canvas.getDrawing());
         assert historyManager.undo() == true;
         System.out.println(canvas.getDrawing());
-
 
 
     }
@@ -460,28 +460,50 @@ class ProgramTest {
         mixTest4619();
         mixTest4610();*/
 
-        OverdrawAnalyzer o = new OverdrawAnalyzer(10, 20);
+        OverdrawAnalyzer o = new OverdrawAnalyzer(5, 10);
         CommandHistoryManager c = new CommandHistoryManager(o);
 
+        c.execute(new IncreasePixelCommand(1, 4));
+        System.out.println(o.getDrawing());
+        c.execute(new FillHorizontalLineCommand(3, '='));
+        System.out.println(o.getDrawing());
+        c.execute(new ToLowerCommand(1, 1));
+        System.out.println(o.getDrawing());
+        c.execute(new ToUpperCommand(3, 1));
+        System.out.println(o.getDrawing());
+        c.redo();
+        System.out.println(o.getDrawing());
+        c.undo();
+        System.out.println(o.getDrawing());
+        c.undo();
+        System.out.println(o.getDrawing());
+        c.execute(new IncreasePixelCommand(4, 1));
+        System.out.println(o.getDrawing());
+        c.execute(new DecreasePixelCommand(0, 2));
+        System.out.println(o.getDrawing());
+        c.execute(new ToUpperCommand(0, 3));
+        System.out.println(o.getDrawing());
+        c.execute(new ToLowerCommand(2, 0));
+        System.out.println(o.getDrawing());
         c.execute(new ClearCommand());
-        c.execute(new FillVerticalLineCommand(1, '.'));
-        c.execute(new ToUpperCommand(1, 0));
-        c.execute(new ToLowerCommand(1, 0));
-        //c.execute(new DrawPixelCommand(2, 1,'?'));
-        System.out.println(o.getPixelHistory(2, 1));
+        System.out.println(o.getDrawing());
+        c.redo();
+        System.out.println(o.getDrawing());
+        c.undo();
+        System.out.println(o.getDrawing());
+        c.undo();
+        System.out.println(o.getDrawing());
+        c.redo();
+        System.out.println(o.getDrawing());
+        c.undo();
+        System.out.println(o.getDrawing());
+        c.execute(new DrawPixelCommand(3, 2, '.'));
+        System.out.println(o.getDrawing());
+        c.execute(new FillHorizontalLineCommand(4, '7'));
+        System.out.println(o.getDrawing());
+        c.redo();
+        System.out.println(o.getDrawing());
 
-/*        OverdrawAnalyzer o1 = new OverdrawAnalyzer(5,5);
-        CommandHistoryManager c1 = new CommandHistoryManager(o1);
-        c1.execute(new DrawPixelCommand(1, 1, '1'));
-        c1.execute(new DrawPixelCommand(1, 1, '1'));
-        c1.execute(new DrawPixelCommand(1, 1, '1'));
-
-        System.out.println(o1.getPixelHistory(1, 1));
-
-        LinkedList<Character> l1 = new LinkedList<>();
-        l1.add('c');
-        l1.add('c');
-        l1.add('c');
-        System.out.println(l1);*/
+        System.out.println(o.getOverdrawCount());
     }
 }
