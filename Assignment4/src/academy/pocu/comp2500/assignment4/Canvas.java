@@ -9,7 +9,12 @@ public class Canvas {
         this.width = width;
         this.height = height;
         this.pixel = new char[width][height];
-        this.clear();
+
+        for (int i = 0; i < width; i++) {
+            for (int j = 0; j < height; j++) {
+                this.pixel[i][j] = ' ';
+            }
+        }
     }
 
     public int getWidth() {
@@ -28,6 +33,7 @@ public class Canvas {
 
     public char getPixel(int x, int y) {
         if (x >= 0 && y >= 0 && x < width && y < height) {
+            int c = this.pixel[x][y];
             return this.pixel[x][y];
         } else {
             return 0;
@@ -83,7 +89,7 @@ public class Canvas {
     public void clear() {
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
-                this.pixel[i][j] = ' ';
+                this.pixel[i][j] = 32;
             }
         }
     }

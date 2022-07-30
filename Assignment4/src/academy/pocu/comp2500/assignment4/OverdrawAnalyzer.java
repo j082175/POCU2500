@@ -105,13 +105,12 @@ public class OverdrawAnalyzer extends Canvas {
 
     @Override
     public void clear() {
-        totalOverdrawCount += (super.getHeight() * super.getWidth());
-        super.clear();
-
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
                 if (super.getPixel(i, j) != ' ') {
                     totalOverdrawCount++;
+                    super.drawPixel(i, j, ' ');
+                    this.pixelHistory.get(dimensionConvert(i, j, this.width)).add(super.getPixel(i, j));
                 }
             }
         }
