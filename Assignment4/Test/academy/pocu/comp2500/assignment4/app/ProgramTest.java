@@ -9,6 +9,33 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ProgramTest {
+
+    void mixTest4619() {
+        Canvas canvas = new Canvas(30, 30);
+        CommandHistoryManager h = new CommandHistoryManager(canvas);
+
+        h.undo();
+        h.execute(new ClearCommand());
+        h.execute(new ClearCommand());
+        h.execute(new ToLowerCommand(0, 25));
+        h.execute(new DecreasePixelCommand(12, 3));
+        h.execute(new ClearCommand());
+        h.execute(new FillHorizontalLineCommand(5, '='));
+            //System.out.println(canvas.getDrawing());
+        h.execute(new IncreasePixelCommand(18, 18));
+            //System.out.println(canvas.getDrawing());
+        h.execute(new FillHorizontalLineCommand(10, 'v'));
+            //System.out.println(canvas.getDrawing());
+        h.undo();
+            //System.out.println(canvas.getDrawing());
+        h.execute(new FillHorizontalLineCommand(27, '$'));
+            //System.out.println(canvas.getDrawing());
+        h.undo();
+            //System.out.println(canvas.getDrawing());
+        h.undo();
+
+            System.out.println(canvas.getDrawing());
+    }
     void mixTest4610() {
         Canvas canvas = new Canvas(30, 30);
         CommandHistoryManager h = new CommandHistoryManager(canvas);
@@ -394,10 +421,12 @@ class ProgramTest {
         //overdrawTestL14();
 
         //clearCommandTest();
+
         mixTest();
         mixTest5();
         mixTest4();
         mixTest3();
-        //mixTest2();
+
+        mixTest4619();
     }
 }
