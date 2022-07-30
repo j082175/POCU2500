@@ -463,9 +463,10 @@ class ProgramTest {
         OverdrawAnalyzer o = new OverdrawAnalyzer(10, 20);
         CommandHistoryManager c = new CommandHistoryManager(o);
 
-        c.execute(new FillVerticalLineCommand(2, ' '));
         c.execute(new ClearCommand());
-        c.execute(new ClearCommand());
+        c.execute(new FillVerticalLineCommand(1, '.'));
+        c.execute(new ToUpperCommand(1, 0));
+        c.execute(new ToLowerCommand(1, 0));
         //c.execute(new DrawPixelCommand(2, 1,'?'));
         System.out.println(o.getPixelHistory(2, 1));
 
