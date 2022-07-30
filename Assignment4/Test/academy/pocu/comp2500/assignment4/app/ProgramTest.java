@@ -551,5 +551,14 @@ class ProgramTest {
         System.out.println(o1.getDrawing());
 
         System.out.println(o1.getOverdrawCount());
+
+        OverdrawAnalyzer canvas = new OverdrawAnalyzer(5, 5);
+        CommandHistoryManager manager = new CommandHistoryManager(canvas);
+
+        manager.execute(new DrawPixelCommand(1, 1, (char)97));
+        manager.execute(new ToLowerCommand(1, 1));
+        char cc1 = canvas.getPixel(1, 1);
+        boolean b = manager.undo(); // false
+        char cc = canvas.getPixel(1, 1);
     }
 }
