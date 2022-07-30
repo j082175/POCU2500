@@ -9,6 +9,19 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ProgramTest {
+    void mixTest4610() {
+        Canvas canvas = new Canvas(30, 30);
+        CommandHistoryManager h = new CommandHistoryManager(canvas);
+
+        h.execute(new FillHorizontalLineCommand(4, '\\'));
+        h.execute(new FillVerticalLineCommand(3, '4'));
+        h.execute(new ClearCommand());
+        h.execute(new ToLowerCommand(15, 3));
+        h.execute(new FillHorizontalLineCommand(14, ' '));
+        h.redo();
+        h.execute(new ToLowerCommand(20, 3));
+        h.execute(new ClearCommand());
+    }
 
     void mixTest5(){
         Canvas canvas = new Canvas(30, 30);
@@ -47,15 +60,15 @@ class ProgramTest {
         historyManager.execute(new FillHorizontalLineCommand(3, '8'));
         historyManager.execute(new DrawPixelCommand(10, 9, 'N'));
         historyManager.execute(new DrawPixelCommand(17, 17, 'c'));
-        System.out.println(canvas.getDrawing());
+        //System.out.println(canvas.getDrawing());
         assert historyManager.redo() == false;
-        System.out.println(canvas.getDrawing());
+        //System.out.println(canvas.getDrawing());
         historyManager.execute(new DecreasePixelCommand(21, 21));
-        System.out.println(canvas.getDrawing());
+        //System.out.println(canvas.getDrawing());
         historyManager.execute(new ToUpperCommand(18, 7));
-        System.out.println(canvas.getDrawing());
+        //System.out.println(canvas.getDrawing());
         historyManager.undo();
-        System.out.println(canvas.getDrawing());
+        //System.out.println(canvas.getDrawing());
         historyManager.undo();
         System.out.println(canvas.getDrawing());
     }
@@ -66,13 +79,13 @@ class ProgramTest {
         historyManager.execute(new IncreasePixelCommand(21, 13));
         historyManager.execute(new ToUpperCommand(22, 14));
         historyManager.execute(new DecreasePixelCommand(12, 8));
-        System.out.println(canvas.getDrawing());
+        //System.out.println(canvas.getDrawing());
         historyManager.execute(new FillHorizontalLineCommand(8, '2'));
-        System.out.println(canvas.getDrawing());
+        //System.out.println(canvas.getDrawing());
         historyManager.execute(new ToUpperCommand(25, 18));
-        System.out.println(canvas.getDrawing());
+        //System.out.println(canvas.getDrawing());
         historyManager.undo();
-        System.out.println(canvas.getDrawing());
+        //System.out.println(canvas.getDrawing());
         historyManager.undo();
         System.out.println(canvas.getDrawing());
     }
@@ -88,9 +101,9 @@ class ProgramTest {
         historyManager.undo();
         historyManager.execute(new ClearCommand());
         historyManager.execute(new DrawPixelCommand(22, 18, 'k'));
-        System.out.println(canvas.getDrawing());
+        //System.out.println(canvas.getDrawing());
         historyManager.execute(new ClearCommand());
-        System.out.println(canvas.getDrawing());
+        //System.out.println(canvas.getDrawing());
         assert historyManager.undo() == true;
         System.out.println(canvas.getDrawing());
 
@@ -382,10 +395,9 @@ class ProgramTest {
 
         //clearCommandTest();
         mixTest();
-        //mixTest2();
-        //mixTest3();
-        //mixTest4();
         mixTest5();
         mixTest4();
+        mixTest3();
+        //mixTest2();
     }
 }
