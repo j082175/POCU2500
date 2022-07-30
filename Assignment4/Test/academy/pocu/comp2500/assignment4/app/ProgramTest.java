@@ -452,13 +452,13 @@ class ProgramTest {
 
         //clearCommandTest();
 
-/*        mixTest();
+        mixTest();
         mixTest5();
         mixTest4();
         mixTest3();
 
         mixTest4619();
-        mixTest4610();*/
+        mixTest4610();
 
         OverdrawAnalyzer o = new OverdrawAnalyzer(5, 10);
         CommandHistoryManager c = new CommandHistoryManager(o);
