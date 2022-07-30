@@ -505,5 +505,51 @@ class ProgramTest {
         System.out.println(o.getDrawing());
 
         System.out.println(o.getOverdrawCount());
+
+        OverdrawAnalyzer o1 = new OverdrawAnalyzer(8, 10);
+        CommandHistoryManager c1 = new CommandHistoryManager(o1);
+
+        c1.execute(new DrawPixelCommand(2, 1, 'X'));
+        System.out.println(o1.getDrawing());
+        c1.execute(new IncreasePixelCommand(0, 1));
+        System.out.println(o1.getDrawing());
+        c1.execute(new FillVerticalLineCommand(3, '9'));
+        System.out.println(o1.getDrawing());
+        c1.execute(new ToUpperCommand(1, 3));
+        System.out.println(o1.getDrawing());
+        c1.execute(new ToUpperCommand(0, 4));
+        System.out.println(o1.getDrawing());
+        c1.execute(new FillHorizontalLineCommand(2, '4'));
+        System.out.println(o1.getDrawing());
+        c1.undo();
+        System.out.println(o1.getDrawing());
+        c1.execute(new FillVerticalLineCommand(2, 'B'));
+        System.out.println(o1.getDrawing());
+        c1.execute(new ClearCommand());
+        System.out.println(o1.getDrawing());
+        c1.execute(new ToLowerCommand(3, 1));
+        System.out.println(o1.getDrawing());
+        c1.undo();
+        System.out.println(o1.getDrawing());
+        c1.execute(new ToUpperCommand(1, 2));
+        System.out.println(o1.getDrawing());
+        c1.execute(new FillVerticalLineCommand(2, '8'));
+        System.out.println(o1.getDrawing());
+        c1.undo();
+        System.out.println(o1.getDrawing());
+        c1.execute(new FillHorizontalLineCommand(2, 'F'));
+        System.out.println(o1.getDrawing());
+        c1.execute(new ToLowerCommand(1, 2));
+        System.out.println(o1.getDrawing());
+        c1.execute(new ToUpperCommand(0, 0));
+        System.out.println(o1.getDrawing());
+        c1.execute(new ClearCommand());
+        System.out.println(o1.getDrawing());
+        c1.execute(new DecreasePixelCommand(3, 2));
+        System.out.println(o1.getDrawing());
+        c1.execute(new FillVerticalLineCommand(4, 'K'));
+        System.out.println(o1.getDrawing());
+
+        System.out.println(o1.getOverdrawCount());
     }
 }
