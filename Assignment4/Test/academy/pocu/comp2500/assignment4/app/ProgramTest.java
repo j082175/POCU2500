@@ -460,18 +460,49 @@ class ProgramTest {
         mixTest4619();
         mixTest4610();*/
 
+        OverdrawAnalyzer o = new OverdrawAnalyzer(10, 20);
+        CommandHistoryManager c = new CommandHistoryManager(o);
+        c.execute(new ClearCommand());
+        c.execute(new FillVerticalLineCommand(1, '.'));
+        c.execute(new IncreasePixelCommand(0, 3));
+        c.execute(new ToUpperCommand(1, 0));
+        c.execute(new FillHorizontalLineCommand(4, 'X'));
+        c.execute(new FillHorizontalLineCommand(4, 'V'));
+        c.execute(new FillVerticalLineCommand(4, 't'));
+        c.execute(new IncreasePixelCommand(4, 2));
+        c.execute(new ToLowerCommand(2, 3));
+        c.execute(new IncreasePixelCommand(0, 0));
+        c.redo();
+        c.execute(new FillVerticalLineCommand(2, 'm'));
+        c.undo();
+        c.execute(new ToLowerCommand(0, 4));
+        c.execute(new ToLowerCommand(1, 0));
+        c.execute(new DrawPixelCommand(3, 1, '0'));
+        c.undo();
+        c.execute(new FillVerticalLineCommand(2, 'y'));
+        c.execute(new FillHorizontalLineCommand(1, 'A'));
 
-        LinkedList<Character> arr[][] = new LinkedList[2][2];
-        arr[0][0] = new LinkedList<>();
-        //arr[0][0].add('a');
+        System.out.println(o.getDrawing());
 
-        System.out.println(arr[0][0]);
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 20; j++) {
+                System.out.print(o.getPixelHistory(i, j));
+            }
+            System.out.println();
+        }
 
-        LinkedList<Character> l = new LinkedList<>();
-        l.add('a');
+/*        OverdrawAnalyzer o1 = new OverdrawAnalyzer(5,5);
+        CommandHistoryManager c1 = new CommandHistoryManager(o1);
+        c1.execute(new DrawPixelCommand(1, 1, '1'));
+        c1.execute(new DrawPixelCommand(1, 1, '1'));
+        c1.execute(new DrawPixelCommand(1, 1, '1'));
 
-        ArrayList<LinkedList<Character>> array = new ArrayList<>();
-        array.add(l);
-        System.out.println(array.get(0));
+        System.out.println(o1.getPixelHistory(1, 1));
+
+        LinkedList<Character> l1 = new LinkedList<>();
+        l1.add('c');
+        l1.add('c');
+        l1.add('c');
+        System.out.println(l1);*/
     }
 }
