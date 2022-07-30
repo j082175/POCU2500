@@ -463,47 +463,11 @@ class ProgramTest {
         OverdrawAnalyzer o = new OverdrawAnalyzer(10, 20);
         CommandHistoryManager c = new CommandHistoryManager(o);
 
+        c.execute(new FillVerticalLineCommand(2, ' '));
         c.execute(new ClearCommand());
-
-        c.execute(new FillVerticalLineCommand(1, '.'));
-        c.execute(new IncreasePixelCommand(0, 3));
-        c.execute(new ToUpperCommand(1, 0));
-        c.execute(new FillHorizontalLineCommand(4, 'X'));
-        c.execute(new FillHorizontalLineCommand(4, 'V'));
-        c.execute(new FillVerticalLineCommand(4, 't'));
-        c.execute(new IncreasePixelCommand(4, 2));
-        c.execute(new ToLowerCommand(2, 3));
-        c.execute(new IncreasePixelCommand(0, 0));
-
-        c.redo();
-        c.execute(new FillVerticalLineCommand(2, 'm'));
-
-        c.undo();
-
-        c.execute(new ToLowerCommand(0, 4));
-
-        c.execute(new ToLowerCommand(1, 0));
-
-        c.execute(new DrawPixelCommand(3, 1, '0'));
-
-        c.undo();
-
-        c.execute(new FillVerticalLineCommand(2, 'y'));
-
-        c.execute(new FillHorizontalLineCommand(1, 'A'));
-        System.out.println(o.getPixelHistory(0, 0));
         c.execute(new ClearCommand());
-        System.out.println(o.getPixelHistory(0, 0));
-        c.execute(new IncreasePixelCommand(0, 0));
-        //System.out.println(o.getDrawing());
-
-        System.out.println(o.getPixelHistory(0, 0));
-/*        for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 20; j++) {
-                System.out.print(o.getPixelHistory(i, j));
-            }
-            System.out.println();
-        }*/
+        //c.execute(new DrawPixelCommand(2, 1,'?'));
+        System.out.println(o.getPixelHistory(2, 1));
 
 /*        OverdrawAnalyzer o1 = new OverdrawAnalyzer(5,5);
         CommandHistoryManager c1 = new CommandHistoryManager(o1);
