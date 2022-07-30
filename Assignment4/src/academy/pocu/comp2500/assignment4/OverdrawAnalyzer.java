@@ -33,16 +33,8 @@ public class OverdrawAnalyzer extends Canvas {
     public int getOverdrawCount() {
         int total = 0;
         for (int i = 0; i < width * height; i++) {
-            for (int j = 0; j < this.pixelHistory.get(i).size(); j++) {
-                if (this.pixelHistory.get(i).get(j) != 0) {
-                    total++;
-                }
-            }
-            //total += this.pixelHistory.get(i).size();
+            total += this.pixelHistory.get(i).size();
         }
-
-        int a = total;
-        int b = totalOverdrawCount;
         return total;
     }
 
@@ -50,11 +42,8 @@ public class OverdrawAnalyzer extends Canvas {
     public void drawPixel(int x, int y, char ch) {
         if (super.getPixel(x, y) != ch) {
             super.drawPixel(x, y, ch);
-            if (ch != ' ') {
-                totalOverdrawCount++;
-                this.pixelHistory.get(dimensionConvert(x, y, this.width)).add(ch);
-            }
-
+            totalOverdrawCount++;
+            this.pixelHistory.get(dimensionConvert(x, y, this.width)).add(ch);
         }
     }
 
@@ -80,8 +69,8 @@ public class OverdrawAnalyzer extends Canvas {
 
     @Override
     public void toUpper(int x, int y) {
-        super.toUpper(x, y);
         if (super.getPixel(x, y) >= 97 && super.getPixel(x, y) <= 122) {
+            super.toUpper(x, y);
             totalOverdrawCount++;
             this.pixelHistory.get(dimensionConvert(x, y, this.width)).add(super.getPixel(x, y));
         }
@@ -89,8 +78,8 @@ public class OverdrawAnalyzer extends Canvas {
 
     @Override
     public void toLower(int x, int y) {
-        super.toLower(x, y);
         if (super.getPixel(x, y) >= 65 && super.getPixel(x, y) <= 90) {
+            super.toLower(x, y);
             totalOverdrawCount++;
             this.pixelHistory.get(dimensionConvert(x, y, this.width)).add(super.getPixel(x, y));
         }
@@ -98,13 +87,12 @@ public class OverdrawAnalyzer extends Canvas {
 
     @Override
     public void fillHorizontalLine(int y, char ch) {
-        if (y >= 0 && y < super.getHeight()) {
+        if (y >= 0 && y < height) {
             for (int i = 0; i < super.getWidth(); i++) {
                 if (ch == ' ' && super.getPixel(i, y) == ch) {
                     continue;
                 }
                 super.drawPixel(i, y, ch);
-
                 this.pixelHistory.get(dimensionConvert(i, y, this.width)).add(super.getPixel(i, y));
                 totalOverdrawCount++;
             }
@@ -113,13 +101,12 @@ public class OverdrawAnalyzer extends Canvas {
 
     @Override
     public void fillVerticalLine(int x, char ch) {
-        if (x >= 0 && x < super.getWidth()) {
+        if (x >= 0 && x < width) {
             for (int i = 0; i < super.getHeight(); i++) {
                 if (ch == ' ' && super.getPixel(x, i) == ch) {
                     continue;
                 }
                 super.drawPixel(x, i, ch);
-
                 this.pixelHistory.get(dimensionConvert(x, i, this.width)).add(super.getPixel(x, i));
                 totalOverdrawCount++;
             }
@@ -131,9 +118,9 @@ public class OverdrawAnalyzer extends Canvas {
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
                 if (super.getPixel(i, j) != ' ') {
-                    //totalOverdrawCount++;
+                    totalOverdrawCount++;
                     super.drawPixel(i, j, ' ');
-                    //this.pixelHistory.get(dimensionConvert(i, j, this.width)).add(super.getPixel(i, j));
+                    this.pixelHistory.get(dimensionConvert(i, j, this.width)).add(super.getPixel(i, j));
                 }
             }
         }

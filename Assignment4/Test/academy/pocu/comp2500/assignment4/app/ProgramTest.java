@@ -506,7 +506,7 @@ class ProgramTest {
 
         System.out.println(o.getOverdrawCount());
 
-        OverdrawAnalyzer o1 = new OverdrawAnalyzer(8, 10);
+        OverdrawAnalyzer o1 = new OverdrawAnalyzer(5, 5);
         CommandHistoryManager c1 = new CommandHistoryManager(o1);
 
         c1.execute(new DrawPixelCommand(2, 1, 'X'));
