@@ -69,20 +69,24 @@ public class OverdrawAnalyzer extends Canvas {
 
     @Override
     public void toUpper(int x, int y) {
-        if (super.getPixel(x, y) >= 97 && super.getPixel(x, y) <= 122) {
-            super.toUpper(x, y);
-            totalOverdrawCount++;
-            this.pixelHistory.get(dimensionConvert(x, y, this.width)).add(super.getPixel(x, y));
+        if (super.getPixel(x, y) >= 65 && super.getPixel(x, y) <= 90) {
+            return;
         }
+
+        super.toUpper(x, y);
+        totalOverdrawCount++;
+        this.pixelHistory.get(dimensionConvert(x, y, this.width)).add(super.getPixel(x, y));
     }
 
     @Override
     public void toLower(int x, int y) {
-        if (super.getPixel(x, y) >= 65 && super.getPixel(x, y) <= 90) {
-            super.toLower(x, y);
-            totalOverdrawCount++;
-            this.pixelHistory.get(dimensionConvert(x, y, this.width)).add(super.getPixel(x, y));
+        if (super.getPixel(x, y) >= 97 && super.getPixel(x, y) <= 122) {
+            return;
         }
+
+        super.toLower(x, y);
+        totalOverdrawCount++;
+        this.pixelHistory.get(dimensionConvert(x, y, this.width)).add(super.getPixel(x, y));
     }
 
     @Override
