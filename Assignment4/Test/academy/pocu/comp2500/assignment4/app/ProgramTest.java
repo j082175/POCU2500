@@ -472,18 +472,27 @@ class ProgramTest {
         c.execute(new IncreasePixelCommand(4, 2));
         c.execute(new ToLowerCommand(2, 3));
         c.execute(new IncreasePixelCommand(0, 0));
+
         c.redo();
         c.execute(new FillVerticalLineCommand(2, 'm'));
+        System.out.println(o.getPixelHistory(0, 0));
         c.undo();
+        System.out.println(o.getPixelHistory(0, 0));
         c.execute(new ToLowerCommand(0, 4));
+        System.out.println(o.getPixelHistory(0, 0));
         c.execute(new ToLowerCommand(1, 0));
+        System.out.println(o.getPixelHistory(0, 0));
         c.execute(new DrawPixelCommand(3, 1, '0'));
+        System.out.println(o.getPixelHistory(0, 0));
         c.undo();
+        System.out.println(o.getPixelHistory(0, 0));
         c.execute(new FillVerticalLineCommand(2, 'y'));
+        System.out.println(o.getPixelHistory(0, 0));
         c.execute(new FillHorizontalLineCommand(1, 'A'));
 
-        System.out.println(o.getDrawing());
+        //System.out.println(o.getDrawing());
 
+        System.out.println(o.getPixelHistory(0, 0));
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 20; j++) {
                 System.out.print(o.getPixelHistory(i, j));

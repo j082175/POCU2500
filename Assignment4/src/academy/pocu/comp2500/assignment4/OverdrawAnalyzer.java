@@ -31,14 +31,20 @@ public class OverdrawAnalyzer extends Canvas {
     }
 
     public int getOverdrawCount() {
-        return totalOverdrawCount;
+        int total = 0;
+        for (int i = 0; i < width * height; i++) {
+            total += this.pixelHistory.get(i).size();
+        }
+        return total;
     }
 
     @Override
     public void drawPixel(int x, int y, char ch) {
-        super.drawPixel(x, y, ch);
-        totalOverdrawCount++;
-        this.pixelHistory.get(dimensionConvert(x, y, this.width)).add(ch);
+        if (super.getPixel(x, y) != ch) {
+            super.drawPixel(x, y, ch);
+            totalOverdrawCount++;
+            this.pixelHistory.get(dimensionConvert(x, y, this.width)).add(ch);
+        }
     }
 
     @Override
