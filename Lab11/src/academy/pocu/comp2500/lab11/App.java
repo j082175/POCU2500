@@ -126,12 +126,9 @@ public class App {
                     try {
                         warehouse.removeProduct(arrayList.get(count1 - 1).getId());
                     } catch (ProductNotFoundException e) {
-                        try {
-                            wallet.deposit(amount - wallet.getAmount());
-                        } catch (OverflowException e1) {
-                            throw new OverflowException("overflow");
-                        }
-                        throw new ProductNotFoundException("productnotfound");
+
+                        wallet.deposit(amount - wallet.getAmount());
+
                     }
 
 
