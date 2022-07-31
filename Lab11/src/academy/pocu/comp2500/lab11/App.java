@@ -84,11 +84,18 @@ public class App {
         }
 
         do {
-            builder.append("PRODUCT_LIST: Choose the product you want to buy!");
+/*            builder.append("PRODUCT_LIST: Choose the product you want to buy!");
             builder.append(System.lineSeparator());
             for (int i = 0; i < arrayList.size(); i++) {
                 builder.append(String.format("%d. %s\t\t%d", i + 1, arrayList.get(i).getName(), arrayList.get(i).getPrice()));
                 builder.append(System.lineSeparator());
+            }*/
+
+            out.print("PRODUCT_LIST: Choose the product you want to buy!");
+            out.print(System.lineSeparator());
+            for (int i = 0; i < arrayList.size(); i++) {
+                out.print(String.format("%d. %s\t\t%d", i + 1, arrayList.get(i).getName(), arrayList.get(i).getPrice()));
+                out.print(System.lineSeparator());
             }
 
             if (arrayList.size() == 0) {
@@ -99,7 +106,7 @@ public class App {
                 out.println(String.format("BALANCE: %d", wallet.getAmount()));
             }
 
-            out.print(builder);
+            //out.print(builder);
 
             s = in.readLine();
 
@@ -119,7 +126,7 @@ public class App {
                 check = wallet.withdraw(arrayList.get(count1 - 1).getPrice());
 
                 if (check) {
-                    if (wallet.getAmount() != amount - price) { // 
+                    if (wallet.getAmount() != amount - price) { //
                         wallet.deposit(amount - wallet.getAmount());
                     }
 
@@ -130,6 +137,7 @@ public class App {
             } else {
                 continue;
             }
+
 
         } while (check);
 
