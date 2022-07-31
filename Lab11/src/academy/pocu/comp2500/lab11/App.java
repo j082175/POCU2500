@@ -35,9 +35,9 @@ public class App {
             for (var a : WarehouseType.values()) {
                 builder.append(String.format("%d. %s", i, a));
                 i++;
-                if (i != 4) {
-                    builder.append(System.lineSeparator());
-                }
+
+                builder.append(System.lineSeparator());
+
             }
         }
 
