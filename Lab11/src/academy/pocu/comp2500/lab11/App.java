@@ -16,7 +16,7 @@ public class App {
     public void run(BufferedReader in, PrintStream out, PrintStream err) throws IOException {
         // in : 사용자 입력, out : 텍스트 출력, err : 오류 코드 출력
         StringBuilder builder = new StringBuilder();
-        builder.append("WAREHOUSE: Choose your warehouse!");
+/*        builder.append("WAREHOUSE: Choose your warehouse!");
         builder.append(System.lineSeparator());
         builder.append("1. ");
         builder.append(WarehouseType.APPLE);
@@ -26,16 +26,29 @@ public class App {
         builder.append(System.lineSeparator());
         builder.append("3. ");
         builder.append(WarehouseType.SAMSUNG);
+        builder.append(System.lineSeparator());*/
+
+        builder.append("WAREHOUSE: Choose your warehouse!");
         builder.append(System.lineSeparator());
+        {
+            int i = 1;
+            for (var a : WarehouseType.values()) {
+                builder.append(String.format("%d. %s", i, a));
+                i++;
+                if (i != 4) {
+                    builder.append(System.lineSeparator());
+                }
+            }
+        }
 
         // 목록 출력
         int count = 0;
         String s;
         do {
             out.print(builder);
-            //out.println("WAREHOUSE: Choose your warehouse!");
 
-/*            {
+/*            out.println("WAREHOUSE: Choose your warehouse!");
+            {
                 int i = 1;
                 for (var a : WarehouseType.values()) {
                     out.printf("%d. %s", i++, a);
