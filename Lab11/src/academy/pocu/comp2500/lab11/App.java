@@ -83,16 +83,18 @@ public class App {
             return false;
         }
 
-
-
-        builder.append("PRODUCT_LIST: Choose the product you want to buy!");
-        builder.append(System.lineSeparator());
-        for (int i = 0; i < arrayList.size(); i++) {
-            builder.append(String.format("%d. %s\t\t%d", i + 1, arrayList.get(i).getName(), arrayList.get(i).getPrice()));
-            builder.append(System.lineSeparator());
-        }
-
         do {
+            builder.append("PRODUCT_LIST: Choose the product you want to buy!");
+            builder.append(System.lineSeparator());
+            for (int i = 0; i < arrayList.size(); i++) {
+                builder.append(String.format("%d. %s\t\t%d", i + 1, arrayList.get(i).getName(), arrayList.get(i).getPrice()));
+                builder.append(System.lineSeparator());
+            }
+
+            if (arrayList.size() == 0) {
+                return false;
+            }
+
             if (wallet != null) {
                 out.println(String.format("BALANCE: %d", wallet.getAmount()));
             }
@@ -112,10 +114,19 @@ public class App {
             }
 
             if (count1 > 0 && count1 <= arrayList.size()) {
+                int price = arrayList.get(count1 - 1).getPrice(); // 기존에 봤던 제품 가격
+                int amount = wallet.getAmount(); // 기존 지갑 잔고
                 check = wallet.withdraw(arrayList.get(count1 - 1).getPrice());
-/*                if (check) {
-                    out.println(String.format("BALANCE: %d", wallet.getAmount()));
-                }*/
+
+                if (check) {
+                    if (wallet.getAmount() != amount - price) { // 
+                        wallet.deposit(amount - wallet.getAmount());
+                    }
+
+                    arrayList.remove(count1 - 1);
+                }
+
+
             } else {
                 continue;
             }
