@@ -16,11 +16,8 @@ public class CommandHistoryManager {
         this.isExecuted = true;
 
         if (iCommand.execute(this.canvas)) {
-            if (this.index == this.iCommandArrayList.size()) {
-                this.index++;
-            }
             this.iCommandArrayList.add(iCommand);
-
+            this.index = this.iCommandArrayList.size();
             return true;
         }
         return false;

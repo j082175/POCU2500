@@ -422,7 +422,7 @@ class ProgramTest {
         assert chm.redo() == false;
         canvas.drawPixel(0, 0, ' ');
         assert chm.redo() == true;
-        chm.execute(new DrawPixelCommand(3,3,'2'));
+        //chm.execute(new DrawPixelCommand(3,3,'2'));
         assert chm.redo() == true;
         canvas.drawPixel(0, 0, '5');
         assert chm.redo() == false;
@@ -434,7 +434,7 @@ class ProgramTest {
             assert chm.redo() == false;
             canvas.drawPixel(0, 0, ' ');
             assert chm.redo() == true;
-            chm.execute(new DrawPixelCommand(2,2,'2'));
+            //chm.execute(new DrawPixelCommand(2,2,'2'));
         }
     }
 
