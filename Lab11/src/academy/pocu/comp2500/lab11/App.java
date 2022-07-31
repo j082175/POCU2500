@@ -72,7 +72,7 @@ public class App {
                 default:
                     continue;
             }*/
-        } while (count < 1 || count > 3);
+        } while (count < 1 || count > WarehouseType.values().length);
     }
 
     private void printScreen(BufferedReader in, PrintStream out, PrintStream err, WarehouseType warehouseType) throws IOException {
