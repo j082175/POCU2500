@@ -26,13 +26,13 @@ public class App {
         builder.append(System.lineSeparator());
         builder.append("3. ");
         builder.append(WarehouseType.SAMSUNG);
+        builder.append(System.lineSeparator());
 
         // 목록 출력
         int count = 0;
         String s;
         do {
             out.print(builder);
-            out.print(System.lineSeparator());
             //out.println("WAREHOUSE: Choose your warehouse!");
 
 /*            {
