@@ -50,7 +50,7 @@ public class Wallet {
 
     //mock
     private static int retrieveAmountMock() {
-        return 5;
+        return 100;
     }
 
     // 허용할 부서 목록

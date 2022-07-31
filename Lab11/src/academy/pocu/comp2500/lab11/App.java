@@ -87,6 +87,10 @@ public class App {
                 builder.append(System.lineSeparator());
             }*/
 
+            if (arrayList.size() == 0) {
+                return false;
+            }
+
             if (wallet != null) {
                 out.println(String.format("BALANCE: %d", wallet.getAmount()));
             }
@@ -98,9 +102,7 @@ public class App {
                 out.print(System.lineSeparator());
             }
 
-            if (arrayList.size() == 0) {
-                return false;
-            }
+
 
 
             //out.print(builder);
@@ -120,29 +122,26 @@ public class App {
             if (count1 > 0 && count1 <= arrayList.size()) {
                 int price = arrayList.get(count1 - 1).getPrice(); // 기존에 봤던 제품 가격
                 int amount = wallet.getAmount(); // 기존 지갑 잔고
+
+                //warehouse.removeProduct(arrayList.get(count1 - 1).getId());
+
+                if ((amount >= price) == false) {
+                    return false;
+                }
+
                 check = wallet.withdraw(arrayList.get(count1 - 1).getPrice());
 
                 if (check) {
                     try {
                         warehouse.removeProduct(arrayList.get(count1 - 1).getId());
                     } catch (ProductNotFoundException e) {
-
                         wallet.deposit(amount - wallet.getAmount());
-
+                        continue;
                     }
-
-
-/*                    if (wallet.getAmount() != amount - price) { //
-                        wallet.deposit(amount - wallet.getAmount());
-                    }*/
+                    arrayList.remove(count1 - 1);
 
                 }
-
-
-            } else {
-                continue;
             }
-
 
         } while (check);
 

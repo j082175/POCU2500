@@ -60,9 +60,9 @@ public class Warehouse {
         ArrayList<Product> products = new ArrayList<>();
 
         products.add(new Product(UUID.randomUUID(), "Lotion", 10));
-/*        products.add(new Product(UUID.randomUUID(), "Pencil", 5));
+        products.add(new Product(UUID.randomUUID(), "Pencil", 5));
         products.add(new Product(UUID.randomUUID(), "Notebook", 15));
-        products.add(new Product(UUID.randomUUID(), "Eraser", 7));*/
+        products.add(new Product(UUID.randomUUID(), "Eraser", 7));
 /*        products.add(new Product(UUID.randomUUID(), "1", 1));
         products.add(new Product(UUID.randomUUID(), "2", 2));
         products.add(new Product(UUID.randomUUID(), "3", 3));*/
@@ -72,6 +72,6 @@ public class Warehouse {
 
     //mock
     private static boolean isProductOutOfStockMock(int index) {
-        return index == 3;
+        return index == 1;
     }
 }
