@@ -90,7 +90,7 @@ public class App {
         try {
             wallet = new SafeWallet(user);
         } catch (PermanentlyClosedException e) {
-            //err.println("AUTH_ERROR");
+            err.println("AUTH_ERROR");
         } catch (IllegalAccessException e) {
             throw new RuntimeException(e);
         }
