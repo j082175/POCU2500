@@ -105,7 +105,7 @@ public class CommandHistoryManager {
     public boolean redo() {
         if (isExecuted && this.index <= this.iCommandArrayList.size()) {
             boolean result = iCommandArrayList.get(this.index - 1).redo();
-            //int current = this.index;
+            int current = this.index;
             if (!result && this.index < this.iCommandArrayList.size()) {
                 this.index++;
 
@@ -120,10 +120,10 @@ public class CommandHistoryManager {
 
             }
 
-/*            if (this.index == this.iCommandArrayList.size()) {
+            if (this.index > this.iCommandArrayList.size()) {
                 this.index = current;
                 return false;
-            }*/
+            }
 
             return result;
         }

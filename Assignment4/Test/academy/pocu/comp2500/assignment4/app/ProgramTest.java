@@ -413,6 +413,17 @@ class ProgramTest {
             assert (chm.redo() == true);
 
         }
+
+        for (int i = 0; i < 8; i++) {
+            assert chm.undo() == true;
+        }
+
+        for (int i = 0; i< 8; i++) {
+            canvas.drawPixel(0, 0, '5');
+            assert chm.redo() == false;
+            canvas.drawPixel(0, 0, ' ');
+            assert chm.redo() == true;
+        }
     }
 
     void testDrawPixelCommand() {
@@ -443,13 +454,13 @@ class ProgramTest {
         App app = new App(registry);
         registry.validate();
 
-        //testDrawPixelCommand();
+        testDrawPixelCommand();
         testDrawPixelCommand2();
         //test3();
 
-        //overdrawTestL14();
+        overdrawTestL14();
 
-        //clearCommandTest();
+        clearCommandTest();
 
         mixTest();
         mixTest5();
