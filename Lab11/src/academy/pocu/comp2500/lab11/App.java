@@ -1,13 +1,16 @@
 package academy.pocu.comp2500.lab11;
 
-import academy.pocu.comp2500.lab11.pocu.*;
+import academy.pocu.comp2500.lab11.pocu.User;
+import academy.pocu.comp2500.lab11.pocu.Wallet;
+import academy.pocu.comp2500.lab11.pocu.Warehouse;
+import academy.pocu.comp2500.lab11.pocu.WarehouseType;
+import academy.pocu.comp2500.lab11.pocu.Product;
+import academy.pocu.comp2500.lab11.pocu.ProductNotFoundException;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintStream;
-import java.net.ProtocolException;
 import java.util.ArrayList;
-import java.util.IllegalFormatException;
 
 public class App {
     public void run(BufferedReader in, PrintStream out, PrintStream err) throws IOException {
@@ -85,10 +88,6 @@ public class App {
                 builder.append(String.format("%d. %s\t\t%d", i + 1, arrayList.get(i).getName(), arrayList.get(i).getPrice()));
                 builder.append(System.lineSeparator());
             }*/
-
-            if (arrayList.size() == 0) {
-                return;
-            }
 
             if (wallet != null) {
                 out.println(String.format("BALANCE: %d", wallet.getAmount()));
