@@ -16,17 +16,6 @@ public class App {
     public void run(BufferedReader in, PrintStream out, PrintStream err) throws IOException {
         // in : 사용자 입력, out : 텍스트 출력, err : 오류 코드 출력
         StringBuilder builder = new StringBuilder();
-/*        builder.append("WAREHOUSE: Choose your warehouse!");
-        builder.append(System.lineSeparator());
-        builder.append("1. ");
-        builder.append(WarehouseType.APPLE);
-        builder.append(System.lineSeparator());
-        builder.append("2. ");
-        builder.append(WarehouseType.MICROSOFT);
-        builder.append(System.lineSeparator());
-        builder.append("3. ");
-        builder.append(WarehouseType.SAMSUNG);
-        builder.append(System.lineSeparator());*/
 
         builder.append("WAREHOUSE: Choose your warehouse!");
         builder.append(System.lineSeparator());
@@ -46,18 +35,6 @@ public class App {
         String s;
         do {
             out.print(builder);
-
-/*            out.println("WAREHOUSE: Choose your warehouse!");
-            {
-                int i = 1;
-                for (var a : WarehouseType.values()) {
-                    out.printf("%d. %s", i++, a);
-                    if (i != 4) {
-                        out.print(System.lineSeparator());
-                    }
-                }
-            }*/
-
 
             s = in.readLine();
 
@@ -101,7 +78,7 @@ public class App {
         try {
             wallet = new SafeWallet(user);
         } catch (PermanentlyClosedException e) {
-            err.println("AUTH_ERROR");
+            //err.println("AUTH_ERROR");
         } catch (IllegalAccessException e) {
             throw new RuntimeException(e);
         }
