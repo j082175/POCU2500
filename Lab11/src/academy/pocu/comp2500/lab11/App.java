@@ -78,14 +78,11 @@ public class App {
 
         try {
             wallet = new SafeWallet(user);
-        } catch (PermanentlyClosedException e) {
-            return false;
         } catch (IllegalAccessException e) {
             err.println("AUTH_ERROR");
             return false;
-        } catch (IllegalArgumentException e) {
-            return false;
         }
+        
         if (wallet != null) {
             out.println(String.format("BALANCE: %d", wallet.getAmount()));
         }
