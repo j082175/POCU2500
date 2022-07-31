@@ -10,7 +10,7 @@ public class User {
     }
 
     // mock
-    public User(final String firstName, final String lastName, final Department department) {
+    User(final String firstName, final String lastName, final Department department) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.department = department;
@@ -52,8 +52,17 @@ public class User {
 
     //mock
     private void loadUserMock() {
-        this.firstName = "John";
+/*        this.firstName = "John";
         this.lastName = "Doe";
-        this.department = Department.ENGINEERING;
+        this.department = Department.ENGINEERING;*/
+
+        this.firstName = "Jane";
+        this.lastName = "Many";
+        this.department = Department.PROGRAMMING;
+
+        /*User user1 = new User("JUNSOO","CHO", Department.PROGRAMMING);
+        User user2 = new User("ONE","1", Department.OPERATION);
+        User user3 = new User("TWO","2", Department.HUMAN_RESOURCES);
+        User user4 = new User("Jane","Many", Department.ENGINEERING);*/
     }
 }

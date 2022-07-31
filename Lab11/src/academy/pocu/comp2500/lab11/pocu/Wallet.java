@@ -53,6 +53,7 @@ public class Wallet {
         return 100;
     }
 
+    // 허용할 부서 목록
     //mock
     private static HashSet<Department> retrieveDepartmentsMock() {
         HashSet<Department> set = new HashSet<>();
@@ -64,6 +65,7 @@ public class Wallet {
         return set;
     }
 
+    // 허용할 사용자 목록
     //mock
     private static HashSet<User> retrieveAllowedUsersMock(Department department) {
         HashSet<User> set = new HashSet<>();
