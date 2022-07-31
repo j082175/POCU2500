@@ -49,9 +49,8 @@ public class App {
                 int i = 1;
                 for (var a : WarehouseType.values()) {
                     if (s.equals(String.valueOf(i))) {
-                        if (!printScreen(in, out, err, a)) {
-                            return;
-                        }
+                        printScreen(in, out, err, a);
+                        return;
                     }
                     i++;
                 }
@@ -59,7 +58,7 @@ public class App {
         } while (count < 1 || count > WarehouseType.values().length);
     }
 
-    private boolean printScreen(BufferedReader in, PrintStream out, PrintStream err, WarehouseType warehouseType) throws IOException {
+    private void printScreen(BufferedReader in, PrintStream out, PrintStream err, WarehouseType warehouseType) throws IOException {
         boolean check = true;
         String s;
         User user = new User();
@@ -76,7 +75,7 @@ public class App {
             wallet = new SafeWallet(user);
         } catch (IllegalAccessException e) {
             err.println("AUTH_ERROR");
-            return false;
+            return;
         }
 
         do {
@@ -88,7 +87,7 @@ public class App {
             }*/
 
             if (arrayList.size() == 0) {
-                return false;
+                return;
             }
 
             if (wallet != null) {
@@ -110,7 +109,7 @@ public class App {
             s = in.readLine();
 
             if (s.equals("exit")) {
-                return false;
+                return;
             }
 
             try {
@@ -120,14 +119,7 @@ public class App {
             }
 
             if (count1 > 0 && count1 <= arrayList.size()) {
-                int price = arrayList.get(count1 - 1).getPrice(); // 기존에 봤던 제품 가격
-                int amount = wallet.getAmount(); // 기존 지갑 잔고
-
                 //warehouse.removeProduct(arrayList.get(count1 - 1).getId());
-
-                if ((amount >= price) == false) {
-                    return false;
-                }
 
                 check = wallet.withdraw(arrayList.get(count1 - 1).getPrice());
 
@@ -135,7 +127,7 @@ public class App {
                     try {
                         warehouse.removeProduct(arrayList.get(count1 - 1).getId());
                     } catch (ProductNotFoundException e) {
-                        wallet.deposit(amount - wallet.getAmount());
+                        wallet.deposit(arrayList.get(count1 - 1).getPrice());
                     } finally {
                         arrayList.remove(count1 - 1);
                     }
@@ -144,7 +136,5 @@ public class App {
             }
 
         } while (check);
-
-        return true;
     }
 }
