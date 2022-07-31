@@ -136,9 +136,9 @@ public class App {
                         warehouse.removeProduct(arrayList.get(count1 - 1).getId());
                     } catch (ProductNotFoundException e) {
                         wallet.deposit(amount - wallet.getAmount());
-                        continue;
+                    } finally {
+                        arrayList.remove(count1 - 1);
                     }
-                    arrayList.remove(count1 - 1);
 
                 }
             }
