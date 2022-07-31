@@ -80,6 +80,7 @@ public class App {
         String s;
         User user = new User();
         Wallet wallet = null;
+        StringBuilder builder = new StringBuilder();
 
         Warehouse warehouse = new Warehouse(warehouseType);
         ArrayList<Product> arrayList = warehouse.getProducts();
@@ -97,11 +98,20 @@ public class App {
             out.printf("BALANCE: %d\n", wallet.getAmount());
         }
 
+        builder.append("PRODUCT_LIST: Choose the product you want to buy!");
+        builder.append(System.lineSeparator());
+        for (int i = 0; i < arrayList.size(); i++) {
+            builder.append(String.format("%d. %s\t\t%d", i + 1, arrayList.get(i).getName(), arrayList.get(i).getPrice()));
+            builder.append(System.lineSeparator());
+        }
+
         do {
-            out.println("PRODUCT_LIST: Choose the product you want to buy!");
+/*            out.println("PRODUCT_LIST: Choose the product you want to buy!");
             for (int i = 0; i < arrayList.size(); i++) {
                 out.printf("%d. %s\t\t%d\n", i + 1, arrayList.get(i).getName(), arrayList.get(i).getPrice());
-            }
+            }*/
+
+            out.print(builder);
 
             s = in.readLine();
 
