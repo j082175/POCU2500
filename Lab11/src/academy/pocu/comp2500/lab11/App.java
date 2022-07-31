@@ -1,11 +1,17 @@
 package academy.pocu.comp2500.lab11;
 
-import academy.pocu.comp2500.lab11.pocu.*;
+import academy.pocu.comp2500.lab11.pocu.User;
+import academy.pocu.comp2500.lab11.pocu.Wallet;
+import academy.pocu.comp2500.lab11.pocu.Warehouse;
+import academy.pocu.comp2500.lab11.pocu.WarehouseType;
+import academy.pocu.comp2500.lab11.pocu.Product;
+import academy.pocu.comp2500.lab11.pocu.PermanentlyClosedException;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.IllegalFormatException;
 
 public class App {
     public void run(BufferedReader in, PrintStream out, PrintStream err) throws IOException {
@@ -73,10 +79,12 @@ public class App {
         try {
             wallet = new SafeWallet(user);
         } catch (PermanentlyClosedException e) {
-            err.println("AUTH_ERROR");
             return false;
         } catch (IllegalAccessException e) {
-            throw new RuntimeException(e);
+            err.println("AUTH_ERROR");
+            return false;
+        } catch (IllegalArgumentException e) {
+            return false;
         }
         if (wallet != null) {
             out.println(String.format("BALANCE: %d", wallet.getAmount()));

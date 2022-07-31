@@ -57,8 +57,8 @@ public class User {
         this.department = Department.ENGINEERING;*/
 
         this.firstName = "Jane";
-        this.lastName = "Many";
-        this.department = Department.PROGRAMMING;
+        this.lastName = "Many1";
+        this.department = Department.ENGINEERING;
 
         /*User user1 = new User("JUNSOO","CHO", Department.PROGRAMMING);
         User user2 = new User("ONE","1", Department.OPERATION);
