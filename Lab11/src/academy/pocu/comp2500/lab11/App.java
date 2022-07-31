@@ -57,21 +57,6 @@ public class App {
                     i++;
                 }
             }
-
-
-/*            switch (s) {
-                case "1":
-                    printScreen(in, out, err, WarehouseType.APPLE);
-                    break;
-                case "2":
-                    printScreen(in, out, err, WarehouseType.MICROSOFT);
-                    break;
-                case "3":
-                    printScreen(in, out, err, WarehouseType.SAMSUNG);
-                    break;
-                default:
-                    continue;
-            }*/
         } while (count < 1 || count > WarehouseType.values().length);
     }
 
@@ -95,7 +80,7 @@ public class App {
             throw new RuntimeException(e);
         }
         if (wallet != null) {
-            out.printf("BALANCE: %d\n", wallet.getAmount());
+            out.println(String.format("BALANCE: %d", wallet.getAmount()));
         }
 
         builder.append("PRODUCT_LIST: Choose the product you want to buy!");
@@ -106,11 +91,6 @@ public class App {
         }
 
         do {
-/*            out.println("PRODUCT_LIST: Choose the product you want to buy!");
-            for (int i = 0; i < arrayList.size(); i++) {
-                out.printf("%d. %s\t\t%d\n", i + 1, arrayList.get(i).getName(), arrayList.get(i).getPrice());
-            }*/
-
             out.print(builder);
 
             s = in.readLine();
@@ -128,7 +108,7 @@ public class App {
             if (count1 > 0 && count1 <= arrayList.size()) {
                 check = wallet.withdraw(arrayList.get(count1 - 1).getPrice());
                 if (check) {
-                    out.printf("BALANCE: %d\n", wallet.getAmount());
+                    out.println(String.format("BALANCE: %d", wallet.getAmount()));
                 }
             }
 
