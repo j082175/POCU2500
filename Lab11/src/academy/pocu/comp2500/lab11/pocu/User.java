@@ -10,7 +10,7 @@ public class User {
     }
 
     // mock
-    User(final String firstName, final String lastName, final Department department) {
+    public User(final String firstName, final String lastName, final Department department) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.department = department;

@@ -1,11 +1,6 @@
 package academy.pocu.comp2500.lab11;
 
-import academy.pocu.comp2500.lab11.pocu.User;
-import academy.pocu.comp2500.lab11.pocu.Wallet;
-import academy.pocu.comp2500.lab11.pocu.Warehouse;
-import academy.pocu.comp2500.lab11.pocu.WarehouseType;
-import academy.pocu.comp2500.lab11.pocu.Product;
-import academy.pocu.comp2500.lab11.pocu.PermanentlyClosedException;
+import academy.pocu.comp2500.lab11.pocu.*;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -52,7 +47,9 @@ public class App {
                 int i = 1;
                 for (var a : WarehouseType.values()) {
                     if (s.equals(String.valueOf(i))) {
-                        printScreen(in, out, err, a);
+                        if (!printScreen(in, out, err, a)) {
+                            return;
+                        }
                     }
                     i++;
                 }
@@ -60,7 +57,7 @@ public class App {
         } while (count < 1 || count > WarehouseType.values().length);
     }
 
-    private void printScreen(BufferedReader in, PrintStream out, PrintStream err, WarehouseType warehouseType) throws IOException {
+    private boolean printScreen(BufferedReader in, PrintStream out, PrintStream err, WarehouseType warehouseType) throws IOException {
         boolean check = true;
         String s;
         User user = new User();
@@ -70,12 +67,21 @@ public class App {
         Warehouse warehouse = new Warehouse(warehouseType);
         ArrayList<Product> arrayList = warehouse.getProducts();
 
+        //
+        User user1 = new User("JUNSOO","CHO", Department.PROGRAMMING);
+        User user2 = new User("ONE","1", Department.OPERATION);
+        User user3 = new User("TWO","2", Department.HUMAN_RESOURCES);
+        User user4 = new User("Jane","Many", Department.ENGINEERING);
+
+        //
+
         int count1 = 0;
 
         try {
-            wallet = new SafeWallet(user);
+            wallet = new SafeWallet(user4);
         } catch (PermanentlyClosedException e) {
             err.println("AUTH_ERROR");
+            return false;
         } catch (IllegalAccessException e) {
             throw new RuntimeException(e);
         }
@@ -96,7 +102,7 @@ public class App {
             s = in.readLine();
 
             if (s.equals("exit")) {
-                return;
+                return false;
             }
 
             try {
@@ -113,5 +119,7 @@ public class App {
             }
 
         } while (check);
+
+        return true;
     }
 }

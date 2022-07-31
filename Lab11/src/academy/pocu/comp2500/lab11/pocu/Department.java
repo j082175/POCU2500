@@ -4,5 +4,6 @@ public enum Department {
     ENGINEERING,
     OPERATION,
     QUALITY_ASSURANCE,
-    HUMAN_RESOURCES
+    HUMAN_RESOURCES,
+    PROGRAMMING
 }
