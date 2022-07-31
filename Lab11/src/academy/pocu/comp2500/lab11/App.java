@@ -116,6 +116,8 @@ public class App {
 /*                if (check) {
                     out.println(String.format("BALANCE: %d", wallet.getAmount()));
                 }*/
+            } else {
+                continue;
             }
 
         } while (check);
