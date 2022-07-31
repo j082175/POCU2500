@@ -144,8 +144,8 @@ public class App {
             }
 
 
-        } while (true);
+        } while (check);
 
-        //return true;
+        return true;
     }
 }
