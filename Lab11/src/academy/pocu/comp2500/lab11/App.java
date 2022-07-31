@@ -126,7 +126,7 @@ public class App {
                         warehouse.removeProduct(arrayList.get(count1 - 1).getId());
                     } catch (ProductNotFoundException e) {
                         wallet.deposit(amount - wallet.getAmount());
-                        throw new ProtocolException("productnotfound");
+                        throw new ProductNotFoundException("productnotfound");
                     }
 
 
