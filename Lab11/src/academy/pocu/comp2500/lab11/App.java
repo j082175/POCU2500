@@ -1,15 +1,11 @@
 package academy.pocu.comp2500.lab11;
 
-import academy.pocu.comp2500.lab11.pocu.User;
-import academy.pocu.comp2500.lab11.pocu.Wallet;
-import academy.pocu.comp2500.lab11.pocu.Warehouse;
-import academy.pocu.comp2500.lab11.pocu.WarehouseType;
-import academy.pocu.comp2500.lab11.pocu.Product;
-import academy.pocu.comp2500.lab11.pocu.PermanentlyClosedException;
+import academy.pocu.comp2500.lab11.pocu.*;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.net.ProtocolException;
 import java.util.ArrayList;
 import java.util.IllegalFormatException;
 
@@ -126,11 +122,18 @@ public class App {
                 check = wallet.withdraw(arrayList.get(count1 - 1).getPrice());
 
                 if (check) {
-                    if (wallet.getAmount() != amount - price) { //
+                    try {
+                        warehouse.removeProduct(arrayList.get(count1 - 1).getId());
+                    } catch (ProductNotFoundException e) {
                         wallet.deposit(amount - wallet.getAmount());
+                        throw new ProtocolException("productnotfound");
                     }
 
-                    arrayList.remove(count1 - 1);
+
+/*                    if (wallet.getAmount() != amount - price) { //
+                        wallet.deposit(amount - wallet.getAmount());
+                    }*/
+
                 }
 
 
