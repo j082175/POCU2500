@@ -82,10 +82,8 @@ public class App {
             err.println("AUTH_ERROR");
             return false;
         }
-        
-        if (wallet != null) {
-            out.println(String.format("BALANCE: %d", wallet.getAmount()));
-        }
+
+
 
         builder.append("PRODUCT_LIST: Choose the product you want to buy!");
         builder.append(System.lineSeparator());
@@ -95,6 +93,10 @@ public class App {
         }
 
         do {
+            if (wallet != null) {
+                out.println(String.format("BALANCE: %d", wallet.getAmount()));
+            }
+
             out.print(builder);
 
             s = in.readLine();
