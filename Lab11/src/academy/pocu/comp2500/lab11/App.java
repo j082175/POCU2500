@@ -113,9 +113,9 @@ public class App {
 
             if (count1 > 0 && count1 <= arrayList.size()) {
                 check = wallet.withdraw(arrayList.get(count1 - 1).getPrice());
-                if (check) {
+/*                if (check) {
                     out.println(String.format("BALANCE: %d", wallet.getAmount()));
-                }
+                }*/
             }
 
         } while (check);
