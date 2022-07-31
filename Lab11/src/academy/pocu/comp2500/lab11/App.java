@@ -87,6 +87,10 @@ public class App {
                 builder.append(System.lineSeparator());
             }*/
 
+            if (wallet != null) {
+                out.println(String.format("BALANCE: %d", wallet.getAmount()));
+            }
+
             out.print("PRODUCT_LIST: Choose the product you want to buy!");
             out.print(System.lineSeparator());
             for (int i = 0; i < arrayList.size(); i++) {
@@ -98,9 +102,6 @@ public class App {
                 return false;
             }
 
-            if (wallet != null) {
-                out.println(String.format("BALANCE: %d", wallet.getAmount()));
-            }
 
             //out.print(builder);
 
@@ -125,7 +126,11 @@ public class App {
                     try {
                         warehouse.removeProduct(arrayList.get(count1 - 1).getId());
                     } catch (ProductNotFoundException e) {
-                        wallet.deposit(amount - wallet.getAmount());
+                        try {
+                            wallet.deposit(amount - wallet.getAmount());
+                        } catch (OverflowException e1) {
+                            throw new OverflowException("overflow");
+                        }
                         throw new ProductNotFoundException("productnotfound");
                     }
 
