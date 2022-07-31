@@ -391,7 +391,6 @@ class ProgramTest {
         CommandHistoryManager chm = new CommandHistoryManager(canvas);
         ArrayList<ICommand> commandList = new ArrayList<>();
         commandList.add(new DrawPixelCommand(1, 2, '3'));
-
         commandList.add(new DecreasePixelCommand(1, 2));
         commandList.add(new IncreasePixelCommand(1, 2));
         commandList.add(new FillHorizontalLineCommand(3, 'h'));
@@ -445,7 +444,7 @@ class ProgramTest {
         registry.validate();
 
         //testDrawPixelCommand();
-        //testDrawPixelCommand2();
+        testDrawPixelCommand2();
         //test3();
 
         //overdrawTestL14();
