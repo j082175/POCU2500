@@ -135,6 +135,6 @@ public class App {
                 }
             }
 
-        } while (check);
+        } while (arrayList.size() > 0);
     }
 }
