@@ -48,7 +48,18 @@ public class App {
                 continue;
             }
 
-            switch (s) {
+            {
+                int i = 1;
+                for (var a : WarehouseType.values()) {
+                    if (s.equals(String.valueOf(i))) {
+                        printScreen(in, out, err, a);
+                    }
+                    i++;
+                }
+            }
+
+
+/*            switch (s) {
                 case "1":
                     printScreen(in, out, err, WarehouseType.APPLE);
                     break;
@@ -60,7 +71,7 @@ public class App {
                     break;
                 default:
                     continue;
-            }
+            }*/
         } while (count < 1 || count > 3);
     }
 
